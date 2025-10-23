@@ -34,7 +34,6 @@ ALLOWED_HOSTS = [
     ".herokuapp.com",  # your Heroku app when deployed
 ]
 
-
 # Application definition
 
 INSTALLED_APPS = [
