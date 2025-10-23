@@ -1,0 +1,12 @@
+In Python
+from django.utils.translation import gettext as _
+title = _("Welcome to the Poetry Site")
+
+In HTML templates
+{% load i18n %}
+<h1>{% trans "Welcome to the Poetry Site" %}</h1>
+
+Then generate and compile messages:
+bash:
+django-admin makemessages -l es
+django-admin compilemessages
