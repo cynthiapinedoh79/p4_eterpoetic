@@ -31,6 +31,7 @@ urlpatterns = [
 urlpatterns += i18n_patterns(
     path("", include("blog.urls")),   # <- # ← blog, not posts
     path("admin/", admin.site.urls),
+    prefix_default_language=False,
 )
 
 # Solo si quieres servir media en desarrollo:
