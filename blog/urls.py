@@ -7,5 +7,4 @@ app_name = "blog"
 urlpatterns = [
     path("", views.home, name="list"),  # /en/ or /es/ will hit this
     path("ping/", views.ping, name="ping"),
-    prefix_default_language=False,
 ]
