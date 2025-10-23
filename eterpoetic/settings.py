@@ -143,6 +143,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
 
+# Crispy Forms Settings
+# ---------------------
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+CRISPY_TEMPLATE_PACK = "bootstrap5"
+
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
