@@ -17,7 +17,8 @@
 		"ghcr.io/devcontainers/features/github-cli:1": {},
 		"ghcr.io/devcontainers/features/node:1": {}
 	},
-	"postCreateCommand": "bash .devcontainer/setup.sh",
+	// RUTA CORREGIDA: Asume que el archivo se llama 'setup.sh' y está en la raíz
+	"postCreateCommand": "bash ./setup.sh", 
 
 	// --- MAKE SURE THIS BLOCK IS ADDED ----
 	"customizations": {
