@@ -20,6 +20,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.i18n import i18n_patterns   # i18n
+from blog import views   # <- import views if needed
 
 urlpatterns = [
     # endpoint para cambiar idioma (lo usa el form del navbar)
@@ -28,8 +29,8 @@ urlpatterns = [
 
 # Rutas traducibles / prefijadas por idioma: /en/ ... /es/ ...
 urlpatterns += i18n_patterns(
-    path("admin/", admin.site.urls),
     path("", include("blog.urls")),   # <- # ← blog, not posts
+    path("admin/", admin.site.urls),
 )
 
 # Solo si quieres servir media en desarrollo:
