@@ -17,6 +17,10 @@ This README is structured for a **Django project with multiple apps** and a **Co
 ![GitHub last commit](https://img.shields.io/github/last-commit/USER/REPO)
 [![View Demo](https://img.shields.io/badge/View-Demo-brightgreen)](https://example.com)
 
+![HTML](https://img.shields.io/badge/HTML5-27.1%25-%23E34F26?style=flat&logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS3-39.8%25-%231572B6?style=flat&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-21.9%25-%23F7DF1E?style=flat&logo=javascript&logoColor=black)
+![Dockerfile](https://img.shields.io/badge/Dockerfile-11.2%25-384d54?style=flat)
 ![Python](https://img.shields.io/badge/Python-3.x-blue)
 ![Django](https://img.shields.io/badge/Django-4.x-darkgreen)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-DB-blue)
@@ -27,6 +31,7 @@ This README is structured for a **Django project with multiple apps** and a **Co
 # 📋 Table of Contents
 - [🧾 Project Overview](#🧾-project-overview)
 - [🔗 Live Demo](#🔗-live-demo)
+- [📱 Am I Responsive? - Demo](#📱-am-i-responsive---demo)
 - [🖼️ Screenshots](#🖼️-screenshots)
 - [🎯 UX](#🎯-ux)
 - [🧑‍💼 User Stories](#🧑‍💼-user-stories)
@@ -37,6 +42,11 @@ This README is structured for a **Django project with multiple apps** and a **Co
   - [🏗️ Structure](#🏗️-structure)
   - [🦴 Skeleton](#🦴-skeleton)
   - [🎨 Surface](#🎨-surface)
+- [✨ Features](#✨-features)
+  - [🚀 Existing Features](#🚀-existing-features)
+  - [🔮 Features Left to Implement](#🔮-features-left-to-implement)
+  - [🧑‍💻 Languages Used](#🧑‍💻-languages-used)
+  - [🧰 Frameworks, Libraries & Programs Used](#🧰-frameworks-libraries--programs-used)
 - [🏛️ Architecture (Django MVT)](#🏛️-architecture-django-mvt)
   - [🗃️ Data Model (ERD)](#🗃️-data-model-erd)
   - [🧱 App Responsibilities](#🧱-app-responsibilities-app1-app2-app3)
@@ -50,6 +60,12 @@ This README is structured for a **Django project with multiple apps** and a **Co
 - [🗂️ Project Structure](#🗂️-project-structure)
 - [🔐 Admin & Fixtures](#🔐-admin--fixtures)
 - [✅ Testing & Validation](#✅-testing--validation)
+  - [✅ Browser & Device Testing](#✅-browser--device-testing)
+  - [✅ Validator Testing](#✅-validator-testing)
+  - [✅ Accessibility Testing](#✅-accessibility-testing)
+  - [✅ Console in Google Chrome DevTools-"Inspect" Testing] (#✅-console-in-google-chrome-devtools-inspect-testing)
+  - [🧑‍💻 Testing User Stories – User Experience (UX) Evaluation](#🧑‍💻-testing-user-stories--user-experience-ux-evaluation)
+
 - [🐞 Bugs](#🐞-bugs)
 - [📥 Deployment](#📥-deployment)
 - [🔮 Features Left to Implement](#🔮-features-left-to-implement)
@@ -75,21 +91,47 @@ This README is structured for a **Django project with multiple apps** and a **Co
 **Admin Panel:** https://example.com/admin
 
 ---
+## 📱 Am I Responsive? - Demo
+All pages were designed with **Responsive Design** to provide a consistent experience across various screen sizes and devices.
+
+![Responsive devices -Home](assets/images/readme/amIR/AIR-Home.png)
+---
 
 ## 🖼️ Screenshots
 
 __________________________________________
-assets/readme/home.png
-assets/readme/dashboard.png
-assets/readme/detail.png
+![Responsive devices -Home](assets/readme/home.png)
+![Responsive devices -Home](assets/readme/dashboard.png)
+![Responsive devices -Home](assets/readme/detail.png)
 __________________________________________
-
 
 ---
 
 ## 🎯 UX
+### Target Audience:
+Individuals and businesses seeking clarity, tools, and support in managing their finances.
 **Target Audience:** Define your user types  
+
+### Core UX Goals:
 **UX Goals:** Clarity, responsiveness, ease of navigation, accessibility
+
+1. Build trust and credibility through clean design and intuitive structure
+2. Offer quick, interactive content that’s informative yet fun
+3. Provide actionable takeaways (e.g., IRS form, consultation link)
+4. Ensure accessibility and responsive design for all devices
+5. Create opportunities for return visits and deeper engagement
+
+### Main Site Goals:
+
+- Promote core services through engaging features
+- Attract potential clients through playful, educational content
+- Help users assess their bookkeeping needs via a quick quiz
+- Provide added value—discounts, tools, and practical insights—even for casual visitors
+- Offer a ready-to-fill IRS Form 1040 PDF as part of the service suite
+- (Coming Soon) Introduce a Tax Comparison Tool to highlight potential savings between LLC and S-Corp business structures
+- (Coming Soon) Launch a Match Game that delivers quick, actionable tips for smarter financial decisions—covering bookkeeping, taxes, and business planning in a fun, easy-to-understand format
+
+---
 
 ---
 
@@ -100,7 +142,39 @@ __________________________________________
 | As a user, I want to register and log in so I can access private features. | High | Done |
 | As a user, I want to create/edit/delete my data so I can manage my content. | High | In Progress |
 
+- My Goal as Developer:
+As the sole developer of this website, my mission is to provide you with an enjoyable and user-friendly experience while delivering clear, concise, and accurate information about our services — sparking your interest in what we offer.
+
+- User Experience Objectives:
+From the user’s perspective, I’ve built this site with the following priorities in mind:
+
+  - I want to navigate this website quickly and easily.
+  - I should be able to use a mouse, keyboard, or touchscreen effortlessly.
+  - I value high-quality, well-organized information that I can consume in just a few minutes.
+  - As a user, I need a simple and clear way to get in touch with you.
+
+  ### First-Time Visitor Goals
+
+  - As a First Visitor Goals:
+      1. To quickly understand the main purpose of the site and discover what your company offers.
+      2. To navigate the site effortlessly and find content that captures my interest.
+      3. To be visually engaged by an attractive and inviting website that encourages me to explore further.
+      4. To easily locate your contact information — ideally supported by testimonials or customer reviews to build trust.
+
+  ### Returning Visitor Goals
+
+  - As a Returning Visitor, 
+       1. To find more detailed information about the services provided, including working hours.
+       2. To easily discover the best way to contact the organization for any questions or support.
+       3. To understand the available methods of communication — whether through Zoom, Skype, phone, or in-person meetings.
+
+  ### Frequent User Goals
+  - As a Frequent User,
+       1. To conveniently access and fill out IRS Form 1040 directly through the site.
+       2. To view brief and clear comparisons — such as LLC vs. S-Corp — to help make informed decisions.
+
 ---
+
 
 ## 🎨 Design Choices
 - Mobile-first responsive layout
@@ -108,6 +182,33 @@ __________________________________________
 - Consistent spacing and UI patterns
 - Accessible markup and navigation
 
+ ### Description        
+  This website is designed for visitors and new customers to explore, learn, win rewards, and enjoy an engaging experience while navigating through different pages.
+
+  ### Typography
+  Inter, Roboto family font is the main font used throughout the whole website with Sans Serif as the fallback font in case for any reason the font isn't being imported into the site correctly. Roboto is a clean font used frequently in programming, so it is both attractive and appropriate.
+
+  ### Color Palette 
+    - **Fonts:** Roboto, Inter – clean and modern  
+    - **Colors:**  
+      - Purple: trust and creativity  
+      - Red/Orange: urgency and emphasis  
+      - Muted tones: professionalism  
+    - [Contrast checked with WebAIM](https://webaim.org/resources/contrastchecker/)
+
+  ### Colour Psychology
+    ![Colour Psicology](assets/images/readme/PsColor.png)
+    ![Contrast checked with WebAIM](assets/images/readme/PsColor1.png)
+
+  ### Imagery  
+    Clear and attractive images support the theme and maintain strong contrast with text for optimal readability.
+  - Financial and office-themed backgrounds  
+  - High contrast text overlays for readability  
+---
+### 1. Home: index.html
+        
+  - Background: 
+  A blurred photo of financial charts and a blue pen (soft blue, red, beige tones)
 ---
 
 ## 📐 Five Planes UXD
@@ -115,18 +216,43 @@ __________________________________________
 ### 📌 Strategy
 Define goals and audience needs.
 
-### 📐 Scope
-Feature list + content organization.
+Our objective is to create a website that is both professional and functional. Our focus is on design that is both intuitive and creative.
 
+![Strategy](assets/images/readme/fivePlanes/strategy.png)
+### 📐 Scope
+The site is designed for two main user groups:
+1.	Visitors, who can enjoy interactive games, helpful tips, new information, and practical advice.
+2.	Potential new customers, who can explore special offers like a bookkeeping bonus award, contact us easily, or quickly access the Form 1040 submission link.
+
+![Scope pg1](assets/images/readme/fivePlanes/scope1.png)
+
+![Scope pg2](assets/images/readme/fivePlanes/scope2.png)
 ### 🏗️ Structure
-Navigation flow and relationships.
+The website is designed with HTML5, CSS3 and JS.
+
+**Website Pages:**
+1. **_Needs Bookkepping?:_** Main page with three buttons (Quiz, Check This! and Play & Save!)
+2. **_Quiz:_** A brief quiz with a few questions that are scored to assess user needs.
+3. **_Feedback:_** A feedback message is shown if your answers indicate that you may need our help or services. It includes a link to fill out Form 1040 and a direct link to contact us through our website.
+4. **_CheckThis:_** Displays Bookkeeping Fact Cards with useful information.
+6. **_Prize:_** Try Your Luck! Win a special prize or bookkeeping bonus—just reach out to claim your reward!
+
+![Structure](assets/images/readme/fivePlanes/structure.png)
 
 ### 🦴 Skeleton
 Wireframes and layout structure.
+The website is designed to be clear and simple. And the site has a simple tree structure with hierarchical flows from top to bottom.
+
+**Wireframe**
+The wireframe is designed using Balsamiq software 
+[Balsamic](https://balsamiq.cloud/ss26tqg/p4441iq/rD01A)
+
+#### Home
+![Home](assets/images/readme/Bals/Bals-Home.png)
 
 ### 🎨 Surface
 Final aesthetic layers (colors, components, imagery).
-
+To create a pleasing and understandable view, I opt for natural colors such as earth, green, and a range of tones that complement and contrast each other.
 ---
 
 ## 🏛️ Architecture (Django MVT)
@@ -158,6 +284,18 @@ Final aesthetic layers (colors, components, imagery).
 ## 🛠️ Technologies & Tools
 Python · Django · PostgreSQL · Cloudinary · Heroku · Git · VS Code · Bootstrap/Tailwind
 
+1. HTML - Used to build the basic structure of the website.
+2. CSS - Styles the front-end to create a visually appealing design and enhance user experience.
+3. Balsamiq - Used to design wireframes and plan the layout of the site before development.
+4. JS -  Adds interactivity to the website, making the experience more dynamic and engaging for users.
+
+*Webaim
+[Tested contrast](https://webaim.org/resources/contrastchecker/)
+*Coolors
+[Tested color](https://coolors.co/contrast-checker/33008a-f8f8ff)
+
+_Main color palette_
+![Main color Palette](assets/images/readme/PalletColors.png)
 ---
 
 ## 📦 Project Setup
