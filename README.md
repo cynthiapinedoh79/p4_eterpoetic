@@ -1,16 +1,13 @@
 # ✅ HOW TO USE THIS TEMPLATE
 
-This README is structured for a **Django project with multiple apps** and a **Code Institute–style navigation**.
+This README is structured for a **Django project with multiple apps**
 
-### Replace These Placeholders
-- `[Project Name]` → your real project name
-- `app1`, `app2`, `app3` → your app names (e.g., `blog`, `accounts`, `dashboard`)
-- Replace demo URLs, screenshots, and badges with your actual project assets
-- Replace any `[ACTION ITEM]` callouts with your real content
-
----
 
 # 📚 *[Project Name]* — Django Web Application
+*(Write 4–6 lines summarizing purpose, audience, and primary benefit.)*
+Project2X is an interactive, feature-rich web application that introduces users to the world of professional xxxxx. Designed for individuals and small businesses, it combines utility, engagement, and learning in one experience.
+Key Features:
+- `app1`, `app2`, `app3` → your app names (e.g., `blog`, `accounts`, `dashboard`)
 
 ## 🧩 Badges (Optional)
 ![GitHub repo size](https://img.shields.io/github/repo-size/USER/REPO)
@@ -78,11 +75,16 @@ This README is structured for a **Django project with multiple apps** and a **Co
 *(Write 4–6 lines summarizing purpose, audience, and primary benefit.)*
 
 **Core Technologies**
-- Django (Python)
-- PostgreSQL (ElephantSQL)
-- Heroku Deployment
-- Cloudinary Static/Media Storage
-- Bootstrap or Tailwind CSS Frontend
+
+1. HTML - Used to build the basic structure of the website.
+2. CSS - Styles the front-end to create a visually appealing design and enhance user experience.
+3. Balsamiq - Used to design wireframes and plan the layout of the site before development.
+4. JS -  Adds interactivity to the website, making the experience more dynamic and engaging for users.
+5. Django (Python)
+6. PostgreSQL (ElephantSQL)
+7. Heroku Deployment
+8. Cloudinary Static/Media Storage
+9. Bootstrap or Tailwind CSS Frontend
 
 ---
 
@@ -95,16 +97,14 @@ This README is structured for a **Django project with multiple apps** and a **Co
 All pages were designed with **Responsive Design** to provide a consistent experience across various screen sizes and devices.
 
 ![Responsive devices -Home](assets/images/readme/amIR/AIR-Home.png)
+![Responsive devices -Home](assets/readme/home.png)
+![Responsive devices -Home](assets/readme/dashboard.png)
+![Responsive devices -Home](assets/readme/detail.png)
 ---
 
 ## 🖼️ Screenshots
 
-__________________________________________
-![Responsive devices -Home](assets/readme/home.png)
-![Responsive devices -Home](assets/readme/dashboard.png)
-![Responsive devices -Home](assets/readme/detail.png)
-__________________________________________
-
+* Additional screenshots to show
 ---
 
 ## 🎯 UX
@@ -130,8 +130,6 @@ Individuals and businesses seeking clarity, tools, and support in managing their
 - Offer a ready-to-fill IRS Form 1040 PDF as part of the service suite
 - (Coming Soon) Introduce a Tax Comparison Tool to highlight potential savings between LLC and S-Corp business structures
 - (Coming Soon) Launch a Match Game that delivers quick, actionable tips for smarter financial decisions—covering bookkeeping, taxes, and business planning in a fun, easy-to-understand format
-
----
 
 ---
 
@@ -175,14 +173,13 @@ From the user’s perspective, I’ve built this site with the following priorit
 
 ---
 
-
 ## 🎨 Design Choices
 - Mobile-first responsive layout
 - Clear typography hierarchy
 - Consistent spacing and UI patterns
 - Accessible markup and navigation
 
- ### Description        
+  ### Description        
   This website is designed for visitors and new customers to explore, learn, win rewards, and enjoy an engaging experience while navigating through different pages.
 
   ### Typography
@@ -230,12 +227,11 @@ The site is designed for two main user groups:
 ### 🏗️ Structure
 The website is designed with HTML5, CSS3 and JS.
 
-**Website Pages:**
-1. **_Needs Bookkepping?:_** Main page with three buttons (Quiz, Check This! and Play & Save!)
-2. **_Quiz:_** A brief quiz with a few questions that are scored to assess user needs.
-3. **_Feedback:_** A feedback message is shown if your answers indicate that you may need our help or services. It includes a link to fill out Form 1040 and a direct link to contact us through our website.
-4. **_CheckThis:_** Displays Bookkeeping Fact Cards with useful information.
-6. **_Prize:_** Try Your Luck! Win a special prize or bookkeeping bonus—just reach out to claim your reward!
+**Website Pages/Apps:**
+1. **_Home:_** Description of Home, features
+1. **_App1:_** Description of App1, features
+2. **_App2:_** Description of App2, features
+3. **_App3:_** Description of App3, features
 
 ![Structure](assets/images/readme/fivePlanes/structure.png)
 
@@ -309,12 +305,9 @@ pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
 
-______________________________________
-
 ⚙️ Environment Variables
-
 Create a .env file:
-________________________________________
+
 
 SECRET_KEY=your_local_insecure_key
 DEBUG=True
@@ -322,9 +315,7 @@ DATABASE_URL=postgres://USER:PASSWORD@HOST:PORT/DBNAME
 CLOUDINARY_URL=cloudinary://API_KEY:API_SECRET@CLOUD_NAME
 ALLOWED_HOSTS=localhost,127.0.0.1
 
-________________________________________
 🗂️ Project Structure
-________________________________________
 
 project_root/
 │ manage.py
@@ -339,29 +330,25 @@ project_root/
 ├── static/
 └── project_name/
 
-___________________________________________
 🔐 Admin & Fixtures
-_____________________________________________
 
 python manage.py createsuperuser
 python manage.py loaddata fixtures/seed.json   # optional
-
-_________________________________________
-✅ Testing & Validation
-__________________________________________
+```
+---
+## ✅ Testing & Validation
+---
 python manage.py test
 
-
-_________________________________________________
+---
 Area	Tool	Goal
 HTML	W3C Validator	No errors
 CSS	W3C CSS Validator	Clean structure
 Accessibility	Manual + Lighthouse	WCAG compliance
 Responsiveness	DevTools	Works across devices
-_________________________________________________
 
-_________________________________________________
-🐞 Bugs
+---
+### 🐞 Bugs
 Solved
 
 [Describe]
@@ -369,20 +356,19 @@ Solved
 Known Issues
 
 [Describe]
-_________________________________________________
 
-_________________________________________________
-📥 Deployment (Heroku)
-_________________________________________________
+---
+## 📥 Deployment (Heroku)
+
 web: gunicorn project_name.wsgi
 
 ________________________________________________
 Use DATABASE_URL + CLOUDINARY_URL config vars.
-____________________________________________________________________
+---
 
 
-____________________________________________________________________
-🔮 Features Left to Implement
+
+## 🔮 Features Left to Implement
 
 Dashboard analytics
 
@@ -391,27 +377,20 @@ REST API support
 Role-based permissions
 
 Background jobs / Scheduled tasks
-____________________________________________________________________
-
-____________________________________________________________________
-
-🤝 Contribution Guidelines
+---
+## 🤝 Contribution Guidelines
 
 Use branches: feat/, fix/, docs/
 
 PRs must include passing tests and clean linting
-____________________________________________________________________
-
-
-____________________________________________________________________
-🙏 Credits & Acknowledgements
+---
+## 🙏 Credits & Acknowledgements
 
 Code Institute learning materials
 
 Django & Heroku documentation
 
 Mentor & Peer feedback
-____________________________________________________________________
 
 ---
 
@@ -420,9 +399,6 @@ ____________________________________________________________________
 Next step:  
 Tell me your **real app names** so I replace `app1`, `app2`, `app3` automatically:
 
-____________________________________________________________________
 app1 =
 app2 =
 app3 =
-
-____________________________________________________________________
