@@ -13,3 +13,6 @@ def home(request):
 
 def ping(request):
     return HttpResponse("pong")
+
+def my_blog(request):
+    return HttpResponse("Hello, Blog!")
