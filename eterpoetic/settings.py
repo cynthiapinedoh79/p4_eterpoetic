@@ -12,19 +12,25 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
+import sys
 import dj_database_url
 from django.utils.translation import gettext_lazy as _
-import sys
-
-if os.path.isfile('env.py'):
-    import env
+from dotenv import load_dotenv  # pip install python-dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+env_path = BASE_DIR / ".env"
 
-# Load .env once, early (before reading any env vars)
-from dotenv import load_dotenv
-load_dotenv(BASE_DIR / ".env")   # also works if just load_dotenv()
+# Try to load environment variables
+if env_path.exists():
+    load_dotenv(env_path)
+    print(f"✅ Loaded environment variables from: {env_path}")
+elif os.path.isfile(BASE_DIR / "env.py"):
+    sys.path.append(str(BASE_DIR))
+    import env  # sets os.environ[...] values
+    print("✅ Loaded environment variables from env.py")
+else:
+    print("⚠️ No .env or env.py found at project root")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -33,7 +39,7 @@ load_dotenv(BASE_DIR / ".env")   # also works if just load_dotenv()
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = [
     "localhost",
