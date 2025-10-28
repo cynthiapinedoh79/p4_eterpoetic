@@ -31,6 +31,7 @@ urlpatterns = [
 urlpatterns += i18n_patterns(
     path("", include("blog.urls"), name="blog-urls"),   # <- # ← blog, not posts
     path("admin/", admin.site.urls),
+    path('summernote/', include('django_summernote.urls')),
     prefix_default_language=False,
 )
 
