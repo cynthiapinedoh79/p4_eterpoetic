@@ -21,3 +21,4 @@ urllib3==2.5.0
 webencodings==0.5.1
 whitenoise==6.11.0
 python-dotenv==1.2.1
+python-dotenv==1.2.1
