@@ -5,6 +5,5 @@ from . import views
 app_name = "blog"
 
 urlpatterns = [
-    path("", views.home, name="list"),  # /en/ or /es/ will hit this
-    path("ping/", views.ping, name="ping"),
+    path('', views.PostList.as_view(), name='home'),
 ]
