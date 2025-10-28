@@ -11,16 +11,20 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-import sys
-from django.utils.translation import gettext_lazy as _
 import os
 import dj_database_url
+from django.utils.translation import gettext_lazy as _
+import sys
+
 if os.path.isfile('env.py'):
     import env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# Load .env once, early (before reading any env vars)
+from dotenv import load_dotenv
+load_dotenv(BASE_DIR / ".env")   # also works if just load_dotenv()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
