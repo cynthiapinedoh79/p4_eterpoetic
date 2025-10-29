@@ -28,6 +28,7 @@ urlpatterns = [
 
 # Rutas traducibles / prefijadas por idioma: /en/ ... /es/ ...
 urlpatterns += i18n_patterns(
+    path("about/", include("about.urls"), name="about-urls"),
     path("", include(("blog.urls", "blog"), namespace="blog")),
     path("admin/", admin.site.urls),
     path('summernote/', include('django_summernote.urls')),
