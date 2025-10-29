@@ -1,0 +1,15 @@
+# Gitpod/ONA configuration file
+tasks:
+  - name: Python Setup and Server Start
+    # 1. Initialization tasks (run once, often during prebuilds)
+    init: |
+      pip install -r requirements.txt
+      python manage.py migrate
+
+    # 2. Main command (runs every time the workspace starts)
+    command: python manage.py runserver 0.0.0.0:8000
+
+# Ports configuration
+ports:
+  - port: 8000
+    onOpen: open-preview # Automatically opens the web preview in the editor
