@@ -59,7 +59,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    #'django.contrib.sites', # Uncomment if using allauth with sites framework
+    'django.contrib.sites', # Uncomment if using allauth with sites framework
 
     # cloudinary
     'cloudinary_storage',
