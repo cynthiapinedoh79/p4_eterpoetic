@@ -37,12 +37,23 @@ def env_required(name: str) -> str:
 SECRET_KEY = env_required("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get("DEBUG", "False") == "True"
+DEBUG = False
 
+# ALLOWED_HOSTS for production (when DEBUG is False)
+# Read from HEROKU_HOSTNAME if it exists (Heroku sets this for you)
+# Otherwise, fall back to localhost/127.0.0.1
 ALLOWED_HOSTS = os.environ.get(
     "ALLOWED_HOSTS",
-    "localhost,127.0.0.1,eterpoetic-62a49da213d8.herokuapp.com"
+    "localhost,127.0.0.1,eterpoetic-62a49da213d8.herokuapp.com,*.herokuapp.com"
 ).split(",")
+
+# Append the primary Heroku host if available
+if os.environ.get("HEROKU_APP_NAME"):
+    ALLOWED_HOSTS.append(f"{os.environ.get('HEROKU_APP_NAME')}.herokuapp.com")
+
+# The older, but often necessary, approach of including the full URL:
+# You can also manually add your domain name to the end of the list:
+ALLOWED_HOSTS.append("eterpoetic-62a49da213d8.herokuapp.com")
 
 # Application definition
 INSTALLED_APPS = [
@@ -183,4 +194,3 @@ if os.environ.get("CLOUDINARY_URL"):
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
