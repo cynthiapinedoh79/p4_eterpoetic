@@ -11,8 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-import os
-import sys
+import os, sys
 import dj_database_url
 from django.utils.translation import gettext_lazy as _
 from dotenv import load_dotenv  # pip install python-dotenv
@@ -21,37 +20,31 @@ from dotenv import load_dotenv  # pip install python-dotenv
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
-env_path = BASE_DIR / ".env"
-
-# Try to load environment variables
-if env_path.exists():
-    load_dotenv(env_path)
-    print(f"✅ Loaded environment variables from: {env_path}")
-elif os.path.isfile(BASE_DIR / "env.py"):
+# Local-only helpers: load .env or env.py if present (won't exist on Heroku)
+load_dotenv(BASE_DIR / ".env")
+if (BASE_DIR / "env.py").exists():
     sys.path.append(str(BASE_DIR))
-    import env  # sets os.environ[...] values
-    print("✅ Loaded environment variables from env.py")
-else:
-    print("⚠️ No .env or env.py found at project root")
+    import env  # sets os.environ[...] locally
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
+def env_required(name: str) -> str:
+    v = os.environ.get(name)
+    if not v:
+        raise RuntimeError(f"Missing required env var: {name}")
+    return v
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get("SECRET_KEY")
+
+# --- Core settings ---
+SECRET_KEY = env_required("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ.get("DEBUG", "False") == "True"
 
-ALLOWED_HOSTS = [
-    "localhost",
-    "127.0.0.1",
-    "eterpoetic-62a49da213d8.herokuapp.com",
-    ".herokuapp.com",  # your Heroku app when deployed
-]
+ALLOWED_HOSTS = os.environ.get(
+    "ALLOWED_HOSTS",
+    "localhost,127.0.0.1,eterpoetic-62a49da213d8.herokuapp.com"
+).split(",")
 
 # Application definition
-
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -60,7 +53,6 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'django.contrib.sites', # Uncomment if using allauth with sites framework
-
     # cloudinary
     'cloudinary_storage',
     'cloudinary',
@@ -118,27 +110,19 @@ TEMPLATES[0]["DIRS"] = [ BASE_DIR / "templates" ]
 
 WSGI_APPLICATION = "eterpoetic.wsgi.application"
 
+# --- Database: single source of truth ---
+DATABASES = {
+    "default": dj_database_url.config(
+        default=f"sqlite:///{BASE_DIR/'db.sqlite3'}",
+        conn_max_age=600,
+        ssl_require=bool(os.environ.get("DATABASE_URL")),
+    )
+}
 
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-
-if 'DATABASE_URL' in os.environ:
-    # Use PostgreSQL on Heroku
-    DATABASES = {
-        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
-    }
-else:
-    # Use SQLite locally for development
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
-
+# CSRF (no trailing slashes)
 CSRF_TRUSTED_ORIGINS = [
-    "https://*.codeinstitute-ide.net/",
     "https://*.herokuapp.com",
+    "https://*.codeinstitute-ide.net",
 ]
 
 if 'test' in sys.argv:
@@ -149,18 +133,10 @@ if 'test' in sys.argv:
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",
-    },
-    {
-        "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
-    },
+    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",},
+    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",},
+    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",},
+    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
 ]
 
 ACCOUNT_EMAIL_VERIFICATION = 'none'
@@ -192,12 +168,16 @@ LOCALE_PATHS = [
     BASE_DIR / "locale",  # Django will look here for translation files (.po/.mo)
 ]
 
-# Static files (CSS, JavaScript, Images)
+# Static / Media files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+
+# Media via Cloudinary (only if you have CLOUDINARY_URL on Heroku)
+if os.environ.get("CLOUDINARY_URL"):
+    DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
