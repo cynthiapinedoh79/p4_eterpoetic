@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os, sys
+from django.contrib.messages import constants as messages
 import dj_database_url
 from django.utils.translation import gettext_lazy as _
 from dotenv import load_dotenv  # pip install python-dotenv
@@ -207,3 +208,8 @@ if not DEBUG:
     # Ensure cookies are only sent over HTTPS
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
+
+MESSAGE_TAGS = {
+    messages.SUCCESS: 'alert-success',
+    messages.ERROR: 'alert-danger',
+}

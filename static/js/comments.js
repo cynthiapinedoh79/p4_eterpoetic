@@ -1,4 +1,7 @@
+/* jshint esversion: 6, moz: true, browser: true */
+
 document.addEventListener("DOMContentLoaded", () => {
+
   const editButtons  = document.querySelectorAll(".btn-edit");
   const deleteButtons = document.querySelectorAll(".btn-delete");
 
