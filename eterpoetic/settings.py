@@ -40,7 +40,7 @@ import os
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # ALLOWED_HOSTS for production (when DEBUG is False)
 ALLOWED_HOSTS = [
@@ -198,16 +198,20 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # CONDITIONAL PRODUCTION SETTINGS (Applied when DEBUG is False/empty)
 # ----------------------------------------------------------------------
 
-if not DEBUG:
-    # Enforce HTTPS and secure cookie handling
+if DEBUG:
+    # Dev: HTTP only
+    SECURE_SSL_REDIRECT = False
+    SESSION_COOKIE_SECURE = False
+    CSRF_COOKIE_SECURE = False
+    SECURE_HSTS_SECONDS = 0
+else:
+    # Prod: enforce HTTPS + secure cookies
     SECURE_SSL_REDIRECT = True
-    SECURE_HSTS_SECONDS = 31536000 # 1 year
-    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-    SECURE_HSTS_PRELOAD = True
-
-    # Ensure cookies are only sent over HTTPS
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
+    SECURE_HSTS_SECONDS = 31536000
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
 
 MESSAGE_TAGS = {
     messages.SUCCESS: 'alert-success',
