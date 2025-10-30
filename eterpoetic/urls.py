@@ -36,7 +36,3 @@ urlpatterns += i18n_patterns(
     path('summernote/', include('django_summernote.urls')),
     prefix_default_language=False,
 )
-
-# Solo si quieres servir media en desarrollo:
-# if settings.DEBUG:
-#     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
