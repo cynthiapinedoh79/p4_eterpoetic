@@ -34,26 +34,24 @@ def env_required(name: str) -> str:
 
 
 # --- Core settings ---
-SECRET_KEY = env_required("SECRET_KEY")
+import os
+# SECRET_KEY must be read from environment variable
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # ALLOWED_HOSTS for production (when DEBUG is False)
-# Read from HEROKU_HOSTNAME if it exists (Heroku sets this for you)
-# Otherwise, fall back to localhost/127.0.0.1
-ALLOWED_HOSTS = os.environ.get(
-    "ALLOWED_HOSTS",
-    "localhost,127.0.0.1,eterpoetic-62a49da213d8.herokuapp.com,*.herokuapp.com"
-).split(",")
-
-# Append the primary Heroku host if available
-if os.environ.get("HEROKU_APP_NAME"):
-    ALLOWED_HOSTS.append(f"{os.environ.get('HEROKU_APP_NAME')}.herokuapp.com")
-
-# The older, but often necessary, approach of including the full URL:
-# You can also manually add your domain name to the end of the list:
-ALLOWED_HOSTS.append("eterpoetic-62a49da213d8.herokuapp.com")
+ALLOWED_HOSTS = [
+    'localhost', 
+    '127.0.0.1', 
+    'eterpoetic.herokuapp.com', # Use the simple app name
+    '.herokuapp.com', 
+]
+# Add hostnames from the environment if present
+ALLOWED_HOSTS.extend(
+    os.environ.get('ALLOWED_HOSTS', '').split(',')
+)
 
 # Application definition
 INSTALLED_APPS = [
@@ -126,6 +124,7 @@ DATABASES = {
     "default": dj_database_url.config(
         default=f"sqlite:///{BASE_DIR/'db.sqlite3'}",
         conn_max_age=600,
+        # Check if DATABASE_URL is present before trying to require SSL
         ssl_require=bool(os.environ.get("DATABASE_URL")),
     )
 }
@@ -192,5 +191,19 @@ if os.environ.get("CLOUDINARY_URL"):
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# ----------------------------------------------------------------------
+# CONDITIONAL PRODUCTION SETTINGS (Applied when DEBUG is False/empty)
+# ----------------------------------------------------------------------
+
+if not DEBUG:
+    # Enforce HTTPS and secure cookie handling
+    SECURE_SSL_REDIRECT = True
+    SECURE_HSTS_SECONDS = 31536000 # 1 year
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+
+    # Ensure cookies are only sent over HTTPS
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
