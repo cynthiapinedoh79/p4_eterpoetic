@@ -59,7 +59,7 @@
                             {{ comment.created_on }}
                         </span> wrote:
                     </p>
-                    <div id="comment{{ comment.id }}">
+                    <div id="comment{{ comment.id }}" class="comment-body">
                         {{ comment.body | linebreaks }}
                     </div>
                     {% if not comment.approved and comment.author == user %}
@@ -67,6 +67,14 @@
                         This comment is awaiting approval
                     </p>
                     {% endif %}
+
+                    {% if user.is_authenticated and comment.author == user %}
+                    <!-- <button class="btn btn-delete" data-comment_id="{{ comment.id }}">Delete</button> -->
+                    <button class="btn btn-edit" data-comment-id="{{ comment.id }}"
+                        data-edit-url="{% url 'blog:comment_edit' post.slug comment.id %}">Edit</button>
+                    {% endif %}
+
+
                 </div>
                 <!-- Our for loop ends here -->
                 {% endfor %}
@@ -74,26 +82,28 @@
         </div>
 
         <!-- Creating New Comments -->
-    <div class="col-md-4 card mb-4 mt-3">
-        <div class="card-body">
-          {% if user.is_authenticated %}
-          <h3>Leave a comment:</h3>
-          <p>Posting as: {{ user.username }}</p>
-          <form id="commentForm" method="post"
-            style="margin-top: 1.3em;">
-            {{ comment_form | crispy }}
-            {% csrf_token %}
-            <button id="submitButton" type="submit"
-              class="btn btn-signup btn-lg">Submit</button>
-          </form>
-          {% else %}
-          <p>Log in to leave a comment</p>
-          {% endif %}
+        <div class="col-md-4 card mb-4 mt-3">
+            <div class="card-body">
+                {% if user.is_authenticated %}
+                <h3>Leave a comment:</h3>
+                <p>Posting as: {{ user.username }}</p>
+                <form id="commentForm" method="post" style="margin-top: 1.3em;">
+                    {{ comment_form | crispy }}
+                    {% csrf_token %}
+                    <button id="submitButton" type="submit" class="btn btn-signup btn-lg">Submit</button>
+                </form>
+                {% else %}
+                <p>Log in to leave a comment</p>
+                {% endif %}
+            </div>
         </div>
-      </div>
-  
+
 
     </div>
 </div>
 
 {% endblock content %}
+
+{% block extras %}
+<script src="{% static 'js/comments.js' %}"></script>
+{% endblock %}
