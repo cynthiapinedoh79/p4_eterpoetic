@@ -3,7 +3,7 @@ const fs = require('fs');
 
 exports.install = function () {
 
-    ROUTE('/');
+    ROUTE('/', 'index');
     WEBSOCKET('/', socket, ['raw']);
 
 };

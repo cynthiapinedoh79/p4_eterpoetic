@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     'django.contrib.sites', # Uncomment if using allauth with sites framework
+    'django_summernote',
     # cloudinary
     'cloudinary_storage',
     'cloudinary',
@@ -72,7 +73,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'crispy_bootstrap5',
     #----------
-    'django_summernote',
+    'sslserver',
+    
     'blog',
     'about',
 ]
