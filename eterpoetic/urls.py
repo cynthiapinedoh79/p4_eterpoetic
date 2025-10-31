@@ -21,18 +21,15 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.i18n import i18n_patterns   # i18n
 
-urlpatterns = [
-    # endpoint para cambiar idioma (lo usa el form del navbar)
-    path("i18n/", include("django.conf.urls.i18n")),
-]
 
-# Rutas traducibles / prefijadas por idioma: /en/ ... /es/ ...
+urlpatterns = []
+
+# Translatable, language-prefixed routes (prefix_default_language=False keeps / not /en/)
 urlpatterns += i18n_patterns(
     path("admin/", admin.site.urls),
-    path("about/", include("about.urls"), name="about-urls"),
+    path("about/", include("about.urls")),
     path("accounts/", include("allauth.urls")),
-    path("", include(("blog.urls", "blog"), namespace="blog")),
-    
-    path('summernote/', include('django_summernote.urls')),
+    path("", include(("blog.urls", "blog"), namespace="blog")), # FIX: Add namespace='blog'
+    path("summernote/", include("django_summernote.urls")),
     prefix_default_language=False,
 )

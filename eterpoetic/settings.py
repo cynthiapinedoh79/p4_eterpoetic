@@ -50,9 +50,7 @@ ALLOWED_HOSTS = [
     '.herokuapp.com', 
 ]
 # Add hostnames from the environment if present
-ALLOWED_HOSTS.extend(
-    os.environ.get('ALLOWED_HOSTS', '').split(',')
-)
+ALLOWED_HOSTS.extend([h for h in os.environ.get('ALLOWED_HOSTS', '').split(',') if h])
 
 # Application definition
 INSTALLED_APPS = [
@@ -120,25 +118,43 @@ TEMPLATES[0]["DIRS"] = [ BASE_DIR / "templates" ]
 
 WSGI_APPLICATION = "eterpoetic.wsgi.application"
 
-# --- Database: single source of truth ---
+# --- Database: robust local/Heroku + safe tests ---
+DEFAULT_SQLITE_PATH = BASE_DIR / "db.sqlite3"
+
 DATABASES = {
-    "default": dj_database_url.config(
-        default=f"sqlite:///{BASE_DIR/'db.sqlite3'}",
-        conn_max_age=600,
-        # Check if DATABASE_URL is present before trying to require SSL
-        ssl_require=bool(os.environ.get("DATABASE_URL")),
-    )
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": DEFAULT_SQLITE_PATH,
+    }
 }
+
+DATABASE_URL = os.environ.get("DATABASE_URL")
+if DATABASE_URL:
+    # Parse Heroku/ElephantSQL URL
+    DATABASES["default"] = dj_database_url.parse(DATABASE_URL, conn_max_age=600)
+
+    # Only keep SSL options for Postgres
+    engine = DATABASES["default"].get("ENGINE", "")
+    if "postgresql" in engine:
+        opts = DATABASES["default"].get("OPTIONS", {}) or {}
+        opts.setdefault("sslmode", "require")
+        DATABASES["default"]["OPTIONS"] = opts
+    else:
+        DATABASES["default"].pop("OPTIONS", None)
+
+# Use a clean SQLite DB when running tests (no Postgres-only OPTIONS)
+if any(arg.startswith("test") for arg in sys.argv):
+    DATABASES["default"] = {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": ":memory:",              # or BASE_DIR / "test_db.sqlite3"
+    }
+
 
 # CSRF (no trailing slashes)
 CSRF_TRUSTED_ORIGINS = [
     "https://*.herokuapp.com",
     "https://*.codeinstitute-ide.net",
 ]
-
-if 'test' in sys.argv:
-    DATABASES['default']['ENGINE'] = 'django.db.backends.sqlite3'
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
@@ -218,8 +234,4 @@ MESSAGE_TAGS = {
     messages.ERROR: 'alert-danger',
 }
 
-
-
-
-
-print("DEBUG =", DEBUG)
+print(f"DEBUG={DEBUG}, DATABASES={DATABASES['default'].get('ENGINE','')}")

@@ -24,10 +24,17 @@
             <div class="card-body">
                 <!-- The post content goes inside the card-text. -->
                 <!-- Use the | safe filter inside the template tags -->
-                <h2>{{ coder }}</h2>
-                <p class="card-text">
+                <h2>
+                    {{ post.author | safe | upper }}
+                </h2>
+                <article class="card-text">
+                    <h2 class="visually-hidden">{{ post.title }}</h2>
                     {{ post.content | safe }}
-                </p>
+                </article>
+                <hr>
+                <h3>
+                    {{ coder }}
+                </h3>
             </div>
         </div>
     </div>
