@@ -234,4 +234,3 @@ MESSAGE_TAGS = {
     messages.ERROR: 'alert-danger',
 }
 
-print(f"DEBUG={DEBUG}, DATABASES={DATABASES['default'].get('ENGINE','')}")
