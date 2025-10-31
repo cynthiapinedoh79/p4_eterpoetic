@@ -1,27 +1,34 @@
-<body>
-    <button onclick="window.location.reload()">Run Program</button>
-    <div id="terminal"></div>
+<button onclick="window.location.reload()">Run Program</button>
+<div id="terminal"></div>
 
-    <script>
-        var term = new Terminal({
-            cols: 80,
-            rows: 24
-        });
-        term.open(document.getElementById('terminal'));
-        term.writeln('Running startup command: python3 run.py');
-        term.writeln('');
+<script>
+    // 'Terminal' and 'attach' are now available because they were loaded in the layout.html
 
-        var ws = new WebSocket(location.protocol.replace('http', 'ws') + '//' + location.hostname + (location.port ? (
-            ':' + location.port) : '') + '/');
+    var term = new Terminal({
+        cols: 80,
+        rows: 24
+    });
+    
+    // 1. Open the terminal element
+    term.open(document.getElementById('terminal'));
+    term.writeln('Running startup command: python3 run.py');
+    term.writeln('');
 
-        ws.onopen = function () {
-            new attach.attach(term, ws);
-        };
+    // 2. Set up the WebSocket connection to the server
+    var ws = new WebSocket(location.protocol.replace('http', 'ws') + '//' + location.hostname + (location.port ? (
+        ':' + location.port) : '') + '/');
 
-        ws.onerror = function (e) {
-            console.log(e);
-        };
-        // Set focus in the terminal
-        document.getElementsByClassName("xterm-helper-textarea")[0].focus();
-    </script>
-</body>
+    // 3. Connect the terminal to the WebSocket
+    ws.onopen = function () {
+        new attach.attach(term, ws);
+        term.focus(); // Focus for typing
+    };
+
+    ws.onerror = function (e) {
+        term.writeln('Connection Error: Check server console.');
+        console.error(e);
+    };
+
+    // 4. Focus the terminal after attachment
+    term.focus();
+</script>
