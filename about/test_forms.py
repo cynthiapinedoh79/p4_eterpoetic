@@ -39,3 +39,4 @@ class TestCollaborateForm(TestCase):
             'message': ''
         })
         self.assertFalse(form.is_valid(), msg="Message was not provided, but the form is valid")
+    
