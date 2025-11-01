@@ -21,7 +21,7 @@ def about_me(request):
     :template:`about/about.html`
     """
     # 1. Always fetch the static content
-    about = About.objects.all().order_by('-updated_on').first()
+    about = About.objects.all().order_by('-updated_on').last()
 
     if request.method == "POST":
         collaborate_form = CollaborateForm(data=request.POST)
