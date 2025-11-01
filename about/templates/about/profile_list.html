@@ -5,57 +5,48 @@
 {% block content %}
 
 <div class="container mt-5">
-<!-- Section Header styled to match project aesthetic -->
-<h1 class="mb-4 border-bottom pb-2" style="color: #445261;">Available Profiles</h1>
+    <h1 class="mb-4 border-bottom pb-2" style="color: #445261;">Available Profiles</h1>
 
-{% if profiles %}
+    <div class="mb-4">
+        <a href="{% url 'about' %}" class="link **back-link**">
+            &larr; Back to Main About Page
+        </a>
+    </div>
 
-<p class="mb-4 text-muted">Select the profile you wish to view:</p>
+    {% if profiles %}
+    <p class="mb-4 text-muted">Select the profile you wish to view:</p>
 
-<div class="row">
-    {% for profile in profiles %}
-    <div class="col-12 col-md-6 col-lg-4 mb-4">
-        <!-- Used light-bg for contrast and shadow-sm for depth -->
-        <div class="card light-bg shadow-sm h-100 d-flex flex-column align-items-center">
-            
-            {% if "placeholder" not in profile.profile_image.url %}
-            <div class="image-wrapper">
-            <!-- Optional: Display a small profile image if available -->
-                <img src="{{ profile.profile_image.url }}" class="card-img-top scale" alt="{{ profile.title }}">
-            </div>
-            {% endif %}
+    <div class="row">
+        {% for profile in profiles %}
+        <div class="col-12 col-md-6 col-lg-4 mb-4">
+            <div class="card light-bg shadow-sm h-100 d-flex flex-column align-items-center">
 
-            <div class="card-body d-flex flex-column">
-                <!-- Title uses the primary project color -->
-                <h5 class="card-title post-link" style="color: #445261;">
-                    {{ profile.title }}
-                </h5>
-                <p class="card-text text-muted small mt-auto">
-                    Updated: {{ profile.updated_on|date:"F j, Y, P" }}
-                </p>
-                <!-- Button uses the btn-signup style for brand consistency -->
-                <a 
-                    href="{% url 'profile_detail' profile_title=profile.title %}" 
-                    class="btn btn-signup mt-2" 
-                >
-                    View Full Profile
-                </a>
+                {% if "placeholder" not in profile.profile_image.url %}
+                <div class="image-wrapper">
+                    <img src="{{ profile.profile_image.url }}" class="card-img-top scale" alt="{{ profile.title }}">
+                </div>
+                {% endif %}
+
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title post-link" style="color: #445261;">
+                        {{ profile.title }}
+                    </h5>
+                    <p class="card-text text-muted small mt-auto">
+                        Updated: {{ profile.updated_on|date:"F j, Y, P" }}
+                    </p>
+                    <a href="{% url 'profile_detail' profile_title=profile.title %}" class="btn btn-signup mt-2">
+                        View Full Profile
+                    </a>
+                </div>
             </div>
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-</div>
-{% else %}
-<div class="alert alert-warning" role="alert">
-    <strong>No Profiles Found!</strong> It looks like no 'About' profiles have been created yet in the database.
-</div>
-{% endif %}
-
-<div class="mt-5 pt-3 border-top">
-    <!-- Link back uses the secondary project color -->
-    <a href="{% url 'about' %}" class="link text-secondary">&larr; Back to Main About Page</a>
-</div>
-
+    {% else %}
+    <div class="alert alert-warning" role="alert">
+        <strong>No Profiles Found!</strong> It looks like no 'About' profiles have been created yet in the database.
+    </div>
+    {% endif %}
 
 </div>
 {% endblock content %}
