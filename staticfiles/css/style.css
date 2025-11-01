@@ -180,3 +180,19 @@ body {
     margin: 0 auto; /* To center the 75% wrapper */
     overflow: hidden;
 }
+
+/* back link about page */
+
+.back-link {
+    /* Set the color */
+    color: #445261;
+    /* Remove the underline */
+    text-decoration: none; 
+}
+
+.back-link:hover {
+    /* Add a subtle underline on hover for accessibility */
+    text-decoration: underline; 
+    /* Slightly darken color on hover */
+    color: #2c3640; 
+}
