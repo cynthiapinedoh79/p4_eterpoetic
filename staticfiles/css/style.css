@@ -91,6 +91,10 @@ body {
     z-index: 100;
 }
 
+.profile-image {
+    width: 75%;
+}
+
 .post-link {
     text-decoration: none;
     color: #445261;
@@ -158,4 +162,21 @@ body {
 
 .approval {
     color: rgb(222, 146, 168);
+}
+
+/* about profiles section */
+.card-img-top {
+    /* Ensures the image fills the 75% width of the card container */
+    width: 100%; 
+    /* Set a consistent, fixed height for all images, e.g., 400px */
+    height: 400px; 
+    /* Ensures the image covers the area without stretching */
+    object-fit: cover; 
+}
+/* If you still want 75% width, add a wrapper div: */
+.image-wrapper {
+    width: 100%;
+    height: 60%;
+    margin: 0 auto; /* To center the 75% wrapper */
+    overflow: hidden;
 }
