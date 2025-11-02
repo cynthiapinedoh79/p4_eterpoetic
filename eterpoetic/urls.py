@@ -27,6 +27,7 @@ urlpatterns = []
 # Translatable, language-prefixed routes (prefix_default_language=False keeps / not /en/)
 urlpatterns += i18n_patterns(
     path("admin/", admin.site.urls),
+    path('', include('facebook_integration.urls')),
     path("about/", include("about.urls")),
     path("accounts/", include("allauth.urls")),
     path("", include(("blog.urls", "blog"), namespace="blog")), # FIX: Add namespace='blog'
