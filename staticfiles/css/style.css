@@ -199,84 +199,161 @@ body {
 
 
 
-/* --- Social Login Section Styles --- */
 
-/* Container for the social login buttons */
-/* --- Overriding List and Link Styles --- */
+
+
+
+
+/* --- Social Login Section Styles ---  */
+
+/* Mobile-first: centered, full-width; desktop: two columns */
 
 .social-login-section {
-    margin-top: 20px;
-    padding-top: 10px;
+  margin-top: 28px;
+  padding-top: 12px;
+  padding-bottom: 4px;
 }
 
-/* 1. Remove the bullet point and list padding/margin */
+/* Center the whole block and cap width */
 .social-login-section .socialaccount_providers {
-    list-style: none !important; /* Forces the bullet to disappear */
-    padding: 0 !important;      /* Removes default list padding */
-    margin: 0 !important;       /* Removes default list margin */
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: block;
+  width: 100%;
+  max-width: 520px;            /* comfy on mobile/tablet */
+  margin-inline: auto;
 }
 
-/* 2. Style the list item to ensure a clean block layout */
 .social-login-section .socialaccount_providers li {
-    margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
-/* 3. Style the anchor tag (the button) */
+/* ===== Button core (pill, icon chip, micro-interactions) ===== */
 .social-login-section .socialaccount_providers a {
-    /* Use !important here because the Bootstrap .link class might be interfering */
-    display: block !important; 
-    text-align: left;
-    padding: 10px 15px;
-    border-radius: 4px;
-    text-decoration: none !important;
-    font-weight: bold;
-    font-size: 1.1em;
-    position: relative;
-    padding-left: 50px; /* Space for the icon */
-    transition: background-color 0.3s ease, color 0.3s ease;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  width: 100%;
+  min-height: 44px;            /* accessible tap target */
+  padding: 10px 16px 10px 54px;/* room for icon chip */
+
+  border-radius: 999px;        /* pill shape */
+  text-decoration: none !important;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.2;
+
+  position: relative;
+  isolation: isolate;
+
+  box-shadow: 0 6px 14px rgba(0,0,0,.06), 0 2px 4px rgba(0,0,0,.06);
+  border: 1px solid rgba(0,0,0,.05);
+  transition: transform 120ms ease, box-shadow 120ms ease, background-color .2s ease, color .2s ease;
 }
 
-/* Icon positioning (Requires Font Awesome CDN from base.html) */
+/* Remove FA pseudo icons (we use inline SVGs) */
 .social-login-section .socialaccount_providers a::before {
-    font-family: 'Font Awesome 5 Brands';
-    position: absolute;
-    left: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 1.2em;
+  content: none !important;
 }
 
-/* --- Google Button --- */
-.social-login-section .google a {
-    background-color: #23BBBB; 
-    color: #fff !important; 
-    border: 1px solid #23BBBB;
-}
-.social-login-section .google a:hover {
-    background-color: #445261;
-    border-color: #445261;
-}
-.social-login-section .google a::before {
-    content: "\f1a0"; /* Font Awesome Google icon */
-}
-
-/* --- Facebook Button --- */
-.social-login-section .facebook a {
-    background-color: #445261; 
-    color: #fff !important;
-    border: 1px solid #445261;
-}
-.social-login-section .facebook a:hover {
-    background-color: #E84610; 
-    border-color: #E84610;
-}
-.social-login-section .facebook a::before {
-    content: "\f09a"; /* Font Awesome Facebook icon */
-}
-
+/* Icon chip at left */
 .social-login-section .social-icon {
-    width: 22px;
-    height: 22px;
-    margin-right: 10px;
-    vertical-align: text-bottom;
+  position: absolute;
+  left: 10px;
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.92);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.75),
+    0 2px 6px rgba(0,0,0,.08);
 }
+
+/* Brand themes (match your palette) */
+.social-login-section .google a {
+  background: linear-gradient(180deg, #23BBBB 0%, #1fa9a9 100%);
+  color: #fff !important;
+  border-color: rgba(0,0,0,.04);
+}
+.social-login-section .facebook a {
+  background: linear-gradient(180deg, #495867 0%, #3f4c59 100%);
+  color: #fff !important;
+  border-color: rgba(0,0,0,.08);
+}
+
+/* Hover / active */
+.social-login-section .socialaccount_providers a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0,0,0,.10), 0 3px 6px rgba(0,0,0,.08);
+}
+.social-login-section .socialaccount_providers a:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(0,0,0,.10), 0 2px 4px rgba(0,0,0,.08);
+}
+
+/* Focus ring (on brand) */
+.social-login-section .socialaccount_providers a:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 3px #FBF9F6,   /* linen halo */
+    0 0 0 6px #E86A33,   /* terracotta ring */
+    0 8px 18px rgba(0,0,0,.14);
+}
+
+/* Subtle glow on hover */
+.social-login-section .facebook a:hover::after,
+.social-login-section .google a:hover::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  background: radial-gradient(120px 60px at center, rgba(255,255,255,.22), transparent 60%);
+  z-index: -1;
+  filter: blur(6px);
+}
+
+/* ===== Responsiveness ===== */
+
+/* Tighten on small phones */
+@media (max-width: 480px) {
+  .social-login-section .socialaccount_providers a {
+    font-size: .95rem;
+    padding: 10px 14px 10px 52px;
+  }
+  .social-login-section .social-icon {
+    left: 10px;
+    width: 32px; height: 32px; padding: 7px;
+  }
+}
+
+/* Two-column layout for wide screens */
+@media (min-width: 992px) {
+  .social-login-section .socialaccount_providers {
+    display: grid;               /* switch to grid on desktop */
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    max-width: 720px;
+  }
+  .social-login-section .socialaccount_providers li { margin-bottom: 0; }
+}
+
+/* Motion safety */
+@media (prefers-reduced-motion: reduce) {
+  .social-login-section .socialaccount_providers a { transition: none; }
+}
+
+.btn-signup {
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(0,0,0,.08);
+  border: 1px solid rgba(0,0,0,.05);
+}
+.btn-signup:hover { transform: translateY(-1px); }
+.btn-signup:active { transform: translateY(0); }
+
+
