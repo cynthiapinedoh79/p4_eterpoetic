@@ -199,6 +199,10 @@ body {
 
 
 
+
+
+
+
 /* --- Social Login Section Styles --- */
 
 /* --- Social Login Section Styles ---  */
@@ -234,7 +238,7 @@ body {
 
   width: 100%;
   min-height: 44px;            /* accessible tap target */
-  padding: 10px 16px 10px 56px;/* room for icon chip */
+  padding: 10px 16px 10px 12px;/* room for icon chip */
 
   border-radius: 999px;        /* pill shape */
   text-decoration: none !important;
@@ -258,10 +262,10 @@ body {
 /* Icon chip at left */
 .social-login-section .social-icon {
   position: absolute;
-  left: 12px;
+  left: 10px;
   width: 36px;
   height: 36px;
-  padding: 8px;
+  padding: 6px;
   border-radius: 50%;
   background: rgba(255,255,255,.92);
   box-shadow:
@@ -351,3 +355,5 @@ body {
 }
 .btn-signup:hover { transform: translateY(-1px); }
 .btn-signup:active { transform: translateY(0); }
+
+
