@@ -269,9 +269,11 @@ SOCIALACCOUNT_PROVIDERS = {
     },
     "facebook": {
         "APP": {
-            "client_id": os.environ.get("FACEBOOK_CLIENT_ID"),
-            "secret": os.environ.get("FACEBOOK_CLIENT_SECRET"),
+            "client_id": os.environ.get("FACEBOOK_APP_ID"),
+            "secret": os.environ.get("FACEBOOK_APP_SECRET"),
             "key": "",
         },
     },
 }
+
+SOCIALACCOUNT_LOGIN_ON_GET = True
