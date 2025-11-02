@@ -85,6 +85,7 @@ INSTALLED_APPS = [
     'blog',
     'about',
     'core',
+    'facebook_integration',
 ]
 
 # Authentication backends (required by django-allauth)
