@@ -49,7 +49,7 @@ ALLOWED_HOSTS = [
     'localhost', 
     '127.0.0.1', 
     '[::1]',
-    'eterpoetic.herokuapp.com', # Use the simple app name
+    'eterpoetic-62a49da213d8.herokuapp.com',
     '.herokuapp.com', 
 ]
 # Add hostnames from the environment if present
@@ -168,6 +168,7 @@ if any(arg.startswith("test") for arg in sys.argv):
 # CSRF (no trailing slashes)
 CSRF_TRUSTED_ORIGINS = [
     "https://*.herokuapp.com",
+    "https://eterpoetic-62a49da213d8.herokuapp.com",
     "https://*.codeinstitute-ide.net",
 ]
 
@@ -180,8 +181,6 @@ AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",},
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
 ]
-
-ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 # Crispy Forms Settings
 # ---------------------
@@ -258,6 +257,14 @@ SITE_ID = 1
 LOGIN_REDIRECT_URL = "/"
 ACCOUNT_LOGOUT_REDIRECT_URL = "/"
 
+
+# ---- Allauth signup/auth settings (new style) ----
+ACCOUNT_SIGNUP_FIELDS = ["username*", "email*", "password1*", "password2*"]
+ACCOUNT_LOGIN_METHODS = {"email", "username"}  # or just {"email"} if you only want email login
+ACCOUNT_EMAIL_VERIFICATION = "none"                # or "optional" / "mandatory"
+SOCIALACCOUNT_QUERY_EMAIL = True                   # keep for social
+
+
 SOCIALACCOUNT_PROVIDERS = {
     "google": {
         "SCOPE": ["profile", "email"],
@@ -273,6 +280,9 @@ SOCIALACCOUNT_PROVIDERS = {
             "secret": os.environ.get("FACEBOOK_APP_SECRET"),
             "key": "",
         },
+        # Optional but fine:
+        "SCOPE": ["public_profile", "email"],  # no review required
+        "FIELDS": ["id", "email", "name", "first_name", "last_name"],  # <-- ensures email is requested
     },
 }
 

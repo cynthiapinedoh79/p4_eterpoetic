@@ -357,3 +357,65 @@ body {
 .btn-signup:active { transform: translateY(0); }
 
 
+
+
+
+
+
+/* ===== Login Page White Card ===== */
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 80vh;
+  padding-top: 60px;
+  background-color: #F9FAFC;
+}
+
+.login-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 22px rgba(0,0,0,.06), 0 2px 6px rgba(0,0,0,.08);
+  padding: 40px 50px;
+  max-width: 520px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.login-title {
+  font-size: 1.8rem;
+  color: #1A2C42;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.login-subtitle {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.login-card form {
+  margin-bottom: 20px;
+}
+
+.login-card hr {
+  margin: 28px 0;
+  border-color: rgba(0,0,0,.08);
+}
+
+/* Collaboration Page */
+.collab-page {
+  padding-bottom: 80px; /* extra gap only here */
+}
+
+/* Alerts */
+.sa-alert { 
+  background: #fff4f4; border: 1px solid #f7c6c6; 
+  padding: 10px 12px; border-radius: 10px; margin-bottom: 16px; 
+}
+.sa-field-error { 
+  color: #b3261e; font-size: .9rem; margin-top: 6px; 
+}
