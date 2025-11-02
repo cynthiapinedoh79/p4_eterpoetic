@@ -71,6 +71,12 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.instagram',
+    # 'allauth.socialaccount.providers.instagram', # Check for official support
+    # ... if Instagram is not official, you might need a third-party package
+
     # crispy
     'crispy_forms',
     'crispy_bootstrap5',
