@@ -1,29 +1,58 @@
-{% extends "socialaccount/base_entrance.html" %}
+{% extends "base.html" %}
 {% load i18n %}
-{% load allauth %}
-{% block head_title %}
-    {% trans "Signup" %}
-{% endblock head_title %}
+{% load account socialaccount %}
+
+{% block head_title %}{% trans "Complete your sign up" %}{% endblock %}
+
 {% block content %}
-    {% element h1 %}
+<div class="login-page">
+  <div class="login-card">
+    <h3 class="login-title">{% trans "Complete your sign up" %}</h3>
+
+    <p class="login-subtitle">
+      {% blocktrans with provider_name=account.get_provider.name site_name=site.name %}
+        You’re about to use your {{ provider_name }} account to log in to {{ site_name }}.
+        Please complete the following form to finish signing up.
+      {% endblocktrans %}
+    </p>
+
+    {# errors (top) #}
+    {% if form.non_field_errors %}
+      <div class="sa-alert">
+        {{ form.non_field_errors }}
+      </div>
+    {% endif %}
+
+    <form class="signup" method="post" action="{% url 'socialaccount_signup' %}">
+      {% csrf_token %}
+
+      {# Username #}
+      <div class="mb-3">
+        <label for="id_username">{% trans "Username" %}</label>
+        {{ form.username }}
+        {% if form.username.errors %}
+          <div class="sa-field-error">{{ form.username.errors|join:", " }}</div>
+        {% endif %}
+      </div>
+
+      {# Email #}
+      <div class="mb-3">
+        <label for="id_email">{% trans "Email" %}</label>
+        {{ form.email }}
+        {% if form.email.errors %}
+          <div class="sa-field-error">{{ form.email.errors|join:", " }}</div>
+        {% endif %}
+      </div>
+
+      {% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}">
+      {% endif %}
+
+      <button class="btn btn-signup" type="submit">
         {% trans "Sign Up" %}
-    {% endelement %}
-    {% element p %}
-        {% blocktrans with provider_name=account.get_provider.name site_name=site.name %}You are about to use your {{provider_name}} account to login to
-{{site_name}}. As a final step, please complete the following form:{% endblocktrans %}
-    {% endelement %}
-    {% url 'socialaccount_signup' as action_url %}
-    {% element form form=form method="post" action=action_url %}
-        {% slot body %}
-            {% csrf_token %}
-            {% element fields form=form unlabeled=True %}
-            {% endelement %}
-            {{ redirect_field }}
-        {% endslot %}
-        {% slot actions %}
-            {% element button type="submit" %}
-                {% trans "Sign Up" %}
-            {% endelement %}
-        {% endslot %}
-    {% endelement %}
-{% endblock content %}
+      </button>
+    </form>
+  </div>
+</div>
+{% endblock %}
+

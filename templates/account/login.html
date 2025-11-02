@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-
 {% load i18n %}
 {% load account socialaccount %}
 {% load static %}
@@ -7,43 +6,49 @@
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
 
 {% block content %}
+<div class="login-page">
+  <div class="login-card">
+    <h3 class="login-title">{% trans "Sign In" %}</h3>
+    <p class="login-subtitle">
+      {% blocktrans %}Welcome back to the code|star blog. To leave a comment or like a post, please log in. 
+      If you have not created an account yet, then <a class="link" href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
+    </p>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 mt-3 offset-md-2">
-            
-            <h3>{% trans "Sign In" %}</h3>
+    <form class="login" method="POST" action="{% url 'account_login' %}">
+      {% csrf_token %}
+      
+      <div class="mb-3">
+        <label for="id_login">{% trans "Username" %}</label>
+        {{ form.login }}
+      </div>
 
-            <p>{% blocktrans %}Welcome back to the code|star blog. To leave a comment or like a post, please log in. If
-                you
-                have not created an account yet, then <a class="link" href="{{ signup_url }}">sign up</a>
-                first.{% endblocktrans %}</p>
-            
-            <hr>
-            
-            <form class="login" method="POST" action="{% url 'account_login' %}">
-                {% csrf_token %}
-                
-                {# form.as_p renders the Username, Password, and Remember Me fields #}
-                {{ form.as_p }}
-                
-                {% if redirect_field_value %}
-                <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-                {% endif %}
-                
-                <button class="btn btn-signup right" type="submit">{% trans "Sign In" %}</button>
-            </form>
-            
-            <hr>
+      <div class="mb-1">
+        <label for="id_password">{% trans "Password" %}</label>
+        {{ form.password }}
+      </div>
 
-            <div class="social-login-section">
-                <h4>{% trans "Or sign in with a social account" %}</h4>
-                
-                {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-                
-                {% providers_media_js %}
-            </div>
-            </div>
+      <p class="forgot-password">
+        <a href="{% url 'account_reset_password' %}">{% trans "Forgot your password?" %}</a>
+      </p>
+
+      <div class="mb-3 form-check">
+        {{ form.remember }} <label for="id_remember">{% trans "Remember Me" %}</label>
+      </div>
+
+      {% if redirect_field_value %}
+      <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+      {% endif %}
+
+      <button class="btn btn-signup" type="submit">{% trans "Sign In" %}</button>
+    </form>
+
+    <hr>
+
+    <div class="social-login-section">
+      <h4>{% trans "Or sign in with a social account" %}</h4>
+      {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+      {% providers_media_js %}
     </div>
+  </div>
 </div>
 {% endblock %}
