@@ -17,6 +17,7 @@ import dj_database_url
 from django.utils.translation import gettext_lazy as _
 from dotenv import load_dotenv  # pip install python-dotenv
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
@@ -73,9 +74,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
     'allauth.socialaccount.providers.facebook',
-    'allauth.socialaccount.providers.instagram',
-    # 'allauth.socialaccount.providers.instagram', # Check for official support
-    # ... if Instagram is not official, you might need a third-party package
+    # 'allauth.socialaccount.providers.instagram',
 
     # crispy
     'crispy_forms',
@@ -250,23 +249,29 @@ MESSAGE_TAGS = {
     messages.ERROR: 'alert-danger',
 }
 
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "allauth.account.auth_backends.AuthenticationBackend",
+]
+
+SITE_ID = 1
+LOGIN_REDIRECT_URL = "/"
+ACCOUNT_LOGOUT_REDIRECT_URL = "/"
+
 SOCIALACCOUNT_PROVIDERS = {
-    'facebook': {
-        'METHOD': 'oauth2',
-        'SCOPE': ['email', 'public_profile'],
-        'FIELDS': ['id', 'email', 'name', 'first_name', 'last_name'],
-        'VERIFIED_EMAIL': False,
-    },
-    'google': {
-        'SCOPE': [
-            'profile',
-            'email',
-        ],
-        'AUTH_PARAMS': {
-            'access_type': 'online',
+    "google": {
+        "SCOPE": ["profile", "email"],
+        "APP": {
+            "client_id": os.environ.get("GOOGLE_CLIENT_ID"),
+            "secret": os.environ.get("GOOGLE_CLIENT_SECRET"),
+            "key": "",
         },
-        'OAUTH_PKCE_ENABLED': True,
-    }
+    },
+    "facebook": {
+        "APP": {
+            "client_id": os.environ.get("FACEBOOK_CLIENT_ID"),
+            "secret": os.environ.get("FACEBOOK_CLIENT_SECRET"),
+            "key": "",
+        },
+    },
 }
-
-

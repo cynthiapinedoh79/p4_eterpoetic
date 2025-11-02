@@ -1,18 +1,28 @@
-{% load allauth socialaccount %}
-{% get_providers as socialaccount_providers %}
-{% if socialaccount_providers %}
-    {% element provider_list %}
-        {% for provider in socialaccount_providers %}
-            {% if provider.id == "openid" %}
-                {% for brand in provider.get_brands %}
-                    {% provider_login_url provider openid=brand.openid_url process=process as href %}
-                    {% element provider name=brand.name provider_id=provider.id href=href %}
-                    {% endelement %}
-                {% endfor %}
-            {% endif %}
-            {% provider_login_url provider process=process scope=scope auth_params=auth_params as href %}
-            {% element provider name=provider.name provider_id=provider.id href=href %}
-            {% endelement %}
-        {% endfor %}
-    {% endelement %}
-{% endif %}
+{% load static socialaccount %}
+{% get_providers as socialaccount_providers %}  {# <-- this line populates the list #}
+
+<ul class="socialaccount_providers">
+  {% for provider in socialaccount_providers %}
+    {% if provider.id == "google" %}
+      <li class="google">
+        <a href="{% provider_login_url 'google' process=process %}">
+          <img class="social-icon" src="{% static 'img/google.svg' %}" alt="Google"> Continue with Google
+        </a>
+      </li>
+    {% elif provider.id == "facebook" %}
+      <li class="facebook">
+        <a href="{% provider_login_url 'facebook' process=process %}">
+          <img class="social-icon" src="{% static 'img/facebook.svg' %}" alt="Facebook"> Continue with Facebook
+        </a>
+      </li>
+    {% else %}
+      <li>
+        <a href="{% provider_login_url provider.id process=process %}">
+          {{ provider.name }}
+        </a>
+      </li>
+    {% endif %}
+  {% endfor %}
+</ul>
+
+
