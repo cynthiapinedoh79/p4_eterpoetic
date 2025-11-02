@@ -203,9 +203,9 @@ body {
 
 
 
-/* --- Social Login Section Styles --- */
 
 /* --- Social Login Section Styles ---  */
+
 /* Mobile-first: centered, full-width; desktop: two columns */
 
 .social-login-section {
@@ -238,7 +238,7 @@ body {
 
   width: 100%;
   min-height: 44px;            /* accessible tap target */
-  padding: 10px 16px 10px 12px;/* room for icon chip */
+  padding: 10px 16px 10px 54px;/* room for icon chip */
 
   border-radius: 999px;        /* pill shape */
   text-decoration: none !important;
