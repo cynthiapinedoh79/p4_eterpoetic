@@ -196,3 +196,158 @@ body {
     /* Slightly darken color on hover */
     color: #2c3640; 
 }
+
+
+
+/* --- Social Login Section Styles --- */
+
+/* --- Social Login Section Styles ---  */
+/* Mobile-first: centered, full-width; desktop: two columns */
+
+.social-login-section {
+  margin-top: 28px;
+  padding-top: 12px;
+  padding-bottom: 4px;
+}
+
+/* Center the whole block and cap width */
+.social-login-section .socialaccount_providers {
+  list-style: none !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  display: block;
+  width: 100%;
+  max-width: 520px;            /* comfy on mobile/tablet */
+  margin-inline: auto;
+}
+
+.social-login-section .socialaccount_providers li {
+  margin-bottom: 12px;
+}
+
+/* ===== Button core (pill, icon chip, micro-interactions) ===== */
+.social-login-section .socialaccount_providers a {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  width: 100%;
+  min-height: 44px;            /* accessible tap target */
+  padding: 10px 16px 10px 56px;/* room for icon chip */
+
+  border-radius: 999px;        /* pill shape */
+  text-decoration: none !important;
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.2;
+
+  position: relative;
+  isolation: isolate;
+
+  box-shadow: 0 6px 14px rgba(0,0,0,.06), 0 2px 4px rgba(0,0,0,.06);
+  border: 1px solid rgba(0,0,0,.05);
+  transition: transform 120ms ease, box-shadow 120ms ease, background-color .2s ease, color .2s ease;
+}
+
+/* Remove FA pseudo icons (we use inline SVGs) */
+.social-login-section .socialaccount_providers a::before {
+  content: none !important;
+}
+
+/* Icon chip at left */
+.social-login-section .social-icon {
+  position: absolute;
+  left: 12px;
+  width: 36px;
+  height: 36px;
+  padding: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.92);
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.75),
+    0 2px 6px rgba(0,0,0,.08);
+}
+
+/* Brand themes (match your palette) */
+.social-login-section .google a {
+  background: linear-gradient(180deg, #23BBBB 0%, #1fa9a9 100%);
+  color: #fff !important;
+  border-color: rgba(0,0,0,.04);
+}
+.social-login-section .facebook a {
+  background: linear-gradient(180deg, #495867 0%, #3f4c59 100%);
+  color: #fff !important;
+  border-color: rgba(0,0,0,.08);
+}
+
+/* Hover / active */
+.social-login-section .socialaccount_providers a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0,0,0,.10), 0 3px 6px rgba(0,0,0,.08);
+}
+.social-login-section .socialaccount_providers a:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(0,0,0,.10), 0 2px 4px rgba(0,0,0,.08);
+}
+
+/* Focus ring (on brand) */
+.social-login-section .socialaccount_providers a:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 3px #FBF9F6,   /* linen halo */
+    0 0 0 6px #E86A33,   /* terracotta ring */
+    0 8px 18px rgba(0,0,0,.14);
+}
+
+/* Subtle glow on hover */
+.social-login-section .facebook a:hover::after,
+.social-login-section .google a:hover::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  background: radial-gradient(120px 60px at center, rgba(255,255,255,.22), transparent 60%);
+  z-index: -1;
+  filter: blur(6px);
+}
+
+/* ===== Responsiveness ===== */
+
+/* Tighten on small phones */
+@media (max-width: 480px) {
+  .social-login-section .socialaccount_providers a {
+    font-size: .95rem;
+    padding: 10px 14px 10px 52px;
+  }
+  .social-login-section .social-icon {
+    left: 10px;
+    width: 32px; height: 32px; padding: 7px;
+  }
+}
+
+/* Two-column layout for wide screens */
+@media (min-width: 992px) {
+  .social-login-section .socialaccount_providers {
+    display: grid;               /* switch to grid on desktop */
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    max-width: 720px;
+  }
+  .social-login-section .socialaccount_providers li { margin-bottom: 0; }
+}
+
+/* Motion safety */
+@media (prefers-reduced-motion: reduce) {
+  .social-login-section .socialaccount_providers a { transition: none; }
+}
+
+.btn-signup {
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(0,0,0,.08);
+  border: 1px solid rgba(0,0,0,.05);
+}
+.btn-signup:hover { transform: translateY(-1px); }
+.btn-signup:active { transform: translateY(0); }

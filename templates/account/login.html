@@ -34,7 +34,16 @@
                 <button class="btn btn-signup right" type="submit">{% trans "Sign In" %}</button>
             </form>
             
-        </div>
+            <hr>
+
+            <div class="social-login-section">
+                <h4>{% trans "Or sign in with a social account" %}</h4>
+                
+                {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+                
+                {% providers_media_js %}
+            </div>
+            </div>
     </div>
 </div>
 {% endblock %}

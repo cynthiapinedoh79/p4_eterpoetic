@@ -196,3 +196,87 @@ body {
     /* Slightly darken color on hover */
     color: #2c3640; 
 }
+
+
+
+/* --- Social Login Section Styles --- */
+
+/* Container for the social login buttons */
+/* --- Overriding List and Link Styles --- */
+
+.social-login-section {
+    margin-top: 20px;
+    padding-top: 10px;
+}
+
+/* 1. Remove the bullet point and list padding/margin */
+.social-login-section .socialaccount_providers {
+    list-style: none !important; /* Forces the bullet to disappear */
+    padding: 0 !important;      /* Removes default list padding */
+    margin: 0 !important;       /* Removes default list margin */
+}
+
+/* 2. Style the list item to ensure a clean block layout */
+.social-login-section .socialaccount_providers li {
+    margin-bottom: 10px;
+}
+
+/* 3. Style the anchor tag (the button) */
+.social-login-section .socialaccount_providers a {
+    /* Use !important here because the Bootstrap .link class might be interfering */
+    display: block !important; 
+    text-align: left;
+    padding: 10px 15px;
+    border-radius: 4px;
+    text-decoration: none !important;
+    font-weight: bold;
+    font-size: 1.1em;
+    position: relative;
+    padding-left: 50px; /* Space for the icon */
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Icon positioning (Requires Font Awesome CDN from base.html) */
+.social-login-section .socialaccount_providers a::before {
+    font-family: 'Font Awesome 5 Brands';
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.2em;
+}
+
+/* --- Google Button --- */
+.social-login-section .google a {
+    background-color: #23BBBB; 
+    color: #fff !important; 
+    border: 1px solid #23BBBB;
+}
+.social-login-section .google a:hover {
+    background-color: #445261;
+    border-color: #445261;
+}
+.social-login-section .google a::before {
+    content: "\f1a0"; /* Font Awesome Google icon */
+}
+
+/* --- Facebook Button --- */
+.social-login-section .facebook a {
+    background-color: #445261; 
+    color: #fff !important;
+    border: 1px solid #445261;
+}
+.social-login-section .facebook a:hover {
+    background-color: #E84610; 
+    border-color: #E84610;
+}
+.social-login-section .facebook a::before {
+    content: "\f09a"; /* Font Awesome Facebook icon */
+}
+
+.social-login-section .social-icon {
+    width: 22px;
+    height: 22px;
+    margin-right: 10px;
+    vertical-align: text-bottom;
+}
