@@ -84,6 +84,7 @@ INSTALLED_APPS = [
     
     'blog',
     'about',
+    'core',
 ]
 
 # Authentication backends (required by django-allauth)
@@ -258,11 +259,27 @@ LOGIN_REDIRECT_URL = "/"
 ACCOUNT_LOGOUT_REDIRECT_URL = "/"
 
 
-# ---- Allauth signup/auth settings (new style) ----
-ACCOUNT_SIGNUP_FIELDS = ["username*", "email*", "password1*", "password2*"]
-ACCOUNT_LOGIN_METHODS = {"email", "username"}  # or just {"email"} if you only want email login
-ACCOUNT_EMAIL_VERIFICATION = "none"                # or "optional" / "mandatory"
-SOCIALACCOUNT_QUERY_EMAIL = True                   # keep for social
+# --- Allauth v0.65+ (new-style settings) ---
+
+# What credentials are allowed at login:
+# choose {"email"} if you don't want username logins.
+ACCOUNT_LOGIN_METHODS = {"username", "email"}
+
+# Which fields appear on the signup form and which are required (*):
+# remove "username*" if you don't want usernames at all.
+ACCOUNT_SIGNUP_FIELDS = ["email*", "username*", "password1*", "password2*"]
+
+# Email verification policy still uses the same name:
+ACCOUNT_EMAIL_VERIFICATION = "none"   # or "optional" / "mandatory"
+
+# Custom social account adapter to enable auto-signup when email is provided
+SOCIALACCOUNT_ADAPTER = "core.adapters.AutoSignupWithEmailAdapter"
+
+# Social helpers
+SOCIALACCOUNT_QUERY_EMAIL = True
+# IMPORTANT: automatically log in users after social signup
+SOCIALACCOUNT_LOGIN_ON_GET = True
+
 
 
 SOCIALACCOUNT_PROVIDERS = {
@@ -285,5 +302,3 @@ SOCIALACCOUNT_PROVIDERS = {
         "FIELDS": ["id", "email", "name", "first_name", "last_name"],  # <-- ensures email is requested
     },
 }
-
-SOCIALACCOUNT_LOGIN_ON_GET = True
