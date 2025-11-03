@@ -25,7 +25,7 @@ class PostList(generic.ListView):
     :template:`blog/index.html`
     """
     queryset = Post.objects.filter(status=1)
-    template_name = 'blog/index.html'
+    template_name = 'blog/blog.html'
     paginate_by = 8
 
 def post_detail(request, slug):

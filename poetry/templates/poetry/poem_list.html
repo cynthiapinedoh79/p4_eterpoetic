@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Poetry" %} — EterPoetico{% endblock %}
+
+{% block content %}
+<h2>{% trans "Poems" %}</h2>
+<form class="row g-2 mb-3">
+  <div class="col-auto">
+    <input class="form-control" name="q" value="{{ q }}" placeholder="{% trans 'Search' %}">
+  </div>
+  <div class="col-auto">
+    <button class="btn btn-secondary">{% trans "Search" %}</button>
+  </div>
+</form>
+<ul class="list-group">
+{% for p in poems %}
+  <li class="list-group-item">
+    <a href="{% url 'poetry:detail' p.slug %}">{{ p.title_en }}</a> — {{ p.author.name }}
+  </li>
+{% empty %}
+  <li class="list-group-item text-muted">{% trans "No poems yet." %}</li>
+{% endfor %}
+</ul>
+{% endblock %}

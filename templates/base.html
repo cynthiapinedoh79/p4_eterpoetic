@@ -1,6 +1,7 @@
 {% load static %}
 
-{% url 'blog:home' as home_url %}
+{% url 'poetry:poetryhome' as poetry_url %} 
+{% url 'blog:bloghome' as home_url %}
 {% url 'about' as about_url %}
 {% url 'account_login' as login_url %}
 {% url 'account_signup' as signup_url %}
@@ -37,7 +38,8 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white">
         <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'blog:home' %}">
+            <!-- Brand goes to Home (poetry) -->
+            <a class="navbar-brand" href="{% url 'blog:bloghome' %}">
                 <img src="{% static 'images/my_logo.png' %}" alt="My Site Logo" height="50" class="d-inline-block align-text-top">
             <span class="ms-2">EterPoetic</span>
 
@@ -48,10 +50,18 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+                    <!-- Home (Poetry) -->
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == home_url %}active{% endif %}"
-                            href="{% url 'blog:home' %}"
-                            {% if request.path == home_url %}aria-current="page"{% endif %}>Home</a>
+                            href="{% url 'poetry:poetryhome' %}"
+                            {% if request.path == poetry_url %}aria-current="page"{% endif %}>Home</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == poetry_url %}active{% endif %}"
+                            href="{% url 'blog:bloghome' %}"
+                            {% if request.path == blog_url %}aria-current="page"{% endif %}>Blog</a>
                     </li>
 
                     <li class="nav-item">
