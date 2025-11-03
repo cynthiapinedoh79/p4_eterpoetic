@@ -204,62 +204,62 @@ body {
 
 
 
-/* --- Social Login Section Styles ---  */
-
-/* Mobile-first: centered, full-width; desktop: two columns */
+/* ================================================
+   SOCIAL LOGIN SECTION
+   Mobile-first; full-width layout with brand themes
+=================================================== */
 
 .social-login-section {
   margin-top: 28px;
-  padding-top: 12px;
-  padding-bottom: 4px;
+  padding: 12px 0 4px;
 }
 
-/* Center the whole block and cap width */
+/* Core layout */
 .social-login-section .socialaccount_providers {
-  list-style: none !important;
-  padding: 0 !important;
-  margin: 0 !important;
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
   display: block;
   width: 100%;
-  max-width: 520px;            /* comfy on mobile/tablet */
-  margin-inline: auto;
+  max-width: 520px;
 }
 
 .social-login-section .socialaccount_providers li {
   margin-bottom: 12px;
 }
 
-/* ===== Button core (pill, icon chip, micro-interactions) ===== */
+/* Social buttons (pill style) */
 .social-login-section .socialaccount_providers a {
-  display: flex !important;
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
 
   width: 100%;
-  min-height: 44px;            /* accessible tap target */
-  padding: 10px 16px 10px 54px;/* room for icon chip */
+  min-height: 44px;
+  padding: 10px 16px 10px 54px;
+  border-radius: 999px;
 
-  border-radius: 999px;        /* pill shape */
-  text-decoration: none !important;
   font-weight: 700;
   font-size: 1rem;
   line-height: 1.2;
+  text-decoration: none;
 
   position: relative;
   isolation: isolate;
 
-  box-shadow: 0 6px 14px rgba(0,0,0,.06), 0 2px 4px rgba(0,0,0,.06);
-  border: 1px solid rgba(0,0,0,.05);
-  transition: transform 120ms ease, box-shadow 120ms ease, background-color .2s ease, color .2s ease;
+  color: #fff !important;
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.06), 0 2px 4px rgba(0,0,0,0.06);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Remove FA pseudo icons (we use inline SVGs) */
+/* Remove default pseudo icons */
 .social-login-section .socialaccount_providers a::before {
-  content: none !important;
+  content: none;
 }
 
-/* Icon chip at left */
+/* Icon chip (left side) */
 .social-login-section .social-icon {
   position: absolute;
   left: 10px;
@@ -267,102 +267,96 @@ body {
   height: 36px;
   padding: 6px;
   border-radius: 50%;
-  background: rgba(255,255,255,.92);
-  box-shadow:
-    inset 0 0 0 1px rgba(255,255,255,.75),
-    0 2px 6px rgba(0,0,0,.08);
+  background: rgba(255,255,255,0.92);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.75), 0 2px 6px rgba(0,0,0,0.08);
 }
 
-/* Brand themes (match your palette) */
+/* Brand themes */
 .social-login-section .google a {
-  background: linear-gradient(180deg, #23BBBB 0%, #1fa9a9 100%);
-  color: #fff !important;
-  border-color: rgba(0,0,0,.04);
+  background: linear-gradient(180deg, #23BBBB 0%, #1FA9A9 100%);
 }
 .social-login-section .facebook a {
-  background: linear-gradient(180deg, #495867 0%, #3f4c59 100%);
-  color: #fff !important;
-  border-color: rgba(0,0,0,.08);
+  background: linear-gradient(180deg, #495867 0%, #3F4C59 100%);
 }
 
 /* Hover / active */
 .social-login-section .socialaccount_providers a:hover {
   transform: translateY(-2px);
-  box-shadow: 0 10px 22px rgba(0,0,0,.10), 0 3px 6px rgba(0,0,0,.08);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.1), 0 3px 6px rgba(0,0,0,0.08);
 }
 .social-login-section .socialaccount_providers a:active {
   transform: translateY(0);
-  box-shadow: 0 4px 10px rgba(0,0,0,.10), 0 2px 4px rgba(0,0,0,.08);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.08);
 }
 
-/* Focus ring (on brand) */
+/* Focus ring */
 .social-login-section .socialaccount_providers a:focus-visible {
   outline: none;
   box-shadow:
-    0 0 0 3px #FBF9F6,   /* linen halo */
-    0 0 0 6px #E86A33,   /* terracotta ring */
-    0 8px 18px rgba(0,0,0,.14);
+    0 0 0 3px #FBF9F6,
+    0 0 0 6px #E86A33,
+    0 8px 18px rgba(0,0,0,0.14);
 }
 
-/* Subtle glow on hover */
+/* Glow on hover */
 .social-login-section .facebook a:hover::after,
 .social-login-section .google a:hover::after {
   content: "";
   position: absolute;
   inset: -4px;
   border-radius: inherit;
-  background: radial-gradient(120px 60px at center, rgba(255,255,255,.22), transparent 60%);
+  background: radial-gradient(120px 60px at center, rgba(255,255,255,0.22), transparent 60%);
   z-index: -1;
   filter: blur(6px);
 }
 
-/* ===== Responsiveness ===== */
-
-/* Tighten on small phones */
+/* Responsive adjustments */
 @media (max-width: 480px) {
   .social-login-section .socialaccount_providers a {
-    font-size: .95rem;
+    font-size: 0.95rem;
     padding: 10px 14px 10px 52px;
   }
   .social-login-section .social-icon {
-    left: 10px;
-    width: 32px; height: 32px; padding: 7px;
+    width: 32px;
+    height: 32px;
+    padding: 7px;
   }
 }
 
-/* Two-column layout for wide screens */
 @media (min-width: 992px) {
   .social-login-section .socialaccount_providers {
-    display: grid;               /* switch to grid on desktop */
+    display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 16px;
     max-width: 720px;
   }
-  .social-login-section .socialaccount_providers li { margin-bottom: 0; }
+  .social-login-section .socialaccount_providers li {
+    margin-bottom: 0;
+  }
 }
 
-/* Motion safety */
 @media (prefers-reduced-motion: reduce) {
-  .social-login-section .socialaccount_providers a { transition: none; }
+  .social-login-section .socialaccount_providers a {
+    transition: none;
+  }
 }
 
+/* Sign-up button */
 .btn-signup {
   border-radius: 999px;
   padding: 8px 18px;
   font-weight: 700;
-  box-shadow: 0 2px 6px rgba(0,0,0,.08);
-  border: 1px solid rgba(0,0,0,.05);
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: transform 0.12s ease;
 }
 .btn-signup:hover { transform: translateY(-1px); }
 .btn-signup:active { transform: translateY(0); }
 
 
-
-
-
-
-
-/* ===== Login Page White Card ===== */
+/* ================================================
+   LOGIN PAGE CARD
+=================================================== */
 .login-page {
   display: flex;
   justify-content: center;
@@ -375,7 +369,7 @@ body {
 .login-card {
   background: #fff;
   border-radius: 16px;
-  box-shadow: 0 6px 22px rgba(0,0,0,.06), 0 2px 6px rgba(0,0,0,.08);
+  box-shadow: 0 6px 22px rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.08);
   padding: 40px 50px;
   max-width: 520px;
   width: 100%;
@@ -403,19 +397,101 @@ body {
 
 .login-card hr {
   margin: 28px 0;
-  border-color: rgba(0,0,0,.08);
+  border-color: rgba(0,0,0,0.08);
 }
 
-/* Collaboration Page */
 .collab-page {
-  padding-bottom: 80px; /* extra gap only here */
+  padding-bottom: 80px;
 }
 
 /* Alerts */
-.sa-alert { 
-  background: #fff4f4; border: 1px solid #f7c6c6; 
-  padding: 10px 12px; border-radius: 10px; margin-bottom: 16px; 
+.sa-alert {
+  background: #fff4f4;
+  border: 1px solid #f7c6c6;
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin-bottom: 16px;
 }
-.sa-field-error { 
-  color: #b3261e; font-size: .9rem; margin-top: 6px; 
+.sa-field-error {
+  color: #b3261e;
+  font-size: 0.9rem;
+  margin-top: 6px;
+}
+
+
+/* ================================================
+   NAVIGATION BAR STYLING
+=================================================== */
+
+.navbar {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 0.2px;
+  z-index: 1000;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  color: #1A2C42 !important;
+  display: flex;
+  align-items: center;
+}
+.navbar-brand:hover {
+  color: #E86A33 !important;
+  text-decoration: none;
+}
+.navbar-brand span {
+  font-size: 1.3rem;
+  margin-left: 8px;
+}
+
+/* Links */
+.navbar-nav .nav-link {
+  color: #1A2C42;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 6px;
+  transition: all 0.25s ease;
+}
+.navbar-nav .nav-link:hover {
+  background-color: rgba(35,187,187,0.12);
+  color: #E86A33 !important;
+}
+
+/* Active link */
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link[aria-current="page"] {
+  background-color: #1A2C42 !important;
+  color: #FBF9F6 !important;
+  font-weight: 700;
+  border-radius: 6px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+}
+.navbar-nav .nav-link.active:hover {
+  background-color: #E86A33 !important;
+}
+
+/* Active underline accent */
+.navbar-nav .nav-link.active::after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #E86A33;
+  border-radius: 2px;
+  margin-top: 3px;
+}
+
+/* Navbar slogan */
+.navbar-text {
+  font-size: 0.95rem;
+  color: #6c757d;
+  font-style: italic;
+}
+
+/* Dropdown for mobile */
+.navbar-collapse {
+  background-color: #fff;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  padding-top: 10px;
 }
