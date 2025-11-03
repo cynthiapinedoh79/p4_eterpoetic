@@ -43,7 +43,7 @@ class PoemAdmin(SummernoteModelAdmin):
     # rich editor for poem bodies
     summernote_fields = ("body_es", "body_en")
 
-    @admin.display(description="Image")
+@admin.display(description="Image")
 def thumb(self, obj):
     if getattr(obj, "featured_image", None) and "placeholder" not in str(obj.featured_image):
         return format_html('<img src="{}" style="height:40px;border-radius:4px;">', obj.featured_image.url)

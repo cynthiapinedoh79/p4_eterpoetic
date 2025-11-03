@@ -86,10 +86,10 @@
 
         {# image (cloudinary) or placeholder #}
         {% if poem.featured_image and "placeholder" not in poem.featured_image.url %}
-        <img src="{{ poem.featured_image.url }}" class="card-img-top mb-3" alt="{{ poem.title_en }}">
-        {% else %}
-        <img src="{% static 'images/placeholder.jpg' %}" class="card-img-top mb-3" alt="Placeholder image">
-        {% endif %}
+  <img src="{{ poem.featured_image.url }}" class="card-img-top mb-3" alt="{{ poem.title_en }}">
+{% else %}
+  <img src="{% static 'images/placeholder.png' %}" class="card-img-top mb-3" alt="Placeholder image">
+{% endif %}
 
 
         <div class="card-body">

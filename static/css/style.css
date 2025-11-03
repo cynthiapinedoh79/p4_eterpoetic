@@ -650,3 +650,21 @@ pre {
     margin-bottom: 1rem;
   }
 }
+
+/* Placeholder consistency */
+.poetry-list .card-img-top[alt="Placeholder image"] {
+  background-color: #f5f6f8;
+  object-fit: contain; /* keeps aspect ratio of placeholder.png */
+  padding: 12px;       /* centers the icon if transparent background */
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.poetry-list .card-img-top {
+  max-height: 320px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.poetry-list .card-img-top[alt="Placeholder image"] {
+  opacity: 0.85;
+}
