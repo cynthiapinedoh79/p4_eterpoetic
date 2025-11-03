@@ -1,7 +1,7 @@
 {% load static %}
 
-{% url 'poetry:poetryhome' as poetry_url %} 
-{% url 'blog:bloghome' as home_url %}
+{% url 'poetry:poetryhome' as home_url %} 
+{% url 'blog:bloghome' as blog_url %}
 {% url 'about' as about_url %}
 {% url 'account_login' as login_url %}
 {% url 'account_signup' as signup_url %}
@@ -55,11 +55,11 @@
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == home_url %}active{% endif %}"
                             href="{% url 'poetry:poetryhome' %}"
-                            {% if request.path == poetry_url %}aria-current="page"{% endif %}>Home</a>
+                            {% if request.path == home_url %}aria-current="page"{% endif %}>Home</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == poetry_url %}active{% endif %}"
+                        <a class="nav-link {% if request.path == blog_url %}active{% endif %}"
                             href="{% url 'blog:bloghome' %}"
                             {% if request.path == blog_url %}aria-current="page"{% endif %}>Blog</a>
                     </li>
