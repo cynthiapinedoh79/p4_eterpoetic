@@ -21,16 +21,18 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.i18n import i18n_patterns   # i18n
 
-
 urlpatterns = []
 
 # Translatable, language-prefixed routes (prefix_default_language=False keeps / not /en/)
 urlpatterns += i18n_patterns(
     path("admin/", admin.site.urls),
+    # Put blog BEFORE poetry so /blog/ is matched before poetry's <slug:slug>/
+    path("blog/", include(("blog.urls", "blog"), namespace="blog")),
+
+    path("", include(("poetry.urls", "poetry"), namespace="poetry")),
     path('', include('facebook_integration.urls')),
     path("about/", include("about.urls")),
     path("accounts/", include("allauth.urls")),
-    path("", include(("blog.urls", "blog"), namespace="blog")), # FIX: Add namespace='blog'
     path("summernote/", include("django_summernote.urls")),
     prefix_default_language=False,
 )

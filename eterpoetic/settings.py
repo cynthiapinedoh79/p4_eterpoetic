@@ -41,7 +41,7 @@ import os
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 # DEBUG = os.environ.get("DEBUG", "False") == "True"
 
 # ALLOWED_HOSTS for production (when DEBUG is False)
@@ -81,11 +81,12 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     #----------
     # 'sslserver',
-    
-    'blog',
-    'about',
     'core',
     'facebook_integration',
+
+    'blog',
+    'about',
+    'poetry',
 ]
 
 # Authentication backends (required by django-allauth)
