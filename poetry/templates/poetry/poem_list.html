@@ -21,33 +21,45 @@
     </div>
   </form>
 
-  {# ---------- FEATURED SECTION (only appears when view supplies featured_poems) ---------- #}
+  {# ---------- FEATURED SECTION ---------- #}
   {% if featured_poems %}
   <h2 class="mt-2 mb-3">🌟 Featured Poems</h2>
   <div class="row">
-    {% if poem.featured_image %}
-    <img src="{{ poem.featured_image.url }}" class="card-img-top mb-3" alt="{{ poem.title_en }}">
-    {% else %}
-    <img src="{% static 'images/placeholder.jpg' %}" class="card-img-top mb-3" alt="Placeholder image">
-    {% endif %}
-
     {% for poem in featured_poems %}
     <div class="col-12 col-md-6 col-lg-4 mb-4">
       <div class="card border-warning shadow-sm h-100">
+
+        {% if poem.featured_image %}
+        <img src="{{ poem.featured_image.url }}" class="card-img-top" alt="{{ poem.title_es|default:poem.title_en }}"
+          style="height: 180px; object-fit: cover;">
+        {% else %}
+        <img src="{% static 'images/placeholder.jpg' %}" class="card-img-top" alt="Placeholder image"
+          style="height: 180px; object-fit: cover;">
+        {% endif %}
+
         <div class="card-body">
           <h5 class="card-title mb-1">
             <a class="post-link" href="{{ poem.get_absolute_url }}">{{ poem.title }}</a>
             <span class="badge bg-warning text-dark ms-2">Featured</span>
           </h5>
+
           {% if poem.collection %}
-          <p class="text-muted small mb-2">
+          <p class="text-muted small mb-1">
             🪶 {{ poem.collection.name_es|default:poem.collection.name_en }}
           </p>
           {% endif %}
 
+          {% if poem.author %}
+          <p class="text-muted small mb-2">
+            ✍️ {{ poem.author.name }}
+          </p>
+          {% endif %}
 
-          <p class="card-text text-muted">{{ poem.body|striptags|truncatechars:140 }}</p>
+          <p class="card-text text-muted">
+            {{ poem.body_es|default:poem.body_en|striptags|truncatechars:140 }}
+          </p>
         </div>
+
         <div class="card-footer bg-white small text-muted d-flex justify-content-between">
           <span>{{ poem.created|date:"M d, Y" }}</span>
           <span>
@@ -56,11 +68,14 @@
             {% else %}EN{% endif %}
           </span>
         </div>
+
       </div>
     </div>
     {% endfor %}
   </div>
   {% endif %}
+
+
   {# ---------- /FEATURED SECTION ---------- #}
 
   {% if page_obj.object_list %}
@@ -68,33 +83,36 @@
     {% for poem in page_obj.object_list %}
     <div class="col-12 col-md-6 col-lg-4 mb-4">
       <div class="card h-100 shadow-sm">
+
+        {# image (cloudinary) or placeholder #}
+        {% if poem.featured_image and "placeholder" not in poem.featured_image.url %}
+        <img src="{{ poem.featured_image.url }}" class="card-img-top mb-3" alt="{{ poem.title_en }}">
+        {% else %}
+        <img src="{% static 'images/placeholder.jpg' %}" class="card-img-top mb-3" alt="Placeholder image">
+        {% endif %}
+
+
         <div class="card-body">
           <h5 class="card-title mb-1">
-            {% if poem.featured_image %}
-            <img src="{{ poem.featured_image.url }}" class="card-img-top mb-3" alt="{{ poem.title_en }}">
-            {% else %}
-            <img src="{% static 'images/placeholder.jpg' %}" class="card-img-top mb-3" alt="Placeholder image">
-            {% endif %}
-
             {% if poem.is_featured %}
-            <span class="badge bg-warning text-dark ms-2">★ Featured</span>
+            <span class="badge bg-warning text-dark me-1">★ Featured</span>
             {% endif %}
             <a class="post-link" href="{{ poem.get_absolute_url }}">{{ poem.title }}</a>
           </h5>
 
           {% if poem.collection %}
-          <p class="text-muted small mb-1">
-            🪶 {{ poem.collection.name_es|default:poem.collection.name_en }}
-          </p>
+          <p class="text-muted small mb-1">🪶 {{ poem.collection.name_es|default:poem.collection.name_en }}</p>
           {% endif %}
           {% if poem.author %}
-          <p class="text-muted small mb-2">
-            ✍️ {{ poem.author.name }}
-          </p>
+          <p class="text-muted small mb-2">✍️ {{ poem.author.name }}</p>
           {% endif %}
-          <p class="card-text text-muted">{{ poem.body|striptags|truncatechars:140 }}</p>
+
+          <p class="card-text text-muted">
+            {{ poem.body_es|default:poem.body_en|striptags|truncatechars:140 }}
+          </p>
 
         </div>
+
         <div class="card-footer bg-white d-flex justify-content-between small text-muted">
           <span>{{ poem.created|date:"M d, Y" }}</span>
           {% if poem.body_en and poem.body_es %}<span>ES • EN</span>
@@ -109,8 +127,7 @@
   <nav aria-label="Poem pages">
     <ul class="pagination justify-content-center">
       {% if page_obj.has_previous %}
-      <li class="page-item">
-        <a class="page-link" href="?q={{ q }}&page={{ page_obj.previous_page_number }}">Previous</a>
+      <li class="page-item"><a class="page-link" href="?q={{ q }}&page={{ page_obj.previous_page_number }}">Previous</a>
       </li>
       {% else %}
       <li class="page-item disabled"><span class="page-link">Previous</span></li>
@@ -121,9 +138,7 @@
       </li>
 
       {% if page_obj.has_next %}
-      <li class="page-item">
-        <a class="page-link" href="?q={{ q }}&page={{ page_obj.next_page_number }}">Next</a>
-      </li>
+      <li class="page-item"><a class="page-link" href="?q={{ q }}&page={{ page_obj.next_page_number }}">Next</a></li>
       {% else %}
       <li class="page-item disabled"><span class="page-link">Next</span></li>
       {% endif %}

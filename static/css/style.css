@@ -512,3 +512,119 @@ pre {
   font-size: 1.05rem;
   line-height: 1.8;
 }
+
+
+/* ================================================
+   POETRY LIST STYLING
+=================================================== */
+
+.poetry-list .card {
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  border-radius: 14px;
+  overflow: hidden; /* keeps zoomed image inside */
+}
+
+.poetry-list .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.10), 0 2px 6px rgba(0,0,0,.06);
+  border-color: rgba(232,106,51,.25); /* subtle terracotta tint */
+}
+
+/* Image zoom-on-hover */
+.poetry-list .card-img-top {
+  height: 180px;
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform .25s ease;
+}
+.poetry-list .card:hover .card-img-top {
+  transform: scale(1.03);
+}
+
+/* Titles & meta */
+.poetry-list .card-title a.post-link {
+  text-decoration: none;
+  color: #1A2C42; /* Midnight Teal */
+}
+.poetry-list .card-title a.post-link:hover {
+  color: #E86A33; /* Terracotta */
+}
+
+/* “Featured” badge glow on hover */
+.poetry-list .card:hover .badge.bg-warning {
+  box-shadow: 0 0 0 3px rgba(232,106,51,.10);
+}
+
+/* Small meta lines */
+.poetry-list .text-muted.small {
+  opacity: .85;
+}
+
+/* Section header */
+.poetry-list h2 {
+  font-weight: 800;
+  letter-spacing: .2px;
+}
+
+/* Pagination polish */
+.poetry-list .pagination .page-link {
+  border-radius: 999px;
+}
+.poetry-list .pagination .page-item.active .page-link,
+.poetry-list .pagination .page-link:hover {
+  background: #1A2C42;
+  color: #FBF9F6;
+  border-color: #1A2C42;
+}
+
+/* Search bar subtle shadow */
+.poetry-list .form-control {
+  box-shadow: 0 2px 10px rgba(0,0,0,.04);
+  border-radius: 12px;
+}
+.poetry-list .btn.btn-secondary {
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+/* ================================================
+   POETRY LIST STYLING (REFINED)
+=================================================== */
+
+.poetry-list .card {
+  background: #fff;                 /* your global `.card` makes bg transparent */
+  border: 1px solid #eee;           /* give the card a subtle edge */
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+
+.poetry-list .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.10), 0 2px 6px rgba(0,0,0,.06);
+  border-color: rgba(232,106,51,.25);
+}
+
+/* Make sure the poetry-list image sizing beats the global `.card-img-top { height: 400px }` */
+.poetry-list .card-img-top {
+  height: 220px;                    /* pick 180–240; adjust to taste */
+  object-fit: cover;
+  transform: scale(1);
+  transition: transform .25s ease;
+}
+.poetry-list .card:hover .card-img-top { transform: scale(1.03); }
+
+/* Titles, links, meta */
+.poetry-list .card-title a.post-link { color: #1A2C42; }
+.poetry-list .card-title a.post-link:hover { color: #E86A33; }
+.poetry-list .badge.bg-warning { background: #E86A33 !important; color: #fff !important; }
+.poetry-list .card-footer { background: #fff; border-top: 1px solid #f1f1f1; }
+
+/* Search + pagination polish (uses your palette) */
+.poetry-list .btn.btn-secondary { background:#1A2C42; border-color:#1A2C42; }
+.poetry-list .btn.btn-secondary:hover { background:#E86A33; border-color:#E86A33; }
+.poetry-list .pagination .page-link { border-radius: 999px; }
+.poetry-list .pagination .page-item.active .page-link,
+.poetry-list .pagination .page-link:hover {
+  background:#1A2C42; color:#FBF9F6; border-color:#1A2C42;
+}
