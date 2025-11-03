@@ -688,8 +688,25 @@ pre {
   }
 }
 
+/* Space between Featured and All Poems sections */
+.poetry-list h2.mt-2.mb-2 {
+  margin-top: 2.5rem !important; /* adds gentle separation */
+}
 
+/* Add space above Featured Poems */
+.poetry-list h2.mt-2.mb-3 {
+  margin-top: 2.5rem !important; /* gentle gap after search bar */
+}
 
+Add space below pagination (bottom of page)
+.poetry-list nav[aria-label="Poem pages"] {
+  margin-bottom: 2.5rem; /* keeps pagination lifted from footer */
+}
+
+/* Add space between All Poems grid and pagination */
+.poetry-list nav[aria-label="Poem pages"] {
+  margin-top: 2rem;  /* creates space above the pagination */
+}
 
 
 
