@@ -29,9 +29,9 @@ urlpatterns += i18n_patterns(
     # Put blog BEFORE poetry so /blog/ is matched before poetry's <slug:slug>/
     path("blog/", include(("blog.urls", "blog"), namespace="blog")),
 
+    path("about/", include("about.urls")),
     path("", include(("poetry.urls", "poetry"), namespace="poetry")),
     path('', include('facebook_integration.urls')),
-    path("about/", include("about.urls")),
     path("accounts/", include("allauth.urls")),
     path("summernote/", include("django_summernote.urls")),
     prefix_default_language=False,
