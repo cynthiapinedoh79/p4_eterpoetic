@@ -628,3 +628,25 @@ pre {
 .poetry-list .pagination .page-link:hover {
   background:#1A2C42; color:#FBF9F6; border-color:#1A2C42;
 }
+
+
+.poetry-list .card-img-top {
+  height: 220px;             /* un poco más alto que 180px */
+  width: 100%;
+  object-fit: cover;         /* recorta sin deformar */
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+}
+
+.poetry-list .card {
+  background: linear-gradient(to bottom, #fff 80%, #FBF9F6);
+}
+
+@media (max-width: 768px) {
+  .poetry-list .card-img-top {
+    height: 180px;
+  }
+  .poetry-list .card {
+    margin-bottom: 1rem;
+  }
+}
