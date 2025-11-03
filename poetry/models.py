@@ -45,6 +45,6 @@ class Poem(models.Model):
     @property
     def body(self):      # convenience for templates
         return self.body_es or self.body_en
-
+    
     def get_absolute_url(self):
-        return reverse("poetry:poem_detail", args=[self.slug])
+        return reverse('poetry:poem_detail', args=[self.slug])
