@@ -28,10 +28,10 @@ class Poem(models.Model):
     slug = models.SlugField(unique=True)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
     collection = models.ForeignKey(Collection, on_delete=models.SET_NULL, null=True, blank=True)
+    featured_image = CloudinaryField('image', default='placeholder')
     body_en = models.TextField()
     body_es = models.TextField(blank=True)
     is_featured = models.BooleanField(default=False)
-    featured_image = CloudinaryField('image', default='placeholder')
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
