@@ -1,4 +1,11 @@
-# Virtual Environment
+# ==== STATIC FILES ====
+/staticfiles/             # Ignore collected static output
+/staticfiles/**
+
+# ==== STATIC SOURCE (keep tracked!) ====
+# /static/   ← DO NOT ignore this folder — it's your actual code source
+
+# ==== VIRTUAL ENVIRONMENT ====
 .venv/
 
 # Core dump files from crashes
@@ -6,21 +13,29 @@ core.Microsoft*
 core.mongo*
 core.python*
 
-# Environment file (often contains secrets)
+# ==== ENVIRONMENT & SECRETS ====
 env.py
+.env
+*.env
 
-# Python cache and compiled files
+# ==== PYTHON CACHE ====
 __pycache__/
 *.pyc
+*.pyo
 *.py[cod]
 
-# Dependency folders (if you use JavaScript)
+# ==== NODE MODULES (if using npm/yarn) ====
 node_modules/
 
-# IDE / Editor specific
+# ==== EDITOR / IDE ====
 .vscode/
+.idea/
 .github/
 
-# Project-specific files
+# ==== CRASH FILES ====
+core.Microsoft*
+core.mongo*
+core.python*
+
+# ==== PROJECT-SPECIFIC ====
 cloudinary_python.txt
-blog/fixtures/staticfiles/
