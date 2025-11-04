@@ -1,4 +1,4 @@
-/* build: 2025-11-04-5 */
+/* build: 2025-11-04-6 */
 
 :root {
   /* ÉterPoetico Palette mapped to original structure */
@@ -1036,4 +1036,49 @@ pre {
   font-size: 1.15rem;
   line-height: 1.7;
   color: #333; /* Dark gray for readability on paper */
+}
+
+/* ================================================
+   PAGE: POETRY LIST (Collection Album Card)
+=================================================== */
+
+.collection-album-card {
+  /* Use the same base styles as other cards */
+  background: var(--bg-body);
+  border: none;
+  border-radius: 16px;
+  overflow: hidden;
+  transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease;
+  height: 100%;
+}
+
+.collection-album-card:hover {
+  background: var(--bg-light);
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.10), 0 2px 6px rgba(0,0,0,.06);
+}
+
+.collection-album-card .card-img-top {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+  transform: scale(1);
+  transition: transform .25s ease;
+}
+
+.collection-album-card:hover .card-img-top {
+  transform: scale(1.03);
+}
+
+.collection-album-card .card-title {
+  color: var(--color-text-dark);
+  font-weight: 700;
+}
+
+.collection-album-card:hover .card-title {
+  color: var(--color-primary-brand);
 }

@@ -13,41 +13,52 @@ def _build_poem_list_context(request):
     page_number = request.GET.get("page")
     collection_slug = request.GET.get("collection")
 
-    qs = Poem.objects.all()
+    # Get all collections for the dropdown
+    all_collections = Collection.objects.all().order_by('name_en')
+    
+    current_collection = None
+    page_mode = 'collections' # Default mode: show Collection "albums"
+    qs = Collection.objects.all().order_by('name_en') # Default query: get Collections
+    total = qs.count()
 
     if q:
-        qs = qs.filter(
+        # If there's a search, always switch to poem mode
+        page_mode = 'poems'
+        qs = Poem.objects.filter(
             Q(title_es__icontains=q) | Q(title_en__icontains=q) |
             Q(body_es__icontains=q)  | Q(body_en__icontains=q)
-        )
-    
-    current_collection = None # <-- NEW: Initialize current_collection
+        ).order_by('-is_featured', '-created')
+        total = qs.count()
 
-    if collection_slug:
-        # --- NEW: Get the actual Collection object ---
+    elif collection_slug and collection_slug == 'all-poems':
+        # If "All Poems" is selected, switch to poem mode
+        page_mode = 'poems'
+        qs = Poem.objects.all().order_by('-is_featured', '-created')
+        total = qs.count()
+
+    elif collection_slug:
+        # If a *specific* collection is selected, switch to poem mode
+        page_mode = 'poems'
         try:
             current_collection = Collection.objects.get(slug=collection_slug)
-            qs = qs.filter(collection=current_collection)
+            qs = Poem.objects.filter(collection=current_collection).order_by('-is_featured', '-created')
+            total = qs.count()
         except Collection.DoesNotExist:
-            current_collection = None # Collection not found, no filtering
-        # --- END NEW ---
+            qs = Poem.objects.none() # No poems
+            total = 0
 
-    qs = qs.order_by('-is_featured', '-created')
-    
-    total = qs.count()
-    
+    # Now, paginate whatever qs is (either Collections or Poems)
     paginator = Paginator(qs, 12) 
     page_obj = paginator.get_page(page_number)
     
-    all_collections = Collection.objects.all().order_by('name_en')
-    
     return {
         "page_obj": page_obj, 
+        "page_mode": page_mode, # <-- 'collections' or 'poems'
         "q": q, 
         "total": total,
         "all_collections": all_collections,
         "current_collection_slug": collection_slug,
-        "current_collection": current_collection, # <-- NEW: Pass the object
+        "current_collection": current_collection,
     }
 
 def poem_detail(request, slug):
