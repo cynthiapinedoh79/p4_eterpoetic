@@ -707,6 +707,19 @@ Add space below pagination (bottom of page)
 .poetry-list nav[aria-label="Poem pages"] {
   margin-top: 2rem;  /* creates space above the pagination */
 }
+
+/* Center the poem grids like the quotes */
+.poetry-list .center-grid {
+  max-width: 1200px;      /* tweak: 1080–1240 depending on taste */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 1400px) {
+  .poetry-list .center-grid { max-width: 1280px; }
+}
+
+
 /* ================================================
    END OF POETRY LIST STYLING
 =================================================== */  
@@ -746,47 +759,6 @@ Add space below pagination (bottom of page)
   font-size: .95rem;
 }
 
-/* Home hero + quotes */
-.poetry-hero {
-  margin-top: 1rem;
-  margin-bottom: 2.25rem;    /* space before Featured */
-}
-
-.poetry-hero img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto 1rem;
-}
-
-.quotes-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  margin-bottom: 2.75rem;    /* space before the poem list */
-}
-
-@media (max-width: 992px) {
-  .quotes-grid { grid-template-columns: repeat(2, 1fr); }
-}
-@media (max-width: 576px) {
-  .quotes-grid { grid-template-columns: 1fr; }
-}
-
-/* Simple quote card styling */
-.quote-card {
-  padding: 18px 16px;
-  border-left: 4px solid #e7b061;  /* warm accent */
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 2px 12px rgba(0,0,0,.04);
-}
-.quote-card .author {
-  margin-top: .5rem;
-  font-weight: 700;
-  color: #8893a0;
-  letter-spacing: .02em;
-}
 
 
 
