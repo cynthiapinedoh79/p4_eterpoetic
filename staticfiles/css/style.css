@@ -688,11 +688,121 @@ pre {
   }
 }
 
+/* Space between Featured and All Poems sections */
+.poetry-list h2.mt-2.mb-2 {
+  margin-top: 2.5rem !important; /* adds gentle separation */
+}
 
+/* Add space above Featured Poems */
+.poetry-list h2.mt-2.mb-3 {
+  margin-top: 2.5rem !important; /* gentle gap after search bar */
+}
 
+Add space below pagination (bottom of page)
+.poetry-list nav[aria-label="Poem pages"] {
+  margin-bottom: 2.5rem; /* keeps pagination lifted from footer */
+}
+
+/* Add space between All Poems grid and pagination */
+.poetry-list nav[aria-label="Poem pages"] {
+  margin-top: 2rem;  /* creates space above the pagination */
+}
+
+/* Center the poem grids like the quotes */
+.poetry-list .center-grid {
+  max-width: 1200px;      /* tweak: 1080–1240 depending on taste */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 1400px) {
+  .poetry-list .center-grid { max-width: 1280px; }
+}
+
+/* Center & resize the search bar */
+.poetry-list .search-form {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Align search bar to the left */
+.poetry-list .search-form {
+  max-width: 700px;
+  margin-left: 0;           /* aligned to left */
+  margin-right: auto;
+}
+
+/* Ensure full width within its container */
+.poetry-list .search-input-wrapper {
+  max-width: 600px;
+  width: 100%;
+}
+
+/* Style input cleanly */
+.poetry-list .search-input {
+  flex: 1;
+  border-radius: 999px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,.04);
+}
+
+/* Compact layout for mobile */
+@media (max-width: 768px) {
+  .poetry-list .search-form {
+    max-width: 100%;
+  }
+  .poetry-list .search-input-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
 
 
 
 /* ================================================
    END OF POETRY LIST STYLING
+=================================================== */  
+
+
+/* ================================================
+   POETRY HOME STYLING
+=================================================== */  
+/* Hero section */  
+.poetry-hero {
+  background: linear-gradient(180deg, #fafbfd 0%, #ffffff 100%);
+}
+
+.poetry-hero .hero-art {
+  max-width: 720px;                 /* controls hero image width on desktop */
+}
+
+@media (min-width: 1400px) {
+  .poetry-hero .hero-art { max-width: 820px; }
+}
+
+/* Quote cards */
+.quote-card {
+  padding: .5rem 0 0 1rem;
+  border-left: 4px solid #d9b27f;   /* warm accent */
+}
+
+.quote-card blockquote {
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: #1a2c42;                   /* matches your palette */
+  margin: 0;
+}
+
+.quote-card .author {
+  color: #8a97a6;
+  font-size: .95rem;
+}
+
+
+
+
+/* ================================================
+   END OF POETRY HOME STYLING
 =================================================== */  
