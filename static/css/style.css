@@ -707,9 +707,89 @@ Add space below pagination (bottom of page)
 .poetry-list nav[aria-label="Poem pages"] {
   margin-top: 2rem;  /* creates space above the pagination */
 }
+/* ================================================
+   END OF POETRY LIST STYLING
+=================================================== */  
+
+
+/* ================================================
+   POETRY HOME STYLING
+=================================================== */  
+/* Hero section */  
+.poetry-hero {
+  background: linear-gradient(180deg, #fafbfd 0%, #ffffff 100%);
+}
+
+.poetry-hero .hero-art {
+  max-width: 720px;                 /* controls hero image width on desktop */
+}
+
+@media (min-width: 1400px) {
+  .poetry-hero .hero-art { max-width: 820px; }
+}
+
+/* Quote cards */
+.quote-card {
+  padding: .5rem 0 0 1rem;
+  border-left: 4px solid #d9b27f;   /* warm accent */
+}
+
+.quote-card blockquote {
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: #1a2c42;                   /* matches your palette */
+  margin: 0;
+}
+
+.quote-card .author {
+  color: #8a97a6;
+  font-size: .95rem;
+}
+
+/* Home hero + quotes */
+.poetry-hero {
+  margin-top: 1rem;
+  margin-bottom: 2.25rem;    /* space before Featured */
+}
+
+.poetry-hero img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto 1rem;
+}
+
+.quotes-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-bottom: 2.75rem;    /* space before the poem list */
+}
+
+@media (max-width: 992px) {
+  .quotes-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 576px) {
+  .quotes-grid { grid-template-columns: 1fr; }
+}
+
+/* Simple quote card styling */
+.quote-card {
+  padding: 18px 16px;
+  border-left: 4px solid #e7b061;  /* warm accent */
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.04);
+}
+.quote-card .author {
+  margin-top: .5rem;
+  font-weight: 700;
+  color: #8893a0;
+  letter-spacing: .02em;
+}
 
 
 
 /* ================================================
-   END OF POETRY LIST STYLING
+   END OF POETRY HOME STYLING
 =================================================== */  

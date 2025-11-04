@@ -1,0 +1,101 @@
+{# templates/poetry/_poem_list_section.html #}
+{% load static %}
+{% static 'images/placeholder.jpg' as PLACEHOLDER_IMG %}
+
+<div class="container mt-4 poetry-list">
+
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    {% if not hide_page_title %}<h1 class="mb-0">Poems</h1>{% endif %}
+    {% if total %}<span class="text-muted">{{ total }} result{{ total|pluralize }}</span>{% endif %}
+  </div>
+
+  <form method="get" class="row g-2 mb-4">
+    <div class="col-12 col-md-8">
+      <input type="text" class="form-control" name="q" value="{{ q }}" placeholder="Search (ES/EN)">
+    </div>
+    <div class="col-12 col-md-4 d-grid d-md-block">
+      <button class="btn btn-secondary px-4">Search</button>
+      {% if q %}
+        <a class="btn btn-outline-secondary ms-md-2 mt-2 mt-md-0" href="{% url 'poetry:poem_list' %}">Clear</a>
+      {% endif %}
+    </div>
+  </form>
+
+  {% if featured_poems %}
+    <h2 class="mt-2 mb-3">🌟 Featured Poems</h2>
+    <div class="row g-4">
+      {% for poem in featured_poems %}
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4">
+          <div class="card border-warning shadow-sm h-100 is-featured">
+            <div class="image-wrap">
+              {% if poem.featured_image %}<span class="feature-flag" aria-label="Featured">Featured</span>{% endif %}
+              {% if poem.featured_image and "placeholder" not in poem.featured_image.url %}
+                <img src="{{ poem.featured_image.url }}" class="card-img-top" alt="{{ poem.title }}">
+              {% else %}
+                <img src="{% static 'images/placeholder.jpg' %}" class="card-img-top" alt="Placeholder image">
+              {% endif %}
+            </div>
+            <div class="card-body">
+              <h5 class="card-title mb-1"><a class="post-link" href="{{ poem.get_absolute_url }}">{{ poem.title }}</a></h5>
+              {% if poem.collection %}<p class="text-muted small mb-1">🪶 {{ poem.collection.name_es|default:poem.collection.name_en }}</p>{% endif %}
+              {% if poem.author %}<p class="text-muted small mb-2">✍️ {{ poem.author.name }}</p>{% endif %}
+              <p class="card-text text-muted">{{ poem.body_es|default:poem.body_en|striptags|truncatechars:140 }}</p>
+            </div>
+            <div class="card-footer bg-white small text-muted d-flex justify-content-between">
+              <span>{{ poem.created|date:"M d, Y" }}</span>
+              <span>{% if poem.body_en and poem.body_es %}ES • EN{% elif poem.body_es %}ES{% else %}EN{% endif %}</span>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+
+  <h2 class="mt-2 mb-2">All Poems</h2>
+
+  {% if page_obj.object_list %}
+    <div class="row g-4">
+      {% for poem in page_obj.object_list %}
+        <div class="col-12 col-sm-6 col-lg-3 col-xxl-2">
+          <div class="card h-100 shadow-sm">
+            {% if poem.featured_image and "placeholder" not in poem.featured_image.url %}
+              <img src="{{ poem.featured_image.url }}" class="card-img-top" alt="{{ poem.title_en }}">
+            {% else %}
+              <img src="{% static 'images/placeholder.png' %}" class="card-img-top" alt="Placeholder image">
+            {% endif %}
+            <div class="card-body">
+              <h5 class="card-title mb-1">
+                {% if poem.is_featured %}<span class="badge bg-warning text-dark me-1">★ Featured</span>{% endif %}
+                <a class="post-link" href="{{ poem.get_absolute_url }}">{{ poem.title }}</a>
+              </h5>
+              {% if poem.collection %}<p class="text-muted small mb-1">🪶 {{ poem.collection.name_es|default:poem.collection.name_en }}</p>{% endif %}
+              {% if poem.author %}<p class="text-muted small mb-2">✍️ {{ poem.author.name }}</p>{% endif %}
+              <p class="card-text text-muted">{{ poem.body_es|default:poem.body_en|striptags|truncatechars:140 }}</p>
+            </div>
+            <div class="card-footer bg-white d-flex justify-content-between small text-muted">
+              <span>{{ poem.created|date:"M d, Y" }}</span>
+              {% if poem.body_en and poem.body_es %}<span>ES • EN</span>
+              {% elif poem.body_en and not poem.body_es %}<span>EN</span>
+              {% else %}<span>ES</span>{% endif %}
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <nav aria-label="Poem pages">
+      <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+          <li class="page-item"><a class="page-link" href="?q={{ q }}&page={{ page_obj.previous_page_number }}">Previous</a></li>
+        {% else %}<li class="page-item disabled"><span class="page-link">Previous</span></li>{% endif %}
+        <li class="page-item disabled"><span class="page-link">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span></li>
+        {% if page_obj.has_next %}
+          <li class="page-item"><a class="page-link" href="?q={{ q }}&page={{ page_obj.next_page_number }}">Next</a></li>
+        {% else %}<li class="page-item disabled"><span class="page-link">Next</span></li>{% endif %}
+      </ul>
+    </nav>
+
+  {% else %}
+    <div class="alert alert-light border text-secondary">No poems yet.</div>
+  {% endif %}
+</div>

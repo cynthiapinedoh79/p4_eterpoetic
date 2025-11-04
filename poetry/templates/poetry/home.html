@@ -1,0 +1,42 @@
+{# poetry/templates/poetry/home.html #}
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+  {# === Section 1: Hero + Quotes === #}
+  <section class="poetry-hero py-5">
+    <div class="container-xxl">
+
+      <div class="hero-art mx-auto mb-5">
+        <img
+          src="{% if hero_image_url %}{{ hero_image_url }}{% else %}{% static 'images/poetry-hero.jpg' %}{% endif %}"
+          alt="Poetry hero"
+          class="img-fluid rounded-4 shadow-sm w-100"
+        >
+      </div>
+
+      <div class="row g-4 quote-row">
+        {% for q in quotes %}
+          <div class="col-12 col-md-6 col-xl-3">
+            <figure class="quote-card h-100">
+              <blockquote class="mb-3">“{{ q.text }}”</blockquote>
+              <figcaption class="author">{{ q.author }}</figcaption>
+            </figure>
+          </div>
+        {% empty %}
+          <div class="col-12">
+            <p class="text-muted">No quotes yet.</p>
+          </div>
+        {% endfor %}
+      </div>
+
+    </div>
+  </section>
+
+  {# === Section 2: Poem list (reuses your partial) === #}
+  <section class="py-4">
+    {% include "poetry/_poem_list_section.html" %}
+  </section>
+
+{% endblock %}
