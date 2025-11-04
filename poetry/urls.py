@@ -4,8 +4,8 @@ from . import views
 app_name = "poetry"
 
 urlpatterns = [
-    path("", views.poem_list, name="poetryhome"),
+    path("", views.poetry_home, name="poetry_home"),        # ⬅️ render poetry/home.html
+    path("poems/", views.poem_list, name="poem_list"),     # ⬅️ list moved here
     # IMPORTANT: prefix detail so it doesn't match /about/ or /blog/
     path("poem/<slug:slug>/", views.poem_detail, name="poem_detail"),
 ]
-

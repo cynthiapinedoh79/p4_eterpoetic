@@ -53,9 +53,11 @@
 
                     <!-- Home (Poetry) -->
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == home_url %}active{% endif %}"
-                            href="{% url 'poetry:poetryhome' %}"
-                            {% if request.path == home_url %}aria-current="page"{% endif %}>Home</a>
+                        <a class="nav-link {% if request.path == 'poetry_home' %}active{% endif %}"
+                            href="{% url 'poetry:poetry_home' %}"
+                            {% if request.path == 'poetry_home' %}aria-current="page"{% endif %}>
+                            Home
+                            </a>
                     </li>
 
                     <li class="nav-item">
