@@ -1,6 +1,5 @@
-{# templates/poetry/_poem_list_section.html #}
 {% load static %}
-{% static 'images/placeholder.png' as PLACEHOLDER_IMG %}
+{% static 'images/placeholder.png' as PLACEHOLDER_IMG %} {# <-- Use .png #}
 
 <div class="container mt-4 poetry-list">
 
@@ -10,16 +9,57 @@
   </div>
 
   <form method="get" class="search-form d-flex flex-column flex-md-row justify-content-center align-items-center gap-2 mb-4">
+    
     <input type="text" class="form-control search-input" name="q" value="{{ q }}" placeholder="Search (ES/EN)">
+    
+    <select class="form-select search-input" name="collection" aria-label="Filter by collection" style="min-width: 200px;">
+      <option value="">All Collections</option>
+      {% for collection in all_collections %}
+        <option value="{{ collection.slug }}" {% if collection.slug == current_collection_slug %}selected{% endif %}>
+          {{ collection.name_en|default:collection.name_es }}
+        </option>
+      {% endfor %}
+    </select>
+    
     <div class="d-flex gap-2 mt-2 mt-md-0">
       <button class="btn btn-secondary px-4">Search</button>
-      {% if q %}
-        <a class="btn btn-outline-secondary" href="{% url 'poetry:poetryhome' %}">Clear</a>
+      
+      {% if q or current_collection_slug %}
+        <a class="btn btn-outline-secondary" href="{% url 'poetry:poetry_home' %}">Clear</a>
       {% endif %}
     </div>
   </form>
 
   {% if page_obj.object_list %}
+    {% comment %}
+    NEW SECTION: Display current collection details if a collection is selected
+    {% endcomment %}
+    {% if current_collection %}
+      <div class="card mb-4 p-4 shadow-sm collection-detail-card">
+        <div class="row g-3 align-items-center">
+          {% if current_collection.collection_image and "placeholder" not in current_collection.collection_image.url %}
+            <div class="col-12 col-md-4">
+              <img src="{{ current_collection.collection_image.url }}" 
+                   alt="{{ current_collection.name_en }} collection image" 
+                   class="img-fluid rounded-3 shadow-sm">
+            </div>
+          {% endif %}
+          <div class="{% if current_collection.collection_image and "placeholder" not in current_collection.collection_image.url %}col-12 col-md-8{% else %}col-12{% endif %}">
+            <h2 class="mb-2">{{ current_collection.name_en|default:current_collection.name_es }} Collection</h2>
+            {% if current_collection.description_en or current_collection.description_es %}
+              <p class="text-muted">{{ current_collection.description_en|default:current_collection.description_es }}</p>
+            {% else %}
+              <p class="text-muted">No description available for this collection.</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% endif %}
+
+    {% comment %}
+      The extra 'if', 'div', and 'for' tags have been removed from here.
+      The code now flows correctly.
+    {% endcomment %}
     <div class="row g-4">
       {% for poem in page_obj.object_list %}
         <div class="col-12 col-sm-6 col-lg-3 col-xxl-2">
@@ -31,7 +71,7 @@
               {% if poem.featured_image and "placeholder" not in poem.featured_image.url %}
                 <img src="{{ poem.featured_image.url }}" class="card-img-top" alt="{{ poem.title }}">
               {% else %}
-                {% comment %} This line is now fixed to use PLACEHOLDER_IMG (placeholder.jpg) {% endcomment %}
+                {% comment %} This line is now fixed to use PLACEHOLDER_IMG (.pgn) {% endcomment %}
                 <img src="{{ PLACEHOLDER_IMG }}" class="card-img-top" alt="Placeholder image">
               {% endif %}
             </div>
@@ -59,13 +99,17 @@
     <nav aria-label="Poem pages" class="mt-5">
       <ul class="pagination justify-content-center">
         {% if page_obj.has_previous %}
-          <li class="page-item"><a class="page-link" href="?q={{ q }}&page={{ page_obj.previous_page_number }}">Previous</a></li>
+          <li class="page-item">
+            <a class="page-link" href="?q={{ q }}&collection={{ current_collection_slug }}&page={{ page_obj.previous_page_number }}">Previous</a>
+          </li>
         {% else %}<li class="page-item disabled"><span class="page-link">Previous</span></li>{% endif %}
         
         <li class="page-item disabled"><span class="page-link">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span></li>
         
         {% if page_obj.has_next %}
-          <li class="page-item"><a class="page-link" href="?q={{ q }}&page={{ page_obj.next_page_number }}">Next</a></li>
+          <li class="page-item">
+            <a class="page-link" href="?q={{ q }}&collection={{ current_collection_slug }}&page={{ page_obj.next_page_number }}">Next</a>
+          </li>
         {% else %}<li class="page-item disabled"><span class="page-link">Next</span></li>{% endif %}
       </ul>
     </nav>

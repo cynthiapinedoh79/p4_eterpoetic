@@ -1,6 +1,7 @@
 from django.db import models
 from django.urls import reverse
 from cloudinary.models import CloudinaryField
+from django.utils.text import slugify  # <-- NEW: Import slugify
 
 class Author(models.Model):
     name = models.CharField(max_length=120)
@@ -15,12 +16,21 @@ class Author(models.Model):
 class Collection(models.Model):
     name_en = models.CharField(max_length=120)
     name_es = models.CharField(max_length=120, blank=True)
-    slug = models.SlugField(unique=True)
+    slug = models.SlugField(unique=True, blank=True)
     description_en = models.TextField(blank=True)
     description_es = models.TextField(blank=True)
+    
+    # --- NEW: Add this line for the collection image ---
+    collection_image = CloudinaryField('collection_image', default='placeholder', blank=True, null=True)
 
     def __str__(self):
         return self.name_es or self.name_en
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            name_to_slugify = self.name_en or self.name_es
+            self.slug = slugify(name_to_slugify)
+        super().save(*args, **kwargs)
 
 class Poem(models.Model):
     title_en = models.CharField(max_length=200)
@@ -40,7 +50,7 @@ class Poem(models.Model):
 
     @property
     def title(self):     # convenience for templates
-        return self.title_es or self.title_en
+        return self.title_en or self.title_es
 
     @property
     def body(self):      # convenience for templates
