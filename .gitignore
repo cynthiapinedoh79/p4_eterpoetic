@@ -23,4 +23,4 @@ node_modules/
 
 # Project-specific files
 cloudinary_python.txt
-blog/fixtures/
+blog/fixtures/staticfiles/
