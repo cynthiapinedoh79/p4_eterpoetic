@@ -1,6 +1,6 @@
 {# templates/poetry/_poem_list_section.html #}
 {% load static %}
-{% static 'images/placeholder.jpg' as PLACEHOLDER_IMG %}
+{% static 'images/placeholder.png' as PLACEHOLDER_IMG %}
 
 <div class="container mt-4 poetry-list">
 
@@ -9,68 +9,42 @@
     {% if total %}<span class="text-muted">{{ total }} result{{ total|pluralize }}</span>{% endif %}
   </div>
 
-<form method="get" class="search-form d-flex flex-column flex-md-row justify-content-center align-items-center gap-2 mb-4">
-  <input type="text" class="form-control search-input" name="q" value="{{ q }}" placeholder="Search (ES/EN)">
-  <div class="d-flex gap-2 mt-2 mt-md-0">
-    <button class="btn btn-secondary px-4">Search</button>
-    {% if q %}
-      <a class="btn btn-outline-secondary" href="{% url 'poetry:poetryhome' %}">Clear</a>
-    {% endif %}
-  </div>
-</form>
-
-
-  {% if featured_poems %}
-    <h2 class="mt-2 mb-3">🌟 Featured Poems</h2>
-    <div class="row g-4">
-      {% for poem in featured_poems %}
-        <div class="col-12 col-sm-6 col-lg-4 col-xl-3 mb-4">
-          <div class="card border-warning shadow-sm h-100 is-featured">
-            <div class="image-wrap">
-              {% if poem.featured_image %}<span class="feature-flag" aria-label="Featured">Featured</span>{% endif %}
-              {% if poem.featured_image and "placeholder" not in poem.featured_image.url %}
-                <img src="{{ poem.featured_image.url }}" class="card-img-top" alt="{{ poem.title }}">
-              {% else %}
-                <img src="{% static 'images/placeholder.jpg' %}" class="card-img-top" alt="Placeholder image">
-              {% endif %}
-            </div>
-            <div class="card-body">
-              <h5 class="card-title mb-1"><a class="post-link" href="{{ poem.get_absolute_url }}">{{ poem.title }}</a></h5>
-              {% if poem.collection %}<p class="text-muted small mb-1">🪶 {{ poem.collection.name_es|default:poem.collection.name_en }}</p>{% endif %}
-              {% if poem.author %}<p class="text-muted small mb-2">✍️ {{ poem.author.name }}</p>{% endif %}
-              <p class="card-text text-muted">{{ poem.body_es|default:poem.body_en|striptags|truncatechars:140 }}</p>
-            </div>
-            <div class="card-footer bg-white small text-muted d-flex justify-content-between">
-              <span>{{ poem.created|date:"M d, Y" }}</span>
-              <span>{% if poem.body_en and poem.body_es %}ES • EN{% elif poem.body_es %}ES{% else %}EN{% endif %}</span>
-            </div>
-          </div>
-        </div>
-      {% endfor %}
+  <form method="get" class="search-form d-flex flex-column flex-md-row justify-content-center align-items-center gap-2 mb-4">
+    <input type="text" class="form-control search-input" name="q" value="{{ q }}" placeholder="Search (ES/EN)">
+    <div class="d-flex gap-2 mt-2 mt-md-0">
+      <button class="btn btn-secondary px-4">Search</button>
+      {% if q %}
+        <a class="btn btn-outline-secondary" href="{% url 'poetry:poetryhome' %}">Clear</a>
+      {% endif %}
     </div>
-  {% endif %}
-
-  <h2 class="mt-2 mb-2">All Poems</h2>
+  </form>
 
   {% if page_obj.object_list %}
     <div class="row g-4">
       {% for poem in page_obj.object_list %}
         <div class="col-12 col-sm-6 col-lg-3 col-xxl-2">
-          <div class="card h-100 shadow-sm">
-            {% if poem.featured_image and "placeholder" not in poem.featured_image.url %}
-              <img src="{{ poem.featured_image.url }}" class="card-img-top" alt="{{ poem.title_en }}">
-            {% else %}
-              <img src="{% static 'images/placeholder.png' %}" class="card-img-top" alt="Placeholder image">
-            {% endif %}
+          
+          <div class="card h-100 {% if poem.is_featured %}is-featured{% else %}shadow-sm{% endif %}">
+            
+            <div class="image-wrap">
+              {% if poem.is_featured %}<span class="feature-flag" aria-label="Featured">Featured</span>{% endif %}
+              {% if poem.featured_image and "placeholder" not in poem.featured_image.url %}
+                <img src="{{ poem.featured_image.url }}" class="card-img-top" alt="{{ poem.title }}">
+              {% else %}
+                {% comment %} This line is now fixed to use PLACEHOLDER_IMG (placeholder.jpg) {% endcomment %}
+                <img src="{{ PLACEHOLDER_IMG }}" class="card-img-top" alt="Placeholder image">
+              {% endif %}
+            </div>
+
             <div class="card-body">
               <h5 class="card-title mb-1">
-                {% if poem.is_featured %}<span class="badge bg-warning text-dark me-1">★ Featured</span>{% endif %}
                 <a class="post-link" href="{{ poem.get_absolute_url }}">{{ poem.title }}</a>
               </h5>
               {% if poem.collection %}<p class="text-muted small mb-1">🪶 {{ poem.collection.name_es|default:poem.collection.name_en }}</p>{% endif %}
               {% if poem.author %}<p class="text-muted small mb-2">✍️ {{ poem.author.name }}</p>{% endif %}
               <p class="card-text text-muted">{{ poem.body_es|default:poem.body_en|striptags|truncatechars:140 }}</p>
             </div>
+            
             <div class="card-footer bg-white d-flex justify-content-between small text-muted">
               <span>{{ poem.created|date:"M d, Y" }}</span>
               {% if poem.body_en and poem.body_es %}<span>ES • EN</span>
@@ -82,12 +56,14 @@
       {% endfor %}
     </div>
 
-    <nav aria-label="Poem pages">
+    <nav aria-label="Poem pages" class="mt-5">
       <ul class="pagination justify-content-center">
         {% if page_obj.has_previous %}
           <li class="page-item"><a class="page-link" href="?q={{ q }}&page={{ page_obj.previous_page_number }}">Previous</a></li>
         {% else %}<li class="page-item disabled"><span class="page-link">Previous</span></li>{% endif %}
+        
         <li class="page-item disabled"><span class="page-link">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span></li>
+        
         {% if page_obj.has_next %}
           <li class="page-item"><a class="page-link" href="?q={{ q }}&page={{ page_obj.next_page_number }}">Next</a></li>
         {% else %}<li class="page-item disabled"><span class="page-link">Next</span></li>{% endif %}
@@ -95,6 +71,6 @@
     </nav>
 
   {% else %}
-    <div class="alert alert-light border text-secondary">No poems yet.</div>
+    <div class="alert alert-light border text-secondary">No poems found.</div>
   {% endif %}
 </div>

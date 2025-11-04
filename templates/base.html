@@ -1,6 +1,6 @@
 {% load static %}
 
-{% url 'poetry:poetryhome' as home_url %} 
+{% url 'poetry:poetry_home' as home_url %} 
 {% url 'blog:bloghome' as blog_url %}
 {% url 'about' as about_url %}
 {% url 'account_login' as login_url %}
@@ -52,42 +52,41 @@
             <div class="collapse navbar-collapse" id="navbarText">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
-                    <!-- Home (Poetry) -->
                     <li class="nav-item">
-                        <a class="nav-link {% if request.path == 'poetry_home' %}active{% endif %}"
-                            href="{% url 'poetry:poetry_home' %}"
-                            {% if request.path == 'poetry_home' %}aria-current="page"{% endif %}>
+                        <a class="nav-link {% if request.path == home_url %}active{% endif %}"
+                            href="{{ home_url }}"
+                            {% if request.path == home_url %}aria-current="page"{% endif %}>
                             Home
-                            </a>
+                        </a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == blog_url %}active{% endif %}"
-                            href="{% url 'blog:bloghome' %}"
+                            href="{{ blog_url }}"
                             {% if request.path == blog_url %}aria-current="page"{% endif %}>Blog</a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == about_url %}active{% endif %}"
-                            href="{% url 'about' %}"
+                            href="{{ about_url }}"
                             {% if request.path == about_url %}aria-current="page"{% endif %}>About</a>
                     </li>
 
                     {% if user.is_authenticated %}
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == logout_url %}active{% endif %}"
-                            href="{% url 'account_logout' %}"
+                            href="{{ logout_url }}"
                             {% if request.path == logout_url %}aria-current="page"{% endif %}>Logout</a>
                     </li>
                     {% else %}
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == signup_url %}active{% endif %}"
-                            href="{% url 'account_signup' %}"
+                            href="{{ signup_url }}"
                             {% if request.path == signup_url %}aria-current="page"{% endif %}>Register</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {% if request.path == login_url %}active{% endif %}"
-                            href="{% url 'account_login' %}"
+                            href="{{ login_url }}"
                             {% if request.path == login_url %}aria-current="page"{% endif %}>Login</a>
                     </li>
                     {% endif %}
