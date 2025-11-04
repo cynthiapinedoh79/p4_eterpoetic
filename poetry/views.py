@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from django.db.models import Q
+from django.templatetags.static import static
 from .models import Poem
 
 def _build_poem_list_context(request):
@@ -38,7 +39,7 @@ def poetry_home(request):
     ]
     ctx = _build_poem_list_context(request)
     ctx.update({
-        "hero_image_url": "/static/images/poetry-hero.jpg",
+        "hero_image_url": static("images/poetry_hero.png"),
         "quotes": quotes,
         "hide_page_title": True,   # hide the big "Poems" H1 on the home page
     })
