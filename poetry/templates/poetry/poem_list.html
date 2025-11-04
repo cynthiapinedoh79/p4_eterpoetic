@@ -26,7 +26,7 @@
 
   {# ---------- FEATURED SECTION ---------- #}
   {% if featured_poems %}
-  <h2 class="mt-2 mb-3">🌟 Featured Poems</h2>
+  <h2 class="mt-2 mb-3">🌟 FEATURED POEMS</h2>
   <div class="center-grid">
   <div class="row g-4 justify-content-center">
     {% for poem in featured_poems %}
@@ -80,7 +80,8 @@
   {% endif %}
   {# ---------- /FEATURED SECTION ---------- #}
 
-  <h2 class="mt-2 mb-2">All Poems</h2>
+  {# ---------- ALL POEMS SECTION ---------- #}
+  <h2 class="mt-2 mb-2">ALL POEMS</h2>
   {% if page_obj.object_list %}
   <div class="center-grid">
   <div class="row g-4 justify-content-center">
@@ -126,6 +127,7 @@
     {% endfor %}
   </div>
   </div>
+  {# ---------- /ALL POEMS SECTION ---------- #}
 
   <nav aria-label="Poem pages">
     <ul class="pagination justify-content-center">
