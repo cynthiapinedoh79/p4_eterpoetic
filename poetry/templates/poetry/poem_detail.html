@@ -1,73 +1,83 @@
 {% extends "base.html" %}
 {% load static %}
 
+{# Get the placeholder image path, ensuring it's the .png you use elsewhere #}
+{% static 'images/placeholder.png' as PLACEHOLDER_IMG_URL %}
+
 {% block content %}
 <div class="container my-5">
   <div class="row justify-content-center">
     <div class="col-12 col-md-10 col-lg-9">
 
+      {% comment %}
+      This is the "vintage paper" card.
+      It uses the poem's image or the placeholder as a background.
+      {% endcomment %}
       <div class="card shadow-lg poem-detail-card" 
-           {% if poem.featured_image and "placeholder" not in poem.featured_image.url %}
-             style="background-image: url('{{ poem.featured_image.url }}');"
-           {% endif %}>
+           style="background-image: url('{% if poem.featured_image and "placeholder" not in poem.featured_image.url %}{{ poem.featured_image.url }}{% else %}{{ PLACEHOLDER_IMG_URL }}{% endif %}')">
         
+        <!-- This overlay creates the light paper + watermark effect -->
         <div class="poem-detail-overlay">
           <div class="card-body p-4 p-md-5">
 
             <!-- Language Toggle Buttons -->
             {% if poem.body_es and poem.body_en %}
-              <div class="d-flex justify-content-end mb-3">
-                <div class="ms-3 flex-shrink-0">
-                  <div class="btn-group btn-group-sm" role="group" aria-label="Poem language toggle">
-                    <button id="btn-es" class="btn btn-secondary">🇪🇸 ES</button>
-                    <button id="btn-en" class="btn btn-outline-secondary">🇬🇧 EN</button>
-                  </div>
-                </div>
+              <div class="btn-group btn-group-sm float-end" role="group" aria-label="Poem language toggle">
+                <button id="btn-es" class="btn btn-secondary">ES</button>
+                <button id="btn-en" class="btn btn-outline-secondary">EN</button>
               </div>
             {% endif %}
+
             
-            {% if poem.body_es and poem.body_en %}
-              <!-- Both languages exist, so we show both and let the JS toggle them -->
+            {% comment %}
+            =======================================================
+            =   LANGUAGE-AWARE TITLE & BODY SECTION               =
+            =======================================================
+            This section moves the title/author *inside* the
+            language blocks, so they toggle along with the body.
+            {% endcomment %}
+
+            <!-- Spanish Version (Title, Author, Body) -->
+            {% if poem.body_es %}
               <article id="poem-es" lang="es">
-                <h1 class="poem-detail-title mb-1">{{ poem.title_es|default:"[Título no disponible]" }}</h1>
-                {% if poem.author %}<p class="poem-detail-author text-muted mb-4">✍️ {{ poem.author.name|default:poem.author }}</p>{% endif %}
+                <h1 class="poem-detail-title">{{ poem.title_es|default:poem.title_en }}</h1>
+                {% if poem.author %}<p class="poem-detail-author mb-4">✍️ {{ poem.author.name|default:poem.author }}</p>{% endif %}
                 
-                {% comment %} --- THIS IS THE FIX --- {% endcomment %}
-                <div class="poem-body">{{ poem.body_es|safe }}</div>
-
-              </article>
-              <article id="poem-en" lang="en" style="display:none;">
-                <h1 class="poem-detail-title mb-1">{{ poem.title_en|default:"[Title not available]" }}</h1>
-                {% if poem.author %}<p class="poem-detail-author text-muted mb-4">✍️ {{ poem.author.name|default:poem.author }}</p>{% endif %}
-                
-                {% comment %} --- THIS IS THE FIX --- {% endcomment %}
-                <div class="poem-body">{{ poem.body_en|safe }}</div>
-
-              </article>
-            
-            {% elif poem.body_es %}
-              <!-- Only Spanish exists, so we just show it. No buttons. -->
-              <article id="poem-es" lang="es">
-                <h1 class="poem-detail-title mb-1">{{ poem.title_es|default:"[Título no disponible]" }}</h1>
-                {% if poem.author %}<p class="poem-detail-author text-muted mb-4">✍️ {{ poem.author.name|default:poem.author }}</p>{% endif %}
-                
-                {% comment %} --- THIS IS THE FIX --- {% endcomment %}
-                <div class="poem-body">{{ poem.body_es|safe }}</div>
-
-              </article>
-              
-            {% else %}
-              <!-- Only English exists, so we just show it. No buttons. -->
-              <article id="poem-en" lang="en">
-                <h1 class="poem-detail-title mb-1">{{ poem.title_en|default:"[Title not available]" }}</h1>
-                {% if poem.author %}<p class="poem-detail-author text-muted mb-4">✍️ {{ poem.author.name|default:poem.author }}</p>{% endif %}
-                
-                {% comment %} --- THIS IS THE FIX --- {% endcomment %}
-                <div class="poem-body">{{ poem.body_en|safe }}</div>
-
+                {% comment %}
+                This div uses the |safe filter to render HTML
+                {% endcomment %}
+                <div class="poem-body">
+                  {{ poem.body_es|safe }}
+                </div>
               </article>
             {% endif %}
-            
+
+            <!-- English Version (Title, Author, Body) -->
+            {% if poem.body_en %}
+              <article id="poem-en" lang="en" {% if poem.body_es %}style="display:none;"{% endif %}>
+                <h1 class="poem-detail-title">{{ poem.title_en }}</h1>
+                {% if poem.author %}<p class="poem-detail-author mb-4">✍️ {{ poem.author.name|default:poem.author }}</p>{% endif %}
+                
+                {% comment %}
+                This div uses the |safe filter to render HTML
+                {% endcomment %}
+                <div class="poem-body">
+                  {{ poem.body_en|safe }}
+                </div>
+              </article>
+            {% endif %}
+
+            {% comment %}
+            This is a fallback for poems that have NO body text at all
+            {% endcomment %}
+            {% if not poem.body_es and not poem.body_en %}
+              <h1 class="poem-detail-title">{{ poem.title_en }}</h1>
+              {% if poem.author %}<p class="poem-detail-author mb-4">✍️ {{ poem.author.name|default:poem.author }}</p>{% endif %}
+              <div class="poem-body">
+                <p><em>This poem does not have any content yet.</em></p>
+              </div>
+            {% endif %}
+
           </div>
         </div>
       </div>
@@ -78,9 +88,7 @@
 {% endblock %}
 
 {# Load the JS from /static/js/poem_toggle.js #}
+{# We bump the version number to force browsers to get the new file #}
 {% block extras %}
   <script src="{% static 'js/poem_toggle.js' %}?v=6" defer></script>
 {% endblock %}
-
-
-
