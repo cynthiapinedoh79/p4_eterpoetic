@@ -1,30 +1,34 @@
 /* build: 2025-11-04-2 */
 
 :root {
-  /* Heroku-inspired primary palette */
-  --color-primary-brand: #673AB7; /* Heroku-like purple */
-  --color-primary-brand-light: #7E57C2;
-  --color-link: #673AB7;
-  --color-link-hover: #512DA8;
+  /* ÉterPoetico Palette mapped to original structure */
+  --color-primary-brand: #E86A33; /* Vibrant Terracotta (Used for accents like featured titles) */
+  --color-primary-brand-light: #C43A3A; /* Rosewood Red (Used for button hovers) */
+  --color-link: #4C3A51; /* Plum Ink (Used for links) */
+  --color-link-hover: #C08A3E; /* Gold Ocher (FIX for featured link hover) */
   
-  /* Destructive action color (kept from original) */
-  --color-danger: #E84610;
+  /* Destructive action color */
+  --color-danger: #C43A3A; /* Rosewood Red */
   
   /* Text & Backgrounds */
-  --color-text-dark: #1A2C42;
-  --color-text-light: #FBF9F6;
-  --color-text-body: #4A4A4F;
-  --color-text-muted: #6c757d;
+  --color-text-dark: #1A2C42; /* Midnight Teal */
+  --color-text-light: #FBF9F6; /* Soft Linen White */
+  --color-text-body: #1A2C42; /* Midnight Teal (main body text) */
+  --color-text-muted: #8F8D8B; /* Muted Stone Gray */
   
-  --bg-body: #F9FAFC;
-  --bg-dark: #445261;
-  --bg-light: #fff;
+  --bg-body: #FBF9F6; /* Soft Linen White */
+  --bg-dark: #4C3A51; /* Plum Ink (Now used for primary buttons) */
+  --bg-light: #FFFFFF; /* Surface White */
 
   /* Fonts */
   --font-stack-primary: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 
                           "Helvetica Neue", Arial, sans-serif, 
                           "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   --font-stack-brand: var(--font-stack-primary); /* Was Lato */
+
+  /* High-contrast button text colors */
+  --color-primary-text: #FBF9F6; /* White text for dark buttons */
+  --color-danger-text: #FBF9F6;  /* White text for hover/danger buttons */
 }
 
 
@@ -42,7 +46,7 @@ body {
     font-family: var(--font-stack-brand);
     font-size: 1.4rem;
     font-weight: 700;
-    color: var(--color-text-body);
+    color: var(--color-text-dark); /* Use dark text */
 }
 
 .brand-accent { /* Replaced .red-o */
@@ -76,7 +80,7 @@ pre {
     bottom: 5%;
     min-width: 30%;
     left: -2px;
-    background-color: var(--color-primary-brand); /* Was teal */
+    background-color: var(--color-primary-brand);
 }
 
 .scale {
@@ -95,7 +99,7 @@ pre {
 
 .masthead-text {
     background-color: var(--bg-dark);
-    color: var(--bg-light);
+    color: var(--color-text-light);
     position: relative;
 }
 
@@ -124,41 +128,41 @@ pre {
 
 .btn-signup,
 .btn-edit {
-    background-color: var(--color-primary-brand); /* Was teal */
-    color: #fff;
+    background-color: var(--bg-dark); /* NEW: Plum Ink */
+    color: var(--color-primary-text); /* White text */
 }
 
 .btn-signup:hover,
 .btn-signup:active {
-    background-color: #fff;
-    color: var(--color-primary-brand-light); /* Was teal-light */
+    background-color: var(--color-danger); /* Rosewood Red */
+    color: var(--color-danger-text); /* White text */
 }
 
 .link {
-    color: var(--color-link); /* Was teal-light */
+    color: var(--color-link);
     text-decoration: none;
 }
 
 .link:hover,
 .link:active {
-    color: var(--color-link-hover); /* Was dark-bg */
+    color: var(--color-link-hover);
     text-decoration: underline;
 }
 
 .btn-like {
-    color: var(--color-primary-brand); /* Was orange */
+    color: var(--color-primary-brand);
     border: none;
     background: transparent;
 }
 
 .btn-delete {
-    color: #fff;
-    background: var(--color-danger); /* Kept orange for destructive */
+    color: var(--color-danger-text); /* White text */
+    background: var(--color-danger);
 }
 
 .btn-like:hover,
 .btn-like:active {
-    color: var(--color-primary-brand-light); /* Was orange */
+    color: var(--color-link-hover);
     background: transparent;
     border: none;
 }
@@ -193,7 +197,7 @@ pre {
   align-items: center;
 }
 .navbar-brand:hover {
-  color: var(--color-primary-brand) !important; /* Was orange */
+  color: var(--color-primary-brand) !important;
   text-decoration: none;
 }
 .navbar-brand span {
@@ -210,21 +214,22 @@ pre {
   transition: all 0.25s ease;
 }
 .navbar-nav .nav-link:hover {
-  background-color: rgba(103, 58, 183, 0.1); /* Light purple bg */
-  color: var(--color-primary-brand) !important; /* Was orange */
+  background-color: rgba(232, 106, 51, 0.1); /* Light Terracotta bg */
+  color: var(--color-primary-brand) !important;
 }
 
 /* Active link */
 .navbar-nav .nav-link.active,
 .navbar-nav .nav-link[aria-current="page"] {
-  background-color: var(--color-primary-brand) !important; /* Was dark text */
-  color: var(--color-text-light) !important;
+  background-color: var(--color-text-dark) !important; /* Midnight Teal */
+  color: var(--color-text-light) !important; /* Soft Linen */
   font-weight: 700;
   border-radius: 6px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
 }
 .navbar-nav .nav-link.active:hover {
-  background-color: var(--color-link-hover) !important; /* Darken purple */
+  background-color: var(--bg-dark) !important; /* Plum Ink */
+  color: var(--color-primary-text) !important; /* White */
 }
 
 /* Active underline accent */
@@ -233,7 +238,7 @@ pre {
   display: block;
   height: 3px;
   width: 100%;
-  background-color: var(--color-primary-brand-light); /* Was orange */
+  background-color: var(--color-primary-brand);
   border-radius: 2px;
   margin-top: 3px;
 }
@@ -268,12 +273,12 @@ pre {
 
 .post-link {
     text-decoration: none;
-    color: var(--bg-dark);
+    color: var(--color-text-dark);
 }
 
 .post-link:hover,
 .page-link {
-    color: var(--color-primary-brand); /* Was orange */
+    color: var(--color-primary-brand);
 }
 
 .post-title {
@@ -369,17 +374,19 @@ pre {
 
 /* Brand themes */
 .social-login-section .google a {
-  /* Changed from teal to new brand purple */
-  background: linear-gradient(180deg, var(--color-primary-brand-light) 0%, var(--color-primary-brand) 100%);
+  background: linear-gradient(180deg, #5E4A66 0%, var(--bg-dark) 100%); /* NEW: Plum Ink */
+  color: var(--color-primary-text) !important; /* White text */
 }
 .social-login-section .facebook a {
-  background: linear-gradient(180deg, #495867 0%, #3F4C59 100%);
+  background: linear-gradient(180deg, #5E4A66 0%, var(--bg-dark) 100%); /* Plum Ink */
+  color: var(--color-text-light) !important; /* White text */
 }
 
 /* Hover / active */
 .social-login-section .socialaccount_providers a:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 22px rgba(0,0,0,0.1), 0 3px 6px rgba(0,0,0,0.08);
+  background: var(--color-danger); /* NEW: Rosewood Red on hover */
 }
 .social-login-section .socialaccount_providers a:active {
   transform: translateY(0);
@@ -391,7 +398,7 @@ pre {
   outline: none;
   box-shadow:
     0 0 0 3px var(--bg-body),
-    0 0 0 6px var(--color-primary-brand-light), /* Was orange */
+    0 0 0 6px var(--color-primary-brand), /* Terracotta */
     0 8px 18px rgba(0,0,0,0.14);
 }
 
@@ -472,9 +479,27 @@ pre {
 .login-subtitle {
   font-size: 1rem;
   line-height: 1.5;
-  color: #555;
+  color: var(--color-text-body); /* Improved contrast */
   margin-bottom: 30px;
 }
+
+/* This will style the "Sign In" button on the login page */
+.login-card form .btn {
+  background-color: var(--bg-dark); /* NEW: Plum Ink */
+  color: var(--color-primary-text) !important; /* White text */
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 10px 16px;
+  width: 100%;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  border: none;
+}
+
+.login-card form .btn:hover {
+  background-color: var(--color-danger); /* Rosewood Red */
+  color: var(--color-danger-text) !important; /* White text */
+}
+
 
 .login-card form {
   margin-bottom: 20px;
@@ -508,13 +533,13 @@ pre {
 
 /* back link about page */
 .back-link {
-    color: var(--bg-dark);
+    color: var(--color-text-dark);
     text-decoration: none; 
 }
 
 .back-link:hover {
     text-decoration: underline; 
-    color: #2c3640; 
+    color: var(--color-text-dark); 
 }
 
 /* ================================================
@@ -545,7 +570,7 @@ pre {
 
 .quote-card {
   padding: 0.75rem 0 0.5rem 1rem;
-  border-left: 4px solid var(--color-primary-brand);  /* Was orange */
+  border-left: 4px solid var(--color-primary-brand);
   background-color: var(--bg-light);
   border-radius: 6px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
@@ -591,23 +616,28 @@ pre {
 
 /* Card base */
 .poetry-list .card {
-  background: var(--bg-light);
-  border: 1px solid #eee;
+  background: var(--bg-body); /* UPDATED: Flat background */
+  border: none; /* UPDATED: No border */
   border-radius: 16px;
   overflow: hidden;
-  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease;
+  height: 100%;
+  display: flex; /* <-- ADD THIS */
+  flex-direction: column; /* <-- ADD THIS */
 }
 .poetry-list .card:hover {
+  background: var(--bg-light); /* UPDATED: White background on hover */
   transform: translateY(-4px);
   box-shadow: 0 10px 24px rgba(0,0,0,.10), 0 2px 6px rgba(0,0,0,.06);
-  border-color: rgba(103, 58, 183, 0.25); /* Purple border */
+  /* border-color removed */
 }
 
 /* Image (default) */
 .poetry-list .card-img-top {
   display: block;
   width: 100%;
-  height: 260px;
+  height: auto;
+  aspect-ratio: 4 / 3; /* UPDATED: Taller 4:3 images */
   object-fit: cover;
   border-top-left-radius: 14px;
   border-top-right-radius: 14px;
@@ -617,7 +647,6 @@ pre {
 .poetry-list .card:hover .card-img-top { transform: scale(1.03); }
 
 @media (max-width: 768px) {
-  .poetry-list .card-img-top { height: 220px; }
   .poetry-list .card { margin-bottom: 1rem; }
 }
 
@@ -634,25 +663,33 @@ pre {
   color: var(--color-text-dark);
   font-weight: 700;
 }
-.poetry-list .card-title a.post-link:hover { color: var(--color-primary-brand); } /* Was orange */
+.poetry-list .card-title a.post-link:hover { color: var(--color-primary-brand); }
 .poetry-list .text-muted.small { opacity: .85; }
 
 /* Featured badge + flag */
 .poetry-list .badge.bg-warning { 
-  background: var(--color-primary-brand) !important; /* Was orange */
-  color: #fff !important; 
+  background: var(--color-primary-brand) !important;
+  color: #000 !important; /* Black text on Terracotta */
 }
 .poetry-list .card:hover .badge.bg-warning { 
-  box-shadow: 0 0 0 3px rgba(103, 58, 183, 0.1); /* Purple glow */
+  box-shadow: 0 0 0 3px rgba(232, 106, 51, 0.1); /* Terracotta glow */
+}
+
+/* --- START: High-Contrast Featured Rules --- */
+
+/* Featured cards: white background and shadow by default */
+.poetry-list .card.is-featured {
+  background: var(--bg-light); 
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08); 
 }
 
 /* Featured orange title */
 .poetry-list .card.is-featured .card-title a.post-link {
-  color: var(--color-primary-brand); /* Was orange */
+  color: var(--color-primary-brand);
   transition: color .2s ease;
 }
 .poetry-list .card.is-featured .card-title a.post-link:hover {
-  color: var(--color-link-hover); /* Was yellow */
+  color: var(--color-link-hover); /* NEW: Gold Ocher */
   text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
@@ -661,9 +698,8 @@ pre {
   position: absolute; top: 14px; left: 6px;
   padding: 4px 12px 4px 4px; border-radius: 2px;
   font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px;
-  color: #fff; z-index: 2;
-  /* Changed from orange to purple gradient */
-  background: linear-gradient(135deg, var(--color-primary-brand-light), var(--color-primary-brand));
+  color: var(--color-danger-text); z-index: 2;
+  background: linear-gradient(135deg, var(--color-primary-brand), var(--color-danger));
   box-shadow: 0 3px 8px rgba(0,0,0,0.15);
   text-shadow: 0 1px 1px rgba(0,0,0,0.15);
 }
@@ -676,24 +712,43 @@ pre {
 .poetry-list .card:hover .feature-flag {
   transform: translateY(-1px); box-shadow: 0 4px 10px rgba(0,0,0,.18);
 }
+/* --- END: High-Contrast Featured Rules --- */
+
 
 /* Footers & gradients */
 .poetry-list .card .card-footer {
-  background: linear-gradient(#fff, var(--bg-body));
+  background: transparent; /* UPDATED: Flat background */
+  border-top: 1px solid rgba(0,0,0,0.05); /* UPDATED: Subtler border */
+}
+
+/* Give Featured cards their gradient footer back */
+.poetry-list .card.is-featured .card-footer {
+  background: linear-gradient(var(--bg-light), var(--bg-body));
   border-top: 1px solid #eee;
 }
+
 .poetry-list h2 { font-weight: 800; letter-spacing: .2px; }
 
 /* Search / pagination polish */
 .poetry-list .form-control { box-shadow: 0 2px 10px rgba(0,0,0,.04); border-radius: 12px; }
-.poetry-list .btn.btn-secondary { background:var(--color-text-dark); border-color:var(--color-text-dark); border-radius: 999px; font-weight: 700; }
-.poetry-list .btn.btn-secondary:hover { background:var(--color-primary-brand); border-color:var(--color-primary-brand); } /* Was orange */
+.poetry-list .btn.btn-secondary { 
+  background:var(--color-text-dark); 
+  border-color:var(--color-text-dark); 
+  border-radius: 999px; 
+  font-weight: 700; 
+  color: var(--color-text-light);
+}
+.poetry-list .btn.btn-secondary:hover { 
+  background:var(--color-link); /* Plum Ink */
+  border-color:var(--color-link);
+  color: var(--color-text-light);
+}
 .poetry-list .pagination .page-link { border-radius: 999px; }
 .poetry-list .pagination .page-item.active .page-link,
 .poetry-list .pagination .page-link:hover {
-  background:var(--color-primary-brand); /* Was dark text */
+  background:var(--color-text-dark); 
   color:var(--color-text-light); 
-  border-color:var(--color-primary-brand);
+  border-color:var(--color-text-dark);
 }
 
 /* Image micro-zoom wrapper */
@@ -703,8 +758,8 @@ pre {
 
 /* Featured: border glow on hover */
 .poetry-list .card.is-featured:hover {
-  border-color: rgba(103, 58, 183, 0.45); /* Purple */
-  box-shadow: 0 12px 28px rgba(0,0,0,.10), 0 0 0 3px rgba(103, 58, 183, 0.1); /* Purple */
+  border-color: rgba(232, 106, 51, 0.45); /* Terracotta */
+  box-shadow: 0 12px 28px rgba(0,0,0,.10), 0 0 0 3px rgba(232, 106, 51, 0.1); /* Terracotta */
 }
 
 /* Container width tweak */
@@ -720,7 +775,7 @@ pre {
 .poetry-list .row .col-xxl-2 .card-img-top {
   width: 100%;
   height: auto;
-  aspect-ratio: 3 / 2;
+  aspect-ratio: 4 / 3; /* UPDATED: Taller 4:3 images */
   object-fit: cover;
   display: block;
   margin-bottom: .5rem;
@@ -730,7 +785,12 @@ pre {
 
 .poetry-list .row .col-xxl-2 .card-body { padding: .65rem .75rem; }
 .poetry-list .row .col-xxl-2 .card-title { font-size: 1.25rem; line-height: 1.15; margin-bottom: .25rem !important; }
-.poetry-list .row .col-xxl-2 .card-footer { background:var(--bg-light); border-top:1px solid #eee; padding:.45rem .75rem; font-size:.8125rem; }
+.poetry-list .row .col-xxl-2 .card-footer { 
+  background: transparent; /* UPDATED */
+  border-top:1px solid rgba(0,0,0,0.05); /* UPDATED */
+  padding:.45rem .75rem; 
+  font-size:.8125rem; 
+}
 
 .poetry-list .row .col-xxl-2 .card-title a.post-link {
   display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;
@@ -740,10 +800,18 @@ pre {
   display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;
 }
 .poetry-list .row .col-xxl-2 .text-muted.small { margin-bottom: .25rem !important; }
-.poetry-list .row .col-xxl-2 .card:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(0,0,0,.08), 0 2px 6px rgba(0,0,0,.05); }
+.poetry-list .row .col-xxl-2 .card:hover { 
+  transform: translateY(-2px); 
+  box-shadow: 0 8px 18px rgba(0,0,0,.08), 0 2px 6px rgba(0,0,0,.05);
+  background: var(--bg-light); /* UPDATED */
+}
+.poetry-list .row .col-xxl-2 .card:hover .card-footer {
+  background: var(--bg-light); /* UPDATED */
+}
+
 
 @media (min-width: 1600px) {
-  .poetry-list .row .col-xxl-2 .card-img-top { aspect-ratio: 4 / 3; }
+  .poetry-list .row .col-xxl-2 .card-img-top { aspect-ratio: 4 / 3; } /* Was 4/3, still 4/3 */
 }
 
 @media (min-width: 481px) and (max-width: 575.98px) {
@@ -820,14 +888,14 @@ pre {
 .poetry-list .card.is-featured .card-img-top {
   width: 100%;
   height: auto;
-  aspect-ratio: 21 / 9;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
   display: block;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
 }
 .poetry-list .card.is-featured .image-wrap {
-  aspect-ratio: 21 / 9;
+  aspect-ratio: 4 / 3;
   overflow: hidden;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
@@ -840,11 +908,11 @@ pre {
 
 @media (max-width: 992px) {
   .poetry-list .card.is-featured .card-img-top,
-  .poetry-list .card.is-featured .image-wrap { aspect-ratio: 16 / 9; }
+  .poetry-list .card.is-featured .image-wrap { aspect-ratio: 4 / 3; }
 }
 
-.poetry-list .card.is-featured .card-img-top { height: auto; aspect-ratio: 21/9; object-fit: cover; }
-@media (max-width: 992px) { .poetry-list .card.is-featured .card-img-top { aspect-ratio: 16/9; } }
+.poetry-list .card.is-featured .card-img-top { height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+@media (max-width: 992px) { .poetry-list .card.is-featured .card-img-top { aspect-ratio: 4 / 3; } }
 
 
 /* ================================================
