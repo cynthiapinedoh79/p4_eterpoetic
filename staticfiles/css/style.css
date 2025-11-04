@@ -1,0 +1,872 @@
+body {
+    background-color: #F9FAFC;
+}
+
+.brand {
+    font-family: Lato, sans-serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #4A4A4F;
+}
+
+.red-o {
+    color: #E84610;
+}
+
+.thin {
+    font-weight: 300;
+}
+
+.light-bg {
+    background-color: #fff;
+}
+
+.dark-bg {
+    background-color: #445261;
+}
+
+.main-bg {
+    background-color: #F9FAFC;
+}
+
+.card {
+    border: none;
+    background-color: transparent;
+}
+
+.image-container {
+    position: relative;
+}
+
+.image-flash {
+    position: absolute;
+    bottom: 5%;
+    min-width: 30%;
+    left: -2px;
+    background-color: #188181;
+}
+
+.scale {
+    width: 100%;
+    height: auto;
+}
+
+.author {
+    color: white;
+    margin: 4px;
+    text-transform: uppercase;
+}
+
+.masthead {
+    margin-top: 10px;
+    overflow: hidden;
+    position: relative;
+    display: inline-block;
+    height: 33vh;
+    width: 100%;
+}
+
+.masthead-text {
+    background-color: #445261;
+    color: white;
+    position: relative;
+}
+
+.masthead-image {
+    position: relative;
+    overflow: hidden;
+}
+
+.masthead-image:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 90%;
+    height: 100%;
+    width: 150%;
+    background: #445261;
+    -webkit-transform: skew(15deg);
+    -moz-transform: skew(15deg);
+    transform: skew(15deg);
+    z-index: 100;
+}
+
+.profile-image {
+    width: 75%;
+}
+
+.post-link {
+    text-decoration: none;
+    color: #445261;
+}
+
+.post-link:hover,
+.page-link {
+    color: #E84610;
+}
+
+.post-title {
+    margin-top: 10%;
+    margin-left: 5%;
+}
+
+.post-subtitle {
+    margin-left: 5%;
+    color: lightgray;
+}
+
+.btn-signup,
+.btn-edit {
+    background-color: #188181;
+    color: #fff;
+}
+
+.btn-signup:hover,
+.btn-signup:active {
+    background-color: #fff;
+    color: #23BBBB;
+}
+
+.link {
+    color: #23BBBB;
+    text-decoration: none;
+}
+
+.link:hover,
+.link:active {
+    color: #445261;
+    text-decoration: underline;
+}
+
+.btn-like {
+    color: #E84610;
+    border: none;
+    background: transparent;
+}
+
+.btn-delete {
+    color: #fff;
+    background: #E84610;
+}
+
+.btn-like:hover,
+.btn-like:active {
+    color: #E84610;
+    background: transparent;
+    border: none;
+}
+
+.faded {
+    color: rgb(172, 175, 175);
+}
+
+.approval {
+    color: rgb(222, 146, 168);
+}
+
+/* about profiles section */
+.card-img-top {
+    /* Ensures the image fills the 75% width of the card container */
+    width: 100%; 
+    /* Set a consistent, fixed height for all images, e.g., 400px */
+    height: 400px; 
+    /* Ensures the image covers the area without stretching */
+    object-fit: cover; 
+}
+/* If you still want 75% width, add a wrapper div: */
+.image-wrapper {
+    width: 100%;
+    height: 60%;
+    margin: 0 auto; /* To center the 75% wrapper */
+    overflow: hidden;
+}
+
+/* back link about page */
+
+.back-link {
+    /* Set the color */
+    color: #445261;
+    /* Remove the underline */
+    text-decoration: none; 
+}
+
+.back-link:hover {
+    /* Add a subtle underline on hover for accessibility */
+    text-decoration: underline; 
+    /* Slightly darken color on hover */
+    color: #2c3640; 
+}
+
+
+
+
+
+
+
+
+/* ================================================
+   SOCIAL LOGIN SECTION
+   Mobile-first; full-width layout with brand themes
+=================================================== */
+
+.social-login-section {
+  margin-top: 28px;
+  padding: 12px 0 4px;
+}
+
+/* Core layout */
+.social-login-section .socialaccount_providers {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  display: block;
+  width: 100%;
+  max-width: 520px;
+}
+
+.social-login-section .socialaccount_providers li {
+  margin-bottom: 12px;
+}
+
+/* Social buttons (pill style) */
+.social-login-section .socialaccount_providers a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 16px 10px 54px;
+  border-radius: 999px;
+
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.2;
+  text-decoration: none;
+
+  position: relative;
+  isolation: isolate;
+
+  color: #fff !important;
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.06), 0 2px 4px rgba(0,0,0,0.06);
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Remove default pseudo icons */
+.social-login-section .socialaccount_providers a::before {
+  content: none;
+}
+
+/* Icon chip (left side) */
+.social-login-section .social-icon {
+  position: absolute;
+  left: 10px;
+  width: 36px;
+  height: 36px;
+  padding: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.92);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.75), 0 2px 6px rgba(0,0,0,0.08);
+}
+
+/* Brand themes */
+.social-login-section .google a {
+  background: linear-gradient(180deg, #23BBBB 0%, #1FA9A9 100%);
+}
+.social-login-section .facebook a {
+  background: linear-gradient(180deg, #495867 0%, #3F4C59 100%);
+}
+
+/* Hover / active */
+.social-login-section .socialaccount_providers a:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.1), 0 3px 6px rgba(0,0,0,0.08);
+}
+.social-login-section .socialaccount_providers a:active {
+  transform: translateY(0);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1), 0 2px 4px rgba(0,0,0,0.08);
+}
+
+/* Focus ring */
+.social-login-section .socialaccount_providers a:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 3px #FBF9F6,
+    0 0 0 6px #E86A33,
+    0 8px 18px rgba(0,0,0,0.14);
+}
+
+/* Glow on hover */
+.social-login-section .facebook a:hover::after,
+.social-login-section .google a:hover::after {
+  content: "";
+  position: absolute;
+  inset: -4px;
+  border-radius: inherit;
+  background: radial-gradient(120px 60px at center, rgba(255,255,255,0.22), transparent 60%);
+  z-index: -1;
+  filter: blur(6px);
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .social-login-section .socialaccount_providers a {
+    font-size: 0.95rem;
+    padding: 10px 14px 10px 52px;
+  }
+  .social-login-section .social-icon {
+    width: 32px;
+    height: 32px;
+    padding: 7px;
+  }
+}
+
+@media (min-width: 992px) {
+  .social-login-section .socialaccount_providers {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    max-width: 720px;
+  }
+  .social-login-section .socialaccount_providers li {
+    margin-bottom: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .social-login-section .socialaccount_providers a {
+    transition: none;
+  }
+}
+
+/* Sign-up button */
+.btn-signup {
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-weight: 700;
+  border: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: transform 0.12s ease;
+}
+.btn-signup:hover { transform: translateY(-1px); }
+.btn-signup:active { transform: translateY(0); }
+
+
+/* ================================================
+   LOGIN PAGE CARD
+=================================================== */
+.login-page {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 80vh;
+  padding-top: 60px;
+  background-color: #F9FAFC;
+}
+
+.login-card {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 22px rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.08);
+  padding: 40px 50px;
+  max-width: 520px;
+  width: 100%;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.login-title {
+  font-size: 1.8rem;
+  color: #1A2C42;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.login-subtitle {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.login-card form {
+  margin-bottom: 20px;
+}
+
+.login-card hr {
+  margin: 28px 0;
+  border-color: rgba(0,0,0,0.08);
+}
+
+.collab-page {
+  padding-bottom: 80px;
+}
+
+/* Alerts */
+.sa-alert {
+  background: #fff4f4;
+  border: 1px solid #f7c6c6;
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+}
+.sa-field-error {
+  color: #b3261e;
+  font-size: 0.9rem;
+  margin-top: 6px;
+}
+
+
+/* ================================================
+   NAVIGATION BAR STYLING
+=================================================== */
+
+.navbar {
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  font-family: 'Lato', sans-serif;
+  letter-spacing: 0.2px;
+  z-index: 1000;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  color: #1A2C42 !important;
+  display: flex;
+  align-items: center;
+}
+.navbar-brand:hover {
+  color: #E86A33 !important;
+  text-decoration: none;
+}
+.navbar-brand span {
+  font-size: 1.3rem;
+  margin-left: 8px;
+}
+
+/* Links */
+.navbar-nav .nav-link {
+  color: #1A2C42;
+  font-weight: 600;
+  padding: 10px 18px;
+  border-radius: 6px;
+  transition: all 0.25s ease;
+}
+.navbar-nav .nav-link:hover {
+  background-color: rgba(35,187,187,0.12);
+  color: #E86A33 !important;
+}
+
+/* Active link */
+.navbar-nav .nav-link.active,
+.navbar-nav .nav-link[aria-current="page"] {
+  background-color: #1A2C42 !important;
+  color: #FBF9F6 !important;
+  font-weight: 700;
+  border-radius: 6px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+}
+.navbar-nav .nav-link.active:hover {
+  background-color: #E86A33 !important;
+}
+
+/* Active underline accent */
+.navbar-nav .nav-link.active::after {
+  content: "";
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #E86A33;
+  border-radius: 2px;
+  margin-top: 3px;
+}
+
+/* Navbar slogan */
+.navbar-text {
+  font-size: 0.95rem;
+  color: #6c757d;
+  font-style: italic;
+}
+
+/* Dropdown for mobile */
+.navbar-collapse {
+  background-color: #fff;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  padding-top: 10px;
+}
+
+/* Poem collection */
+.text-muted.small.mb-2 {
+  font-style: italic;
+  color: #6c757d;
+}
+
+/* ================================================
+   PRE FORMATTED TEXT STYLING 
+=================================================== */
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: "Lato", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-size: 1.05rem;
+  line-height: 1.8;
+}
+
+
+/* ================================================
+   POETRY LIST STYLING
+=================================================== */
+
+/* Card base */
+.poetry-list .card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 16px;                /* unify radius to 16px (you used 14/16) */
+  overflow: hidden;                   /* keeps zoomed image inside */
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.poetry-list .card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(0,0,0,.10), 0 2px 6px rgba(0,0,0,.06);
+  border-color: rgba(232,106,51,.25);
+}
+
+/* Image (default) */
+.poetry-list .card-img-top {
+  display: block;
+  width: 100%;
+  height: 260px;                      /* base height */
+  object-fit: cover;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+  transform: scale(1);
+  transition: transform .25s ease;
+}
+.poetry-list .card:hover .card-img-top { transform: scale(1.03); }
+
+/* XS–MD tweak */
+@media (max-width: 768px) {
+  .poetry-list .card-img-top { height: 220px; }
+  .poetry-list .card { margin-bottom: 1rem; }
+}
+
+/* Placeholder look */
+.poetry-list .card-img-top[alt="Placeholder image"] {
+  background-color: #f5f6f8;
+  opacity: 0.85;
+  padding: 0;
+  border: 0;
+}
+
+/* Titles & meta */
+.poetry-list .card-title a.post-link {
+  text-decoration: none;
+  color: #1A2C42;                     /* Midnight Teal */
+  font-weight: 700;
+}
+.poetry-list .card-title a.post-link:hover { color: #E86A33; } /* Terracotta */
+.poetry-list .text-muted.small { opacity: .85; }
+
+/* Featured badge + flag */
+.poetry-list .badge.bg-warning { background: #E86A33 !important; color: #fff !important; }
+.poetry-list .card:hover .badge.bg-warning { box-shadow: 0 0 0 3px rgba(232,106,51,.10); }
+
+/* Featured orange title */
+.poetry-list .card.is-featured .card-title a.post-link {
+  color: #E86A33; transition: color .2s ease;
+}
+.poetry-list .card.is-featured .card-title a.post-link:hover {
+  color: #f4a300; text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* Featured flag overlay */
+.poetry-list .feature-flag {
+  position: absolute; top: 14px; left: 6px;
+  padding: 4px 12px 4px 4px; border-radius: 2px;
+  font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px;
+  color: #fff; z-index: 2;
+  background: linear-gradient(135deg, #f6b44a, #e86a33);
+  box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+  text-shadow: 0 1px 1px rgba(0,0,0,0.15);
+}
+.poetry-list .feature-flag::after {
+  content: ""; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+  background: linear-gradient(120deg, rgba(255,255,255,0.3), transparent);
+  transition: all .5s ease;
+}
+.poetry-list .card:hover .feature-flag::after { left: 100%; }
+.poetry-list .card:hover .feature-flag {
+  transform: translateY(-1px); box-shadow: 0 4px 10px rgba(0,0,0,.18);
+}
+
+/* Footers & gradients */
+.poetry-list .card .card-footer {
+  background: linear-gradient(#fff, #FBF9F6);
+  border-top: 1px solid #eee;
+}
+.poetry-list h2 { font-weight: 800; letter-spacing: .2px; }
+
+/* Search / pagination polish */
+.poetry-list .form-control { box-shadow: 0 2px 10px rgba(0,0,0,.04); border-radius: 12px; }
+.poetry-list .btn.btn-secondary { background:#1A2C42; border-color:#1A2C42; border-radius: 999px; font-weight: 700; }
+.poetry-list .btn.btn-secondary:hover { background:#E86A33; border-color:#E86A33; }
+.poetry-list .pagination .page-link { border-radius: 999px; }
+.poetry-list .pagination .page-item.active .page-link,
+.poetry-list .pagination .page-link:hover {
+  background:#1A2C42; color:#FBF9F6; border-color:#1A2C42;
+}
+
+/* Image micro-zoom wrapper */
+.poetry-list .image-wrap { position: relative; overflow: hidden; border-top-left-radius:16px; border-top-right-radius:16px; }
+.poetry-list .image-wrap .card-img-top { transition: transform .25s ease; }
+.poetry-list .card:hover .card-img-top { transform: scale(1.02); }
+
+/* Featured: border glow on hover */
+.poetry-list .card.is-featured:hover {
+  border-color: rgba(232,106,51,.45);
+  box-shadow: 0 12px 28px rgba(0,0,0,.10), 0 0 0 3px rgba(232,106,51,.10);
+}
+
+/* Container width tweak */
+.poetry-list.container {
+  max-width: 96%;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+/* ================================================
+   ALL POEMS (6-per-row) COMPACT TWEAKS @ XXL
+   (scoped to col-xxl-2 cells only)
+=================================================== */
+
+.poetry-list .row .col-xxl-2 .card { border-radius: 14px; overflow: hidden; }
+
+/* Aspect-ratio thumbnails only in the 6-up cells (overrides fixed heights above) */
+.poetry-list .row .col-xxl-2 .card-img-top {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  display: block;
+  margin-bottom: .5rem;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+}
+
+.poetry-list .row .col-xxl-2 .card-body { padding: .65rem .75rem; }
+.poetry-list .row .col-xxl-2 .card-title { font-size: 1rem; line-height: 1.15; margin-bottom: .25rem !important; }
+.poetry-list .row .col-xxl-2 .card-footer { background:#fff; border-top:1px solid #eee; padding:.45rem .75rem; font-size:.8125rem; }
+
+/* Line clamps for even heights */
+.poetry-list .row .col-xxl-2 .card-title a.post-link {
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;
+}
+.poetry-list .row .col-xxl-2 .card-text {
+  margin-bottom: 0; font-size: .92rem; line-height: 1.35;
+  display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;
+}
+.poetry-list .row .col-xxl-2 .text-muted.small { margin-bottom: .25rem !important; }
+.poetry-list .row .col-xxl-2 .card:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(0,0,0,.08), 0 2px 6px rgba(0,0,0,.05); }
+
+/* Huge screens: slightly taller thumbs */
+@media (min-width: 1600px) {
+  .poetry-list .row .col-xxl-2 .card-img-top { aspect-ratio: 4 / 3; }
+}
+
+/* 481–575px: optional clamp of single-col width */
+@media (min-width: 481px) and (max-width: 575.98px) {
+  .poetry-list .row > [class*="col-12"] {
+    max-width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .poetry-list .row > [class*="col-12"] .card-img-top {
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+}
+
+/* Space between Featured and All Poems sections */
+.poetry-list h2.mt-2.mb-2 {
+  margin-top: 2.5rem !important; /* adds gentle separation */
+}
+
+/* Add space above Featured Poems */
+.poetry-list h2.mt-2.mb-3 {
+  margin-top: 2.5rem !important; /* gentle gap after search bar */
+}
+
+Add space below pagination (bottom of page)
+.poetry-list nav[aria-label="Poem pages"] {
+  margin-bottom: 2.5rem; /* keeps pagination lifted from footer */
+}
+
+/* Add space between All Poems grid and pagination */
+.poetry-list nav[aria-label="Poem pages"] {
+  margin-top: 2rem;  /* creates space above the pagination */
+}
+
+/* Center the poem grids like the quotes */
+.poetry-list .center-grid {
+  max-width: 1200px;      /* tweak: 1080–1240 depending on taste */
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 1400px) {
+  .poetry-list .center-grid { max-width: 1280px; }
+}
+
+/* Center & resize the search bar */
+.poetry-list .search-form {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Align search bar to the left */
+.poetry-list .search-form {
+  max-width: 700px;
+  margin-left: 0;           /* aligned to left */
+  margin-right: auto;
+}
+
+/* Ensure full width within its container */
+.poetry-list .search-input-wrapper {
+  max-width: 600px;
+  width: 100%;
+}
+
+/* Style input cleanly */
+.poetry-list .search-input {
+  flex: 1;
+  border-radius: 999px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,.04);
+}
+
+/* Compact layout for mobile */
+@media (max-width: 768px) {
+  .poetry-list .search-form {
+    max-width: 100%;
+  }
+  .poetry-list .search-input-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* === Featured cards: keep image ratio, not fixed px height === */
+.poetry-list .card.is-featured .card-img-top {
+  width: 100%;
+  height: auto;              /* stop forcing a pixel height */
+  aspect-ratio: 21 / 9;      /* wide banner feel for featured */
+  object-fit: cover;
+  display: block;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+/* If you wrap the img in .image-wrap, let the wrapper own the ratio */
+.poetry-list .card.is-featured .image-wrap {
+  aspect-ratio: 21 / 9;
+  overflow: hidden;
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+.poetry-list .card.is-featured .image-wrap .card-img-top {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Narrow screens: use a less-wide ratio so it doesn’t get too short */
+@media (max-width: 992px) {
+  .poetry-list .card.is-featured .card-img-top,
+  .poetry-list .card.is-featured .image-wrap { aspect-ratio: 16 / 9; }
+}
+
+.poetry-list .card.is-featured .card-img-top { height: auto; aspect-ratio: 21/9; object-fit: cover; }
+@media (max-width: 992px) { .poetry-list .card.is-featured .card-img-top { aspect-ratio: 16/9; } }
+
+
+/* ================================================
+   END OF POETRY LIST STYLING
+=================================================== */  
+
+
+
+/* ================================================
+   POETRY HOME STYLING
+=================================================== */
+
+/* Hero section */
+.poetry-hero {
+  background: linear-gradient(180deg, #fafbfd 0%, #ffffff 100%);
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+/* Cover image */
+.cover-art {
+  margin-bottom: 2.5rem;           /* space below cover */
+}
+.cover-art img {
+  max-height: 380px;
+  object-fit: cover;
+  border-radius: 0;
+}
+
+/* Quotes grid */
+.quote-row {
+  margin-bottom: 2.5rem;           /* space below quotes before hero */
+}
+
+.quote-card {
+  padding: 0.75rem 0 0.5rem 1rem;
+  border-left: 4px solid #e86a33;  /* warm accent */
+  background-color: #fff;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.quote-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+}
+
+.quote-card blockquote {
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: #1a2c42;
+  margin: 0;
+}
+
+.quote-card .author {
+  color: #8a97a6;
+  font-size: .95rem;
+}
+
+/* Hero image */
+.poetry-hero .hero-art {
+  max-width: 720px;
+  margin: 0 auto 1rem;
+}
+@media (min-width: 1400px) {
+  .poetry-hero .hero-art { max-width: 820px; }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .cover-art { margin-bottom: 1.5rem; }
+  .quote-row { margin-bottom: 1.5rem; }
+  .poetry-hero { padding-top: 2rem; padding-bottom: 2rem; }
+}
+
+/* ================================================
+   END OF POETRY HOME STYLING
+=================================================== */
