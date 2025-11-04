@@ -2,44 +2,52 @@ from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.templatetags.static import static
-from .models import Poem
+from .models import Poem, Collection  # <-- Correct: import from models.py
 
-# This is the NEW, corrected function
 #
-# This is your NEW, simplified function for poetry/views.py
+# DO NOT define models here
 #
+
 def _build_poem_list_context(request):
     q = (request.GET.get("q") or "").strip()
     page_number = request.GET.get("page")
-    qs = Poem.objects.all() # Get all poems
+    collection_slug = request.GET.get("collection")
+
+    qs = Poem.objects.all()
 
     if q:
         qs = qs.filter(
             Q(title_es__icontains=q) | Q(title_en__icontains=q) |
             Q(body_es__icontains=q)  | Q(body_en__icontains=q)
         )
+    
+    current_collection = None # <-- NEW: Initialize current_collection
 
-    # --- START FIX ---
-    # Order by featured status FIRST, then by date.
-    # This puts all featured poems at the top of the list.
+    if collection_slug:
+        # --- NEW: Get the actual Collection object ---
+        try:
+            current_collection = Collection.objects.get(slug=collection_slug)
+            qs = qs.filter(collection=current_collection)
+        except Collection.DoesNotExist:
+            current_collection = None # Collection not found, no filtering
+        # --- END NEW ---
+
     qs = qs.order_by('-is_featured', '-created')
-    # --- END FIX ---
     
     total = qs.count()
-
-    # --- REMOVED THE OLD CONFUSING LOGIC ---
     
-    # Paginate the *entire* list.
-    # Your old page had 3 featured + 9 others, so let's set
-    # the page size to 12.
     paginator = Paginator(qs, 12) 
     page_obj = paginator.get_page(page_number)
     
+    all_collections = Collection.objects.all().order_by('name_en')
+    
     return {
-        # 'featured_poems' is no longer needed
         "page_obj": page_obj, 
         "q": q, 
-        "total": total
+        "total": total,
+        "all_collections": all_collections,
+        "current_collection_slug": collection_slug,
+        "current_collection": current_collection, # <-- NEW: Pass the object
     }
 
 def poem_detail(request, slug):

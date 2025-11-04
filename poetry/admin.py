@@ -1,4 +1,3 @@
-# poetry/admin.py
 from django.contrib import admin
 from django.utils.html import format_html
 from django_summernote.admin import SummernoteModelAdmin
@@ -13,40 +12,62 @@ class AuthorAdmin(admin.ModelAdmin):
 
 @admin.register(Collection)
 class CollectionAdmin(admin.ModelAdmin):
-    list_display = ("name_en", "slug")
+    list_display = ("name_en", "name_es", "slug")
+    search_fields = ("name_en", "name_es",)
     prepopulated_fields = {"slug": ("name_en",)}
 
 
 @admin.register(Poem)
 class PoemAdmin(SummernoteModelAdmin):
-    # small preview in the list
+    
+    # --- 1. PREVIEW IMAGE ---
     @admin.display(description="Image")
     def thumb(self, obj):
         if getattr(obj, "featured_image", None) and "placeholder" not in str(obj.featured_image):
             return format_html('<img src="{}" style="height:40px;border-radius:4px;">', obj.featured_image.url)
         return "—"
 
-    list_display = ("thumb", "title_es", "author", "collection", "is_featured", "created")
+    # --- 2. CUSTOM COLUMN HEADERS ---
+    @admin.display(description="Title (English)")
+    def primary_title(self, obj):
+        # Explicitly show the English title
+        return obj.title_en
+
+    @admin.display(description="Featured?", boolean=True)
+    def is_featured_display(self, obj):
+        return obj.is_featured
+
+    # --- 3. UPDATED LIST DISPLAY ---
+    # We now use our custom function names
+    list_display = (
+        "thumb", 
+        "primary_title",  # <-- Was "title_es"
+        "author", 
+        "collection", 
+        "is_featured_display", # <-- Was "is_featured"
+        "created"
+    )
+    
     list_filter = ("collection", "is_featured", "created")
     search_fields = ("title_es", "title_en", "body_es", "body_en")
-    prepopulated_fields = {"slug": ("title_es",)}
+    
+    # This will pre-fill the slug from the English title as you type
+    prepopulated_fields = {"slug": ("title_en",)}
 
     # show the upload widget on the form
     fields = (
         "author", "collection",
-        "title_es", "body_es",
-        "title_en", "body_en",
+        "featured_image",
+        "title_en", "body_en", # <-- English fields first
+        "title_es", "body_es", # <-- Spanish fields second
         "slug", "is_featured",
-        "featured_image",          # ← important
     )
 
     # rich editor for poem bodies
     summernote_fields = ("body_es", "body_en")
 
-@admin.display(description="Image")
-def thumb(self, obj):
-    if getattr(obj, "featured_image", None) and "placeholder" not in str(obj.featured_image):
-        return format_html('<img src="{}" style="height:40px;border-radius:4px;">', obj.featured_image.url)
-    return format_html('<img src="/static/images/placeholder.png" style="height:40px;border-radius:4px;opacity:0.6;">')
+# --- 4. ERROR REMOVED ---
+# The duplicate 'thumb' function that was here has been deleted.
+
 
 

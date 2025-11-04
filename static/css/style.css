@@ -1,4 +1,4 @@
-/* build: 2025-11-04-4 */
+/* build: 2025-11-04-5 */
 
 :root {
   /* ÉterPoetico Palette mapped to original structure */
@@ -990,3 +990,50 @@ pre {
     transform: scale(1.05); /* Slightly larger on hover */
 }
 
+/* ================================================
+   PAGE: POEM DETAIL (WATERMARK STYLE)
+=================================================== */
+
+.poem-detail-card {
+  position: relative; /* Required for the overlay */
+  border: 1px solid #e0ddd7;
+  border-radius: 8px;
+  
+  /* Watermark Background Image (from inline style) */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  overflow: hidden; /* Ensures overlay corners are rounded */
+}
+
+/* This overlay sits on top of the background image
+  but BEHIND the text. This is the "vintage paper"
+  that makes the text readable.
+*/
+.poem-detail-overlay {
+  border-radius: 7px; /* Match parent card */
+  /* Parchment paper color, 92% opaque */
+  background-color: rgba(250, 244, 233, 0.92);
+}
+
+.poem-detail-title {
+  font-family: 'Georgia', 'Times New Roman', Times, serif; /* Nostalgic font */
+  font-weight: 700;
+  color: var(--color-text-dark);
+}
+
+.poem-detail-author {
+  font-family: 'Georgia', 'Times New Roman', Times, serif;
+  font-style: italic;
+  font-size: 1.1rem;
+}
+
+/* This preserves formatting (like line breaks) */
+.poem-body {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  font-family: 'Georgia', 'Times New Roman', Times, serif; /* Match card font */
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #333; /* Dark gray for readability on paper */
+}
