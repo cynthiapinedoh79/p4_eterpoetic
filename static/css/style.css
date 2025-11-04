@@ -1,37 +1,65 @@
 /* build: 2025-11-04-2 */
 
+:root {
+  /* Heroku-inspired primary palette */
+  --color-primary-brand: #673AB7; /* Heroku-like purple */
+  --color-primary-brand-light: #7E57C2;
+  --color-link: #673AB7;
+  --color-link-hover: #512DA8;
+  
+  /* Destructive action color (kept from original) */
+  --color-danger: #E84610;
+  
+  /* Text & Backgrounds */
+  --color-text-dark: #1A2C42;
+  --color-text-light: #FBF9F6;
+  --color-text-body: #4A4A4F;
+  --color-text-muted: #6c757d;
+  
+  --bg-body: #F9FAFC;
+  --bg-dark: #445261;
+  --bg-light: #fff;
+
+  /* Fonts */
+  --font-stack-primary: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, 
+                          "Helvetica Neue", Arial, sans-serif, 
+                          "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  --font-stack-brand: var(--font-stack-primary); /* Was Lato */
+}
+
+
 /* ================================================
    BASE STYLES
-   (Body, Brand, Elements)
 =================================================== */
 
 body {
-    background-color: #F9FAFC;
+    background-color: var(--bg-body);
+    font-family: var(--font-stack-primary);
+    color: var(--color-text-body);
 }
 
 .brand {
-    font-family: Lato, sans-serif;
+    font-family: var(--font-stack-brand);
     font-size: 1.4rem;
     font-weight: 700;
-    color: #4A4A4F;
+    color: var(--color-text-body);
 }
 
-.red-o {
-    color: #E84610;
+.brand-accent { /* Replaced .red-o */
+    color: var(--color-primary-brand);
 }
 
 /* Preformatted text */
 pre {
   white-space: pre-wrap;
   word-wrap: break-word;
-  font-family: "Lato", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  font-family: var(--font-stack-primary);
   font-size: 1.05rem;
   line-height: 1.8;
 }
 
 /* ================================================
    LAYOUT & OBJECTS
-   (Masthead, Cards, Containers)
 =================================================== */
 
 .card {
@@ -48,7 +76,7 @@ pre {
     bottom: 5%;
     min-width: 30%;
     left: -2px;
-    background-color: #188181;
+    background-color: var(--color-primary-brand); /* Was teal */
 }
 
 .scale {
@@ -66,8 +94,8 @@ pre {
 }
 
 .masthead-text {
-    background-color: #445261;
-    color: white;
+    background-color: var(--bg-dark);
+    color: var(--bg-light);
     position: relative;
 }
 
@@ -83,7 +111,7 @@ pre {
     right: 90%;
     height: 100%;
     width: 150%;
-    background: #445261;
+    background: var(--bg-dark);
     -webkit-transform: skew(15deg);
     -moz-transform: skew(15deg);
     transform: skew(15deg);
@@ -96,41 +124,41 @@ pre {
 
 .btn-signup,
 .btn-edit {
-    background-color: #188181;
+    background-color: var(--color-primary-brand); /* Was teal */
     color: #fff;
 }
 
 .btn-signup:hover,
 .btn-signup:active {
     background-color: #fff;
-    color: #23BBBB;
+    color: var(--color-primary-brand-light); /* Was teal-light */
 }
 
 .link {
-    color: #23BBBB;
+    color: var(--color-link); /* Was teal-light */
     text-decoration: none;
 }
 
 .link:hover,
 .link:active {
-    color: #445261;
+    color: var(--color-link-hover); /* Was dark-bg */
     text-decoration: underline;
 }
 
 .btn-like {
-    color: #E84610;
+    color: var(--color-primary-brand); /* Was orange */
     border: none;
     background: transparent;
 }
 
 .btn-delete {
     color: #fff;
-    background: #E84610;
+    background: var(--color-danger); /* Kept orange for destructive */
 }
 
 .btn-like:hover,
 .btn-like:active {
-    color: #E84610;
+    color: var(--color-primary-brand-light); /* Was orange */
     background: transparent;
     border: none;
 }
@@ -153,19 +181,19 @@ pre {
 
 .navbar {
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-  font-family: 'Lato', sans-serif;
+  font-family: var(--font-stack-brand);
   letter-spacing: 0.2px;
   z-index: 1000;
 }
 
 .navbar-brand {
   font-weight: 700;
-  color: #1A2C42 !important;
+  color: var(--color-text-dark) !important;
   display: flex;
   align-items: center;
 }
 .navbar-brand:hover {
-  color: #E86A33 !important;
+  color: var(--color-primary-brand) !important; /* Was orange */
   text-decoration: none;
 }
 .navbar-brand span {
@@ -175,28 +203,28 @@ pre {
 
 /* Links */
 .navbar-nav .nav-link {
-  color: #1A2C42;
+  color: var(--color-text-dark);
   font-weight: 600;
   padding: 10px 18px;
   border-radius: 6px;
   transition: all 0.25s ease;
 }
 .navbar-nav .nav-link:hover {
-  background-color: rgba(35,187,187,0.12);
-  color: #E86A33 !important;
+  background-color: rgba(103, 58, 183, 0.1); /* Light purple bg */
+  color: var(--color-primary-brand) !important; /* Was orange */
 }
 
 /* Active link */
 .navbar-nav .nav-link.active,
 .navbar-nav .nav-link[aria-current="page"] {
-  background-color: #1A2C42 !important;
-  color: #FBF9F6 !important;
+  background-color: var(--color-primary-brand) !important; /* Was dark text */
+  color: var(--color-text-light) !important;
   font-weight: 700;
   border-radius: 6px;
   box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
 }
 .navbar-nav .nav-link.active:hover {
-  background-color: #E86A33 !important;
+  background-color: var(--color-link-hover) !important; /* Darken purple */
 }
 
 /* Active underline accent */
@@ -205,7 +233,7 @@ pre {
   display: block;
   height: 3px;
   width: 100%;
-  background-color: #E86A33;
+  background-color: var(--color-primary-brand-light); /* Was orange */
   border-radius: 2px;
   margin-top: 3px;
 }
@@ -213,13 +241,13 @@ pre {
 /* Navbar slogan */
 .navbar-text {
   font-size: 0.95rem;
-  color: #6c757d;
+  color: var(--color-text-muted);
   font-style: italic;
 }
 
 /* Dropdown for mobile */
 .navbar-collapse {
-  background-color: #fff;
+  background-color: var(--bg-light);
   border-top: 1px solid rgba(0,0,0,0.05);
   padding-top: 10px;
 }
@@ -240,12 +268,12 @@ pre {
 
 .post-link {
     text-decoration: none;
-    color: #445261;
+    color: var(--bg-dark);
 }
 
 .post-link:hover,
 .page-link {
-    color: #E84610;
+    color: var(--color-primary-brand); /* Was orange */
 }
 
 .post-title {
@@ -261,7 +289,7 @@ pre {
 /* Poem collection */
 .text-muted.small.mb-2 {
   font-style: italic;
-  color: #6c757d;
+  color: var(--color-text-muted);
 }
 
 /* ================================================
@@ -276,7 +304,7 @@ pre {
   margin-bottom: 16px;
 }
 .sa-field-error {
-  color: #b3261e;
+  color: #b3261e; /* This is a good error red */
   font-size: 0.9rem;
   margin-top: 6px;
 }
@@ -290,7 +318,6 @@ pre {
   padding: 12px 0 4px;
 }
 
-/* Core layout */
 .social-login-section .socialaccount_providers {
   list-style: none;
   padding: 0;
@@ -304,38 +331,31 @@ pre {
   margin-bottom: 12px;
 }
 
-/* Social buttons (pill style) */
 .social-login-section .socialaccount_providers a {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-
   width: 100%;
   min-height: 44px;
   padding: 10px 16px 10px 54px;
   border-radius: 999px;
-
   font-weight: 700;
   font-size: 1rem;
   line-height: 1.2;
   text-decoration: none;
-
   position: relative;
   isolation: isolate;
-
   color: #fff !important;
   border: 1px solid rgba(0,0,0,0.05);
   box-shadow: 0 6px 14px rgba(0,0,0,0.06), 0 2px 4px rgba(0,0,0,0.06);
   transition: transform 0.12s ease, box-shadow 0.12s ease, background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Remove default pseudo icons */
 .social-login-section .socialaccount_providers a::before {
   content: none;
 }
 
-/* Icon chip (left side) */
 .social-login-section .social-icon {
   position: absolute;
   left: 10px;
@@ -344,12 +364,13 @@ pre {
   padding: 6px;
   border-radius: 50%;
   background: rgba(255,255,255,0.92);
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.75), 0 2px 6px rgba(0,0,0,0.08);
+  box-shadow: inset 0 0 0 1px rgba(255,255,0.75), 0 2px 6px rgba(0,0,0,0.08);
 }
 
 /* Brand themes */
 .social-login-section .google a {
-  background: linear-gradient(180deg, #23BBBB 0%, #1FA9A9 100%);
+  /* Changed from teal to new brand purple */
+  background: linear-gradient(180deg, var(--color-primary-brand-light) 0%, var(--color-primary-brand) 100%);
 }
 .social-login-section .facebook a {
   background: linear-gradient(180deg, #495867 0%, #3F4C59 100%);
@@ -369,8 +390,8 @@ pre {
 .social-login-section .socialaccount_providers a:focus-visible {
   outline: none;
   box-shadow:
-    0 0 0 3px #FBF9F6,
-    0 0 0 6px #E86A33,
+    0 0 0 3px var(--bg-body),
+    0 0 0 6px var(--color-primary-brand-light), /* Was orange */
     0 8px 18px rgba(0,0,0,0.14);
 }
 
@@ -427,11 +448,11 @@ pre {
   align-items: flex-start;
   min-height: 80vh;
   padding-top: 60px;
-  background-color: #F9FAFC;
+  background-color: var(--bg-body);
 }
 
 .login-card {
-  background: #fff;
+  background: var(--bg-light);
   border-radius: 16px;
   box-shadow: 0 6px 22px rgba(0,0,0,0.06), 0 2px 6px rgba(0,0,0,0.08);
   padding: 40px 50px;
@@ -443,7 +464,7 @@ pre {
 
 .login-title {
   font-size: 1.8rem;
-  color: #1A2C42;
+  color: var(--color-text-dark);
   font-weight: 700;
   margin-bottom: 16px;
 }
@@ -474,33 +495,25 @@ pre {
 
 /* about profiles section */
 .card-img-top {
-    /* Ensures the image fills the 75% width of the card container */
     width: 100%; 
-    /* Set a consistent, fixed height for all images, e.g., 400px */
     height: 400px; 
-    /* Ensures the image covers the area without stretching */
     object-fit: cover; 
 }
-/* If you still want 75% width, add a wrapper div: */
 .image-wrapper {
     width: 100%;
     height: 60%;
-    margin: 0 auto; /* To center the 75% wrapper */
+    margin: 0 auto; 
     overflow: hidden;
 }
 
 /* back link about page */
 .back-link {
-    /* Set the color */
-    color: #445261;
-    /* Remove the underline */
+    color: var(--bg-dark);
     text-decoration: none; 
 }
 
 .back-link:hover {
-    /* Add a subtle underline on hover for accessibility */
     text-decoration: underline; 
-    /* Slightly darken color on hover */
     color: #2c3640; 
 }
 
@@ -517,7 +530,7 @@ pre {
 
 /* Cover image */
 .cover-art {
-  margin-bottom: 2.5rem;           /* space below cover */
+  margin-bottom: 2.5rem;
 }
 .cover-art img {
   max-height: 380px;
@@ -527,13 +540,13 @@ pre {
 
 /* Quotes grid */
 .quote-row {
-  margin-bottom: 2.5rem;           /* space below quotes before hero */
+  margin-bottom: 2.5rem;
 }
 
 .quote-card {
   padding: 0.75rem 0 0.5rem 1rem;
-  border-left: 4px solid #e86a33;  /* warm accent */
-  background-color: #fff;
+  border-left: 4px solid var(--color-primary-brand);  /* Was orange */
+  background-color: var(--bg-light);
   border-radius: 6px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   transition: transform .2s ease, box-shadow .2s ease;
@@ -547,7 +560,7 @@ pre {
 .quote-card blockquote {
   font-size: 1.15rem;
   line-height: 1.5;
-  color: #1a2c42;
+  color: var(--color-text-dark);
   margin: 0;
 }
 
@@ -578,23 +591,23 @@ pre {
 
 /* Card base */
 .poetry-list .card {
-  background: #fff;
+  background: var(--bg-light);
   border: 1px solid #eee;
-  border-radius: 16px;                /* unify radius to 16px (you used 14/16) */
-  overflow: hidden;                   /* keeps zoomed image inside */
+  border-radius: 16px;
+  overflow: hidden;
   transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
 }
 .poetry-list .card:hover {
   transform: translateY(-4px);
   box-shadow: 0 10px 24px rgba(0,0,0,.10), 0 2px 6px rgba(0,0,0,.06);
-  border-color: rgba(232,106,51,.25);
+  border-color: rgba(103, 58, 183, 0.25); /* Purple border */
 }
 
 /* Image (default) */
 .poetry-list .card-img-top {
   display: block;
   width: 100%;
-  height: 260px;                      /* base height */
+  height: 260px;
   object-fit: cover;
   border-top-left-radius: 14px;
   border-top-right-radius: 14px;
@@ -603,13 +616,11 @@ pre {
 }
 .poetry-list .card:hover .card-img-top { transform: scale(1.03); }
 
-/* XS–MD tweak */
 @media (max-width: 768px) {
   .poetry-list .card-img-top { height: 220px; }
   .poetry-list .card { margin-bottom: 1rem; }
 }
 
-/* Placeholder look */
 .poetry-list .card-img-top[alt="Placeholder image"] {
   background-color: #f5f6f8;
   opacity: 0.85;
@@ -620,22 +631,29 @@ pre {
 /* Titles & meta */
 .poetry-list .card-title a.post-link {
   text-decoration: none;
-  color: #1A2C42;                     /* Midnight Teal */
+  color: var(--color-text-dark);
   font-weight: 700;
 }
-.poetry-list .card-title a.post-link:hover { color: #E86A33; } /* Terracotta */
+.poetry-list .card-title a.post-link:hover { color: var(--color-primary-brand); } /* Was orange */
 .poetry-list .text-muted.small { opacity: .85; }
 
 /* Featured badge + flag */
-.poetry-list .badge.bg-warning { background: #E86A33 !important; color: #fff !important; }
-.poetry-list .card:hover .badge.bg-warning { box-shadow: 0 0 0 3px rgba(232,106,51,.10); }
+.poetry-list .badge.bg-warning { 
+  background: var(--color-primary-brand) !important; /* Was orange */
+  color: #fff !important; 
+}
+.poetry-list .card:hover .badge.bg-warning { 
+  box-shadow: 0 0 0 3px rgba(103, 58, 183, 0.1); /* Purple glow */
+}
 
 /* Featured orange title */
 .poetry-list .card.is-featured .card-title a.post-link {
-  color: #E86A33; transition: color .2s ease;
+  color: var(--color-primary-brand); /* Was orange */
+  transition: color .2s ease;
 }
 .poetry-list .card.is-featured .card-title a.post-link:hover {
-  color: #f4a300; text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+  color: var(--color-link-hover); /* Was yellow */
+  text-shadow: 0 1px 2px rgba(0,0,0,0.1);
 }
 
 /* Featured flag overlay */
@@ -644,7 +662,8 @@ pre {
   padding: 4px 12px 4px 4px; border-radius: 2px;
   font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .5px;
   color: #fff; z-index: 2;
-  background: linear-gradient(135deg, #f6b44a, #e86a33);
+  /* Changed from orange to purple gradient */
+  background: linear-gradient(135deg, var(--color-primary-brand-light), var(--color-primary-brand));
   box-shadow: 0 3px 8px rgba(0,0,0,0.15);
   text-shadow: 0 1px 1px rgba(0,0,0,0.15);
 }
@@ -660,19 +679,21 @@ pre {
 
 /* Footers & gradients */
 .poetry-list .card .card-footer {
-  background: linear-gradient(#fff, #FBF9F6);
+  background: linear-gradient(#fff, var(--bg-body));
   border-top: 1px solid #eee;
 }
 .poetry-list h2 { font-weight: 800; letter-spacing: .2px; }
 
 /* Search / pagination polish */
 .poetry-list .form-control { box-shadow: 0 2px 10px rgba(0,0,0,.04); border-radius: 12px; }
-.poetry-list .btn.btn-secondary { background:#1A2C42; border-color:#1A2C42; border-radius: 999px; font-weight: 700; }
-.poetry-list .btn.btn-secondary:hover { background:#E86A33; border-color:#E86A33; }
+.poetry-list .btn.btn-secondary { background:var(--color-text-dark); border-color:var(--color-text-dark); border-radius: 999px; font-weight: 700; }
+.poetry-list .btn.btn-secondary:hover { background:var(--color-primary-brand); border-color:var(--color-primary-brand); } /* Was orange */
 .poetry-list .pagination .page-link { border-radius: 999px; }
 .poetry-list .pagination .page-item.active .page-link,
 .poetry-list .pagination .page-link:hover {
-  background:#1A2C42; color:#FBF9F6; border-color:#1A2C42;
+  background:var(--color-primary-brand); /* Was dark text */
+  color:var(--color-text-light); 
+  border-color:var(--color-primary-brand);
 }
 
 /* Image micro-zoom wrapper */
@@ -682,8 +703,8 @@ pre {
 
 /* Featured: border glow on hover */
 .poetry-list .card.is-featured:hover {
-  border-color: rgba(232,106,51,.45);
-  box-shadow: 0 12px 28px rgba(0,0,0,.10), 0 0 0 3px rgba(232,106,51,.10);
+  border-color: rgba(103, 58, 183, 0.45); /* Purple */
+  box-shadow: 0 12px 28px rgba(0,0,0,.10), 0 0 0 3px rgba(103, 58, 183, 0.1); /* Purple */
 }
 
 /* Container width tweak */
@@ -696,7 +717,6 @@ pre {
 /* ALL POEMS (6-per-row) COMPACT TWEAKS @ XXL */
 .poetry-list .row .col-xxl-2 .card { border-radius: 14px; overflow: hidden; }
 
-/* Aspect-ratio thumbnails only in the 6-up cells (overrides fixed heights above) */
 .poetry-list .row .col-xxl-2 .card-img-top {
   width: 100%;
   height: auto;
@@ -709,10 +729,9 @@ pre {
 }
 
 .poetry-list .row .col-xxl-2 .card-body { padding: .65rem .75rem; }
-.poetry-list .row .col-xxl-2 .card-title { font-size: 1rem; line-height: 1.15; margin-bottom: .25rem !important; }
-.poetry-list .row .col-xxl-2 .card-footer { background:#fff; border-top:1px solid #eee; padding:.45rem .75rem; font-size:.8125rem; }
+.poetry-list .row .col-xxl-2 .card-title { font-size: 1.25rem; line-height: 1.15; margin-bottom: .25rem !important; }
+.poetry-list .row .col-xxl-2 .card-footer { background:var(--bg-light); border-top:1px solid #eee; padding:.45rem .75rem; font-size:.8125rem; }
 
-/* Line clamps for even heights */
 .poetry-list .row .col-xxl-2 .card-title a.post-link {
   display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden;
 }
@@ -723,12 +742,10 @@ pre {
 .poetry-list .row .col-xxl-2 .text-muted.small { margin-bottom: .25rem !important; }
 .poetry-list .row .col-xxl-2 .card:hover { transform: translateY(-2px); box-shadow: 0 8px 18px rgba(0,0,0,.08), 0 2px 6px rgba(0,0,0,.05); }
 
-/* Huge screens: slightly taller thumbs */
 @media (min-width: 1600px) {
   .poetry-list .row .col-xxl-2 .card-img-top { aspect-ratio: 4 / 3; }
 }
 
-/* 481–575px: optional clamp of single-col width */
 @media (min-width: 481px) and (max-width: 575.98px) {
   .poetry-list .row > [class*="col-12"] {
     max-width: 520px;
@@ -742,29 +759,23 @@ pre {
   }
 }
 
-/* Space between Featured and All Poems sections */
+/* Spacing */
 .poetry-list h2.mt-2.mb-2 {
-  margin-top: 2.5rem !important; /* adds gentle separation */
+  margin-top: 2.5rem !important;
 }
-
-/* Add space above Featured Poems */
 .poetry-list h2.mt-2.mb-3 {
-  margin-top: 2.5rem !important; /* gentle gap after search bar */
+  margin-top: 2.5rem !important;
 }
-
-/* Add space below pagination (bottom of page) */
 .poetry-list nav[aria-label="Poem pages"] {
-  margin-bottom: 2.5rem; /* keeps pagination lifted from footer */
+  margin-bottom: 2.5rem;
 }
-
-/* Add space between All Poems grid and pagination */
 .poetry-list nav[aria-label="Poem pages"] {
-  margin-top: 2rem;  /* creates space above the pagination */
+  margin-top: 2rem;
 }
 
-/* Center the poem grids like the quotes */
+/* Grid & Search Layout */
 .poetry-list .center-grid {
-  max-width: 1200px;      /* tweak: 1080–1240 depending on taste */
+  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -773,27 +784,20 @@ pre {
   .poetry-list .center-grid { max-width: 1280px; }
 }
 
-/* Center & resize the search bar */
 .poetry-list .search-form {
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
 }
-
-/* Align search bar to the left */
 .poetry-list .search-form {
   max-width: 700px;
-  margin-left: 0;           /* aligned to left */
+  margin-left: 0;
   margin-right: auto;
 }
-
-/* Ensure full width within its container */
 .poetry-list .search-input-wrapper {
   max-width: 600px;
   width: 100%;
 }
-
-/* Style input cleanly */
 .poetry-list .search-input {
   flex: 1;
   border-radius: 999px;
@@ -802,7 +806,6 @@ pre {
   box-shadow: 0 2px 10px rgba(0,0,0,.04);
 }
 
-/* Compact layout for mobile */
 @media (max-width: 768px) {
   .poetry-list .search-form {
     max-width: 100%;
@@ -813,18 +816,16 @@ pre {
   }
 }
 
-/* === Featured cards: keep image ratio, not fixed px height === */
+/* Featured cards: aspect ratio */
 .poetry-list .card.is-featured .card-img-top {
   width: 100%;
-  height: auto;              /* stop forcing a pixel height */
-  aspect-ratio: 21 / 9;      /* wide banner feel for featured */
+  height: auto;
+  aspect-ratio: 21 / 9;
   object-fit: cover;
   display: block;
   border-top-left-radius: 16px;
   border-top-right-radius: 16px;
 }
-
-/* If you wrap the img in .image-wrap, let the wrapper own the ratio */
 .poetry-list .card.is-featured .image-wrap {
   aspect-ratio: 21 / 9;
   overflow: hidden;
@@ -837,7 +838,6 @@ pre {
   object-fit: cover;
 }
 
-/* Narrow screens: use a less-wide ratio so it doesn’t get too short */
 @media (max-width: 992px) {
   .poetry-list .card.is-featured .card-img-top,
   .poetry-list .card.is-featured .image-wrap { aspect-ratio: 16 / 9; }
@@ -849,7 +849,6 @@ pre {
 
 /* ================================================
    UTILITY CLASSES
-   (Helpers)
 =================================================== */
 
 .thin {
@@ -857,15 +856,15 @@ pre {
 }
 
 .light-bg {
-    background-color: #fff;
+    background-color: var(--bg-light);
 }
 
 .dark-bg {
-    background-color: #445261;
+    background-color: var(--bg-dark);
 }
 
 .main-bg {
-    background-color: #F9FAFC;
+    background-color: var(--bg-body);
 }
 
 .faded {
