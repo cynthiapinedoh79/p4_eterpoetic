@@ -719,6 +719,47 @@ Add space below pagination (bottom of page)
   .poetry-list .center-grid { max-width: 1280px; }
 }
 
+/* Center & resize the search bar */
+.poetry-list .search-form {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Align search bar to the left */
+.poetry-list .search-form {
+  max-width: 700px;
+  margin-left: 0;           /* aligned to left */
+  margin-right: auto;
+}
+
+/* Ensure full width within its container */
+.poetry-list .search-input-wrapper {
+  max-width: 600px;
+  width: 100%;
+}
+
+/* Style input cleanly */
+.poetry-list .search-input {
+  flex: 1;
+  border-radius: 999px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,.04);
+}
+
+/* Compact layout for mobile */
+@media (max-width: 768px) {
+  .poetry-list .search-form {
+    max-width: 100%;
+  }
+  .poetry-list .search-input-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+
 
 /* ================================================
    END OF POETRY LIST STYLING
