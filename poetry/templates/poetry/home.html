@@ -4,42 +4,48 @@
 
 {% block content %}
 
-  {# === Section 1: Hero + Quotes === #}
-  <section class="poetry-hero py-5">
-    <div class="container-xxl">
+  {% comment %}
+    This 'if' block checks if we are on Page 1.
+    The hero/quotes section will only appear on the first page.
+  {% endcomment %}
+  {% if page_obj.number == 1 %}
+    {# === Section 1: Hero + Quotes === #}
+    <section class="poetry-hero py-5">
+      <div class="container-xxl">
 
-        <div class="cover-art mb-4">
-        <img
-          src="{% if cover_image_url %}{{ cover_image_url }}{% else %}{% static 'images/poetry_cover.jpg' %}{% endif %}"
-          alt="Poetry cover"
-          class="img-fluid w-100 rounded-0 shadow-sm">
+          <div class="cover-art mb-4">
+          <img
+            src="{% if cover_image_url %}{{ cover_image_url }}{% else %}{% static 'images/poetry_cover.jpg' %}{% endif %}"
+            alt="Poetry cover"
+            class="img-fluid w-100 rounded-0 shadow-sm">
+        </div>
+
+        <div class="row g-4 quote-row">
+          {% for q in quotes %}
+            <div class="col-12 col-md-6 col-xl-3">
+              <figure class="quote-card h-100">
+                <blockquote class="mb-3">“{{ q.text }}”</blockquote>
+                <figcaption class="author">{{ q.author }}</figcaption>
+              </figure>
+            </div>
+          {% empty %}
+            <div class="col-12">
+              <p class="text-muted">No quotes yet.</p>
+            </div>
+          {% endfor %}
+        </div>
+
+        <div class="hero-art mx-auto mb-5">
+          <img
+            src="{% if hero_image_url %}{{ hero_image_url }}{% else %}{% static 'images/poetry_hero.jpg' %}{% endif %}"
+            alt="Poetry hero"
+            class="img-fluid rounded-4 shadow-sm w-100"
+          >
+        </div>
+
       </div>
-
-      <div class="row g-4 quote-row">
-        {% for q in quotes %}
-          <div class="col-12 col-md-6 col-xl-3">
-            <figure class="quote-card h-100">
-              <blockquote class="mb-3">“{{ q.text }}”</blockquote>
-              <figcaption class="author">{{ q.author }}</figcaption>
-            </figure>
-          </div>
-        {% empty %}
-          <div class="col-12">
-            <p class="text-muted">No quotes yet.</p>
-          </div>
-        {% endfor %}
-      </div>
-
-      <div class="hero-art mx-auto mb-5">
-        <img
-          src="{% if hero_image_url %}{{ hero_image_url }}{% else %}{% static 'images/poetry_hero.jpg' %}{% endif %}"
-          alt="Poetry hero"
-          class="img-fluid rounded-4 shadow-sm w-100"
-        >
-      </div>
-
-    </div>
-  </section>
+    </section>
+  {% endif %}
 
   {# === Section 2: Poem list (reuses your partial) === #}
   <section class="py-4">
