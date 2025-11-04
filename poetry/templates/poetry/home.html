@@ -8,15 +8,13 @@
   <section class="poetry-hero py-5">
     <div class="container-xxl">
 
-        <!-- Cover image -->
-      <div class="cover-art mb-4">
+        <div class="cover-art mb-4">
         <img
           src="{% if cover_image_url %}{{ cover_image_url }}{% else %}{% static 'images/poetry_cover.jpg' %}{% endif %}"
           alt="Poetry cover"
           class="img-fluid w-100 rounded-0 shadow-sm">
       </div>
 
-      <!-- Quotes grid -->
       <div class="row g-4 quote-row">
         {% for q in quotes %}
           <div class="col-12 col-md-6 col-xl-3">
@@ -32,7 +30,6 @@
         {% endfor %}
       </div>
 
-      <!-- Hero image -->
       <div class="hero-art mx-auto mb-5">
         <img
           src="{% if hero_image_url %}{{ hero_image_url }}{% else %}{% static 'images/poetry_hero.jpg' %}{% endif %}"

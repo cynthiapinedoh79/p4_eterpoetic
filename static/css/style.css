@@ -1,4 +1,4 @@
-/* build: 2025-11-04-2 */
+/* build: 2025-11-04-3 */
 
 :root {
   /* ÉterPoetico Palette mapped to original structure */
@@ -17,7 +17,7 @@
   --color-text-muted: #8F8D8B; /* Muted Stone Gray */
   
   --bg-body: #FBF9F6; /* Soft Linen White */
-  --bg-dark: #4C3A51; /* Plum Ink (Now used for primary buttons) */
+  --bg-dark: #4c3a51; /* Plum Ink (Now used for primary buttons) */
   --bg-light: #FFFFFF; /* Surface White */
 
   /* Fonts */
@@ -92,8 +92,8 @@ pre {
     margin-top: 10px;
     overflow: hidden;
     position: relative;
-    display: inline-block;
-    height: 33vh;
+    display: block; /* Changed from inline-block */
+    min-height: 33vh; /* Changed from height */
     width: 100%;
 }
 
@@ -106,6 +106,12 @@ pre {
 .masthead-image {
     position: relative;
     overflow: hidden;
+}
+
+/* This NEW rule makes the masthead image fill its column */
+.masthead-image .scale {
+    height: 100%;
+    object-fit: cover;
 }
 
 .masthead-image:after {
@@ -606,8 +612,12 @@ pre {
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .cover-art { margin-bottom: 1.5rem; }
+  .cover-art img {
+    max-height: 250px; /* Adjusts max-height for smaller screens */
+  }
   .quote-row { margin-bottom: 1.5rem; }
   .poetry-hero { padding-top: 2rem; padding-bottom: 2rem; }
+}
 }
 
 /* ================================================
@@ -739,9 +749,9 @@ pre {
   color: var(--color-text-light);
 }
 .poetry-list .btn.btn-secondary:hover { 
-  background:var(--color-link); /* Plum Ink */
-  border-color:var(--color-link);
-  color: var(--color-text-light);
+  background: var(--color-danger); /* Rosewood Red */
+  border-color: var(--color-danger); /* Rosewood Red */
+  color: var(--color-danger-text); /* White text */
 }
 .poetry-list .pagination .page-link { border-radius: 999px; }
 .poetry-list .pagination .page-item.active .page-link,
@@ -942,3 +952,41 @@ pre {
 .approval {
     color: rgb(222, 146, 168);
 }
+
+/* ================================================
+   FIX: NAVBAR MOBILE STYLES
+=================================================== */
+
+@media (max-width: 991.98px) {
+  /* Targets links only inside the collapsed mobile menu.
+    'fit-content' makes the link only as wide as its text + padding.
+  */
+  .navbar-collapse .navbar-nav .nav-link {
+    width: fit-content;
+    width: -moz-fit-content; /* Firefox support */
+    margin-bottom: 4px; /* Adds vertical spacing */
+  }
+
+  /* Hides the orange underline on the active link, 
+    which looks odd on a "pill" shape.
+  */
+  .navbar-collapse .navbar-nav .nav-link.active::after {
+    display: none;
+  }
+}
+
+/* ================================================
+   Featured Card Enlargement
+=================================================== */
+
+.poetry-list .card.is-featured {
+    transform: scale(1.05); /* Makes the card 5% larger */
+    transition: transform 0.2s ease-in-out; /* Smooth transition for hover */
+    z-index: 1; /* Ensures it's on top if cards overlap slightly */
+}
+
+/* Optional: Add a subtle hover effect to featured cards */
+.poetry-list .card.is-featured:hover {
+    transform: scale(1.05); /* Slightly larger on hover */
+}
+
