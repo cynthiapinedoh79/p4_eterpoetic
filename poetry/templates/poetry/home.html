@@ -1,4 +1,3 @@
-{# poetry/templates/poetry/home.html #}
 {% extends "base.html" %}
 {% load static %}
 
@@ -15,10 +14,15 @@
 
           <div class="cover-art mb-4">
           <img
-            src="{% if cover_image_url %}{{ cover_image_url }}{% else %}{% static 'images/poetry_cover.jpg' %}{% endif %}"
+            src="{% if cover_image_url %}{{ cover_image_url }}{% else %}{% static 'images/poetry_cover.png' %}{% endif %}"
             alt="Poetry cover"
             class="img-fluid w-100 rounded-0 shadow-sm">
         </div>
+
+        {# --- NEW TITLE FOR QUOTES --- #}
+        <h2 class="text-center mb-4" style="font-weight: 300; color: var(--color-text-dark);">
+          Inspiration for the Ages
+        </h2>
 
         <div class="row g-4 quote-row">
           {% for q in quotes %}
@@ -37,7 +41,7 @@
 
         <div class="hero-art mx-auto mb-5">
           <img
-            src="{% if hero_image_url %}{{ hero_image_url }}{% else %}{% static 'images/poetry_hero.jpg' %}{% endif %}"
+            src="{% if hero_image_url %}{{ hero_image_url }}{% else %}{% static 'images/poetry_hero.png' %}{% endif %}"
             alt="Poetry hero"
             class="img-fluid rounded-4 shadow-sm w-100"
           >
@@ -49,6 +53,18 @@
 
   {# === Section 2: Poem list (reuses your partial) === #}
   <section class="py-4">
+
+    {# --- NEW DYNAMIC TITLE FOR LIST --- #}
+    <div class="container-xxl">
+      <h2 class="text-center mb-4" style="font-weight: 400; color: var(--color-text-dark);">
+        {% if page_mode == 'collections' %}
+          Explore the Collections
+        {% else %}
+          Poems &amp; Search Results
+        {% endif %}
+      </h2>
+    </div>
+
     {% include "poetry/_poem_list_section.html" %}
   </section>
 
