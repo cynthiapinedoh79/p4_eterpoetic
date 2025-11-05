@@ -1,0 +1,207 @@
+/* About app styles (scoped) */
+
+/* hero/profile image on main About page */
+.about-page .profile-image{
+  width: 75%;
+  height: auto;
+  margin-bottom: 30px;
+  object-fit: cover;
+}
+
+/* card image wrapper on profile list cards */
+.about-page .image-wrapper{
+  width: 100%;
+  height: 60%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* card images inside list cards */
+.about-page .card-img-top{
+  width: 100%;
+  height: 400px;           /* your original about rule */
+  object-fit: cover;
+  display: block;
+}
+
+/* “Back” link styling */
+.about-page .back-link{
+  color: var(--color-text-dark);
+  text-decoration: none;
+}
+.about-page .back-link:hover{
+  text-decoration: underline;
+  color: var(--color-text-dark);
+}
+
+/* keep card look consistent on the profile grid */
+.about-page .card.light-bg{
+  background-color: var(--bg-light);
+  border-radius: 16px;
+  border: 1px solid rgba(0,0,0,.05);
+}
+
+/* ensure the ‘View Full Profile’ button inherits your global button look */
+.about-page .btn.btn-signup{
+  font-weight: 700;
+}
+
+/* spacing tweaks */
+.about-page .mb-4.border-bottom.pb-2{
+  border-color: rgba(0,0,0,.12) !important;
+}
+
+/* responsive: reduce tall image on small screens */
+@media (max-width: 575.98px){
+  .about-page .card-img-top{
+    height: 280px;
+  }
+  .about-page .profile-image{
+    width: 90%;
+  }
+}
+
+/* copied exactly from original style.css */
+.about-page .profile-image { width: 75%; }
+.about-page .scale { width: 100%; height: auto; }
+
+/* ================================================
+   ABOUT PAGE LAYOUT FIX (restores spacing + text)
+=================================================== */
+
+/* main container spacing */
+.about-page .container {
+  margin-top: 4rem;
+  margin-bottom: 4rem;
+}
+
+/* ensure image and text columns align nicely */
+.about-page .row {
+  align-items: flex-start;
+}
+
+/* about content typography */
+.about-page h2 {
+  font-family: var(--font-stack-brand);
+  color: var(--color-text-dark);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.about-page p,
+.about-page td,
+.about-page th {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--color-text-body);
+}
+
+/* table from about section */
+.about-page table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.about-page th,
+.about-page td {
+  border: 1px solid #000;
+  padding: 6px 10px;
+  vertical-align: top;
+}
+
+/* updated-on paragraph */
+.about-page .text-end em {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+}
+
+/* restore button section */
+.about-page .btn.btn-signup {
+  font-size: 0.95rem;
+  padding: 8px 20px;
+  border-radius: 999px;
+  background-color: var(--bg-dark);
+  color: var(--color-text-light);
+  font-weight: 700;
+  transition: all 0.2s ease-in-out;
+}
+.about-page .btn.btn-signup:hover {
+  background-color: var(--color-primary-brand);
+  color: var(--color-text-light);
+}
+
+/* ensure collab form card stays separated from footer */
+.about-page .collab-page {
+  margin-top: 3rem;
+  margin-bottom: 4rem;
+}
+
+.about-page .profile-image { width: 75%; height:auto; object-fit:cover; }
+.about-page .image-wrapper{ width:100%; height:60%; margin:0 auto; overflow:hidden; }
+.about-page .card-img-top{ width:100%; height:400px; object-fit:cover; display:block; }
+.about-page .back-link{ color:var(--color-text-dark); text-decoration:none; }
+.about-page .back-link:hover{ text-decoration:underline; color:var(--color-text-dark); }
+/* from original */
+.about-page .scale { width:100%; height:auto; }
+
+/* ——— Ensure the first row is truly two columns on md+ ——— */
+@media (min-width: 768px) {
+  .about-page .row:first-of-type {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    gap: 1.25rem;        /* spacing between the two cols */
+  }
+  .about-page .col-md-4 {
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
+  }
+  .about-page .col-md-8 {
+    flex: 0 0 66.6667%;
+    max-width: 66.6667%;
+  }
+}
+
+/* ——— Profile image sizing exactly like before, but capped so it can't dominate ——— */
+.about-page .profile-image {
+  width: 75%;
+  max-width: 320px;     /* prevents giant image when something breaks upstream */
+  height: auto;
+  display: block;
+  margin-left: auto;    /* keep it centered in the left column (you had text-center) */
+  margin-right: auto;
+}
+
+/* keep for cards on the list page (copied from your original) */
+.about-page .image-wrapper { width:100%; height:60%; margin:0 auto; overflow:hidden; }
+.about-page .card-img-top { width:100%; height:400px; object-fit:cover; display:block; }
+
+/* back link */
+.about-page .back-link { color: var(--color-text-dark); text-decoration: none; }
+.about-page .back-link:hover { color: var(--color-text-dark); text-decoration: underline; }
+
+/* === Mobile masthead fixes (no layout change elsewhere) === */
+@media (max-width: 991.98px) {
+  /* Let content define the height; trim extra space below */
+  .masthead {
+    min-height: auto;
+    margin: 16px auto 8px;
+  }
+
+  /* Remove the forced height that creates the big gap */
+  .masthead .container .row.g-0 {
+    min-height: unset;  /* or min-height: auto; */
+  }
+
+  /* Keep the dark panel looking nice on phones */
+  .masthead-text {
+    border-radius: 16px;
+    padding: 20px;
+  }
+
+  /* Make sure the diagonal/wedge is off on mobile */
+  .masthead-image:after {
+    display: none;
+  }
+}

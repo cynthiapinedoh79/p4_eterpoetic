@@ -1,6 +1,12 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %}
 {% load static %}
 {% load crispy_forms_tags %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/blog.css' %}?v={% now 'U' %}">
+{% endblock %}
+
+{% block content %}
 
 <div class="masthead">
     <div class="container">
@@ -135,8 +141,7 @@
   </div>
 </div>
 
-
-{% endblock content %}
+{% endblock %}
 
 {% block extras %}
 <script src="{% static 'js/comments.js' %}"></script>

@@ -1,0 +1,223 @@
+/* ================================================
+   BLOG APP STYLES (copied from style.css, no changes)
+=================================================== */
+
+/* ========== Layout & image containers ========== */
+
+.card {
+    border: none;
+    background-color: transparent;
+}
+
+.image-container {
+    position: relative;
+}
+
+.image-flash {
+    position: absolute;
+    bottom: 5%;
+    min-width: 30%;
+    left: -2px;
+    background-color: var(--color-primary-brand);
+}
+
+.scale {
+    width: 100%;
+    height: auto;
+}
+
+/* ========== Masthead (post_detail header) ========== */
+
+.masthead {
+    margin-top: 10px;
+    overflow: hidden;
+    position: relative;
+    display: block; /* Changed from inline-block */
+    min-height: 33vh; /* Changed from height */
+    width: 100%;
+}
+
+.masthead-text {
+    background-color: var(--bg-dark);
+    color: var(--color-text-light);
+    position: relative;
+}
+
+.masthead-image {
+    position: relative;
+    overflow: hidden;
+}
+
+/* This NEW rule makes the masthead image fill its column */
+.masthead-image .scale {
+    height: 100%;
+    object-fit: cover;
+}
+
+.masthead-image:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 90%;
+    height: 100%;
+    width: 150%;
+    background: var(--bg-dark);
+    -webkit-transform: skew(15deg);
+    -moz-transform: skew(15deg);
+    transform: skew(15deg);
+    z-index: 100;
+}
+
+/* ========== Buttons & links ========== */
+
+.btn-signup,
+.btn-edit {
+    background-color: var(--bg-dark); /* NEW: Plum Ink */
+    color: var(--color-primary-text); /* White text */
+}
+
+.btn-signup:hover,
+.btn-signup:active {
+    background-color: var(--color-danger); /* Rosewood Red */
+    color: var(--color-danger-text); /* White text */
+}
+
+.link {
+    color: var(--color-link);
+    text-decoration: none;
+}
+
+.link:hover,
+.link:active {
+    color: var(--color-link-hover);
+    text-decoration: underline;
+}
+
+.btn-like {
+    color: var(--color-primary-brand);
+    border: none;
+    background: transparent;
+}
+
+.btn-delete {
+    color: var(--color-danger-text); /* White text */
+    background: var(--color-danger);
+}
+
+.btn-like:hover,
+.btn-like:active {
+    color: var(--color-link-hover);
+    background: transparent;
+    border: none;
+}
+
+/* FIX: EDIT/DELETE BUTTON HOVER SWAP (Revised) */
+.btn-edit:hover {
+    background-color: var(--color-primary-brand); /* NEW: Vibrant Terracotta for Edit hover */
+    color: var(--color-primary-text);      /* Stays white */
+}
+
+.btn-delete:hover {
+    background-color: var(--color-primary-brand); /* NEW: Vibrant Terracotta for Edit hover */
+    color: var(--color-primary-text);      /* Stays white */
+}
+
+/* ========== Post list & meta ========== */
+
+.author {
+    color: white;
+    margin: 4px;
+    text-transform: uppercase;
+}
+
+.post-link {
+    text-decoration: none;
+    color: var(--color-text-dark);
+}
+
+.post-link:hover,
+.page-link {
+    color: var(--color-primary-brand);
+}
+
+.post-title {
+    margin-top: 10%;
+    margin-left: 5%;
+}
+
+.post-subtitle {
+    margin-left: 5%;
+    color: lightgray;
+}
+
+/* ========== Comment helper states ========== */
+
+.faded {
+    color: rgb(172, 175, 175);
+}
+
+.approval {
+    color: rgb(222, 146, 168);
+}
+
+/* ========== (Optional) Mobile navbar tweaks carried over ========== */
+/* Included here only if your blog pages rely on the same collapsed navbar */
+
+@media (max-width: 991.98px) {
+  .navbar-collapse .navbar-nav .nav-link {
+    width: fit-content;
+    width: -moz-fit-content; /* Firefox support */
+    margin-bottom: 4px;
+  }
+  .navbar-collapse .navbar-nav .nav-link.active::after {
+    display: none;
+  }
+}
+
+/* about profiles section */
+.card-img-top {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+.image-wrapper {
+  width: 100%;
+  height: 60%;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* back link about page */
+.back-link { color: var(--color-text-dark); text-decoration: none; }
+.back-link:hover { text-decoration: underline; color: var(--color-text-dark); }
+
+
+/* BLOG INDEX: normalize thumbnail size so cards align */
+.left .card-img-top {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 5 / 4;   /* consistent crop */
+  object-fit: cover;     /* fill nicely */
+}
+
+/* keep the author flash pinned cleanly over images */
+.left .image-container {
+  position: relative;
+  overflow: hidden;      /* hides any bleed from object-fit */
+}
+
+/* Tighten space under the header */
+.masthead { margin-bottom: 12px; }
+
+/* On small screens let the header size to its content (removes big blank gap) */
+@media (max-width: 991.98px) {
+  .masthead { min-height: auto; } /* overrides the 33vh only on mobile/tablet */
+}
+
+/* Stabilize masthead height on browser zoom-out */
+.masthead {
+  min-height: auto;              /* override fixed vh height */
+  height: auto;                  /* ensure it collapses naturally */
+  margin-bottom: 12px;           /* keep same spacing */
+}
