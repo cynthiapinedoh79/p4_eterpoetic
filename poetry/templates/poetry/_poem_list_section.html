@@ -1,5 +1,6 @@
 {% load static %}
 {% static 'images/placeholder.png' as PLACEHOLDER_IMG %}
+{% static 'images/placeholder_coll.png' as PLACEHOLDER_COLL_IMG %}
 
 <div class="container mt-4 poetry-list">
 
@@ -8,13 +9,11 @@
     {% if total %}<span class="text-muted">{{ total }} result{{ total|pluralize }}</span>{% endif %}
   </div>
 
-  <!-- Search & Filter Form -->
   <form method="get" class="search-form d-flex flex-column flex-md-row justify-content-center align-items-center gap-2 mb-4">
     <input type="text" class="form-control search-input" name="q" value="{{ q }}" placeholder="Search Poems (ES/EN)">
     
     <select class="form-select search-input" name="collection" aria-label="Filter by collection" style="min-width: 200px;">
       
-      <!-- This is the new logic for the dropdown -->
       <option value="" {% if not current_collection_slug %}selected{% endif %}>
         All Collections
       </option>
@@ -36,8 +35,7 @@
       {% endif %}
     </div>
   </form>
-
-
+  
   {% comment %}
   =======================================================
   =                                                     =
@@ -51,12 +49,11 @@
       <div class="row g-4">
         {% for collection in page_obj.object_list %}
           <div class="col-12 col-sm-6 col-lg-3 col-xxl-2">
-            <!-- This is a new card type for collections -->
             <a href="?collection={{ collection.slug }}" class="card text-decoration-none collection-album-card h-100 shadow-sm">
               {% if collection.collection_image and "placeholder" not in collection.collection_image.url %}
                 <img src="{{ collection.collection_image.url }}" class="card-img-top" alt="{{ collection.name_en }}">
               {% else %}
-                <img src="{{ PLACEHOLDER_IMG }}" class="card-img-top" alt="Placeholder image">
+                <img src="{{ PLACEHOLDER_COLL_IMG }}" class="card-img-top" alt="Placeholder image">
               {% endif %}
               <div class="card-body">
                 <h5 class="card-title mb-1">{{ collection.name_en|default:collection.name_es }}</h5>
@@ -82,26 +79,31 @@
   {% endcomment %}
   {% else %}
     {% if page_obj.object_list %}
-      <!-- Collection Description Header -->
       {% if current_collection %}
         <div class="card mb-4 p-4 shadow-sm collection-detail-card">
           <div class="row g-3 align-items-center">
-            {% if current_collection.collection_image and "placeholder" not in current_collection.collection_image.url %}
-              <div class="col-12 col-md-4">
+            
+            <div class="col-12 col-md-4">
+              {% if current_collection.collection_image and "placeholder" not in current_collection.collection_image.url %}
                 <img src="{{ current_collection.collection_image.url }}" 
                      alt="{{ current_collection.name_en }} collection image" 
                      class="img-fluid rounded-3 shadow-sm">
-              </div>
-            {% endif %}
-            <div class="{% if current_collection.collection_image and "placeholder" not in current_collection.collection_image.url %}col-12 col-md-8{% else %}col-12{% endif %}">
+              {% else %}
+                <img src="{{ PLACEHOLDER_COLL_IMG }}" 
+                     alt="Placeholder image" 
+                     class="img-fluid rounded-3 shadow-sm">
+              {% endif %}
+            </div>
+
+            <div class="col-12 col-md-8">
               <h3 class="mb-2">{{ current_collection.name_en|default:current_collection.name_es }} Collection</h3>
               <p class="text-muted">{{ current_collection.description_en|default:current_collection.description_es }}</p>
             </div>
+
           </div>
         </div>
       {% endif %}
 
-      <!-- Poem List -->
       <div class="row g-4">
         {% for poem in page_obj.object_list %}
           <div class="col-12 col-sm-6 col-lg-3 col-xxl-2">
@@ -138,7 +140,6 @@
     {% endif %}
   {% endif %}
 
-  <!-- Universal Pagination -->
   {% if page_obj.paginator.num_pages > 1 %}
   <nav aria-label="Poem pages" class="mt-5">
     <ul class="pagination justify-content-center">
