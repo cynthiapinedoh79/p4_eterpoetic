@@ -139,11 +139,33 @@
                 {% if poem.author %}<p class="text-muted small mb-2">✍️ {{ poem.author.name }}</p>{% endif %}
                 <p class="card-text text-muted">{{ poem.body_es|default:poem.body_en|striptags|truncatechars:140 }}</p>
               </div>
-              <div class="card-footer bg-white d-flex justify-content-between small text-muted">
+<div class="card-footer bg-white d-flex justify-content-between small text-muted align-items-center">
                 <span>{{ poem.created|date:"M d, Y" }}</span>
-                {% if poem.body_en and poem.body_es %}<span>ES • EN</span>
-                {% elif poem.body_en and not poem.body_es %}<span>EN</span>
-                {% else %}<span>ES</span>{% endif %}
+                
+                <div>
+                  {% if poem.body_en and poem.body_es %}<span>ES • EN</span>
+                  {% elif poem.body_en and not poem.body_es %}<span>EN</span>
+                  {% else %}<span>ES</span>{% endif %}
+                  
+                  {# --- NEW: Favorite Toggle Button --- #}
+                  {% if user.is_authenticated %}
+                    <form action="{% url 'poetry:toggle_favorite' poem.id %}" method="POST" class="d-inline ms-2">
+                      {% csrf_token %}
+                      <button type="submit" class="btn btn-like p-0 border-0">
+                        {% if poem.id in favorite_poem_ids %}
+                          <i class="fas fa-heart" style="color: var(--color-danger);"></i> {# Filled Heart #}
+                        {% else %}
+                          <i class="far fa-heart" style="color: var(--color-text-muted);"></i> {# Outline Heart #}
+                        {% endif %}
+                      </button>
+                    </form>
+                  {% else %}
+                    <a href="{% url 'account_login' %}?next={{ request.path }}" class="ms-2">
+                      <i class="far fa-heart" style="color: var(--color-text-muted);"></i> {# Outline Heart #}
+                    </a>
+                  {% endif %}
+                  {# --- End Favorite Toggle --- #}
+                </div>
               </div>
             </div>
           </div>

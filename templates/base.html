@@ -74,6 +74,9 @@
 
                     {% if user.is_authenticated %}
                     <li class="nav-item">
+                      <a class="nav-link" href="{% url 'poetry:favorites_list' %}">My Favorites</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link {% if request.path == logout_url %}active{% endif %}"
                             href="{{ logout_url }}"
                             {% if request.path == logout_url %}aria-current="page"{% endif %}>Logout</a>

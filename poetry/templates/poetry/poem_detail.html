@@ -28,6 +28,28 @@
               </div>
             {% endif %}
 
+            {# --- NEW: Favorite Toggle Button --- #}
+            <div class="float-end me-3">
+              {% if user.is_authenticated %}
+                <form action="{% url 'poetry:toggle_favorite' poem.id %}" method="POST" class="d-inline">
+                  {% csrf_token %}
+                  <button type="submit" class="btn btn-like p-0 border-0 fs-5">
+                    {% if is_favorite %}
+                      <i class="fas fa-heart" style="color: var(--color-danger);"></i> {# Filled Heart #}
+                    {% else %}
+                      <i class="far fa-heart" style="color: var(--color-text-muted);"></i> {# Outline Heart #}
+                    {% endif %}
+                  </button>
+                </form>
+              {% else %}
+                <a href="{% url 'account_login' %}?next={{ request.path }}" class="fs-5">
+                  <i class="far fa-heart" style="color: var(--color-text-muted);"></i> {# Outline Heart #}
+                </a>
+              {% endif %}
+            </div>
+            {# --- End Favorite Toggle --- #}
+
+
             
             {% comment %}
             =======================================================
