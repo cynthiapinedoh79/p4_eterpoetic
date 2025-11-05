@@ -6,21 +6,21 @@
 
 {% block content %}
 <div class="container my-5">
+
+  <div class="text-center mb-4">
+    <a href="{% url 'poetry:poetry_home' %}" class="text-decoration-none" style="color: var(--color-link);">
+      <i class="fas fa-arrow-left me-2"></i>Back to Poem List
+    </a>
+  </div>
   <div class="row justify-content-center">
     <div class="col-12 col-md-10 col-lg-9">
 
-      {% comment %}
-      This is the "vintage paper" card.
-      It uses the poem's image or the placeholder as a background.
-      {% endcomment %}
       <div class="card shadow-lg poem-detail-card" 
            style="background-image: url('{% if poem.featured_image and "placeholder" not in poem.featured_image.url %}{{ poem.featured_image.url }}{% else %}{{ PLACEHOLDER_IMG_URL }}{% endif %}')">
         
-        <!-- This overlay creates the light paper + watermark effect -->
         <div class="poem-detail-overlay">
-          <div class="card-body p-4 p-md-5">
+          <div class="card-body p-4 p-md-5"> {# <-- TYPO FIX: Was 'classs' #}
 
-            <!-- Language Toggle Buttons -->
             {% if poem.body_es and poem.body_en %}
               <div class="btn-group btn-group-sm float-end" role="group" aria-label="Poem language toggle">
                 <button id="btn-es" class="btn btn-secondary">ES</button>
@@ -28,7 +28,7 @@
               </div>
             {% endif %}
 
-            {# --- NEW: Favorite Toggle Button --- #}
+            {# --- Favorite Toggle Button --- #}
             <div class="float-end me-3">
               {% if user.is_authenticated %}
                 <form action="{% url 'poetry:toggle_favorite' poem.id %}" method="POST" class="d-inline">
@@ -48,41 +48,30 @@
               {% endif %}
             </div>
             {# --- End Favorite Toggle --- #}
-
-
+            
             
             {% comment %}
             =======================================================
             =   LANGUAGE-AWARE TITLE & BODY SECTION               =
             =======================================================
-            This section moves the title/author *inside* the
-            language blocks, so they toggle along with the body.
             {% endcomment %}
 
-            <!-- Spanish Version (Title, Author, Body) -->
             {% if poem.body_es %}
               <article id="poem-es" lang="es">
                 <h1 class="poem-detail-title">{{ poem.title_es|default:poem.title_en }}</h1>
                 {% if poem.author %}<p class="poem-detail-author mb-4">✍️ {{ poem.author.name|default:poem.author }}</p>{% endif %}
                 
-                {% comment %}
-                This div uses the |safe filter to render HTML
-                {% endcomment %}
                 <div class="poem-body">
                   {{ poem.body_es|safe }}
                 </div>
               </article>
             {% endif %}
 
-            <!-- English Version (Title, Author, Body) -->
             {% if poem.body_en %}
               <article id="poem-en" lang="en" {% if poem.body_es %}style="display:none;"{% endif %}>
                 <h1 class="poem-detail-title">{{ poem.title_en }}</h1>
                 {% if poem.author %}<p class="poem-detail-author mb-4">✍️ {{ poem.author.name|default:poem.author }}</p>{% endif %}
                 
-                {% comment %}
-                This div uses the |safe filter to render HTML
-                {% endcomment %}
                 <div class="poem-body">
                   {{ poem.body_en|safe }}
                 </div>
