@@ -1172,15 +1172,15 @@ pre {
 .qb-slide{
   flex:0 0 100%;
   display:flex; align-items:center; justify-content:center;
-  gap:.6rem; padding: var(--qb-pad); text-align:center; box-sizing:border-box;
+  gap:.5rem; padding: var(--qb-pad); text-align:center; box-sizing:border-box;
 }
 
 /* Typography — bigger and more legible */
 .qb-text{
   margin:0;
   font-style: italic;
-  line-height:1.5;
-  font-size:1.7rem;            /* ⬆ bigger */
+  line-height:1.25;
+  font-size:1.5rem;            /* ⬆ bigger */
   font-weight:400;
   letter-spacing:.2px;
   max-width:85ch;
@@ -1215,9 +1215,22 @@ pre {
 .qb-next{ right:8px; }
 .qb-nav:focus-visible{ outline:2px solid #fff; outline-offset:2px; }
 
+.qb-slide {
+  flex: 0 0 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  padding: var(--qb-pad);
+  text-align: center;
+  box-sizing: border-box;
+  margin: 0;  /* 👈 added */
+}
+
+
 /* Small screens: allow an extra line and adjust sizes */
 @media (max-width: 575.98px){
-  .quote-banner{ padding:10px 48px; min-height:100px; }
+  .quote-banner{ padding:10px 48px; min-height:75px; }
   .qb-text{ font-size:1.15rem; line-height:1.45; -webkit-line-clamp:4; }
   .qb-author{ font-size:1rem; }
 }
