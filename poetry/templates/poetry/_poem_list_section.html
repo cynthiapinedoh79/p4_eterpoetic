@@ -27,10 +27,24 @@
         </option>
       {% endfor %}
     </select>
+
+    {# --- NEW: Author Filter Dropdown --- #}
+    <select class="form-select search-input" name="author" aria-label="Filter by author" style="min-width: 200px;">
+      <option value="" {% if not current_author_slug %}selected{% endif %}>
+        All Authors
+      </option>
+      
+      {% for author in all_authors %}
+        <option value="{{ author.slug }}" {% if author.slug == current_author_slug %}selected{% endif %}>
+          {{ author.name }}
+        </option>
+      {% endfor %}
+    </select>
+    {# --- End of New Dropdown --- #}
     
     <div class="d-flex gap-2 mt-2 mt-md-0">
       <button class="btn btn-secondary px-4">Search</button>
-      {% if q or current_collection_slug %}
+      {% if q or current_collection_slug or current_author_slug %}{# <-- MODIFIED: Added author check #}
         <a class="btn btn-outline-secondary" href="{% url 'poetry:poetry_home' %}">Clear</a>
       {% endif %}
     </div>
@@ -58,6 +72,7 @@
               <div class="card-body">
                 <h5 class="card-title mb-1">{{ collection.name_en|default:collection.name_es }}</h5>
                 <p class="card-text text-muted small">
+                  {# --- THIS IS THE CORRECTED LINE --- #}
                   {{ collection.description_en|default:collection.description_es|striptags|truncatechars:100 }}
                 </p>
               </div>
@@ -145,7 +160,8 @@
     <ul class="pagination justify-content-center">
       {% if page_obj.has_previous %}
         <li class="page-item">
-          <a class="page-link" href="?q={{ q }}&collection={{ current_collection_slug }}&page={{ page_obj.previous_page_number }}">Previous</a>
+          {# --- MODIFIED: Added author --- #}
+          <a class="page-link" href="?q={{ q }}&collection={{ current_collection_slug }}&author={{ current_author_slug }}&page={{ page_obj.previous_page_number }}">Previous</a>
         </li>
       {% else %}<li class="page-item disabled"><span class="page-link">Previous</span></li>{% endif %}
       
@@ -153,7 +169,8 @@
       
       {% if page_obj.has_next %}
         <li class="page-item">
-          <a class="page-link" href="?q={{ q }}&collection={{ current_collection_slug }}&page={{ page_obj.next_page_number }}">Next</a>
+          {# --- MODIFIED: Added author --- #}
+          <a class="page-link" href="?q={{ q }}&collection={{ current_collection_slug }}&author={{ current_author_slug }}&page={{ page_obj.next_page_number }}">Next</a>
         </li>
       {% else %}<li class="page-item disabled"><span class="page-link">Next</span></li>{% endif %}
     </ul>

@@ -2,63 +2,83 @@ from django.shortcuts import render, get_object_or_404
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.templatetags.static import static
-from .models import Poem, Collection  # <-- Correct: import from models.py
+from .models import Poem, Collection, Author  # <-- IMPORTANT: Import Author
 
 #
 # DO NOT define models here
 #
 
 def _build_poem_list_context(request):
+    """
+    Builds the context for the poem/collection list pages.
+    This is refactored to allow stacking filters.
+    """
     q = (request.GET.get("q") or "").strip()
     page_number = request.GET.get("page")
     collection_slug = request.GET.get("collection")
+    author_slug = request.GET.get("author")  # <-- NEW: Get author slug
 
-    # Get all collections for the dropdown
+    # Get all collections and authors for dropdowns
     all_collections = Collection.objects.all().order_by('name_en')
-    
+    all_authors = Author.objects.all().order_by('name')  # <-- NEW: Get all authors
+
     current_collection = None
-    page_mode = 'collections' # Default mode: show Collection "albums"
-    qs = Collection.objects.all().order_by('name_en') # Default query: get Collections
-    total = qs.count()
+    current_author = None  # <-- NEW: Track current author
+    
+    # --- Refactored Filter Logic ---
+    
+    # By default, we are in 'poems' mode and show all poems
+    page_mode = 'poems'
+    qs = Poem.objects.all().order_by('-is_featured', '-created')
 
+    # 1. Apply search query if it exists
     if q:
-        # If there's a search, always switch to poem mode
-        page_mode = 'poems'
-        qs = Poem.objects.filter(
+        qs = qs.filter(
             Q(title_es__icontains=q) | Q(title_en__icontains=q) |
-            Q(body_es__icontains=q)  | Q(body_en__icontains=q)
-        ).order_by('-is_featured', '-created')
-        total = qs.count()
+            Q(body_es__icontains=q)  | Q(body_en__icontains=q) |
+            Q(author__name__icontains=q)  # <-- BONUS: Also search author names
+        )
 
-    elif collection_slug and collection_slug == 'all-poems':
-        # If "All Poems" is selected, switch to poem mode
-        page_mode = 'poems'
-        qs = Poem.objects.all().order_by('-is_featured', '-created')
-        total = qs.count()
-
-    elif collection_slug:
-        # If a *specific* collection is selected, switch to poem mode
-        page_mode = 'poems'
+    # 2. Apply collection filter if it exists
+    if collection_slug and collection_slug != 'all-poems':
         try:
             current_collection = Collection.objects.get(slug=collection_slug)
-            qs = Poem.objects.filter(collection=current_collection).order_by('-is_featured', '-created')
-            total = qs.count()
+            qs = qs.filter(collection=current_collection)
         except Collection.DoesNotExist:
-            qs = Poem.objects.none() # No poems
-            total = 0
+            qs = Poem.objects.none()  # No poems
+    
+    # 3. Apply author filter if it exists
+    if author_slug:
+        try:
+            current_author = Author.objects.get(slug=author_slug)
+            qs = qs.filter(author=current_author)
+        except Author.DoesNotExist:
+            qs = Poem.objects.none()  # No poems
+
+    # 4. Check if we should switch to 'collections' mode
+    # This ONLY happens if no filters are applied at all.
+    if not q and not collection_slug and not author_slug:
+        page_mode = 'collections'
+        qs = Collection.objects.all().order_by('name_en')
+
+    # --- End of Refactored Logic ---
 
     # Now, paginate whatever qs is (either Collections or Poems)
+    total = qs.count()
     paginator = Paginator(qs, 12) 
     page_obj = paginator.get_page(page_number)
     
     return {
         "page_obj": page_obj, 
-        "page_mode": page_mode, # <-- 'collections' or 'poems'
+        "page_mode": page_mode,
         "q": q, 
         "total": total,
         "all_collections": all_collections,
+        "all_authors": all_authors,  # <-- NEW: Pass authors to template
         "current_collection_slug": collection_slug,
         "current_collection": current_collection,
+        "current_author_slug": author_slug,  # <-- NEW: Pass author slug
+        "current_author": current_author,  # <-- NEW: Pass author object
     }
 
 def poem_detail(request, slug):
