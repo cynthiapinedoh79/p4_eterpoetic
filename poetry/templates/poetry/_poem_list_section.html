@@ -1,5 +1,7 @@
 {% load static %}
-{% static 'images/placeholder.png' as PLACEHOLDER_IMG %}
+
+{# --- 1. MODIFIED: Using the new filename --- #}
+{% static 'images/placeholder_poem.png' as PLACEHOLDER_IMG %}
 {% static 'images/placeholder_coll.png' as PLACEHOLDER_COLL_IMG %}
 
 <div class="container mt-4 poetry-list">
@@ -28,7 +30,7 @@
       {% endfor %}
     </select>
 
-    {# --- NEW: Author Filter Dropdown --- #}
+    {# --- Author Filter Dropdown --- #}
     <select class="form-select search-input" name="author" aria-label="Filter by author" style="min-width: 200px;">
       <option value="" {% if not current_author_slug %}selected{% endif %}>
         All Authors
@@ -40,11 +42,10 @@
         </option>
       {% endfor %}
     </select>
-    {# --- End of New Dropdown --- #}
     
     <div class="d-flex gap-2 mt-2 mt-md-0">
       <button class="btn btn-secondary px-4">Search</button>
-      {% if q or current_collection_slug or current_author_slug %}{# <-- MODIFIED: Added author check #}
+      {% if q or current_collection_slug or current_author_slug %}
         <a class="btn btn-outline-secondary" href="{% url 'poetry:poetry_home' %}">Clear</a>
       {% endif %}
     </div>
@@ -52,10 +53,7 @@
   
   {% comment %}
   =======================================================
-  =                                                     =
   =   SECTION 1: COLLECTION "ALBUM" VIEW                =
-  =   This is shown if page_mode == 'collections'       =
-  =                                                     =
   =======================================================
   {% endcomment %}
   {% if page_mode == 'collections' %}
@@ -72,7 +70,6 @@
               <div class="card-body">
                 <h5 class="card-title mb-1">{{ collection.name_en|default:collection.name_es }}</h5>
                 <p class="card-text text-muted small">
-                  {# --- THIS IS THE CORRECTED LINE --- #}
                   {{ collection.description_en|default:collection.description_es|striptags|truncatechars:100 }}
                 </p>
               </div>
@@ -86,10 +83,7 @@
   
   {% comment %}
   =======================================================
-  =                                                     =
   =   SECTION 2: POEM LIST VIEW                         =
-  =   This is shown if page_mode == 'poems'             =
-  =                                                     =
   =======================================================
   {% endcomment %}
   {% else %}
@@ -125,6 +119,8 @@
             <div class="card h-100 {% if poem.is_featured %}is-featured{% else %}shadow-sm{% endif %}">
               <div class="image-wrap">
                 {% if poem.is_featured %}<span class="feature-flag" aria-label="Featured">Featured</span>{% endif %}
+                
+                {# --- 2. MODIFIED: Using the URL check --- #}
                 {% if poem.featured_image and "placeholder" not in poem.featured_image.url %}
                   <img src="{{ poem.featured_image.url }}" class="card-img-top" alt="{{ poem.title }}">
                 {% else %}
@@ -133,13 +129,14 @@
               </div>
               <div class="card-body">
                 <h5 class="card-title mb-1">
-                  <a class="post-link" href="{{ poem.get_absolute_url }}">{{ poem.title_es|default:poem.title_en }}</a>
+                  {# --- 3. MODIFIED: Using English title --- #}
+                  <a class="post-link" href="{{ poem.get_absolute_url }}">{{ poem.title_en|default:poem.title_es }}</a>
                 </h5>
                 {% if poem.collection %}<p class="text-muted small mb-1">🪶 {{ poem.collection.name_es|default:poem.collection.name_en }}</p>{% endif %}
                 {% if poem.author %}<p class="text-muted small mb-2">✍️ {{ poem.author.name }}</p>{% endif %}
                 <p class="card-text text-muted">{{ poem.body_es|default:poem.body_en|striptags|truncatechars:140 }}</p>
               </div>
-<div class="card-footer bg-white d-flex justify-content-between small text-muted align-items-center">
+              <div class="card-footer bg-white d-flex justify-content-between small text-muted align-items-center">
                 <span>{{ poem.created|date:"M d, Y" }}</span>
                 
                 <div>
@@ -147,7 +144,7 @@
                   {% elif poem.body_en and not poem.body_es %}<span>EN</span>
                   {% else %}<span>ES</span>{% endif %}
                   
-                  {# --- NEW: Favorite Toggle Button --- #}
+                  {# --- Favorite Toggle Button --- #}
                   {% if user.is_authenticated %}
                     <form action="{% url 'poetry:toggle_favorite' poem.id %}" method="POST" class="d-inline ms-2">
                       {% csrf_token %}
@@ -182,7 +179,6 @@
     <ul class="pagination justify-content-center">
       {% if page_obj.has_previous %}
         <li class="page-item">
-          {# --- MODIFIED: Added author --- #}
           <a class="page-link" href="?q={{ q }}&collection={{ current_collection_slug }}&author={{ current_author_slug }}&page={{ page_obj.previous_page_number }}">Previous</a>
         </li>
       {% else %}<li class="page-item disabled"><span class="page-link">Previous</span></li>{% endif %}
@@ -191,7 +187,6 @@
       
       {% if page_obj.has_next %}
         <li class="page-item">
-          {# --- MODIFIED: Added author --- #}
           <a class="page-link" href="?q={{ q }}&collection={{ current_collection_slug }}&author={{ current_author_slug }}&page={{ page_obj.next_page_number }}">Next</a>
         </li>
       {% else %}<li class="page-item disabled"><span class="page-link">Next</span></li>{% endif %}
