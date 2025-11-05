@@ -7,52 +7,11 @@
 
     <!-- Big centered image -->
     <div class="hero-art mx-auto mb-5">
-      <img
-        src="{% if hero_image_url %}{{ hero_image_url }}{% else %}{% static 'images/poetry_hero.png' %}{% endif %}"
-        alt="Poetry hero"
-        class="img-fluid rounded-4 shadow-sm w-100"
-      >
-    </div>
-
-    <!-- Quotes grid -->
-    <div class="row g-4 quote-row">
-      {% if quotes %}
-        {% for q in quotes %}
-          <div class="col-12 col-md-6 col-xl-3">
-            <figure class="quote-card h-100">
-              <blockquote class="mb-3">“{{ q.text }}”</blockquote>
-              <figcaption class="author">{{ q.author }}</figcaption>
-            </figure>
-          </div>
-        {% endfor %}
-      {% else %}
-        <div class="col-12 col-md-6 col-xl-3">
-          <figure class="quote-card h-100">
-            <blockquote class="mb-3">“Feel the paper with the breathings of your heart”</blockquote>
-            <figcaption class="author">William Wordsworth</figcaption>
-          </figure>
-        </div>
-        <div class="col-12 col-md-6 col-xl-3">
-          <figure class="quote-card h-100">
-            <blockquote class="mb-3">“Creativity involves breaking out of established patterns to look at things differently.”</blockquote>
-            <figcaption class="author">Edward de Bono</figcaption>
-          </figure>
-        </div>
-        <div class="col-12 col-md-6 col-xl-3">
-          <figure class="quote-card h-100">
-            <blockquote class="mb-3">“Poetry is a spontaneous overflow of powerful feelings.”</blockquote>
-            <figcaption class="author">William Wordsworth</figcaption>
-          </figure>
-        </div>
-        <div class="col-12 col-md-6 col-xl-3">
-          <figure class="quote-card h-100">
-            <blockquote class="mb-3">“The chief enemy of creativity is good sense.”</blockquote>
-            <figcaption class="author">Pablo Picasso</figcaption>
-          </figure>
-        </div>
-      {% endif %}
+      <img src="{% if hero_image_url %}{{ hero_image_url }}{% else %}{% static 'images/poetry_hero.png' %}{% endif %}"
+        alt="Poetry hero" class="img-fluid rounded-4 shadow-sm w-100">
     </div>
 
   </div>
 </section>
+
 {% endblock %}

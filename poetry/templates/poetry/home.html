@@ -3,69 +3,53 @@
 
 {% block content %}
 
-  {% comment %}
-    This 'if' block checks if we are on Page 1.
-    The hero/quotes section will only appear on the first page.
-  {% endcomment %}
-  {% if page_obj.number == 1 %}
-    {# === Section 1: Hero + Quotes === #}
-    <section class="poetry-hero py-5">
-      <div class="container-xxl">
+{# Show hero/quotes only on first page, or when no paginator exists #}
+{% if not page_obj or page_obj.number == 1 %}
+<section class="poetry-hero py-5">
+  <div class="container-xxl">
 
-          <div class="cover-art mb-4">
-          <img
-            src="{% if cover_image_url %}{{ cover_image_url }}{% else %}{% static 'images/poetry_cover.png' %}{% endif %}"
-            alt="Poetry cover"
-            class="img-fluid w-100 rounded-0 shadow-sm">
-        </div>
-
-        {# --- NEW TITLE FOR QUOTES --- #}
-        <h2 class="text-center mb-4" style="font-weight: 400; color: var(--color-text-dark);">
-          Inspiration for the Ages
-        </h2>
-
-        <div class="row g-4 quote-row">
-          {% for q in quotes %}
-            <div class="col-12 col-md-6 col-xl-3">
-              <figure class="quote-card h-100">
-                <blockquote class="mb-3">“{{ q.text }}”</blockquote>
-                <figcaption class="author">{{ q.author }}</figcaption>
-              </figure>
-            </div>
-          {% empty %}
-            <div class="col-12">
-              <p class="text-muted">No quotes yet.</p>
-            </div>
-          {% endfor %}
-        </div>
-
-        <div class="hero-art mx-auto mb-5">
-          <img
-            src="{% if hero_image_url %}{{ hero_image_url }}{% else %}{% static 'images/poetry_hero.png' %}{% endif %}"
-            alt="Poetry hero"
-            class="img-fluid rounded-4 shadow-sm w-100"
-          >
-        </div>
-
-      </div>
-    </section>
-  {% endif %}
-
-  {# === Section 2: Poem list (reuses your partial) === #}
-  <section class="py-4">
-
-    {# --- NEW DYNAMIC TITLE FOR LIST --- #}
-    <div class="container-xxl">
-      <h2 class="text-center mb-4" style="font-weight: 400; color: var(--color-text-dark);">
-        {% if page_mode == 'collections' %}
-          Explore the Collections
-        {% else %}
-          Poems &amp; Search Results
-        {% endif %}
-      </h2>
+    <div class="cover-art mb-4">
+      <img
+        src="{% if cover_image_url %}{{ cover_image_url }}{% else %}{% static 'images/poetry_cover.png' %}{% endif %}"
+        alt="Poetry cover" class="img-fluid w-100 rounded-0 shadow-sm">
     </div>
 
-    {% include "poetry/_poem_list_section.html" %}
-  </section>
+    {# Optional heading (remove or make visually-hidden to save space) #}
+    <h2 class="text-center mb-4" style="font-weight: 400; color: var(--color-text-dark);">
+      Inspiration for the Ages
+    </h2>
 
+    {# Quote banner (black or red) #}
+    {% include "poetry/_quote_banner.html" with theme="banner--black" %}
+
+    <div class="hero-art mx-auto mb-5">
+      <img
+        src="{% if hero_image_url %}{{ hero_image_url }}{% else %}{% static 'images/poetry_hero.png' %}{% endif %}"
+        alt="Poetry hero" class="img-fluid rounded-4 shadow-sm w-100">
+    </div>
+
+  </div>
+</section>
+{% endif %}
+
+{# === Section 2: Poem list (reuses your partial) === #}
+<section class="py-4">
+
+  {# --- NEW DYNAMIC TITLE FOR LIST --- #}
+  <div class="container-xxl">
+    <h2 class="text-center mb-4" style="font-weight: 400; color: var(--color-text-dark);">
+      {% if page_mode == 'collections' %}
+      Explore the Collections
+      {% else %}
+      Poems &amp; Search Results
+      {% endif %}
+    </h2>
+  </div>
+
+  {% include "poetry/_poem_list_section.html" %}
+</section>
+
+{# JS for the banner #}
+{% include "poetry/_quote_banner.html" with theme="banner--black" %}
+<script src="{% static 'js/quote_banner.js' %}"></script>
 {% endblock %}
