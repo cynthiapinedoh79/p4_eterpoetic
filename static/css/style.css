@@ -304,6 +304,20 @@ pre {
 }
 
 /* ================================================
+   FIX: EDIT/DELETE BUTTON HOVER SWAP (Revised)
+=================================================== */
+
+.btn-edit:hover {
+    background-color: var(--color-primary-brand); /* NEW: Vibrant Terracotta for Edit hover */
+    color: var(--color-primary-text);      /* Stays white */
+}
+
+.btn-delete:hover {
+    background-color: var(--color-primary-brand); /* NEW: Vibrant Terracotta for Edit hover */
+    color: var(--color-primary-text);      /* Stays white */
+}
+
+/* ================================================
    COMPONENT: ALERTS
 =================================================== */
 
@@ -1099,4 +1113,27 @@ pre {
     margin-left: auto;
     margin-right: auto;
   }
+}
+
+/* ================================================
+   COMPONENT: ALERTS (Success Override)
+=================================================== */
+
+/* This overrides the default green .alert-success */
+.alert-success {
+  /* Using your "Vibrant Terracotta" theme */
+  background-color: rgba(232, 106, 51, 0.1); /* Light Terracotta background */
+  border-color: rgba(232, 106, 51, 0.3);     /* Faded Terracotta border */
+  color: var(--color-text-dark);            /* Dark, readable text */
+}
+
+/* This makes links inside the alert match */
+.alert-success a {
+  color: var(--color-primary-brand); /* Main Terracotta color for links */
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.alert-success a:hover {
+  color: var(--color-link-hover); /* Gold Ocher on hover */
 }
