@@ -1,8 +1,10 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect, reverse # <-- Add redirect, reverse
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.templatetags.static import static
 from .models import Poem, Collection, Author  # <-- IMPORTANT: Import Author
+from django.contrib.auth.decorators import login_required # <-- NEW: Import login_required
+from django.views.decorators.http import require_POST # <-- NEW: Import require_POST
 
 #
 # DO NOT define models here
@@ -24,6 +26,12 @@ def _build_poem_list_context(request):
 
     current_collection = None
     current_author = None  # <-- NEW: Track current author
+
+    # --- NEW: Get logged-in user's favorite poem IDs ---
+    favorite_poem_ids = []
+    if request.user.is_authenticated:
+        favorite_poem_ids = request.user.favorite_poems.values_list('id', flat=True)
+    # ----------------------------------------------------
     
     # --- Refactored Filter Logic ---
     
@@ -79,11 +87,22 @@ def _build_poem_list_context(request):
         "current_collection": current_collection,
         "current_author_slug": author_slug,  # <-- NEW: Pass author slug
         "current_author": current_author,  # <-- NEW: Pass author object
+        "favorite_poem_ids": favorite_poem_ids, # <-- NEW: Pass IDs to template
     }
 
 def poem_detail(request, slug):
     poem = get_object_or_404(Poem, slug=slug)
-    return render(request, "poetry/poem_detail.html", {"poem": poem})
+
+    # --- NEW: Check if this single poem is a favorite ---
+    is_favorite = False
+    if request.user.is_authenticated:
+        is_favorite = poem.favorites.filter(id=request.user.id).exists()
+    # ----------------------------------------------------
+
+    return render(request, "poetry/poem_detail.html", 
+    {"poem": poem, "is_favorite": is_favorite} # <-- NEW: Pass is_favorite
+    )
+
 
 def poem_list(request):
     ctx = _build_poem_list_context(request)
@@ -104,3 +123,47 @@ def poetry_home(request):
         "hide_page_title": True,   # hide the big "Poems" H1 on the home page
     })
     return render(request, "poetry/home.html", ctx)
+
+# --- NEW: View for toggling a favorite ---
+@login_required
+@require_POST  # Ensures this view can only be accessed via POST
+def toggle_favorite(request, poem_id):
+    poem = get_object_or_404(Poem, id=poem_id)
+    
+    if poem.favorites.filter(id=request.user.id).exists():
+        # User has it as a favorite, so remove it
+        poem.favorites.remove(request.user)
+    else:
+        # User does not have it as a favorite, so add it
+        poem.favorites.add(request.user)
+        
+    # Redirect back to the page the user was on
+    # This is a simple way to provide feedback.
+    # An advanced way uses Javascript (HTMX/Fetch) to do this without a page reload.
+    return redirect(request.META.get('HTTP_REFERER', 'poetry:poetry_home'))
+
+
+# --- NEW: View for the "My Favorites" page ---
+@login_required
+def favorites_list(request):
+    # Get all poems this user has favorited
+    favorite_poems = request.user.favorite_poems.all().order_by('-is_featured', '-created')
+    
+    # We can reuse the main context builder but override the query
+    ctx = _build_poem_list_context(request)
+    
+    # Paginate the favorite poems
+    paginator = Paginator(favorite_poems, 12)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+    
+    # Update context for this specific page
+    ctx.update({
+        "page_obj": page_obj,
+        "page_mode": "poems", # Always show poems
+        "total": favorite_poems.count(),
+        "is_favorites_page": True, # A flag to change the page title
+    })
+    
+    # We re-use the main poem_list template!
+    return render(request, "poetry/poem_list.html", ctx)

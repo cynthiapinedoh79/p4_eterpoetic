@@ -8,4 +8,8 @@ urlpatterns = [
     path("poems/", views.poem_list, name="poem_list"),     # ⬅️ list moved here
     # IMPORTANT: prefix detail so it doesn't match /about/ or /blog/
     path("poem/<slug:slug>/", views.poem_detail, name="poem_detail"),
+
+    # --- NEW URLS FOR FAVORITES ---
+    path("favorites/", views.favorites_list, name="favorites_list"),
+    path("poem/<int:poem_id>/favorite/", views.toggle_favorite, name="toggle_favorite"),
 ]
