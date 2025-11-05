@@ -863,15 +863,11 @@ pre {
 }
 
 .poetry-list .search-form {
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
-}
-.poetry-list .search-form {
-  max-width: 700px;
+  max-width: 600px;
   margin-left: 0;
   margin-right: auto;
 }
+
 .poetry-list .search-input-wrapper {
   max-width: 600px;
   width: 100%;
