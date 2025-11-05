@@ -47,10 +47,14 @@ DEBUG = True
 # ALLOWED_HOSTS for production (when DEBUG is False)
 ALLOWED_HOSTS = [
     'localhost', 
-    '127.0.0.1', 
+    '127.0.0.1',
+    "dev.local", 
     '[::1]',
-    'eterpoetic-62a49da213d8.herokuapp.com',
     '.herokuapp.com', 
+    'eterpoetic-62a49da213d8.herokuapp.com',
+    '*.codeinstitute-ide.net',
+    '*.githubpreview.dev',
+    
 ]
 # Add hostnames from the environment if present
 ALLOWED_HOSTS.extend([h for h in os.environ.get('ALLOWED_HOSTS', '').split(',') if h])
@@ -170,9 +174,13 @@ if any(arg.startswith("test") for arg in sys.argv):
 
 # CSRF (no trailing slashes)
 CSRF_TRUSTED_ORIGINS = [
+    "http://127.0.0.1:8000",
+    "http://localhost:8000",
+    "http://dev.local:8000",
     "https://*.herokuapp.com",
     "https://eterpoetic-62a49da213d8.herokuapp.com",
     "https://*.codeinstitute-ide.net",
+    "https://*.githubpreview.dev",
 ]
 
 # Password validation
