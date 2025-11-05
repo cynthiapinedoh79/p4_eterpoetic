@@ -94,7 +94,7 @@
               </div>
             {% endif %}
             <div class="{% if current_collection.collection_image and "placeholder" not in current_collection.collection_image.url %}col-12 col-md-8{% else %}col-12{% endif %}">
-              <h2 class="mb-2">{{ current_collection.name_en|default:current_collection.name_es }} Collection</h2>
+              <h3 class="mb-2">{{ current_collection.name_en|default:current_collection.name_es }} Collection</h3>
               <p class="text-muted">{{ current_collection.description_en|default:current_collection.description_es }}</p>
             </div>
           </div>
@@ -116,7 +116,7 @@
               </div>
               <div class="card-body">
                 <h5 class="card-title mb-1">
-                  <a class="post-link" href="{{ poem.get_absolute_url }}">{{ poem.title }}</a>
+                  <a class="post-link" href="{{ poem.get_absolute_url }}">{{ poem.title_es|default:poem.title_en }}</a>
                 </h5>
                 {% if poem.collection %}<p class="text-muted small mb-1">🪶 {{ poem.collection.name_es|default:poem.collection.name_en }}</p>{% endif %}
                 {% if poem.author %}<p class="text-muted small mb-2">✍️ {{ poem.author.name }}</p>{% endif %}
