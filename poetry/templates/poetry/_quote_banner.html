@@ -1,0 +1,21 @@
+{# Compact quote banner; expects `quotes` in context and optional `theme` #}
+<div class="quote-banner {{ theme|default:'banner--black' }}" role="region"
+     aria-label="Inspirational quotes" aria-live="polite" tabindex="0">
+  <button class="qb-nav qb-prev" aria-label="Previous quote">❮</button>
+
+  <div class="qb-track">
+    {% for q in quotes %}
+      <figure class="qb-slide">
+        <blockquote class="qb-text">“{{ q.text }}”</blockquote>
+        <figcaption class="qb-author">— {{ q.author }}</figcaption>
+      </figure>
+    {% empty %}
+      <figure class="qb-slide">
+        <blockquote class="qb-text">“Feel the paper with the breathings of your heart”</blockquote>
+        <figcaption class="qb-author">— William Wordsworth</figcaption>
+      </figure>
+    {% endfor %}
+  </div>
+
+  <button class="qb-nav qb-next" aria-label="Next quote">❯</button>
+</div>

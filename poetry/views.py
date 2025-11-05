@@ -114,6 +114,11 @@ def poetry_home(request):
         {"text": "Creativity involves breaking out of established patterns...", "author": "Edward de Bono"},
         {"text": "Poetry is a spontaneous overflow of powerful feelings.", "author": "William Wordsworth"},
         {"text": "The chief enemy of creativity is good sense.", "author": "Pablo Picasso"},
+        {"text": "Be yourself; everyone else is already taken.", "author": "Oscar Wilde"},
+        {"text": "True poems are fires that burn and shine.", "author": "Vicente Huidobro"},
+        {"text": "Poetry is the language of the soul.", "author": "Unknown"},
+        {"text": "To try to express with words what the soul feels would be like trying to trap the sea’s water in a container.", "author": "Marta Martín Girón"},
+
     ]
     ctx = _build_poem_list_context(request)
     ctx.update({
@@ -127,6 +132,7 @@ def poetry_home(request):
 # --- NEW: View for toggling a favorite ---
 @login_required
 @require_POST  # Ensures this view can only be accessed via POST
+
 def toggle_favorite(request, poem_id):
     poem = get_object_or_404(Poem, id=poem_id)
     

@@ -585,33 +585,32 @@ pre {
 
 /* Quotes grid */
 .quote-row {
-  margin-bottom: 2.5rem;
+  --q-gap: 1rem;
 }
 
 .quote-card {
-  padding: 0.75rem 0 0.5rem 1rem;
-  border-left: 4px solid var(--color-primary-brand);
-  background-color: var(--bg-light);
-  border-radius: 6px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  transition: transform .2s ease, box-shadow .2s ease;
-}
-
-.quote-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+  background: #0b0b0b;
+  color: #fff;
+  border-radius: 14px;
+  padding: 18px 20px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 140px;
 }
 
 .quote-card blockquote {
-  font-size: 1.15rem;
-  line-height: 1.5;
-  color: var(--color-text-dark);
-  margin: 0;
+  margin: 0 0 10px 0;
+  font-size: 1.05rem;
+  line-height: 1.45;
+  font-style: italic;
 }
 
 .quote-card .author {
-  color: #8a97a6;
-  font-size: .95rem;
+  font-size: 0.95rem;
+  opacity: 0.85;
 }
 
 /* Hero image */
@@ -632,6 +631,14 @@ pre {
   .quote-row { margin-bottom: 1.5rem; }
   .poetry-hero { padding-top: 2rem; padding-bottom: 2rem; }
 }
+
+/* Optional: subtle hover lift on desktop */
+@media (hover:hover) {
+  .quote-card { transition: transform .18s ease, box-shadow .18s ease; }
+  .quote-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.18);
+  }
 }
 
 /* ================================================
@@ -1136,4 +1143,81 @@ pre {
 
 .alert-success a:hover {
   color: var(--color-link-hover); /* Gold Ocher on hover */
+}
+
+/* ================================================
+   QUOTE BAR COMPONENT SLIDER
+=================================================== */
+
+:root{
+  --qb-radius: 14px;
+  --qb-pad: 12px 18px;         /* slightly roomier inside slides */
+}
+
+.quote-banner{
+  min-height: 90px;            /* taller for larger type */
+  height: auto;
+  padding: 12px 64px;          /* space for arrows */
+  border-radius: var(--qb-radius);
+  margin: .75rem 0 1.5rem;
+  display:flex; align-items:center; position:relative;
+  box-shadow: 0 8px 20px rgba(0,0,0,.15);
+}
+
+.banner--black{ background:#0b0b0b; color:#fff; border:1px solid rgba(255,255,255,.08); }
+.banner--red  { background:#b30000; color:#fff; border:1px solid rgba(255,255,255,.12); }
+
+/* Track & slide */
+.qb-track{ display:flex; width:100%; transition: transform .45s ease; will-change: transform; }
+.qb-slide{
+  flex:0 0 100%;
+  display:flex; align-items:center; justify-content:center;
+  gap:.6rem; padding: var(--qb-pad); text-align:center; box-sizing:border-box;
+}
+
+/* Typography — bigger and more legible */
+.qb-text{
+  margin:0;
+  font-style: italic;
+  line-height:1.5;
+  font-size:1.7rem;            /* ⬆ bigger */
+  font-weight:400;
+  letter-spacing:.2px;
+  max-width:85ch;
+
+  /* clamp to keep banner compact */
+  display:-webkit-box;
+  -webkit-line-clamp:3;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+.qb-author{
+  margin:0 0 0 .5rem;
+  opacity:.9;
+  font-size:1.1rem;            /* ⬆ slightly bigger */
+  font-weight:500;
+  white-space:nowrap;
+}
+
+/* Arrows */
+.qb-nav{
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:36px; height:36px; display:grid; place-items:center;
+  border:0; border-radius:999px; cursor:pointer; z-index:2;
+  color:#fff; background:rgba(255,255,255,.18); backdrop-filter:saturate(120%) blur(2px);
+  transition: background .2s ease, transform .1s ease;
+}
+.qb-nav:hover{ background:rgba(255,255,255,.35); }
+.qb-nav:active{ transform:translateY(-50%) scale(.96); }
+.qb-prev{ left:8px; }
+.qb-next{ right:8px; }
+.qb-nav:focus-visible{ outline:2px solid #fff; outline-offset:2px; }
+
+/* Small screens: allow an extra line and adjust sizes */
+@media (max-width: 575.98px){
+  .quote-banner{ padding:10px 48px; min-height:100px; }
+  .qb-text{ font-size:1.15rem; line-height:1.45; -webkit-line-clamp:4; }
+  .qb-author{ font-size:1rem; }
 }

@@ -100,5 +100,6 @@
 
 {# Load the JS from /static/js/poem_toggle.js #}
 {% block extras %}
-  <script src="{% static 'js/poem_toggle.js' %}?v=6" defer></script>
+{% include "poetry/_quote_banner.html" with theme="banner--red" %}
+<script src="{% static 'js/quote_banner.js' %}"></script>
 {% endblock %}
