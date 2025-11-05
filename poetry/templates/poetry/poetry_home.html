@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/poetry.css' %}?v={% now 'U' %}">
+{% endblock %}
+
 {% block content %}
 <section class="poetry-hero py-5">
   <div class="container-xxl">

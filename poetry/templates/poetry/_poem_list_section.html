@@ -1,4 +1,7 @@
 {% load static %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/poetry.css' %}?v={% now 'U' %}">
+{% endblock %}
 
 {# --- 1. MODIFIED: Using the new filename --- #}
 {% static 'images/placeholder_poem.png' as PLACEHOLDER_IMG %}

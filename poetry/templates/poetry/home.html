@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/poetry.css' %}?v={% now 'U' %}">
+{% endblock %}
+
 {% block content %}
 
 {# Show hero/quotes only on first page, or when no paginator exists #}
@@ -50,6 +54,5 @@
 </section>
 
 {# JS for the banner #}
-{% include "poetry/_quote_banner.html" with theme="banner--black" %}
 <script src="{% static 'js/quote_banner.js' %}"></script>
 {% endblock %}
