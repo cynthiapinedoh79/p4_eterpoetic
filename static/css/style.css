@@ -863,7 +863,7 @@ pre {
 }
 
 .poetry-list .search-form {
-  max-width: 600px;
+  max-width: 800px; /* We just added this for desktop */
   margin-left: 0;
   margin-right: auto;
 }
@@ -1077,4 +1077,26 @@ pre {
 
 .collection-album-card:hover .card-title {
   color: var(--color-primary-brand);
+}
+
+/* ================================================
+   FIX: POETRY SEARCH FORM ON MOBILE
+=================================================== */
+
+/*
+  This targets screens *smaller* than the 'md' breakpoint (768px),
+  which is when your form switches to its vertical layout.
+*/
+@media (max-width: 767.98px) {
+  .poetry-list .search-form {
+    /*
+      This stops the form from stretching to 100% and
+      gives it a more reasonable width.
+    */
+    max-width: 400px;
+
+    /* This centers the form block */
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
