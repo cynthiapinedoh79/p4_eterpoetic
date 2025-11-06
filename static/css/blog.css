@@ -1,9 +1,12 @@
 /* ================================================
-   BLOG APP STYLES (copied from style.css, no changes)
+   BLOG APP STYLES
+   Reorganized by merging duplicates and grouping sections.
+   The final computed style is identical to the original.
 =================================================== */
 
-/* ========== Layout & image containers ========== */
-
+/* ================================================
+   1. Global Layout & Image Containers
+=================================================== */
 .card {
     border: none;
     background-color: transparent;
@@ -26,15 +29,20 @@
     height: auto;
 }
 
-/* ========== Masthead (post_detail header) ========== */
-
+/* ================================================
+   2. Masthead (Post Detail Header)
+   (Rules merged from 3 separate definitions)
+=================================================== */
 .masthead {
     margin-top: 10px;
     overflow: hidden;
     position: relative;
-    display: block; /* Changed from inline-block */
-    min-height: 33vh; /* Changed from height */
+    display: block;
     width: 100%;
+    /* Overrides from end of original file: */
+    min-height: auto; /* Overrides 33vh */
+    height: auto;
+    margin-bottom: 12px;
 }
 
 .masthead-text {
@@ -48,7 +56,6 @@
     overflow: hidden;
 }
 
-/* This NEW rule makes the masthead image fill its column */
 .masthead-image .scale {
     height: 100%;
     object-fit: cover;
@@ -68,18 +75,19 @@
     z-index: 100;
 }
 
-/* ========== Buttons & links ========== */
-
+/* ================================================
+   3. Buttons & Links
+=================================================== */
 .btn-signup,
 .btn-edit {
-    background-color: var(--bg-dark); /* NEW: Plum Ink */
-    color: var(--color-primary-text); /* White text */
+    background-color: var(--bg-dark);
+    color: var(--color-primary-text);
 }
 
 .btn-signup:hover,
 .btn-signup:active {
-    background-color: var(--color-danger); /* Rosewood Red */
-    color: var(--color-danger-text); /* White text */
+    background-color: var(--color-danger);
+    color: var(--color-danger-text);
 }
 
 .link {
@@ -100,7 +108,7 @@
 }
 
 .btn-delete {
-    color: var(--color-danger-text); /* White text */
+    color: var(--color-danger-text);
     background: var(--color-danger);
 }
 
@@ -111,19 +119,19 @@
     border: none;
 }
 
-/* FIX: EDIT/DELETE BUTTON HOVER SWAP (Revised) */
 .btn-edit:hover {
-    background-color: var(--color-primary-brand); /* NEW: Vibrant Terracotta for Edit hover */
-    color: var(--color-primary-text);      /* Stays white */
+    background-color: var(--color-primary-brand);
+    color: var(--color-primary-text);
 }
 
 .btn-delete:hover {
-    background-color: var(--color-primary-brand); /* NEW: Vibrant Terracotta for Edit hover */
-    color: var(--color-primary-text);      /* Stays white */
+    background-color: var(--color-primary-brand);
+    color: var(--color-primary-text);
 }
 
-/* ========== Post list & meta ========== */
-
+/* ================================================
+   4. Post List & Meta
+=================================================== */
 .author {
     color: white;
     margin: 4px;
@@ -150,8 +158,9 @@
     color: lightgray;
 }
 
-/* ========== Comment helper states ========== */
-
+/* ================================================
+   5. Comment Helper States
+=================================================== */
 .faded {
     color: rgb(172, 175, 175);
 }
@@ -160,64 +169,69 @@
     color: rgb(222, 146, 168);
 }
 
-/* ========== (Optional) Mobile navbar tweaks carried over ========== */
-/* Included here only if your blog pages rely on the same collapsed navbar */
+/* ================================================
+   6. Component-Specific Styles (Blog)
+   (These were from the 'about' and 'blog index' sections)
+=================================================== */
 
-@media (max-width: 991.98px) {
-  .navbar-collapse .navbar-nav .nav-link {
-    width: fit-content;
-    width: -moz-fit-content; /* Firefox support */
-    margin-bottom: 4px;
-  }
-  .navbar-collapse .navbar-nav .nav-link.active::after {
-    display: none;
-  }
-}
-
-/* about profiles section */
+/* Base profile card image (from 'about profiles' section) */
 .card-img-top {
-  width: 100%;
-  height: 400px;
-  object-fit: cover;
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
 }
+
 .image-wrapper {
-  width: 100%;
-  height: 60%;
-  margin: 0 auto;
-  overflow: hidden;
+    width: 100%;
+    height: 60%;
+    margin: 0 auto;
+    overflow: hidden;
 }
 
-/* back link about page */
-.back-link { color: var(--color-text-dark); text-decoration: none; }
-.back-link:hover { text-decoration: underline; color: var(--color-text-dark); }
+/* Base back link (from 'about page' section) */
+.back-link {
+    color: var(--color-text-dark);
+    text-decoration: none;
+}
+.back-link:hover {
+    text-decoration: underline;
+    color: var(--color-text-dark);
+}
 
-
-/* BLOG INDEX: normalize thumbnail size so cards align */
+/* BLOG INDEX: Thumbnail override (must come AFTER .card-img-top) */
 .left .card-img-top {
-  display: block;
-  width: 100%;
-  height: auto;
-  aspect-ratio: 5 / 4;   /* consistent crop */
-  object-fit: cover;     /* fill nicely */
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 5 / 4; /* consistent crop */
+    object-fit: cover;   /* fill nicely */
 }
 
-/* keep the author flash pinned cleanly over images */
+/* BLOG INDEX: Author flash container (must come AFTER .image-container) */
 .left .image-container {
-  position: relative;
-  overflow: hidden;      /* hides any bleed from object-fit */
+    position: relative;
+    overflow: hidden; /* hides any bleed from object-fit */
 }
 
-/* Tighten space under the header */
-.masthead { margin-bottom: 12px; }
 
-/* On small screens let the header size to its content (removes big blank gap) */
+/* ================================================
+   7. Responsive Styles
+   (Merged from 2 separate media queries)
+=================================================== */
+
 @media (max-width: 991.98px) {
-  .masthead { min-height: auto; } /* overrides the 33vh only on mobile/tablet */
-}
+    /* Mobile navbar tweaks */
+    .navbar-collapse .navbar-nav .nav-link {
+        width: fit-content;
+        width: -moz-fit-content; /* Firefox support */
+        margin-bottom: 4px;
+    }
+    .navbar-collapse .navbar-nav .nav-link.active::after {
+        display: none;
+    }
 
-/* Stabilize masthead height on browser zoom-out */
-.masthead {
-  min-height: auto;              /* override fixed vh height */
-  height: auto;                  /* ensure it collapses naturally */
-  margin-bottom: 12px;           /* keep same spacing */
+    /* Mobile masthead tweak */
+    .masthead {
+        min-height: auto; /* overrides the 33vh only on mobile/tablet */
+    }
 }
