@@ -51,8 +51,19 @@
   </div>
 
   {% include "poetry/_poem_list_section.html" %}
+  
 </section>
 
-{# JS for the banner #}
-<script src="{% static 'js/quote_banner.js' %}"></script>
 {% endblock %}
+
+{# === Full-width red quote bar... === #}
+{% block full_width_banner %}
+<div class="quote-banner-fw banner-tuck">
+  {% include "poetry/_quote_banner.html" with theme="banner--red" %}
+</div>
+{% endblock full_width_banner %}  {# <-- ADD THIS LINE TO CLOSE THE BLOCK #}
+
+{# This block must be separate, not nested #}
+{% block extras %}
+<script src="{% static 'js/quote_banner.js' %}"></script>
+{% endblock extras %}
