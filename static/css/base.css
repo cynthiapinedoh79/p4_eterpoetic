@@ -118,6 +118,12 @@ pre{white-space:pre-wrap;word-wrap:break-word;font-family:var(--font-stack-prima
 .footer a:hover{ text-decoration: underline; }
 .footer i{ vertical-align: middle; }
 
+/* === Robust Sticky Footer Fix === */
+
+body {
+  min-height: 100vh;
+}
+
 /* ================================================
    10. Sticky Footer Layout
 =================================================== */
