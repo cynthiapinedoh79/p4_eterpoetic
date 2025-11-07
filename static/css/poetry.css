@@ -498,6 +498,10 @@ a.page-link {
   margin-left: calc(-50vw + 50%);
 }
 
+.quote-banner-fw .quote-banner {
+  margin-bottom: 0;
+}
+
 /* ================================================
    5. COMPONENT: ALERTS (SUCCESS OVERRIDE)
 =================================================== */
