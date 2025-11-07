@@ -14,7 +14,7 @@
     {% if total %}<span class="text-muted">{{ total }} result{{ total|pluralize }}</span>{% endif %}
   </div>
 
-  <form method="get" class="search-form d-flex flex-column flex-md-row justify-content-center align-items-center gap-2 mb-4">
+  <form method="get" action="{% url 'poetry:poetry_home' %}#poems-search" class="search-form d-flex flex-column flex-md-row justify-content-center align-items-center gap-2 mb-4">
     <input type="text" class="form-control search-input" name="q" value="{{ q }}" placeholder="Search Poems (ES/EN)">
     
     <select class="form-select search-input" name="collection" aria-label="Filter by collection" style="min-width: 200px;">
@@ -49,7 +49,7 @@
     <div class="d-flex gap-2 mt-2 mt-md-0">
       <button class="btn btn-secondary px-4">Search</button>
       {% if q or current_collection_slug or current_author_slug %}
-        <a class="btn btn-outline-secondary" href="{% url 'poetry:poetry_home' %}">Clear</a>
+        <a class="btn btn-outline-secondary" href="{% url 'poetry:poetry_home' %}#poems-search">Clear</a>
       {% endif %}
     </div>
   </form>
@@ -64,7 +64,7 @@
       <div class="row g-4">
         {% for collection in page_obj.object_list %}
           <div class="col-12 col-sm-6 col-lg-3 col-xxl-2">
-            <a href="?collection={{ collection.slug }}" class="card text-decoration-none collection-album-card h-100 shadow-sm">
+            <a href="?collection={{ collection.slug }}#poems-search" class="card text-decoration-none collection-album-card h-100 shadow-sm">
               {% if collection.collection_image and "placeholder" not in collection.collection_image.url %}
                 <img src="{{ collection.collection_image.url }}" class="card-img-top" alt="{{ collection.name_en }}">
               {% else %}
@@ -182,17 +182,17 @@
     <ul class="pagination justify-content-center">
       {% if page_obj.has_previous %}
         <li class="page-item">
-          <a class="page-link" href="?q={{ q }}&collection={{ current_collection_slug }}&author={{ current_author_slug }}&page={{ page_obj.previous_page_number }}">Previous</a>
+          <a class="page-link" href="?q={{ q }}&collection={{ current_collection_slug }}&author={{ current_author_slug }}&page={{ page_obj.previous_page_number }}#poems-search"> PREVIOUS</a>
         </li>
-      {% else %}<li class="page-item disabled"><span class="page-link">Previous</span></li>{% endif %}
+      {% else %}<li class="page-item disabled"><span class="page-link">PREVIOUS</span></li>{% endif %}
       
       <li class="page-item disabled"><span class="page-link">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span></li>
       
       {% if page_obj.has_next %}
         <li class="page-item">
-          <a class="page-link" href="?q={{ q }}&collection={{ current_collection_slug }}&author={{ current_author_slug }}&page={{ page_obj.next_page_number }}">Next</a>
+          <a class="page-link" href="?q={{ q }}&collection={{ current_collection_slug }}&author={{ current_author_slug }}&page={{ page_obj.next_page_number }}#poems-search">NEXT</a>
         </li>
-      {% else %}<li class="page-item disabled"><span class="page-link">Next</span></li>{% endif %}
+      {% else %}<li class="page-item disabled"><span class="page-link">NEXT</span></li>{% endif %}
     </ul>
   </nav>
   {% endif %}

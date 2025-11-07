@@ -380,7 +380,7 @@ a.page-link {
   margin-top: 2.5rem !important;
 }
 .poetry-list nav[aria-label="Poem pages"] {
-  margin-bottom: 2.5rem;
+  margin-bottom: 0rem;
   margin-top: 0rem;
 }
 
