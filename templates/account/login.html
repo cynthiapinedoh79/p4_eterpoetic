@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load i18n %}
 {% load account socialaccount %}
+{% url 'poetry:favorites_list' as fav_url %}
 {% load static %}
 
 {% block head_title %}{% trans "Sign In" %}{% endblock %}
@@ -9,10 +10,30 @@
 <div class="login-page">
   <div class="login-card">
     <h3 class="login-title">{% trans "Sign In" %}</h3>
-    <p class="login-subtitle">
-      {% blocktrans %}Welcome back to the code|star blog. To leave a comment or like a post, please log in. 
-      If you have not created an account yet, then <a class="link" href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}
-    </p>
+    {% if request.GET.next %}
+        {% if fav_url in request.GET.next %}
+            <div class="alert alert-info" role="alert">
+              Please sign in to view your "My Favorites" page.
+            </div>
+        {% elif "/blog/" in request.GET.next %}
+            <div class="alert alert-info" role="alert">
+              Please sign in to leave a comment on the blog.
+            </div>
+        {% else %}
+            <div class="alert alert-info" role="alert">
+              You must be signed in to access that page.
+            </div>
+        {% endif %}
+    {% else %}
+        <div>
+        <p class="login-subtitle">
+          {% blocktrans %}Welcome! To leave a comment on a post or save favorite poems, please Log in.
+
+        <p>If you have not created an account yet, then <a class="link" href="{{ signup_url }}">Sign Up</a> first.</p>{% endblocktrans %}
+        </p>
+        <hr>
+        <div>
+    {% endif %}
 
     <form class="login" method="POST" action="{% url 'account_login' %}">
       {% csrf_token %}
