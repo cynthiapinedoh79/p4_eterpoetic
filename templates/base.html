@@ -116,7 +116,7 @@
     </div>
 
 
-    <main class="flex-shrink-0 main-bg">
+    <main class="flex-grow-1 main-bg mb-3">
 
         {% if user.is_authenticated %}
         <p class="text-end m-3">You are logged in as {{ user }}</p>
@@ -125,14 +125,13 @@
         {% endif %}
 
         {% block content %}
-        <!-- Content Goes here -->
         {% endblock content %}
 
 
-    </main>
+        {% block full_width_banner %}
+        {% endblock full_width_banner %}
 
-    {% block full_width_banner %}
-    {% endblock full_width_banner %}
+    </main>
 
     <!-- Footer -->
     <footer class="footer mt-auto py-3 dark-bg">
