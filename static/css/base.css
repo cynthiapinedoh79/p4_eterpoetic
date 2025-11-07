@@ -121,7 +121,8 @@ pre{white-space:pre-wrap;word-wrap:break-word;font-family:var(--font-stack-prima
 /* === Robust Sticky Footer Fix === */
 
 body {
-  min-height: 100vh;
+  min-height: 100vh !important;  /* Fallback for older browsers */
+  min-height: 100svh !important; /* The correct, modern fix */
 }
 
 /* ================================================
