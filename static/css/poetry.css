@@ -177,6 +177,36 @@ section.py-4 {
   border-top: 1px solid rgba(0,0,0,0.05);
 }
 
+/* === Sticky Footer Fix === */
+
+/* 1. Make the <body> fill the viewport and act as a flex container,
+   stacked vertically.
+*/
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Set minimum height to 100% of the viewport height */
+}
+
+/* 2. Target the main content area and tell it to "grow".
+   This CSS assumes your {% block content %} in "base.html"
+   is wrapped inside a <main> tag (which is standard).
+   
+   'flex-grow: 1' tells this element to take up all available
+   empty space, pushing the footer down.
+*/
+main {
+  flex-grow: 1;
+}
+
+/* NOTE: If your site doesn't use a <main> tag in base.html, 
+you may need to find the ID or class that wraps your content
+and use that instead, like:
+
+#content { flex-grow: 1; }
+.main-wrapper { flex-grow: 1; }
+*/
+
 /* --- 2.3. Featured Card Styles --- */
 
 .poetry-list .badge.bg-warning { 
