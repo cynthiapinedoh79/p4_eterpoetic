@@ -112,7 +112,7 @@
 /* “Back” link styling */
 /* This rule was defined 3x identically in the original file. */
 .about-page .back-link {
-  color: var(--color-text-dark);
+  color: var(--color-primary-brand);
   text-decoration: none;
 }
 .about-page .back-link:hover {
