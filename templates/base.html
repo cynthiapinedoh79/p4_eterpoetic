@@ -1,6 +1,7 @@
 {% load static %}
 
-{% url 'poetry:poetry_home' as home_url %} 
+{% url 'poetry:poetry_home' as home_url %}
+{% url 'poetry:favorites_list' as favorites_url %}
 {% url 'blog:bloghome' as blog_url %}
 {% url 'about' as about_url %}
 {% url 'account_login' as login_url %}
@@ -59,6 +60,11 @@
                             {% if request.path == home_url %}aria-current="page"{% endif %}>
                             Home
                         </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {% if request.path == favorites_url %}active{% endif %}"
+                            href="{{ favorites_url }}"
+                            {% if request.path == favorites_url %}aria-current="page"{% endif %}>My Favorites</a>
                     </li>
 
                     <li class="nav-item">
