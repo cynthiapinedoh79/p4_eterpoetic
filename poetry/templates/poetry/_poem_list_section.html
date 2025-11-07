@@ -14,7 +14,7 @@
     {% if total %}<span class="text-muted">{{ total }} result{{ total|pluralize }}</span>{% endif %}
   </div>
 
-  <form method="get" action="{% url 'poetry:poetry_home' %}#poems-search" class="search-form d-flex flex-column flex-md-row justify-content-center align-items-center gap-2 mb-4">
+  <form method="get" action="{% url 'poetry:poetry_home' %}#poems-search" class="search-form d-flex flex-column flex-md-row justify-content-center align-items-center gap-2 mb-5">
     <input type="text" class="form-control search-input" name="q" value="{{ q }}" placeholder="Search Poems (ES/EN)">
     
     <select class="form-select search-input" name="collection" aria-label="Filter by collection" style="min-width: 200px;">
