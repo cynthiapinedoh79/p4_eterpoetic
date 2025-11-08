@@ -49,7 +49,8 @@
 
     {# Quote banner (black or red) #}
     {% include "poetry/_quote_banner.html" with theme="banner--black" %}
-
+    <div class="mb-5"> {% include "poetry/_quote_banner.html" with theme="banner--black" %}
+    </div> 
     <div class="hero-art mx-auto mb-5">
       <img src="{% if hero_image_url %}{{ hero_image_url }}{% else %}{% static 'images/poetry_hero.png' %}{% endif %}"
         alt="Poetry hero" class="img-fluid rounded-4 shadow-sm w-100">

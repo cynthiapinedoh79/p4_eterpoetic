@@ -514,6 +514,20 @@ a.text-decoration-none {
   margin-bottom: 0;
 }
 
+/* Ensure the banner layer is below the footer and adds no overlap */
+.quote-banner-fw,
+.quote-banner-wrapper,
+.quote-banner{
+  position: relative;
+  z-index: 5;           /* below footer */
+  margin-bottom: 0 !important;
+
+  /* Add small padding between banner and footer if needed */
+.quote-banner-fw {
+  margin-bottom: 0.25rem;  /* optional visual breathing space */
+}
+}
+
 /* ================================================
    5. COMPONENT: ALERTS (SUCCESS OVERRIDE)
 =================================================== */

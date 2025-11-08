@@ -19,6 +19,8 @@
    2. Base & Typography
 =================================================== */
 body{
+  display: flex;
+  flex-direction: column;
   min-height: 100dvh;  /* dynamic viewport fixes mobile bars */
   height: 100%;
 
@@ -38,6 +40,10 @@ body{
 pre{white-space:pre-wrap;word-wrap:break-word;font-family:var(--font-stack-primary);font-size:1.05rem;line-height:1.8;}
 
 html, body { height: 100%; }
+
+main {
+  flex: 1 0 auto; /* makes main fill the middle space */
+}
 
 /* ================================================
    3. Global Layout & Masthead
@@ -142,10 +148,12 @@ html, body { height: 100%; }
 .footer{     
   position: static;
   margin: 0 !important;           
-  padding-bottom: 0 !important;
+  padding-bottom: 0.75rem !important;
   left: 0;
   width: 100%;
-  z-index: 1020;
+  z-index: 10;
+  flex-shrink: 0; /* keep footer at bottom */
+
   background-color: var(--bg-dark);          /* ensure dark background */
   color: var(--color-text-light);            /* default text color */
   border-top: 1px solid rgba(255,255,255,.12);
