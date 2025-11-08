@@ -247,3 +247,11 @@ main.flex-grow-1 {
 body {
     overflow-x: hidden;
 }
+
+
+
+
+
+
+
+html { outline: 3px dashed magenta !important; }

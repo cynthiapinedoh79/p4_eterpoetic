@@ -272,45 +272,140 @@ and use that instead, like:
 
 /* --- 2.4. Collection Album Card --- */
 
-.collection-album-card {
-  background: var(--bg-body);
-  border: none;
+.poetry-list .collection-album-card {
+  position: relative;
+/* Use a subtle vertical gradient for a layered effect */
+  background: linear-gradient(180deg, var(--bg-light) 0%, #f0f0f0 100%); 
+  /* Add a slightly thicker and softer border */
+  border: 1px solid rgba(0, 0, 0, 0.08); /* A soft grey border */
   border-radius: 16px;
   overflow: hidden;
-  transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease;
+  transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease;
   height: 100%;
+  
+  /* Add a more distinct, lifted shadow */
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.05);
 }
 
-.collection-album-card:hover {
-  background: var(--bg-light);
-  transform: translateY(-4px);
-  box-shadow: 0 10px 24px rgba(0,0,0,.10), 0 2px 6px rgba(0,0,0,.06);
+.poetry-list .collection-album-card:hover {
+/* Keep the background on hover or adjust slightly */
+  background: linear-gradient(180deg, #ffffff 0%, #f5f5f5 100%);
+  transform: translateY(-5px); /* Lift more noticeably */
+  /* Enhanced hover shadow with a hint of the brand color */
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15), 0 5px 12px rgba(0,0,0,0.1), 0 0 0 3px rgba(232, 106, 51, 0.1); 
+  /* Border darkens or uses brand color on hover */
+  border-color: rgba(232, 106, 51, 0.5); /* Brand-colored border on hover */
 }
 
-.collection-album-card .card-img-top {
+.poetry-list.collection-album-card .card-img-top {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   border-top-left-radius: 14px;
   border-top-right-radius: 14px;
   transform: scale(1);
   transition: transform .25s ease;
+  /* Add a subtle inner shadow to the image */
+  box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
 }
 
-.collection-album-card:hover .card-img-top {
-  transform: scale(1.03);
+.poetry-list.collection-album-card:hover .card-img-top {
+  transform: scale(1.02);
 }
 
-.collection-album-card .card-title {
+.poetry-list .collection-album-card .card-title {
   color: var(--color-text-dark);
   font-weight: 700;
+  font-size: 1.15rem; /* Slightly smaller font */
+  margin-bottom: 0.25rem !important; /* Tighten space after title */
+   /* Add a subtle text shadow for elegance */
+  text-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
 
-.collection-album-card:hover .card-title {
+.poetry-list .collection-album-card:hover .card-title {
   color: var(--color-primary-brand);
 }
+
+.poetry-list .collection-album-card .card-body {
+  /* Reduce vertical padding */
+  padding: 0.75rem 1rem 1rem 1rem;
+  line-height: 1.4;
+  color: var(--color-text-muted); /* More muted description */
+}
+
+
+
+/* Vertical "COLLECTION" Flag on the Right Edge */
+.poetry-list .collection-album-card::before {
+  content: "COLLECTION"; 
+  position: absolute;
+  top: 0;
+  right: 0; 
+  
+  /* Dimensions for the vertical strip */
+  width: 32px;
+  height: 100%;
+  
+  /* Use Flexbox for perfect vertical centering */
+  display: flex;
+  justify-content: center; /* Centers horizontally (along the length of the strip) */
+  align-items: center; /* Centers vertically (across the width of the strip) */
+  
+  /* CRITICAL FIX: Use 'vertical-lr' for bottom-to-top reading */
+  writing-mode: vertical-lr; /* Reads bottom-to-top */
+  
+  /* Styling */
+  background-color: var(--color-text-dark); 
+  color: #fff; 
+  font-size: 0.75rem; 
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  
+  /* Shape and Aesthetics */
+  border-top-right-radius: 16px; 
+  border-bottom-right-radius: 16px; 
+  box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2); 
+  z-index: 10;
+  
+  /* No need for padding when using Flexbox */
+}
+
+/* Optional: Slight effect on hover for the flag */
+.poetry-list .collection-album-card:hover::before {
+  box-shadow: -4px 0 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Bottom-Right Color Marker AFTER*/
+.poetry-list .collection-album-card::after {
+  content: " ";
+  position: absolute;
+  /* Position the element in the bottom right */
+  bottom: 0;
+  right: 0;
+  /* Define the size of the corner element */
+  width: 20px;
+  height: 20px;
+  
+  /* Use the brand color */
+  background-color: var(--color-primary-brand);
+  /* Apply border radius to blend nicely */
+  border-top-left-radius: 5px; 
+  border-bottom-right-radius: 16px; 
+  
+  /* Add a subtle shadow for depth */
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); 
+  
+  /* Ensure it's below the main flag but visible */
+  z-index: 5;
+}
+
+/* Remove or verify that the main card has position: relative; */
+/* .poetry-list .collection-album-card { position: relative; } */ 
+/* This line should be in your main .collection-album-card block */
+
 
 /* --- 2.5. XXL Compact Card Tweaks --- */
 
