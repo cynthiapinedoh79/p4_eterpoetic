@@ -1,6 +1,7 @@
 from django.test import TestCase
 from .forms import CollaborateForm
 
+
 # Create your tests here.
 class TestCollaborateForm(TestCase):
 
@@ -39,4 +40,3 @@ class TestCollaborateForm(TestCase):
             'message': ''
         })
         self.assertFalse(form.is_valid(), msg="Message was not provided, but the form is valid")
-    

@@ -1,4 +1,5 @@
-/* jshint esversion: 6, moz: true, browser: true */
+/* globals bootstrap: true */
+/* jshint esversion: 11, moz: true, browser: true */
 
 document.addEventListener("DOMContentLoaded", () => {
 

@@ -19,12 +19,12 @@ class AboutAdmin(SummernoteModelAdmin):
 #       own projects, then inherit from admin.ModelAdmin like
 #       we do below.
 
+
 @admin.register(CollaborateRequest)
 class CollaborateRequestAdmin(admin.ModelAdmin):
     """
     Lists message and read fields for display in admin
     panel for CollaborateRequest model.
     """
-    
+
     list_display = ('message', 'read',)
-    

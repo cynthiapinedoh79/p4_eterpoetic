@@ -23,7 +23,9 @@ from django.conf.urls.i18n import i18n_patterns   # i18n
 
 urlpatterns = []
 
-# Translatable, language-prefixed routes (prefix_default_language=False keeps / not /en/)
+# Translatable, language-prefixed routes
+# (prefix_default_language=False keeps / not /en/)
+
 urlpatterns += i18n_patterns(
     path("admin/", admin.site.urls),
     # Put blog BEFORE poetry so /blog/ is matched before poetry's <slug:slug>/
