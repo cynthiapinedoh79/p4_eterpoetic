@@ -28,16 +28,13 @@ class TestAboutView(TestCase):
         self.assertIsInstance(
             response.context['collaborate_form'], CollaborateForm)
 
-    # about/test_views.py (
-    Inside test_successful_collaboration_request_submission)
-
-
-    def test_successful_collaboration_request_submission(self): 
-        post_data={
+    def test_successful_collaboration_request_submission(self):
+        post_data = {
             'name': 'test name',
             'email': 'test@email.com',
             'message': 'test message'
-        }
-        
-        response = self.client.post(reverse('about'), data=post_data, follow=True)
+            }
+
+        response = self.client.post(
+            reverse('about'), data=post_data, follow=True)
         # ... rest of your code
