@@ -42,7 +42,7 @@ def env_required(name: str) -> str:
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 # DEBUG = os.environ.get("DEBUG", "False") == "True"
 
 # ALLOWED_HOSTS for production (when DEBUG is False)
@@ -247,6 +247,11 @@ STATICFILES_STORAGE = (
 # Media via Cloudinary (only if you have CLOUDINARY_URL on Heroku)
 if os.environ.get("CLOUDINARY_URL"):
     DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
+
+# Tell Cloudinary to always use secure HTTPS URLs
+CLOUDINARY = {
+    'secure': True
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
