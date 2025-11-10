@@ -121,7 +121,7 @@
           <div class="col-12 col-sm-6 col-lg-3 col-xxl-2">
             <div class="card h-100 {% if poem.is_featured %}is-featured{% else %}shadow-sm{% endif %}">
               <div class="image-wrap">
-                {% if poem.is_featured %}<span class="feature-flag" aria-label="Featured">Featured</span>{% endif %}
+                {% if poem.is_featured %}<span class="feature-flag">Featured</span>{% endif %}
                 
                 {# --- 2. MODIFIED: Using the URL check --- #}
                 {% if poem.featured_image and "placeholder" not in poem.featured_image.url %}
