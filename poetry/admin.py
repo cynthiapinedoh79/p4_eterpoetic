@@ -19,12 +19,16 @@ class CollectionAdmin(admin.ModelAdmin):
 
 @admin.register(Poem)
 class PoemAdmin(SummernoteModelAdmin):
-    
     # --- 1. PREVIEW IMAGE ---
     @admin.display(description="Image")
     def thumb(self, obj):
-        if getattr(obj, "featured_image", None) and "placeholder" not in str(obj.featured_image):
-            return format_html('<img src="{}" style="height:40px;border-radius:4px;">', obj.featured_image.url)
+        if (getattr(obj, "featured_image", None)
+                and "placeholder" not in str(obj.featured_image)):
+
+            img_html = (
+                '<img src="{}" style="height:40px;border-radius:4px;">'
+            )
+            return format_html(img_html, obj.featured_image.url)
         return "—"
 
     # --- 2. CUSTOM COLUMN HEADERS ---
@@ -40,17 +44,17 @@ class PoemAdmin(SummernoteModelAdmin):
     # --- 3. UPDATED LIST DISPLAY ---
     # We now use our custom function names
     list_display = (
-        "thumb", 
+        "thumb",
         "primary_title",  # <-- Was "title_es"
-        "author", 
-        "collection", 
-        "is_featured_display", # <-- Was "is_featured"
+        "author",
+        "collection",
+        "is_featured_display",  # <-- Was "is_featured"
         "created"
     )
-    
+
     list_filter = ("collection", "is_featured", "created")
     search_fields = ("title_es", "title_en", "body_es", "body_en")
-    
+
     # This will pre-fill the slug from the English title as you type
     prepopulated_fields = {"slug": ("title_en",)}
 
@@ -58,8 +62,8 @@ class PoemAdmin(SummernoteModelAdmin):
     fields = (
         "author", "collection",
         "featured_image",
-        "title_en", "body_en", # <-- English fields first
-        "title_es", "body_es", # <-- Spanish fields second
+        "title_en", "body_en",  # <-- English fields first
+        "title_es", "body_es",  # <-- Spanish fields second
         "slug", "is_featured",
     )
 
@@ -68,6 +72,3 @@ class PoemAdmin(SummernoteModelAdmin):
 
 # --- 4. ERROR REMOVED ---
 # The duplicate 'thumb' function that was here has been deleted.
-
-
-

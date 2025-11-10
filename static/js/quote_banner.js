@@ -1,3 +1,5 @@
+/* jshint esversion: 11, moz: true, browser: true */
+
 (function () {
   // Keep only the first .quote-banner on the page
   const all = Array.from(document.querySelectorAll('.quote-banner'));

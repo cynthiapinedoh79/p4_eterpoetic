@@ -1,3 +1,5 @@
+/* jshint esversion: 11, moz: true, browser: true */
+
 // Toggle between Spanish (ES) and English (EN) versions of a poem.
 // Works when the detail template provides elements with these IDs:
 //  - btn-es, btn-en, poem-es, (optional) poem-en

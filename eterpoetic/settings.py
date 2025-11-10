@@ -11,7 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
-import os, sys
+import os
+import sys
 from django.contrib.messages import constants as messages
 import dj_database_url
 from django.utils.translation import gettext_lazy as _
@@ -28,6 +29,7 @@ if (BASE_DIR / "env.py").exists():
     sys.path.append(str(BASE_DIR))
     import env  # sets os.environ[...] locally
 
+
 def env_required(name: str) -> str:
     v = os.environ.get(name)
     if not v:
@@ -36,29 +38,28 @@ def env_required(name: str) -> str:
 
 
 # --- Core settings ---
-import os
 # SECRET_KEY must be read from environment variable
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 # DEBUG = os.environ.get("DEBUG", "False") == "True"
 
 # ALLOWED_HOSTS for production (when DEBUG is False)
 
 ALLOWED_HOSTS = [
-    'localhost', 
+    'localhost',
     '127.0.0.1',
-    "dev.local", 
+    "dev.local",
     '[::1]',
-    '.herokuapp.com', 
+    '.herokuapp.com',
     'eterpoetic-62a49da213d8.herokuapp.com',
     '*.codeinstitute-ide.net',
     '*.githubpreview.dev',
-    
 ]
 # Add hostnames from the environment if present
-ALLOWED_HOSTS.extend([h for h in os.environ.get('ALLOWED_HOSTS', '').split(',') if h])
+hostnames = os.environ.get('ALLOWED_HOSTS', '').split(',')
+ALLOWED_HOSTS.extend([h for h in hostnames if h])
 
 # Application definition
 INSTALLED_APPS = [
@@ -68,7 +69,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'django.contrib.sites', # Uncomment if using allauth with sites framework
+    'django.contrib.sites',  # Uncomment if using allauth with sites framework
     'django_summernote',
     # cloudinary
     'cloudinary_storage',
@@ -84,7 +85,7 @@ INSTALLED_APPS = [
     # crispy
     'crispy_forms',
     'crispy_bootstrap5',
-    #----------
+    # ----------
     # 'sslserver',
     'core',
     'facebook_integration',
@@ -94,11 +95,8 @@ INSTALLED_APPS = [
     'poetry',
 ]
 
-# Authentication backends (required by django-allauth)
-AUTHENTICATION_BACKENDS = (
-    'django.contrib.auth.backends.ModelBackend',  # Default
-    'allauth.account.auth_backends.AuthenticationBackend',  # Needed for allauth
-)
+# Note: A redundant AUTHENTICATION_BACKENDS definition was removed from here.
+# The active definition is near the end of the file.
 
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
@@ -137,7 +135,7 @@ TEMPLATES = [
     },
 ]
 
-TEMPLATES[0]["DIRS"] = [ BASE_DIR / "templates" ]
+TEMPLATES[0]["DIRS"] = [BASE_DIR / "templates"]
 
 WSGI_APPLICATION = "eterpoetic.wsgi.application"
 
@@ -154,7 +152,9 @@ DATABASES = {
 DATABASE_URL = os.environ.get("DATABASE_URL")
 if DATABASE_URL:
     # Parse Heroku/ElephantSQL URL
-    DATABASES["default"] = dj_database_url.parse(DATABASE_URL, conn_max_age=600)
+    DATABASES["default"] = dj_database_url.parse(
+        DATABASE_URL, conn_max_age=600
+    )
 
     # Only keep SSL options for Postgres
     engine = DATABASES["default"].get("ENGINE", "")
@@ -188,10 +188,22 @@ CSRF_TRUSTED_ORIGINS = [
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",},
-    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",},
-    {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator",},
-    {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",},
+    {
+        "NAME": "django.contrib.auth.password_validation."
+                "UserAttributeSimilarityValidator",
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation."
+                "MinimumLengthValidator",
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation."
+                "CommonPasswordValidator",
+    },
+    {
+        "NAME": "django.contrib.auth.password_validation."
+                "NumericPasswordValidator",
+    },
 ]
 
 # Crispy Forms Settings
@@ -218,15 +230,19 @@ USE_L10N = True
 USE_TZ = True
 
 LOCALE_PATHS = [
-    BASE_DIR / "locale",  # Django will look here for translation files (.po/.mo)
+    BASE_DIR / "locale",  # Django needed for translation (.po/.mo)
 ]
 
 # Static / Media files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATICFILES_STORAGE = (
+    "whitenoise.storage.CompressedManifestStaticFilesStorage"
+)
 
 # Media via Cloudinary (only if you have CLOUDINARY_URL on Heroku)
 if os.environ.get("CLOUDINARY_URL"):
@@ -301,7 +317,6 @@ SOCIALACCOUNT_QUERY_EMAIL = True
 SOCIALACCOUNT_LOGIN_ON_GET = True
 
 
-
 SOCIALACCOUNT_PROVIDERS = {
     "google": {
         "SCOPE": ["profile", "email"],
@@ -319,6 +334,13 @@ SOCIALACCOUNT_PROVIDERS = {
         },
         # Optional but fine:
         "SCOPE": ["public_profile", "email"],  # no review required
-        "FIELDS": ["id", "email", "name", "first_name", "last_name"],  # <-- ensures email is requested
+        # ensures email is requested
+        "FIELDS": [
+            "id",
+            "email",
+            "name",
+            "first_name",
+            "last_name"
+        ],
     },
 }

@@ -14,7 +14,7 @@ class TestAboutView(TestCase):
         self.about_content.save()
 
         # CRITICAL FIX: Force a session initiation for the test client
-        session = self.client.session 
+        session = self.client.session
         session.save()
 
     def test_render_about_page_with_collaborate_form(self):
@@ -28,16 +28,12 @@ class TestAboutView(TestCase):
         self.assertIsInstance(
             response.context['collaborate_form'], CollaborateForm)
 
+    # about/test_views.py (
+    Inside test_successful_collaboration_request_submission)
 
-    # about/test_views.py (Inside test_successful_collaboration_request_submission)
 
-# about/test_views.py (Inside test_successful_collaboration_request_submission)
-
-    def test_successful_collaboration_request_submission(self):
-        # ... your code starts here ...
-        
-        # INSERT THIS BLOCK
-        post_data = {
+    def test_successful_collaboration_request_submission(self): 
+        post_data={
             'name': 'test name',
             'email': 'test@email.com',
             'message': 'test message'

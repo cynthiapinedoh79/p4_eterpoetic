@@ -616,11 +616,11 @@ a.text-decoration-none {
   position: relative;
   z-index: 5;           /* below footer */
   margin-bottom: 0 !important;
+}
 
   /* Add small padding between banner and footer if needed */
 .quote-banner-fw {
   margin-bottom: 0.25rem;  /* optional visual breathing space */
-}
 }
 
 /* ================================================
