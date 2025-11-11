@@ -42,8 +42,8 @@ def env_required(name: str) -> str:
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-# DEBUG = os.environ.get("DEBUG", "False") == "True"
+# DEBUG = False
+DEBUG = os.environ.get("DEBUG", "False") == "True"
 
 # ALLOWED_HOSTS for production (when DEBUG is False)
 
@@ -261,20 +261,20 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # CONDITIONAL PRODUCTION SETTINGS (Applied when DEBUG is False/empty)
 # ----------------------------------------------------------------------
 
-# if DEBUG:
-#     # Dev: HTTP only
-#     SECURE_SSL_REDIRECT = False
-#     SESSION_COOKIE_SECURE = False
-#     CSRF_COOKIE_SECURE = False
-#     SECURE_HSTS_SECONDS = 0
-# else:
-#     # Prod: enforce HTTPS + secure cookies
-#     SECURE_SSL_REDIRECT = True
-#     SESSION_COOKIE_SECURE = True
-#     CSRF_COOKIE_SECURE = True
-#     SECURE_HSTS_SECONDS = 31536000
-#     SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-#     SECURE_HSTS_PRELOAD = True
+if DEBUG:
+    # Dev: HTTP only
+    SECURE_SSL_REDIRECT = False
+    SESSION_COOKIE_SECURE = False
+    CSRF_COOKIE_SECURE = False
+    SECURE_HSTS_SECONDS = 0
+else:
+    # Prod: enforce HTTPS + secure cookies
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+    SECURE_HSTS_SECONDS = 31536000
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
 
 MESSAGE_TAGS = {
     messages.SUCCESS: 'alert-success',
@@ -292,12 +292,12 @@ ACCOUNT_LOGOUT_REDIRECT_URL = "/"
 
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = os.environ.get('EMAIL_HOST')
+EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-DEFAULT_FROM_EMAIL = os.environ.get('DEFAULT_FROM_EMAIL')
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 
 
 # --- Allauth v0.65+ (new-style settings) ---
