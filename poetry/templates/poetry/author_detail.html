@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container my-5">
+
+  <div class="row justify-content-center mb-5">
+    <div class="col-12 col-md-8 text-center">
+      
+      {% if author.photo %}
+        <img src="{{ author.photo.url }}" alt="{{ author.name }}" 
+             class="rounded-circle mb-4 shadow" 
+             style="width: 150px; height: 150px; object-fit: cover;">
+      {% else %}
+        <div class="rounded-circle bg-light d-inline-flex align-items-center justify-content-center mb-4 shadow-sm" 
+             style="width: 150px; height: 150px;">
+             <i class="fas fa-feather-alt fa-3x text-muted"></i>
+        </div>
+      {% endif %}
+
+      <h1 class="display-5 fw-bold mb-2">{{ author.name }}</h1>
+      
+      <hr class="my-4 w-50 mx-auto">
+
+      <p class="text-muted small mb-4">
+        Published Poems: <strong>{{ page_obj.paginator.count }}</strong>
+      </p>
+
+      <div class="card bg-light border-0 p-4 mb-5 shadow-sm">
+        <div class="card-body text-start">
+          
+          {% if author.bio_en %}
+            <div class="mb-3">
+              <h6 class="text-uppercase text-muted small fw-bold">About (EN)</h6>
+              <div class="lead" style="font-size: 1.1rem; line-height: 1.6;">
+                {{ author.bio_en|linebreaks }}
+              </div>
+            </div>
+          {% endif %}
+
+          {% if author.bio_es %}
+            <div class="mt-4">
+               {% if author.bio_en %}<hr class="my-3">{% endif %}
+               
+               <h6 class="text-uppercase text-muted small fw-bold">Sobre el Autor (ES)</h6>
+               <div class="lead" style="font-size: 1.1rem; line-height: 1.6;">
+                 {{ author.bio_es|linebreaks }}
+               </div>
+            </div>
+          {% endif %}
+
+          {% if not author.bio_en and not author.bio_es %}
+            <p class="text-muted fst-italic text-center">
+              No biography available for this author yet.
+            </p>
+          {% endif %}
+        </div>
+      </div>
+      </div>
+  </div>
+
+  <h3 class="text-center mb-4">Poems by {{ author.name }}</h3>
+  
+  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    {% for poem in page_obj %}
+      <div class="col">
+        <div class="card h-100 shadow-sm border-0" style="border-radius: 16px; overflow:hidden;">
+            
+            <div class="image-wrap">
+              <a href="{% url 'poetry:poem_detail' poem.slug %}">
+                {% if poem.featured_image and "placeholder" not in poem.featured_image.url %}
+                  <img src="{{ poem.featured_image.url }}" class="card-img-top" alt="{{ poem.title_en }}">
+                {% else %}
+                  <img src="{% static 'images/placeholder_poem.png' %}" class="card-img-top" alt="Placeholder">
+                {% endif %}
+              </a>
+            </div>
+
+            <div class="card-body">
+               <h5 class="card-title">
+                 <a href="{% url 'poetry:poem_detail' poem.slug %}" class="text-dark text-decoration-none">
+                   {{ poem.title_en }}
+                 </a>
+               </h5>
+               <p class="card-text text-muted small">
+                 {{ poem.body_en|striptags|truncatewords:10 }}
+               </p>
+            </div>
+        </div>
+      </div>
+    {% empty %}
+      <div class="col-12 text-center">
+        <p>No poems found for this author.</p>
+      </div>
+    {% endfor %}
+  </div>
+
+  {% if page_obj.has_other_pages %}
+    <div class="row mt-5">
+      <div class="col-12 d-flex justify-content-center">
+        <nav aria-label="Author page navigation">
+          <ul class="pagination">
+            {% if page_obj.has_previous %}
+              <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
+              </li>
+            {% endif %}
+            
+            <li class="page-item disabled">
+              <span class="page-link">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+            </li>
+
+            {% if page_obj.has_next %}
+              <li class="page-item">
+                <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
+              </li>
+            {% endif %}
+          </ul>
+        </nav>
+      </div>
+    </div>
+  {% endif %}
+
+</div>
+{% endblock %}

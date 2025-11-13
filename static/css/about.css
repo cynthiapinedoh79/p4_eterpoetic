@@ -112,12 +112,12 @@
 /* “Back” link styling */
 /* This rule was defined 3x identically in the original file. */
 .about-page .back-link {
-  color: var(--color-primary-brand);
+  color: var(--color-link);
   text-decoration: none;
 }
 .about-page .back-link:hover {
   text-decoration: underline;
-  color: var(--color-text-dark);
+  color: var(--color-link-hover);
 }
 
 /* 'View Full Profile’ button */
