@@ -492,7 +492,7 @@ a.page-link {
 }
 
 /* ================================================
-   3. PAGE: POEM DETAIL (WATERMARK)
+   3. PAGE: POEM DETAIL
 =================================================== */
 
 .poem-detail-card {
@@ -507,7 +507,7 @@ a.page-link {
 
 .poem-detail-overlay {
   border-radius: 7px;
-  background-color: rgba(250, 244, 233, 0.82);
+  background-color: rgba(252, 247, 238, 0.842);
 }
 
 .poem-detail-title {
@@ -516,10 +516,13 @@ a.page-link {
   color: var(--color-text-dark);
 }
 
+/* --- GAP AFTER AUTHOR NAME --- */
 .poem-detail-author {
   font-family: 'Georgia', 'Times New Roman', Times, serif;
   font-style: italic;
   font-size: 1.1rem;
+  /* This overrides the "mb-4" class in your HTML that makes the gap too big */
+  margin-bottom: 0.25rem !important; 
 }
 
 .poem-body {
@@ -527,12 +530,44 @@ a.page-link {
   word-wrap: break-word;
   font-family: 'Georgia', 'Times New Roman', Times, serif;
   font-size: 1.15rem;
-  line-height: 1.7;
   color: #333;
 }
 
 a.text-decoration-none {
-  color: var(--color-primary-brand) !important;
+  color: var(--color-link) !important;
+}
+a.text-decoration-none:hover {
+  color: var(--color-link-hover) !important;
+}
+
+/* --- CONTROL THE SPACE BETWEEN STANZAS --- */
+
+/* 1. Paragraphs (The Stanzas) */
+.poem-body p {
+    display: block;
+    
+    /* [CONTROL KNOB]: Change this number to adjust the gap between stanzas */
+    /* 0px  = Stanzas touch (use this if you have double-enter lines) */
+    /* 12px = Nice clear separation (standard book look) */
+    margin-bottom: 2px !important; 
+
+    margin-top: 0 !important;
+    line-height: 1.0 !important;
+    padding: 0 !important;
+}
+
+/* 2. The "Divs" (The old wrappers from your database) */
+/* We force these to ZERO so they don't add extra unwanted space */
+.poem-body .poem-container {
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: inherit !important;
+    width: 100%;
+}
+
+/* 3. Safety Net: Hides accidental empty lines */
+.poem-body p:empty {
+    display: none !important;
 }
 
 /* ================================================

@@ -3,6 +3,7 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/poetry.css' %}?v={% now 'U' %}">
+
 {% endblock %}
 {# No longer need PLACEHOLDER_IMG_URL since we're hardcoding the path below #}
 
@@ -10,9 +11,15 @@
 <div class="container my-5">
 
   <div class="text-center mb-4">
-    <a href="{% url 'poetry:poetry_home' %}#poems-search" class="text-decoration-none" style="color: var(--color-link);">
-      <i class="fas fa-arrow-left me-2"></i>Back to Poem List
-    </a>
+    {% if poem.collection %}
+      <a href="{% url 'poetry:poem_list' %}?collection={{ poem.collection.slug }}#poems-search" class="text-decoration-none">
+        <i class="fas fa-arrow-left me-2"></i>Back to {{ poem.collection.name_en }}
+      </a>
+    {% else %}
+      <a href="{% url 'poetry:poetry_home' %}#poems-search" class="text-decoration-none">
+        <i class="fas fa-arrow-left me-2"></i>Back to Poem List
+      </a>
+    {% endif %}
   </div>
   <div class="row justify-content-center">
     <div class="col-12 col-md-10 col-lg-9">
@@ -65,7 +72,13 @@
             {% if poem.body_es %}
               <article id="poem-es" lang="es">
                 <h1 class="poem-detail-title">{{ poem.title_es|default:poem.title_en }}</h1>
-                {% if poem.author %}<p class="poem-detail-author mb-4">✍️ {{ poem.author.name|default:poem.author }}</p>{% endif %}
+                {% if poem.author %}
+                  <p class="poem-detail-author mb-4">
+                    <a href="{% url 'poetry:author_detail' poem.author.slug %}" class="text-decoration-none text-dark">
+                      {{ poem.author.name|default:poem.author }}
+                    </a>
+                  </p>
+                {% endif %}
                 
                 <div class="poem-body">
                   {{ poem.body_es|safe }}
@@ -76,7 +89,13 @@
             {% if poem.body_en %}
               <article id="poem-en" lang="en" {% if poem.body_es %}style="display:none;"{% endif %}>
                 <h1 class="poem-detail-title">{{ poem.title_en }}</h1>
-                {% if poem.author %}<p class="poem-detail-author mb-4">✍️ {{ poem.author.name|default:poem.author }}</p>{% endif %}
+                {% if poem.author %}
+                  <p class="poem-detail-author mb-4">
+                    <a href="{% url 'poetry:author_detail' poem.author.slug %}" class="text-decoration-none text-dark">
+                      {{ poem.author.name|default:poem.author }}
+                    </a>
+                  </p>
+                {% endif %}
                 
                 <div class="poem-body">
                   {{ poem.body_en|safe }}
@@ -86,7 +105,13 @@
 
             {% if not poem.body_es and not poem.body_en %}
               <h1 class="poem-detail-title">{{ poem.title_en }}</h1>
-              {% if poem.author %}<p class="poem-detail-author mb-4">✍️ {{ poem.author.name|default:poem.author }}</p>{% endif %}
+              {% if poem.author %}
+                <p class="poem-detail-author mb-4">
+                  <a href="{% url 'poetry:author_detail' poem.author.slug %}" class="text-decoration-none text-dark">
+                    {{ poem.author.name|default:poem.author }}
+                  </a>
+                </p>
+              {% endif %}
               <div class="poem-body">
                 <p><em>This poem does not have any content yet.</em></p>
               </div>

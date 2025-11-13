@@ -190,3 +190,30 @@ def favorites_list(request):
 
     # We re-use the main poem_list template!
     return render(request, "poetry/poem_list.html", ctx)
+
+def author_detail(request, slug):
+    """
+    Display an author's bio and a list of their poems.
+    """
+    author = get_object_or_404(Author, slug=slug)
+    
+    # Get all poems by this author
+    # We order by featured first, then date, just like the main list
+    poems = Poem.objects.filter(author=author).order_by('-is_featured', '-created')
+
+    # --- Pagination ---
+    paginator = Paginator(poems, 12)
+    page_number = request.GET.get("page")
+    page_obj = paginator.get_page(page_number)
+
+    # --- Favorites Logic (So hearts appear correctly) ---
+    favorite_poem_ids = []
+    if request.user.is_authenticated:
+        favorite_poem_ids = request.user.favorite_poems.values_list('id', flat=True)
+
+    context = {
+        "author": author,
+        "page_obj": page_obj,
+        "favorite_poem_ids": favorite_poem_ids,
+    }
+    return render(request, "poetry/author_detail.html", context)
