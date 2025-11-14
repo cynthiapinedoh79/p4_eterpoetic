@@ -6,7 +6,22 @@ from .models import Author, Collection, Poem
 
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
-    list_display = ("name",)
+# --- 1. NEW: PREVIEW PHOTO ---
+    @admin.display(description="Photo")
+    def photo_thumb(self, obj):
+        # Check if the photo field has a value
+        if obj.photo:
+            img_html = (
+                '<img src="{}" style="height:40px;border-radius:50%;">'
+            )
+            return format_html(img_html, obj.photo.url)
+        return "—"
+    
+    # --- 2. UPDATED LIST DISPLAY ---
+    list_display = (
+        "name", 
+        "photo_thumb", # <-- ADDED THIS LINE
+    )
     search_fields = ("name",)
 
 

@@ -6,93 +6,83 @@
 
   <div class="row justify-content-center mb-5">
     <div class="col-12 col-md-8 text-center">
-      
+
       {% if author.photo %}
-        <img src="{{ author.photo.url }}" alt="{{ author.name }}" 
-             class="rounded-circle mb-4 shadow" 
-             style="width: 150px; height: 150px; object-fit: cover;">
+        <img src="{{ author.photo.url }}" alt="{{ author.name }}"
+          class="rounded-circle mb-4 shadow" 
+          style="width: 150px; height: 150px; object-fit: cover;">
       {% else %}
         <div class="rounded-circle bg-light d-inline-flex align-items-center justify-content-center mb-4 shadow-sm" 
-             style="width: 150px; height: 150px;">
-             <i class="fas fa-feather-alt fa-3x text-muted"></i>
+          style="width: 150px; height: 150px;">
+          <i class="fas fa-feather-alt fa-3x text-muted"></i>
         </div>
       {% endif %}
 
       <h1 class="display-5 fw-bold mb-2">{{ author.name }}</h1>
-      
-      <hr class="my-4 w-50 mx-auto">
-
       <p class="text-muted small mb-4">
         Published Poems: <strong>{{ page_obj.paginator.count }}</strong>
       </p>
 
-      <div class="card bg-light border-0 p-4 mb-5 shadow-sm">
-        <div class="card-body text-start">
+      <hr class="my-4 w-50 mx-auto">
+
+      <div class="text-start px-md-4">
+        
+        {% if author.bio_en %}
+          <div class="lead mb-3" style="font-family: 'Georgia', serif; color: #444;">
+            {{ author.bio_en|linebreaks }}
+          </div>
+        {% endif %}
+
+        {% if author.bio_es %}
+          <div class="text-center mt-3">
+            <button class="btn btn-outline-secondary btn-sm rounded-pill px-4" type="button" 
+                    data-bs-toggle="collapse" data-bs-target="#collapseBioES" 
+                    aria-expanded="false" aria-controls="collapseBioES">
+              Biography in Spanish <i class="fas fa-chevron-down ms-1"></i>
+            </button>
+          </div>
           
-          {% if author.bio_en %}
-            <div class="mb-3">
-              <h6 class="text-uppercase text-muted small fw-bold">About (EN)</h6>
-              <div class="lead" style="font-size: 1.1rem; line-height: 1.6;">
-                {{ author.bio_en|linebreaks }}
-              </div>
+          <div class="collapse mt-3" id="collapseBioES">
+            <div class="card card-body bg-light border-0 shadow-sm" 
+                 style="font-family: 'Georgia', serif; font-style: italic; color: #555;">
+              {{ author.bio_es|linebreaks }}
             </div>
-          {% endif %}
-
-          {% if author.bio_es %}
-            <div class="mt-4">
-               {% if author.bio_en %}<hr class="my-3">{% endif %}
-               
-               <h6 class="text-uppercase text-muted small fw-bold">Sobre el Autor (ES)</h6>
-               <div class="lead" style="font-size: 1.1rem; line-height: 1.6;">
-                 {{ author.bio_es|linebreaks }}
-               </div>
-            </div>
-          {% endif %}
-
-          {% if not author.bio_en and not author.bio_es %}
-            <p class="text-muted fst-italic text-center">
-              No biography available for this author yet.
-            </p>
-          {% endif %}
-        </div>
+          </div>
+        {% endif %}
+        
+        {% if not author.bio_en and not author.bio_es %}
+          <p class="text-muted text-center fst-italic">No biography available.</p>
+        {% endif %}
       </div>
-      </div>
+
+    </div>
   </div>
 
-  <h3 class="text-center mb-4">Poems by {{ author.name }}</h3>
-  
-  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-    {% for poem in page_obj %}
-      <div class="col">
-        <div class="card h-100 shadow-sm border-0" style="border-radius: 16px; overflow:hidden;">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8">
+      <h3 class="text-center mb-4" style="font-family: 'Georgia', serif;">Poems by {{ author.name }}</h3>
+      
+      <div class="list-group shadow-sm rounded-3 overflow-hidden">
+        {% for poem in page_obj %}
+          <a href="{% url 'poetry:poem_detail' poem.slug %}" 
+             class="list-group-item list-group-item-action py-3 d-flex justify-content-between align-items-center poem-list-item border-start-0 border-end-0">
             
-            <div class="image-wrap">
-              <a href="{% url 'poetry:poem_detail' poem.slug %}">
-                {% if poem.featured_image and "placeholder" not in poem.featured_image.url %}
-                  <img src="{{ poem.featured_image.url }}" class="card-img-top" alt="{{ poem.title_en }}">
-                {% else %}
-                  <img src="{% static 'images/placeholder_poem.png' %}" class="card-img-top" alt="Placeholder">
-                {% endif %}
-              </a>
+            <div class="ms-2">
+              <span class="fw-bold fs-6" style="font-family: 'Georgia', serif; color: #222;">
+                {{ poem.title_en }}
+              </span>
             </div>
+            
+            <span class="text-muted small"><i class="fas fa-chevron-right"></i></span>
+          </a>
+        {% empty %}
+          <div class="list-group-item text-center py-4 text-muted">
+            No poems found for this author.
+          </div>
+        {% endfor %}
+      </div>
 
-            <div class="card-body">
-               <h5 class="card-title">
-                 <a href="{% url 'poetry:poem_detail' poem.slug %}" class="text-dark text-decoration-none">
-                   {{ poem.title_en }}
-                 </a>
-               </h5>
-               <p class="card-text text-muted small">
-                 {{ poem.body_en|striptags|truncatewords:10 }}
-               </p>
-            </div>
-        </div>
-      </div>
-    {% empty %}
-      <div class="col-12 text-center">
-        <p>No poems found for this author.</p>
-      </div>
-    {% endfor %}
+    </div>
   </div>
 
   {% if page_obj.has_other_pages %}
@@ -105,11 +95,9 @@
                 <a class="page-link" href="?page={{ page_obj.previous_page_number }}">Previous</a>
               </li>
             {% endif %}
-            
             <li class="page-item disabled">
               <span class="page-link">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
             </li>
-
             {% if page_obj.has_next %}
               <li class="page-item">
                 <a class="page-link" href="?page={{ page_obj.next_page_number }}">Next</a>
@@ -122,4 +110,14 @@
   {% endif %}
 
 </div>
+
+<style>
+  .poem-list-item {
+    transition: background-color 0.2s ease, padding-left 0.2s ease;
+  }
+  .poem-list-item:hover {
+    background-color: #f9f9f9; /* Very light grey on hover */
+    padding-left: 1.5rem !important; /* Subtle slide-right effect */
+  }
+</style>
 {% endblock %}

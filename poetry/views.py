@@ -202,7 +202,7 @@ def author_detail(request, slug):
     poems = Poem.objects.filter(author=author).order_by('-is_featured', '-created')
 
     # --- Pagination ---
-    paginator = Paginator(poems, 12)
+    paginator = Paginator(poems, 18)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
