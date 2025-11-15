@@ -349,3 +349,5 @@ SOCIALACCOUNT_PROVIDERS = {
         ],
     },
 }
+
+X_FRAME_OPTIONS = 'ALLOWALL'
