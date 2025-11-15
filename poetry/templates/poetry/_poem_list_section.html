@@ -65,11 +65,13 @@
         {% for collection in page_obj.object_list %}
           <div class="col-12 col-sm-6 col-lg-3 col-xxl-2">
             <a href="?collection={{ collection.slug }}#poems-search" class="card text-decoration-none collection-album-card h-100 shadow-sm">
+              
               {% if collection.collection_image and "placeholder" not in collection.collection_image.url %}
                 <img src="{{ collection.collection_image.url }}" class="card-img-top" alt="{{ collection.name_en }}">
               {% else %}
                 <img src="{{ PLACEHOLDER_COLL_IMG }}" class="card-img-top" alt="Placeholder image">
               {% endif %}
+
               <div class="card-body">
                 <h5 class="card-title mb-1">{{ collection.name_en|default:collection.name_es }}</h5>
                 <p class="card-text text-muted small">
@@ -92,28 +94,32 @@
   {% else %}
     {% if page_obj.object_list %}
       {% if current_collection %}
-        <div class="card mb-5 p-4 shadow-sm collection-detail-card">
-          <div class="row g-3 align-items-center">
-            
-            <div class="col-12 col-md-4">
-              {% if current_collection.collection_image and "placeholder" not in current_collection.collection_image.url %}
-                <img src="{{ current_collection.collection_image.url }}" 
-                     alt="{{ current_collection.name_en }} collection image" 
-                     class="img-fluid rounded-3 shadow-sm">
-              {% else %}
-                <img src="{{ PLACEHOLDER_COLL_IMG }}" 
-                     alt="Placeholder image" 
-                     class="img-fluid rounded-3 shadow-sm">
-              {% endif %}
-            </div>
+      <div class="row justify-content-center mb-5 collection-detail-row">
+        <div class="col-12 col-lg-10 col-xl-8 collection-detail-wrapper">
+          <div class="card p-4 shadow-sm collection-detail-card">
+            <div class="row g-3 align-items-center">
+              
+              <div class="col-12 col-md-4">
+                {% if current_collection.collection_image and "placeholder" not in current_collection.collection_image.url %}
+                  <img src="{{ current_collection.collection_image.url }}" 
+                      alt="{{ current_collection.name_en }} collection image" 
+                      class="img-fluid rounded-3 shadow-sm">
+                {% else %}
+                  <img src="{{ PLACEHOLDER_COLL_IMG }}" 
+                      alt="Placeholder image" 
+                      class="img-fluid rounded-3 shadow-sm">
+                {% endif %}
+              </div>
 
-            <div class="col-12 col-md-8">
-              <h3 class="mb-2">{{ current_collection.name_en|default:current_collection.name_es }} Collection</h3>
-              <p class="text-muted">{{ current_collection.description_en|default:current_collection.description_es }}</p>
-            </div>
+              <div class="col-12 col-md-8">
+                <h3 class="mb-2">{{ current_collection.name_en|default:current_collection.name_es }} Collection</h3>
+                <p class="text-muted">{{ current_collection.description_en|default:current_collection.description_es }}</p>
+              </div>
 
+            </div>
           </div>
         </div>
+      </div>
       {% endif %}
 
       <div class="row g-4">

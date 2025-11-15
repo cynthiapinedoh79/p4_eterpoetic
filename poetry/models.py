@@ -10,7 +10,8 @@ class Author(models.Model):
     slug = models.SlugField(unique=True)
     bio_en = models.TextField(blank=True)
     bio_es = models.TextField(blank=True)
-    photo = models.ImageField(upload_to="authors/", blank=True, null=True)
+    # photo = models.ImageField(upload_to="authors/", blank=True, null=True)
+    photo = CloudinaryField('author_photo', default='placeholder_author', blank=True, null=True)
 
     def __str__(self):
         return self.name
