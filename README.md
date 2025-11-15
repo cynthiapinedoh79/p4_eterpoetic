@@ -2,8 +2,6 @@
 
 This README is structured for a **Django project with multiple apps**
 
-
-# 📚 *[Project Name]* — Django Web Application
 # 📚 *EterPoetic* — Django Web Application
 EterPoetic is an interactive and content-rich web application for lovers of poetry and creative writing. Designed for readers and writers, it provides a platform to explore curated poem collections and insightful blog posts. It combines a personal reading experience with community engagement, allowing registered users to favorite poems, comment on articles, and connect with the team.
 
@@ -108,12 +106,14 @@ All pages were designed with **Responsive Design** to provide a consistent exper
 
 ![Responsive devices -Home](static/images/readme/amIR/amIR-home3.png)
 
+---
 
 ### MyFavorites (Poetry)
 User would be able to see favorites (Featured) poems when login
 
 ![Responsive devices -Home](static/images/readme/amIR/amIR-myFavorites.png)
 
+---
 
 ### Blog (Posts)
 
@@ -121,6 +121,7 @@ User would be able to see favorites (Featured) poems when login
 
 ![Responsive devices -Home](static/images/readme/amIR/amIR-blog1.png)
 
+---
 
 ### About (Owner and Collaborators, Form)
 
@@ -130,11 +131,13 @@ User would be able to see favorites (Featured) poems when login
 
 ![Responsive devices -Home](static/images/readme/amIR/amIR-about2.png)
 
+---
 
 ### Register (Sign Up)
 
 ![Responsive devices -Home](static/images/readme/amIR/amIR-register.png)
 
+---
 
 ### Login (Sign In)
 
@@ -144,7 +147,7 @@ User would be able to see favorites (Featured) poems when login
 
 ## 🖼️ Screenshots
 
-* Additional screenshots to show
+ Additional screenshots to show
 
 ### My Favorites
 
@@ -166,6 +169,7 @@ User would be able to see favorites (Featured) poems when login
 
 ![Responsive devices -Home](static/images/readme/screenshots/s-login1a.png)
 
+---
 
 ### with Google
 
@@ -177,6 +181,7 @@ User would be able to see favorites (Featured) poems when login
 
 ![Responsive devices -Home](static/images/readme/screenshots/s-login5.png)
 
+---
 
 ### If forget password
 
@@ -190,7 +195,6 @@ User would be able to see favorites (Featured) poems when login
 
 ![Responsive devices -Home](static/images/readme/screenshots/s-login10.png)
 
-
 ---
 
 ### Logout
@@ -200,7 +204,6 @@ User would be able to see favorites (Featured) poems when login
 ![Responsive devices -Home](static/images/readme/screenshots/s-logout1.png)
 
 ![Responsive devices -Home](static/images/readme/screenshots/s-logout2.png)
-
 
 ---
 
@@ -234,44 +237,297 @@ User would be able to see favorites (Featured) poems when login
 
 | User Story | GitHub Issue | Priority | Status |
 |---|---|---|---|
-| As a reader, I can **access the poetry library** so that I can browse and select poems to read. | **[p4_eterpoetic#1](https://github.com/cynthiapinedoh79/p4_eterpoetic/issues/1)** | High | Done |
-| As a customer I can **mark my favorites items** so that i can easily identify them. As a logged-in customer, I can **easily mark and manage poems as my favorites** so that I can quickly find and revisit them later for potential purchase or inspiration. | **[p4_eterpoetic#7](https://github.com/cynthiapinedoh79/p4_eterpoetic/issues/7)** | High | Done |
-| As a user I can **register, login in and log out** so that i can access to leave comments and participate. As a new or returning visitor, I can **securely register an account and manage my login session** so that I can fully participate by leaving comments and accessing members-only features. | **[p4_eterpoetic#5](https://github.com/cynthiapinedoh79/p4_eterpoetic/issues/5)** | High | Done |
-| As a Site Owner, I can **receive, review and store collaboration request in the database**, so that I can efficiently manage, review and respond to new opportunities. | **[django-blog#13](https://github.com/cynthiapinedoh79/django-blog/issues/13)** | High | Done |
+| As a reader, I can **access the poetry library** so that I can browse and select poems to read. | **[p4_eterpoetic#1](https://github.com/cynthiapinedoh79/p4_eterpoetic/issues/1)** | Could-Have | Done |
+| As a customer I can **mark my favorites items** so that i can easily identify them. As a logged-in customer, I can **easily mark and manage poems as my favorites** so that I can quickly find and revisit them later for potential purchase or inspiration. | **[p4_eterpoetic#7](https://github.com/cynthiapinedoh79/p4_eterpoetic/issues/7)** | Won't-Have | Done |
+| As a user I can **register, login in and log out** so that i can access to leave comments and participate. As a new or returning visitor, I can **securely register an account and manage my login session** so that I can fully participate by leaving comments and accessing members-only features. | **[p4_eterpoetic#5](https://github.com/cynthiapinedoh79/p4_eterpoetic/issues/5)** | Must-Have | Done |
+| As a Site Owner, I can **receive, review and store collaboration request in the database**, so that I can efficiently manage, review and respond to new opportunities. | **[django-blog#13](https://github.com/cynthiapinedoh79/django-blog/issues/13)** | Could-Have | Done |
 | As a Site Admin I can **create or update the About page content** so that it is available on the site. | **[django-blog#11](https://github.com/cynthiapinedoh79/django-blog/issues/11)** | High | Done |
-| As a Site User I can **click the About link** so that I can read about the site. | **[django-blog#10](https://github.com/cynthiapinedoh79/django-blog/issues/10)** | High | Done |
-| As a Site Admin I can **create, read, update and delete posts** so that I can manage my blog content. | **[django-blog#7](https://github.com/cynthiapinedoh79/django-blog/issues/7)** | High | Done |
-| As a a Site User I can **click on a post** so that I can read the full text. | **[django-blog#4](https://github.com/cynthiapinedoh79/django-blog/issues/4)** | High | Done |
-| As a Site User I can **leave comments on a post** so that I can be involved in the conversation. | **[django-blog#5](https://github.com/cynthiapinedoh79/django-blog/issues/5)** | High | Done |
+| As a Site User I can **click the About link** so that I can read about the site. | **[django-blog#10](https://github.com/cynthiapinedoh79/django-blog/issues/10)** | Must-Have | Done |
+| As a Site Admin I can **create, read, update and delete posts** so that I can manage my blog content. | **[django-blog#7](https://github.com/cynthiapinedoh79/django-blog/issues/7)** | Must-Have | Done |
+| As a a Site User I can **click on a post** so that I can read the full text. | **[django-blog#4](https://github.com/cynthiapinedoh79/django-blog/issues/4)** | Must-Have | Done |
+| As a Site User I can **leave comments on a post** so that I can be involved in the conversation. | **[django-blog#5](https://github.com/cynthiapinedoh79/django-blog/issues/5)** | Could-Have | Done |
 | As a Site Admin I can **create draft post** so that I can finish writing the content later. | **[django-blog#8](https://github.com/cynthiapinedoh79/django-blog/issues/8)** | High | Done |
-| As a Site User / Admin I can **view comments on an individual post** so that I can read the conversation. | **[django-blog#3](https://github.com/cynthiapinedoh79/django-blog/issues/3)** | High | Done |
-| As a Site Admin I can **approve or disapprove comments** so that I can filter out objectionable comments. | **[django-blog#9](https://github.com/cynthiapinedoh79/django-blog/issues/9)** | High | Done |
-| As a Site User I can **modify or delete my comment on a post** so that I can be involved in the conversation. | **[django-blog#6](https://github.com/cynthiapinedoh79/django-blog/issues/6)** | High | Done |
-| As a site user I can **view a paginated list of post** so that I can select which post I want to view. | **[django-blog#1](https://github.com/cynthiapinedoh79/django-blog/issues/1)** | High | Done |
+| As a Site User / Admin I can **view comments on an individual post** so that I can read the conversation. | **[django-blog#3](https://github.com/cynthiapinedoh79/django-blog/issues/3)** | Must-Have | Done |
+| As a Site Admin I can **approve or disapprove comments** so that I can filter out objectionable comments. | **[django-blog#9](https://github.com/cynthiapinedoh79/django-blog/issues/9)** | Could-Have | Done |
+| As a Site User I can **modify or delete my comment on a post** so that I can be involved in the conversation. | **[django-blog#6](https://github.com/cynthiapinedoh79/django-blog/issues/6)** | Could-Have | Done |
+| As a site user I can **view a paginated list of post** so that I can select which post I want to view. | **[django-blog#1](https://github.com/cynthiapinedoh79/django-blog/issues/1)** | Must-Have | Done |
+| As a website visitor, I can **easily switch the entire website interface and content between English and Spanish** so that I can comfortably read and interact with the platform in my preferred language. | **[p4_eterpoetic#6](https://github.com/cynthiapinedoh79/p4_eterpoetic/issues/6)** | Won't-Have | In Review |
+| As a customer (or user), I can **easily order a custom-written poem** so that I can receive a unique, personalized piece of poetry for a special occasion. | **[p4_eterpoetic#2](https://github.com/cynthiapinedoh79/p4_eterpoetic/issues/2)** | Could-Have | Ready |
+| As a satisfied customer, I can **easily leave a public rating and review of the service** so that I can share my experience and help future customers make a decision. | **[p4_eterpoetic#3](https://github.com/cynthiapinedoh79/p4_eterpoetic/issues/3)** | Should Have | Ready |
+
+---
 
 ### 🚀 Existing Features (Source: GitHub "Done" Column)
 
-* **Paginated Blog Posts:** Users can view blog posts in a paginated list (Ref: **django-blog#1**).
-* **Poetry Filtering:** Users can browse poetry using filtering tools (Ref: **p4_eterpoetic#1**).
-* **Favorite Poem Toggle:** Registered users can add/remove poems from their personal favorites list (Ref: **p4_eterpoetic#37**).
-* **Comment Moderation:** Administrators can approve comments to maintain community standards (Ref: **django-blog#9**).
+| User Story | GitHub Issue | Priority | Status |
+|---|---|---|---|
+| As a reader, I can **access the poetry library** so that I can browse and select poems to read. | **[p4_eterpoetic#1](https://github.com/cynthiapinedoh79/p4_eterpoetic/issues/1)** | Could-Have | Done |
+| As a customer I can **mark my favorites items** so that i can easily identify them. As a logged-in customer, I can **easily mark and manage poems as my favorites** so that I can quickly find and revisit them later for potential purchase or inspiration. | **[p4_eterpoetic#7](https://github.com/cynthiapinedoh79/p4_eterpoetic/issues/7)** | Won't-Have | Done |
+| As a user I can **register, login in and log out** so that i can access to leave comments and participate. As a new or returning visitor, I can **securely register an account and manage my login session** so that I can fully participate by leaving comments and accessing members-only features. | **[p4_eterpoetic#5](https://github.com/cynthiapinedoh79/p4_eterpoetic/issues/5)** | Must-Have | Done |
+| As a Site Owner, I can **receive, review and store collaboration request in the database**, so that I can efficiently manage, review and respond to new opportunities. | **[django-blog#13](https://github.com/cynthiapinedoh79/django-blog/issues/13)** | Could-Have | Done |
+| As a Site Admin I can **create or update the About page content** so that it is available on the site. | **[django-blog#11](https://github.com/cynthiapinedoh79/django-blog/issues/11)** | High | Done |
+| As a Site User I can **click the About link** so that I can read about the site. | **[django-blog#10](https://github.com/cynthiapinedoh79/django-blog/issues/10)** | Must-Have | Done |
+| As a Site Admin I can **create, read, update and delete posts** so that I can manage my blog content. | **[django-blog#7](https://github.com/cynthiapinedoh79/django-blog/issues/7)** | Must-Have | Done |
+| As a a Site User I can **click on a post** so that I can read the full text. | **[django-blog#4](https://github.com/cynthiapinedoh79/django-blog/issues/4)** | Must-Have | Done |
+| As a Site User I can **leave comments on a post** so that I can be involved in the conversation. | **[django-blog#5](https://github.com/cynthiapinedoh79/django-blog/issues/5)** | Could-Have | Done |
+| As a Site Admin I can **create draft post** so that I can finish writing the content later. | **[django-blog#8](https://github.com/cynthiapinedoh79/django-blog/issues/8)** | High | Done |
+| As a Site User / Admin I can **view comments on an individual post** so that I can read the conversation. | **[django-blog#3](https://github.com/cynthiapinedoh79/django-blog/issues/3)** | Must-Have | Done |
+| As a Site Admin I can **approve or disapprove comments** so that I can filter out objectionable comments. | **[django-blog#9](https://github.com/cynthiapinedoh79/django-blog/issues/9)** | Could-Have | Done |
+| As a Site User I can **modify or delete my comment on a post** so that I can be involved in the conversation. | **[django-blog#6](https://github.com/cynthiapinedoh79/django-blog/issues/6)** | Could-Have | Done |
+| As a site user I can **view a paginated list of post** so that I can select which post I want to view. | **[django-blog#1](https://github.com/cynthiapinedoh79/django-blog/issues/1)** | Must-Have | Done |
+
+---
 
 ### 🧑‍💻 Testing User Stories – User Experience (UX) Evaluation
 
 All core user stories were tested using the defined **Acceptance Criteria (ACs)** set in the corresponding GitHub Issues.
 
-For example, the **'View paginated list of posts'** feature (Ref: **django-blog#1**) passed the following criteria:
+### Poetry Library Access (Ref: [p4_eterpoetic#1](https://github.com/cynthiapinedoh79/p4_eterpoetic/issues/1))
 
-* **AC1:** Given more than one post in the database, these multiple posts are listed.
-* **AC2:** When the user opens the main page a list of post is seen.
-* **AC3:** Then the user sees all post titles with pagination to choose what to read.
+The **'Access the poetry library'** feature passed the following criteria:
+
+* **AC1** The user can view a list of available poems on the Poetry page.
+* **AC2** The list of poems can be filtered and sorted by available attributes (e.g., author, collection, title).
+* **AC3** Selecting a poem from the list successfully directs the user to the detailed view of that poem.
+
+---
+
+### Mark Favorites Items-Easily mark and manage poems as my favorites (Ref: [p4_eterpoetic#7](https://github.com/cynthiapinedoh79/p4_eterpoetic/issues/7))
+
+The **'Mark my favorites items'** feature passed the following criteria, ensuring reliable item marking and list management:
+
+**1. Marking a Favorite (AC1-AC2)**
+
+* **AC1** Favorite Toggle on Poem Display
+    * A clearly visible icon/button (e.g., a heart outline) must be present on every poem's listing card and detail page.
+    * The feature must be restricted to logged-in users; non-logged-in users attempting to use it must be prompted to log in or register.
+    * Clicking the icon must toggle the favorite status (e.g., the heart fills in upon being marked and empties upon being unmarked).
+
+* **AC2** Confirmation and Persistence
+    * The system must provide instant visual feedback when the status is toggled (e.g., a brief "Added to Favorites" message).
+    * The favorite status must persist across sessions and device logins for the authenticated user.
+
+**2. Viewing and Managing Favorites (AC3-AC4)**
+
+* **AC3** Dedicated Favorites View
+    * A dedicated "My Favorites" page must be accessible from the main navigation (e.g., via a header link or user profile menu).
+    * This page must only display poems that the user has marked as a favorite.
+    * Each item in this view must include the option to easily remove it from the favorites list.
+
+* **AC4** Visibility on Listing Pages
+    * When a customer views a general list of poems (e.g., a search results page), the favorite status must be visually reflected on any item they have previously marked as a favorite (e.g., the heart icon remains filled).
+
+---
+
+### Register, login in and log out-securely register an account and manage my login session (Ref: [p4_eterpoetic#5](https://github.com/cynthiapinedoh79/p4_eterpoetic/issues/5))
+
+The **'Register, Log In, and Log Out'** feature passed the following criteria, ensuring a complete and secure user authentication flow:
+
+#### 1. Registration & Security (AC1)
+
+* **AC1** New Account Creation
+    * The user must be able to register a new account by providing a valid email address and a secure password.
+    * Passwords must meet minimum security requirements (e.g., length, mixture of characters) and the system must store them securely (hashed).
+    * The user must receive an **email verification link** and must click it to finalize account activation.
+
+#### 2. Login & Session Management (AC2-AC4)
+
+* **AC2** Standard Email/Password Login
+    * The user must be able to log in using their registered email and password.
+    * The system must provide a clear error message for failed login attempts (e.g., "Invalid credentials").
+    * The user must have a "**Forgot Password**" option to reset their password via email.
+
+* **AC3** Social Media Login (OAuth)
+    * The user must be able to log in using external social accounts (e.g., Facebook and Google).
+    * The social login process must automatically create a user profile if one doesn't exist, linked to that social account.
+
+* **AC4** Session Management
+    * Upon successful login, the system must maintain a secure user session (e.g., token-based) for a defined period.
+    * The user must have a "**Keep me logged in**" option to persist the session across browser closures.
+
+#### 3. Logout (AC5)
+
+* **AC5** Secure Logout
+    * A clearly visible "**Log Out**" button must be available to authenticated users.
+    * Clicking "**Log Out**" must immediately and securely invalidate the user's session and redirect them to the homepage or login screen.
+
+---
+
+### Receive, review and store collaboration request in the database (Ref: [django-blog#13](https://github.com/cynthiapinedoh79/django-blog/issues/13))
+
+The **'Collaborator Submission Flow'** feature passed the following criteria, ensuring effective notification and administration:
+
+### 1. System Notification (AC1)
+
+* **AC1** Email Notification
+    * When a Potential Collaborator submits a proposal, an email notification is immediately sent to the registered admin email address.
+
+### 2. Admin Dashboard Management (AC2-AC4)
+
+* **AC2** Dashboard View
+    * All submitted proposals are listed in a dedicated "Proposals" section of the admin dashboard, displaying the collaborator's name, email, and submission date.
+    * The newest submissions must appear at the top.
+
+* **AC3** View Details
+    * Given the list of proposals in the dashboard, clicking on a specific entry allows the admin to view all the details submitted, including the full message and portfolio URL.
+
+* **AC4** Mark as Read
+    * The admin has the ability to mark a submission as "Read" or "Unread" from the dashboard list to help track which proposals have been reviewed.
+
+---
+
+### Create or update the About page content (Ref: [django-blog#11](https://github.com/cynthiapinedoh79/django-blog/issues/11))
+
+The **'Create or update the About page content'** feature passed the following criteria:
+
+* **AC1** A site administrator can access a dedicated form or interface to modify the About page content.
+* **AC2** Changes made by the administrator are successfully saved to the database.
+* **AC3** The updated content is instantly visible on the public-facing About page.
+
+---
+
+### Click the About link (Ref: [django-blog#10](https://github.com/cynthiapinedoh79/django-blog/issues/10))
+
+The **'Click the About link'** feature passed the following criteria:
+
+* **AC1** When the About link is clicked, the about text is visible.
+
+---
+
+### Create, read, update and delete posts (Ref: [django-blog#7](https://github.com/cynthiapinedoh79/django-blog/issues/7))
+
+The **'Blog Post Management (CRUD)'** feature passed the following criteria, ensuring authenticated users can control their content:
+
+#### 1. Content Creation & Reading (AC1-AC2)
+
+* **AC1** Create Blog Post
+    * Given a logged-in user with appropriate permissions (e.g., staff status or specific role), they can access a dedicated form to create and submit a new blog post.
+* **AC2** Read Blog Post
+    * Given a logged-in user, they can access and view the full content of any published blog post.
+
+#### 2. Content Editing (AC3-AC4)
+
+* **AC3** Update Blog Post
+    * Given a logged-in user who is the **author of the post** (or an administrator), they can access an edit form to modify the post's content and save the changes.
+* **AC4** Delete Blog Post
+    * Given a logged-in user who is the **author of the post** (or an administrator), they can successfully delete the post, removing it permanently from the site.
+
+---
+
+### Click on a post (Ref: [django-blog#4](https://github.com/cynthiapinedoh79/django-blog/issues/4))
+
+The **'Click on a post'** feature passed the following criteria:
+
+* **AC1** When a blog post title is clicked from the list, the user is successfully directed to the unique detailed view of that post.
+* **AC2** The detailed view displays the full post content and the associated comments section (Ref: django-blog#3).
+
+---
+
+### Leave comments on a post (Ref: [django-blog#5](https://github.com/cynthiapinedoh79/django-blog/issues/5))
+
+The **'Blog Commenting and Threading'** feature passed the following criteria, ensuring community engagement and organized discussion:
+
+#### 1. Enabling Replies (AC1)
+
+* **AC1** Comment Approval
+    * When a new user comment is submitted, it is held for review until an administrator manually approves it. Once approved, the comment becomes publicly visible and available for replies.
+
+#### 2. Reply Functionality (AC2)
+
+* **AC2** User Reply Capability
+    * Given a visible (approved) comment, any authenticated user can successfully submit a reply that is nested visually underneath the parent comment.
+    * The system must verify that the user is logged in before allowing them to post a reply.
+
+#### 3. Thread Organization (AC3)
+
+* **AC3** Conversation Threading
+    * Given more than one reply exists for a single parent comment, the replies are displayed sequentially, forming a clear, chronological conversation thread that is visually distinct from the main list of comments.
+
+---
+
+### Create draft post (Ref: [django-blog#8](https://github.com/cynthiapinedoh79/django-blog/issues/8))
+
+#### Draft Blog Post Management (Ref: [django-blog#xx])
+
+The **'Draft Blog Post Management'** feature passed the following criteria, ensuring content creators can work asynchronously:
+
+#### 1. Saving Drafts (AC1)
+
+* **AC1** Save and Hide
+    * Given a logged-in user, they can click a designated "**Save Draft**" button which successfully saves the post's content to the database.
+    * The saved draft must **not** be publicly visible on any public-facing blog list or URL.
+
+#### 2. Retrieval and Editing (AC2)
+
+* **AC2** Access and Resume
+    * The author can access a dedicated section (e.g., "My Drafts" dashboard) to view a list of *only their own* saved draft posts.
+    * The author can click on a draft title to load the full content back into the editor to continue working later.
+
+#### 3. Publishing (AC3 - Added for completeness)
+
+* **AC3** Status Update
+    * From the editor page of a draft, there must be a visible "**Publish**" button (distinct from "Save Draft") that updates the post's status, making it publicly visible on the main blog list.
+
+---
+
+### View comments on an individual post (Ref: [django-blog#3](https://github.com/cynthiapinedoh79/django-blog/issues/3))
+
+The **'View comments on an individual post'** feature passed the following criteria, ensuring transparency and easy moderation:
+
+* **AC1** Given a published post, the site user can view all approved comments below the post content.
+* **AC2** Comments are correctly displayed in a readable, sequential thread (replies are nested under the parent comment).
+* **AC3** The site user can access a dedicated admin/moderator panel to view all pending, approved, and disapproved comments.
+
+---
+
+### Approve or disapprove comments (Ref: [django-blog#9](https://github.com/cynthiapinedoh79/django-blog/issues/9))
+
+The **'Approve or disapprove comments'** feature passed the following criteria, ensuring effective content moderation:
+
+* **AC1** Approve Comment
+    * Given a logged-in user with **administrator or staff permissions**, they can access a designated action (e.g., a button or checkbox) to approve a pending comment, making it instantly visible on the public blog post.
+
+* **AC2** Disapprove/Delete Comment
+    * Given a logged-in user with **administrator or staff permissions**, they can access a designated action to disapprove or delete a comment, ensuring the comment is permanently removed or hidden from public view.
+
+---
+
+### Modify or delete my comment on a post (Ref: [django-blog#6](https://github.com/cynthiapinedoh79/django-blog/issues/6))
+
+The **'Modify or delete my comment on a post'** feature passed the following criteria, ensuring users can manage their own contributions:
+
+#### 1. Comment Modification (AC1)
+
+* **AC1** Modify Own Comment
+    * Given a logged-in user, they can access an edit function (e.g., a button) on **only their own submitted comment** to modify the text.
+    * The system must verify the user is the original author before allowing the edit to be saved.
+
+#### 2. Comment Deletion (AC2)
+
+* **AC2** Delete Own Comment
+    * Given a logged-in user, they can access a delete function (e.g., a trash can icon) on **only their own submitted comment**.
+    * The system must require a confirmation step before permanently removing the comment and any associated replies.
+
+---
+
+### View a paginated list of post (Ref: [django-blog#1](https://github.com/cynthiapinedoh79/django-blog/issues/1))
+
+The **'View a paginated list of post'** feature passed the following criteria, ensuring users can manage their own contributions:
+
+* **AC1** Given more than one post in the database, these multiple posts are listed.
+* **AC2** when the user opens the main page a list of post is seen. 
+* **AC3** Then the user sees all post titles with pagination to choose what to read.
+
+---
 
 ### 🔮 Features Left to Implement (Source: GitHub "Backlog" / "Ready" Columns)
 | User Story | GitHub Issue | Priority | Status |
 |---|---|---|---|
-| As a website visitor, I can easily switch the entire website interface and content between English and Spanish so that I can comfortably read and interact with the platform in my preferred language. | **[p4_eterpoetic#6](https://github.com/cynthiapinedoh79/p4_eterpoetic/issues/6)** | High | Done |
-| As a customer (or user), I can easily order a custom-written poem so that I can receive a unique, personalized piece of poetry for a special occasion. | **[p4_eterpoetic#2](https://github.com/cynthiapinedoh79/p4_eterpoetic/issues/2)** | High | Done |
-| As a satisfied customer, I can easily leave a public rating and review of the service so that I can share my experience and help future customers make a decision. | **[p4_eterpoetic#3](https://github.com/cynthiapinedoh79/p4_eterpoetic/issues/3)** | High | Done |
+| As a website visitor, I can **easily switch the entire website interface and content between English and Spanish** so that I can comfortably read and interact with the platform in my preferred language. | **[p4_eterpoetic#6](https://github.com/cynthiapinedoh79/p4_eterpoetic/issues/6)** | Won't-Have | In Review |
+| As a customer (or user), I can **easily order a custom-written poem** so that I can receive a unique, personalized piece of poetry for a special occasion. | **[p4_eterpoetic#2](https://github.com/cynthiapinedoh79/p4_eterpoetic/issues/2)** | Could-Have | Ready |
+| As a satisfied customer, I can **easily leave a public rating and review of the service** so that I can share my experience and help future customers make a decision. | **[p4_eterpoetic#3](https://github.com/cynthiapinedoh79/p4_eterpoetic/issues/3)** | Should Have | Ready |
+
+---
 
 ### Developer & UX Goals
 
@@ -344,6 +600,7 @@ From the user’s perspective, I’ve built this site with the following priorit
         
   - Background: 
   A blurred photo of financial charts and a blue pen (soft blue, red, beige tones)
+
 ---
 
 ## 📐 Five Planes UXD

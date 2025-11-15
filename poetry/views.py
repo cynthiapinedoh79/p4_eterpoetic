@@ -5,6 +5,7 @@ from django.templatetags.static import static
 from .models import Poem, Collection, Author  # <-- IMPORTANT: Import Author
 from django.contrib.auth.decorators import login_required  # <-- NEW
 from django.views.decorators.http import require_POST  # <-- NEW
+from django.contrib import messages  # <-- NEW: Import messages framework
 
 #
 # DO NOT define models here
@@ -151,16 +152,22 @@ def poetry_home(request):
 def toggle_favorite(request, poem_id):
     poem = get_object_or_404(Poem, id=poem_id)
 
-    if poem.favorites.filter(id=request.user.id).exists():
+    # Check if the poem is currently favorited
+    is_favorited = poem.favorites.filter(id=request.user.id).exists()
+
+    if is_favorited:
         # User has it as a favorite, so remove it
         poem.favorites.remove(request.user)
+        # --- ADD FEEDBACK FOR REMOVAL ---
+        messages.info(request, f"'{poem.title_en}' has been removed from your favorites.")
     else:
         # User does not have it as a favorite, so add it
         poem.favorites.add(request.user)
+        # --- ADD FEEDBACK FOR ADDITION ---
+        messages.success(request, f"'{poem.title_en}' has been added to your favorites! ❤️")
 
-    # Redirect back to the page the user was on
-    # This is a simple way to provide feedback.
-    # An advanced way uses Javascript (HTMX/Fetch) to do this.
+    # Redirect back to the page the user was on, which triggers the message display
+    # (Assuming Poem model has a title_en field)
     return redirect(request.META.get('HTTP_REFERER', 'poetry:poetry_home'))
 
 
