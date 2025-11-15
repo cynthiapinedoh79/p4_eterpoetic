@@ -350,4 +350,5 @@ SOCIALACCOUNT_PROVIDERS = {
     },
 }
 
-X_FRAME_OPTIONS = 'ALLOWALL'
+# To allow iframe embedding (Am I responsive?)
+# X_FRAME_OPTIONS = 'ALLOWALL'
