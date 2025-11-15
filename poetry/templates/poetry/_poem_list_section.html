@@ -17,7 +17,7 @@
   <form method="get" action="{% url 'poetry:poetry_home' %}#poems-search" class="search-form d-flex flex-column flex-md-row justify-content-center align-items-center gap-2 mb-5">
     <input type="text" class="form-control search-input" name="q" value="{{ q }}" placeholder="Search Poems (ES/EN)">
     
-    <select class="form-select search-input" name="collection" aria-label="Filter by collection" style="min-width: 200px;">
+    <select class="form-select search-input" name="collection" aria-label="Filter by collection" style="min-width: 250px;">
       
       <option value="" {% if not current_collection_slug %}selected{% endif %}>
         All Collections
@@ -194,7 +194,7 @@
     <ul class="pagination justify-content-center">
       {% if page_obj.has_previous %}
         <li class="page-item">
-          <a class="page-link" href="?q={{ q }}&collection={{ current_collection_slug }}&author={{ current_author_slug }}&page={{ page_obj.previous_page_number }}#poems-search"> PREVIOUS</a>
+          <a class="page-link" href="?{% if q %}q={{ q }}&{% endif %}{% if current_collection_slug %}collection={{ current_collection_slug }}&{% endif %}{% if current_author_slug %}author={{ current_author_slug }}&{% endif %}page={{ page_obj.previous_page_number }}#poems-search"> PREVIOUS</a>
         </li>
       {% else %}<li class="page-item disabled"><span class="page-link">PREVIOUS</span></li>{% endif %}
       
@@ -202,9 +202,10 @@
       
       {% if page_obj.has_next %}
         <li class="page-item">
-          <a class="page-link" href="?q={{ q }}&collection={{ current_collection_slug }}&author={{ current_author_slug }}&page={{ page_obj.next_page_number }}#poems-search">NEXT</a>
+          <a class="page-link" href="?{% if q %}q={{ q }}&{% endif %}{% if current_collection_slug %}collection={{ current_collection_slug }}&{% endif %}{% if current_author_slug %}author={{ current_author_slug }}&{% endif %}page={{ page_obj.next_page_number }}#poems-search">NEXT</a>
         </li>
       {% else %}<li class="page-item disabled"><span class="page-link">NEXT</span></li>{% endif %}
+
     </ul>
   </nav>
   {% else %}
