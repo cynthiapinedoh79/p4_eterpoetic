@@ -4,19 +4,15 @@ This README is structured for a **Django project with multiple apps**
 
 
 # 📚 *[Project Name]* — Django Web Application
-# 📚 *EterPoetic* — Django Web Application
-EterPoetic is an interactive and content-rich web application for lovers of poetry and creative writing. Designed for readers and writers, it provides a platform to explore curated poem collections and insightful blog posts. It combines a personal reading experience with community engagement, allowing registered users to favorite poems, comment on articles, and connect with the team.
-
+*(Write 4–6 lines summarizing purpose, audience, and primary benefit.)*
+Project2X is an interactive, feature-rich web application that introduces users to the world of professional xxxxx. Designed for individuals and small businesses, it combines utility, engagement, and learning in one experience.
 Key Features:
-- `poetry`: Manages all poem and collection content; handles user favoriting logic.
-- `blog`: Manages all blog posts and user comments.
-- `about`: Displays team information and provides a "collaborator" application form.
-- `accounts`: Manages user registration, login, and logout.
+- `app1`, `app2`, `app3` → your app names (e.g., `blog`, `accounts`, `dashboard`)
 
 ## 🧩 Badges (Optional)
-![GitHub repo size](https://img.shields.io/github/repo-size/cynthiapinedoh79/p4_eterpoetic)
-![GitHub last commit](https://img.shields.io/github/last-commit/cynthiapinedoh79/p4_eterpoetic)
-[![View Demo](https://img.shields.io/badge/View-Demo-brightgreen)](https://eterpoetic-62a49da213d8.herokuapp.com/)
+![GitHub repo size](https://img.shields.io/github/repo-size/YOUR_GITHUB_USER/p4_eterpoetic)
+![GitHub last commit](https://img.shields.io/github/last-commit/YOUR_GITHUB_USER/p4_eterpoetic)
+[![View Demo](https://img.shields.io/badge/View-Demo-brightgreen)](YOUR_LIVE_SITE_URL)
 
 ![HTML](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
 ![CSS](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
@@ -75,24 +71,23 @@ Key Features:
 ## 🧾 Project Overview
 *(Write 4–6 lines summarizing purpose, audience, and primary benefit.)*
 
-## 🧾 Project Overview
-EterPoetic is an interactive and content-rich web application for lovers of poetry and creative writing. Designed for readers and writers, it provides a platform to explore curated poem collections and insightful blog posts. It combines a personal reading experience with community engagement, allowing registered users to favorite poems, comment on articles, and connect with the team.
-
 **Core Technologies**
 
-1.  **Django (Python):** Robust backend framework for the entire application structure.
-2.  **PostgreSQL (ElephantSQL):** Scalable relational database management system.
-3.  **HTML / CSS / JS:** Foundational languages for structure, styling, and interactivity.
-4.  **Bootstrap:** Frontend framework for responsive design.
-5.  **Heroku:** Cloud platform used for deployment and hosting.
-6.  **Cloudinary:** Handles static and media file storage for efficiency.
-7.  **Balsamiq:** Design tool used for wireframing and planning the site layout.
+1. HTML - Used to build the basic structure of the website.
+2. CSS - Styles the front-end to create a visually appealing design and enhance user experience.
+3. Balsamiq - Used to design wireframes and plan the layout of the site before development.
+4. JS -  Adds interactivity to the website, making the experience more dynamic and engaging for users.
+5. Django (Python)
+6. PostgreSQL (ElephantSQL)
+7. Heroku Deployment
+8. Cloudinary Static/Media Storage
+9. Bootstrap or Tailwind CSS Frontend
 
 ---
 
 ## 🔗 Live Demo
-**Live Site:** https://eterpoetic-62a49da213d8.herokuapp.com/ 
-**Admin Panel:** https://eterpoetic-62a49da213d8.herokuapp.com/admin
+**Live Site:** https://example.com  
+**Admin Panel:** https://example.com/admin
 
 ---
 ## 📱 Am I Responsive? - Demo
