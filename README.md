@@ -95,32 +95,49 @@ EterPoetic is an interactive and content-rich web application for lovers of poet
 **Admin Panel:** https://eterpoetic-62a49da213d8.herokuapp.com/admin
 
 ---
+
 ## 📱 Am I Responsive? - Demo
 All pages were designed with **Responsive Design** to provide a consistent experience across various screen sizes and devices.
 
-Home (Poetry)
+### Home (Poetry)
 ![Responsive devices -Home](static/images/readme/amIR/amIR-home.png)
+
 ![Responsive devices -Home](static/images/readme/amIR/amIR-home1.png)
+
 ![Responsive devices -Home](static/images/readme/amIR/amIR-home2.png)
+
 ![Responsive devices -Home](static/images/readme/amIR/amIR-home3.png)
 
-MyFavorites (Poetry)
+
+### MyFavorites (Poetry)
 User would be able to see favorites (Featured) poems when login
+
 ![Responsive devices -Home](static/images/readme/amIR/amIR-myFavorites.png)
 
-Blog (Posts)
+
+### Blog (Posts)
+
 ![Responsive devices -Home](static/images/readme/amIR/amIR-blog.png)
+
 ![Responsive devices -Home](static/images/readme/amIR/amIR-blog1.png)
 
-About (Owner and Collaborators, Form)
+
+### About (Owner and Collaborators, Form)
+
 ![Responsive devices -Home](static/images/readme/amIR/amIR-about.png)
+
 ![Responsive devices -Home](static/images/readme/amIR/amIR-about1.png)
+
 ![Responsive devices -Home](static/images/readme/amIR/amIR-about2.png)
 
-Register (Sign Up)
+
+### Register (Sign Up)
+
 ![Responsive devices -Home](static/images/readme/amIR/amIR-register.png)
 
-Login (Sign In)
+
+### Login (Sign In)
+
 ![Responsive devices -Home](static/images/readme/amIR/amIR-login.png)
 
 ---
@@ -129,35 +146,62 @@ Login (Sign In)
 
 * Additional screenshots to show
 
-My Favorites
+### My Favorites
+
 ![Responsive devices -Home](static/images/readme/screenshots/s-myFavorites.png)
+
 ![Responsive devices -Home](static/images/readme/screenshots/s-myFavorites1.png)
+
 ![Responsive devices -Home](static/images/readme/screenshots/s-myFavorites2.png)
+
 ---
-Login (Sign In)
 
-with Facebook
+### Login (Sign In)
+
+### with Facebook
+
 ![Responsive devices -Home](static/images/readme/screenshots/s-login.png)
-![Responsive devices -Home](static/images/readme/screenshots/s-login1.png)
-![Responsive devices -Home](static/images/readme/screenshots/s-login1b.png)
 
-with Google
+![Responsive devices -Home](static/images/readme/screenshots/s-login1.png)
+
+![Responsive devices -Home](static/images/readme/screenshots/s-login1a.png)
+
+
+### with Google
+
 ![Responsive devices -Home](static/images/readme/screenshots/s-login2.png)
+
 ![Responsive devices -Home](static/images/readme/screenshots/s-login3.png)
+
 ![Responsive devices -Home](static/images/readme/screenshots/s-login4.png)
+
 ![Responsive devices -Home](static/images/readme/screenshots/s-login5.png)
 
-If forget password
+
+### If forget password
+
 ![Responsive devices -Home](static/images/readme/screenshots/s-login6.png)
+
 ![Responsive devices -Home](static/images/readme/screenshots/s-login7.png)
+
 ![Responsive devices -Home](static/images/readme/screenshots/s-login8.png)
+
 ![Responsive devices -Home](static/images/readme/screenshots/s-login9.png)
+
 ![Responsive devices -Home](static/images/readme/screenshots/s-login10.png)
+
+
 ---
-Logout
+
+### Logout
+
 ![Responsive devices -Home](static/images/readme/screenshots/s-logout.png)
+
 ![Responsive devices -Home](static/images/readme/screenshots/s-logout1.png)
+
 ![Responsive devices -Home](static/images/readme/screenshots/s-logout2.png)
+
+
 ---
 
 ## 🎯 UX
