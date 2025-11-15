@@ -206,67 +206,108 @@ User would be able to see favorites (Featured) poems when login
 
 ## 🎯 UX
 ### Target Audience:
-Individuals and businesses seeking clarity, tools, and support in managing their finances.
-**Target Audience:** Define your user types  
+**Readers, emerging writers, and poetry enthusiasts** seeking curated content, insightful blog posts, and an engaging community centered around creative writing.
 
 ### Core UX Goals:
-**UX Goals:** Clarity, responsiveness, ease of navigation, accessibility
+**UX Goals:** Readability, engagement, responsiveness, accessibility
 
-1. Build trust and credibility through clean design and intuitive structure
-2. Offer quick, interactive content that’s informative yet fun
-3. Provide actionable takeaways (e.g., IRS form, consultation link)
-4. Ensure accessibility and responsive design for all devices
-5. Create opportunities for return visits and deeper engagement
+1.  **Prioritize Readability:** Build trust and credibility through clean design and clear typography, ensuring an enjoyable reading experience across all content.
+2.  **Encourage Engagement:** Offer simple, clear methods for user interaction (favoriting, commenting, applying to collaborate).
+3.  **Ensure Accessibility:** Provide a consistent, intuitive structure and responsive design for users on all devices.
+4.  **Simplify Navigation:** Allow users to quickly find poems and articles by collection, author, or search query.
+5.  **Foster Growth:** Create opportunities for the platform to attract new collaborators and grow its content library.
 
 ### Main Site Goals:
 
-- Promote core services through engaging features
-- Attract potential clients through playful, educational content
-- Help users assess their bookkeeping needs via a quick quiz
-- Provide added value—discounts, tools, and practical insights—even for casual visitors
-- Offer a ready-to-fill IRS Form 1040 PDF as part of the service suite
-- (Coming Soon) Introduce a Tax Comparison Tool to highlight potential savings between LLC and S-Corp business structures
-- (Coming Soon) Launch a Match Game that delivers quick, actionable tips for smarter financial decisions—covering bookkeeping, taxes, and business planning in a fun, easy-to-understand format
+-   Provide a curated, accessible library of poems and collections for easy exploration.
+-   Offer a streamlined, personal experience for registered users (favoriting, profile management).
+-   Attract new content creators and collaborators via a clear application path (the `about` app form).
+-   Promote community engagement by providing a clean commenting system for blog posts.
+-   (Coming Soon) Enhance search and filtering capabilities (e.g., filtering by language, mood, or length).
+-   (Coming Soon) Implement a user dashboard for managing their profile and contributions.
 
 ---
 
 ## 🧑‍💼 User Stories
 
-| User Story | Priority | Status |
-|---|---|---|
-| As a user, I want to register and log in so I can access private features. | High | Done |
-| As a user, I want to create/edit/delete my data so I can manage my content. | High | In Progress |
+### Core User Stories
 
-- My Goal as Developer:
-As the sole developer of this website, my mission is to provide you with an enjoyable and user-friendly experience while delivering clear, concise, and accurate information about our services — sparking your interest in what we offer.
+| User Story | GitHub Issue | Priority | Status |
+|---|---|---|---|
+| As a reader, I can **access the poetry library** so that I can browse and select poems to read. | **[p4_eterpoetic#1](https://github.com/cynthiapinedoh79/p4_eterpoetic/issues/1)** | High | Done |
+| As a customer I can **mark my favorites items** so that i can easily identify them. As a logged-in customer, I can **easily mark and manage poems as my favorites** so that I can quickly find and revisit them later for potential purchase or inspiration. | **[p4_eterpoetic#7](https://github.com/cynthiapinedoh79/p4_eterpoetic/issues/7)** | High | Done |
+| As a user I can **register, login in and log out** so that i can access to leave comments and participate. As a new or returning visitor, I can **securely register an account and manage my login session** so that I can fully participate by leaving comments and accessing members-only features. | **[p4_eterpoetic#5](https://github.com/cynthiapinedoh79/p4_eterpoetic/issues/5)** | High | Done |
+| As a Site Owner, I can **receive, review and store collaboration request in the database**, so that I can efficiently manage, review and respond to new opportunities. | **[django-blog#13](https://github.com/cynthiapinedoh79/django-blog/issues/13)** | High | Done |
+| As a Site Admin I can **create or update the About page content** so that it is available on the site. | **[django-blog#11](https://github.com/cynthiapinedoh79/django-blog/issues/11)** | High | Done |
+| As a Site User I can **click the About link** so that I can read about the site. | **[django-blog#10](https://github.com/cynthiapinedoh79/django-blog/issues/10)** | High | Done |
+| As a Site Admin I can **create, read, update and delete posts** so that I can manage my blog content. | **[django-blog#7](https://github.com/cynthiapinedoh79/django-blog/issues/7)** | High | Done |
+| As a a Site User I can **click on a post** so that I can read the full text. | **[django-blog#4](https://github.com/cynthiapinedoh79/django-blog/issues/4)** | High | Done |
+| As a Site User I can **leave comments on a post** so that I can be involved in the conversation. | **[django-blog#5](https://github.com/cynthiapinedoh79/django-blog/issues/5)** | High | Done |
+| As a Site Admin I can **create draft post** so that I can finish writing the content later. | **[django-blog#8](https://github.com/cynthiapinedoh79/django-blog/issues/8)** | High | Done |
+| As a Site User / Admin I can **view comments on an individual post** so that I can read the conversation. | **[django-blog#3](https://github.com/cynthiapinedoh79/django-blog/issues/3)** | High | Done |
+| As a Site Admin I can **approve or disapprove comments** so that I can filter out objectionable comments. | **[django-blog#9](https://github.com/cynthiapinedoh79/django-blog/issues/9)** | High | Done |
+| As a Site User I can **modify or delete my comment on a post** so that I can be involved in the conversation. | **[django-blog#6](https://github.com/cynthiapinedoh79/django-blog/issues/6)** | High | Done |
+| As a site user I can **view a paginated list of post** so that I can select which post I want to view. | **[django-blog#1](https://github.com/cynthiapinedoh79/django-blog/issues/1)** | High | Done |
 
-- User Experience Objectives:
+### 🚀 Existing Features (Source: GitHub "Done" Column)
+
+* **Paginated Blog Posts:** Users can view blog posts in a paginated list (Ref: **django-blog#1**).
+* **Poetry Filtering:** Users can browse poetry using filtering tools (Ref: **p4_eterpoetic#1**).
+* **Favorite Poem Toggle:** Registered users can add/remove poems from their personal favorites list (Ref: **p4_eterpoetic#37**).
+* **Comment Moderation:** Administrators can approve comments to maintain community standards (Ref: **django-blog#9**).
+
+### 🧑‍💻 Testing User Stories – User Experience (UX) Evaluation
+
+All core user stories were tested using the defined **Acceptance Criteria (ACs)** set in the corresponding GitHub Issues.
+
+For example, the **'View paginated list of posts'** feature (Ref: **django-blog#1**) passed the following criteria:
+
+* **AC1:** Given more than one post in the database, these multiple posts are listed.
+* **AC2:** When the user opens the main page a list of post is seen.
+* **AC3:** Then the user sees all post titles with pagination to choose what to read.
+
+### 🔮 Features Left to Implement (Source: GitHub "Backlog" / "Ready" Columns)
+| User Story | GitHub Issue | Priority | Status |
+|---|---|---|---|
+| As a website visitor, I can easily switch the entire website interface and content between English and Spanish so that I can comfortably read and interact with the platform in my preferred language. | **[p4_eterpoetic#6](https://github.com/cynthiapinedoh79/p4_eterpoetic/issues/6)** | High | Done |
+| As a customer (or user), I can easily order a custom-written poem so that I can receive a unique, personalized piece of poetry for a special occasion. | **[p4_eterpoetic#2](https://github.com/cynthiapinedoh79/p4_eterpoetic/issues/2)** | High | Done |
+| As a satisfied customer, I can easily leave a public rating and review of the service so that I can share my experience and help future customers make a decision. | **[p4_eterpoetic#3](https://github.com/cynthiapinedoh79/p4_eterpoetic/issues/3)** | High | Done |
+
+### Developer & UX Goals
+
+**Developer Goal:**
+As the sole developer of this website, my mission is to provide an enjoyable and user-friendly experience by delivering clear, curated, and diverse written content, fostering a sense of community around poetry and creative writing.
+
+**User Experience Objectives:**
 From the user’s perspective, I’ve built this site with the following priorities in mind:
 
-  - I want to navigate this website quickly and easily.
-  - I should be able to use a mouse, keyboard, or touchscreen effortlessly.
-  - I value high-quality, well-organized information that I can consume in just a few minutes.
-  - As a user, I need a simple and clear way to get in touch with you.
+* I want to navigate this website quickly and easily.
+* I should be able to use a mouse, keyboard, or touchscreen effortlessly.
+* I value high-quality, well-organized **content** that I can consume in just a few minutes.
+* As a user, I need a simple and clear way to get in touch with you.
 
-  ### First-Time Visitor Goals
+---
 
-  - As a First Visitor Goals:
-      1. To quickly understand the main purpose of the site and discover what your company offers.
-      2. To navigate the site effortlessly and find content that captures my interest.
-      3. To be visually engaged by an attractive and inviting website that encourages me to explore further.
-      4. To easily locate your contact information — ideally supported by testimonials or customer reviews to build trust.
+### User Goals by Frequency
 
-  ### Returning Visitor Goals
+#### First-Time Visitor Goals
 
-  - As a Returning Visitor, 
-       1. To find more detailed information about the services provided, including working hours.
-       2. To easily discover the best way to contact the organization for any questions or support.
-       3. To understand the available methods of communication — whether through Zoom, Skype, phone, or in-person meetings.
+1.  To quickly understand the main purpose of the site (poetry/blog) and discover the range of content offered.
+2.  To navigate the site effortlessly and find content that captures my interest.
+3.  To be visually engaged by an attractive and inviting website that encourages me to explore further.
+4.  To easily locate **contact information or the collaboration form** to build trust.
 
-  ### Frequent User Goals
-  - As a Frequent User,
-       1. To conveniently access and fill out IRS Form 1040 directly through the site.
-       2. To view brief and clear comparisons — such as LLC vs. S-Corp — to help make informed decisions.
+#### Returning Visitor Goals
+
+1.  To easily discover new poems and recent blog posts since my last visit.
+2.  To find my way to the **login/registration area quickly** to access personalized features.
+3.  To easily find **support or collaboration paths** for questions and contribution.
+
+#### Frequent User Goals
+
+1.  To conveniently access and **manage my personal list of favorited poems**.
+2.  To view the **latest comments and responses** on blog posts I have engaged with.
+3.  To **search and filter content** effectively by author, collection, or language.
 
 ---
 
