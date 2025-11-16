@@ -70,9 +70,6 @@ Key Features:
 ---
 
 ## 🧾 Project Overview
-*(Write 4–6 lines summarizing purpose, audience, and primary benefit.)*
-
-## 🧾 Project Overview
 EterPoetic is an interactive and content-rich web application for lovers of poetry and creative writing. Designed for readers and writers, it provides a platform to explore curated poem collections and insightful blog posts. It combines a personal reading experience with community engagement, allowing registered users to favorite poems, comment on articles, and connect with the team.
 
 **Core Technologies**
@@ -278,37 +275,37 @@ This section is for high-quality images that showcase the aesthetic design and k
 
 ### Blog
 
-#### BLog Post List
+#### Blog Post List
 
 ![Blog Post List](static/images/readme/screenshots/blog/blog.png)
 
 
-#### BLog Post Detail
+#### Blog Post Detail
 
 ![Blog Post Detail](static/images/readme/screenshots/blog/blog1.png)
 
 
-#### BLog Post- Comment Approval
+#### Blog Post- Comment Approval
 
 ![Blog Post Comment](static/images/readme/screenshots/blog/blog2.png)
 
 
-#### BLog Post- Edit Comment
+#### Blog Post- Edit Comment
 
 ![Blog Post Edit Comment](static/images/readme/screenshots/blog/blog3.png)
 
 
-#### BLog Post- Edit Comment Updated
+#### Blog Post- Edit Comment Updated
 
 ![Blog Post Edit Comment Updated](static/images/readme/screenshots/blog/blog4.png)
 
 
-#### BLog Post- Delete Comment
+#### Blog Post- Delete Comment
 
 ![Blog Post Delete Comment](static/images/readme/screenshots/blog/blog5.png)
 
 
-#### BLog Post- Comment Deleted!
+#### Blog Post- Comment Deleted!
 
 ![Blog Post Comment Deleted!](static/images/readme/screenshots/blog/blog6.png)
 
@@ -327,7 +324,7 @@ This section is for high-quality images that showcase the aesthetic design and k
 ![About- Collaborate Form](static/images/readme/screenshots/about/about1.png)
 
 
-#### About- Submite Form
+#### About- Submit Form
 
 ![About- Collaborate Form](static/images/readme/screenshots/about/about2.png)
 
