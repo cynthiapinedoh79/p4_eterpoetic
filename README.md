@@ -33,6 +33,9 @@ Key Features:
 - [🖼️ Screenshots](#🖼️-screenshots)
 - [🎯 UX](#🎯-ux)
 - [🧑‍💼 User Stories](#🧑‍💼-user-stories)
+  - [Core User Stories](#core-user-stories)
+  - [🚀 Existing Features](#🚀-existing-features)
+  - [🧑‍💻 Testing User Stories – User Experience (UX) Evaluation](#🧑‍💻-testing-user-stories--user-experience-ux-evaluation)
 - [🎨 Design Choices](#🎨-design-choices)
 - [📐 Five Planes UXD](#📐-five-planes-uxd)
   - [📌 Strategy](#📌-strategy)
@@ -40,9 +43,6 @@ Key Features:
   - [🏗️ Structure](#🏗️-structure)
   - [🦴 Skeleton](#🦴-skeleton)
   - [🎨 Surface](#🎨-surface)
-- [✨ Features](#✨-features)
-  - [🚀 Existing Features](#🚀-existing-features)
-  - [🧰 Frameworks, Libraries & Programs Used](#🧰-frameworks-libraries--programs-used)
 - [🏛️ Architecture (Django MVT)](#🏛️-architecture-django-mvt)
   - [🗃️ Data Model (ERD)](#🗃️-data-model-erd)
   - [🧱 App Responsibilities](#🧱-app-responsibilities-app1-app2-app3)
@@ -62,7 +62,6 @@ Key Features:
   - [✅ Validator Testing](#✅-validator-testing)
   - [✅ Accessibility Testing](#✅-accessibility-testing)
   - [✅ Console in Google Chrome DevTools-"Inspect" Testing](#✅-console-in-google-chrome-devtools-inspect-testing)
-  - [🧑‍💻 Testing User Stories – User Experience (UX) Evaluation](#🧑‍💻-testing-user-stories--user-experience-ux-evaluation)
 - [🐞 Bugs](#🐞-bugs)
 - [📥 Deployment](#📥-deployment)
 - [🤝 Contribution Guidelines](#🤝-contribution-guidelines)
@@ -724,6 +723,8 @@ The website is designed to be clear and simple. The navigational hierarchy ensur
 Final aesthetic layers (colors, components, imagery).
 To create a pleasing and understandable view, the design utilizes a **high-contrast, modern literary palette** (Midnight Teal, Vibrant Terracotta, and Plum Ink) against a soft off-white background to ensure excellent readability.
 
+![eterpoetic](static/images/readme/fivePlanes/surface.png)
+
 ---
 
 ## 🏛️ Architecture (Django MVT)
@@ -921,6 +922,7 @@ You must verify that all sensitive keys are set as **Config Vars** (Environment 
 You can check your existing Heroku Config Vars by running:
 ```bash
 heroku config -a eterpoetic-62a49da213d8
+```
 
 ---
 
@@ -928,28 +930,26 @@ heroku config -a eterpoetic-62a49da213d8
 
 ### 🧑‍💻 Languages Used
 
-1. HTML5 - Used to build the basic structure of the website.
-2. CSS3 - Styles the front-end to create a visually appealing design and enhance user experience.
-3. JS -  Adds interactivity to the website, making the experience more dynamic and engaging for users.
-4. Python - 
-
-### 🧰 Frameworks, Libraries & Programs Used
-* **Backend:** Django, Gunicorn
-* **Database:** PostgreSQL
-* **Frontend:** Bootstrap
-* **Deployment:** Heroku, Cloudinary
-* **Design:** Balsamiq, Coolors
-* **Version Control:** Git
+| Language | Role in Project |
+| :--- | :--- |
+| **Python** | **Primary Backend Language** for the entire application, handling server-side logic, routing, and database interactions through the Django framework. |
+| **HTML5** | Used to build the basic structure of the website. |
+| **CSS3** | Styles the front-end to create a visually appealing design and enhance user experience. |
+| **JavaScript (JS)** | Adds interactivity to the website, making the experience more dynamic and engaging for users. |
 
 ---
 
-*Webaim
-[Tested contrast](https://webaim.org/resources/contrastchecker/)
-*Coolors
-[Tested color](https://coolors.co/contrast-checker/33008a-f8f8ff)
+### 🧰 Frameworks, Libraries & Programs Used
 
-_Main color palette_
-![Main color Palette](assets/images/readme/PalletColors.png)
+| Category | Tools | Notes |
+| :--- | :--- | :--- |
+| **Backend** | Django, Gunicorn | Django provides the MVT (Model-View-Template) architecture; Gunicorn serves the application in production. |
+| **Database** | PostgreSQL (ElephantSQL) | Scalable relational database for storing all user, poem, and blog content. |
+| **Frontend** | Bootstrap (5.0.1) | Frontend framework used for responsive layout, components, and utility classes. |
+| **Deployment** | Heroku, Cloudinary | Heroku provides the hosting environment; Cloudinary handles persistent storage for static files (CSS, JS) and media (Poem/Post images). |
+| **Design** | Balsamiq, Coolors | Balsamiq used for wireframing/layout; Coolors used for palette generation and contrast checking. |
+| **Version Control** | Git | Used for local development and pushed to GitHub for source control management. |
+
 ---
 
 ## 📦 Project Setup
@@ -971,56 +971,71 @@ python -m venv venv
 # macOS/Linux: source venv/bin/activate
 source venv/bin/activate
 
-# Install dependencies
-pip install -r requirements.txt
+# Install core dependencies (including package to read .env file)
+pip install -r requirements.txt python-dotenv
 
 # Run migrations
 python manage.py migrate
 
 # Run the server
 python manage.py runserver
+```
+---
 
-⚙️ Environment Variables
-Create a .env file:
-
+## .env file content
+```bash
 SECRET_KEY=your_local_insecure_key
 DEBUG=True
 DATABASE_URL=postgres://USER:PASSWORD@HOST:PORT/DBNAME
 CLOUDINARY_URL=cloudinary://API_KEY:API_SECRET@CLOUD_NAME
 ALLOWED_HOSTS=localhost,127.0.0.1
+```
+---
 
-🗂️ Project Structure
+## 🗂️ Project Structure
 
-A brief overview of the project's directory structure.
+A detailed overview of the project's directory structure.
 
 project_root/
 │ manage.py
 │ requirements.txt
 │ Procfile
 │ runtime.txt
-│ .env
+│ .env                # Stores secure environment variables (MUST be in .gitignore)
+│ db.sqlite3          # Local development database (MUST be in .gitignore)
+│ .gitignore
 │
-├── app1/         # Replace with your app's name
-├── app2/         # Replace with your app's name
-├── app3/         # Replace with your app's name
-├── static/       # Project-wide static files
-└── project_name/ # Core project settings
-    │ settings.py
-    │ urls.py
-    │ wsgi.py
-    └ asgi.py
+├── core/             # Central location for base project configurations and context processors
+├── docs/             # Documentation, ERDs, and external reports
+├── eterpoetic/       # Main project settings folder
+│   │ settings.py
+│   │ urls.py
+│   │ wsgi.py
+│   └ asgi.py
+│
+├── about/            # App: About page and Collaborator form submissions
+├── authors/          # App: Data and management for content creators
+├── blog/             # App: Blog posts, comments, and moderation logic
+├── poetry/           # App: Core content management (Poems, Collections, Favorites)
+├── static/           # Project-wide static assets (images, CSS, JS)
+├── staticfiles/      # Collected static files (ignored by Git)
+└── templates/        # Project-wide base HTML templates (e.g., base.html)
 
-🔐 Admin & Fixtures
 
-# Create an admin superuser
+## 🔐 Admin & Fixtures
+
+### Create an admin superuser
 python manage.py createsuperuser
 
-# Load seed data (optional)
+### Load seed data (optional)
 python manage.py loaddata fixtures/seed.json
 
 ---
+
 ## ✅ Testing & Validation
+
 ---
+
 python manage.py test
 
 ---
@@ -1139,3 +1154,6 @@ Tell me your **real app names** so I replace `app1`, `app2`, `app3` automaticall
 app1 =
 app2 =
 app3 =
+
+
+[def]: #🧰-frameworks-libraries--programs-used
