@@ -665,7 +665,21 @@ Together, these colors suggest the movement of thought flowing toward the page, 
 ### 📌 Strategy
 Define goals and audience needs. Our objective is to create a professional platform that focuses on **AAA readability** and **intuitive functionality**. The design prioritizes content consumption and creative community engagement.
 
-![Strategy](assets/images/readme/fivePlanes/strategy.png)
+#### Prioritization Matrix
+The following table scores project opportunities based on their **Importance** (How crucial is it?) and **Viability** (How realistic is it to implement?), with **5** being the highest score.
+
+| Opportunity / Problem | Importance (Cruciality) | Viability (Feasibility) |
+| :--- | :--- | :--- |
+| 1. Attractive & functional website | 4 | 5 |
+| 2. Engaging user interaction (JavaScript-Python) | 5 | 5 |
+| 3. Concise and compelling content | 4 | 4 |
+| 4. Convert visitors into customers | 4 | 3 |
+| 5. Easy access to fill forms | 4 | 3 |
+| **TOTALS** | **21** | **20** |
+
+**Conclusion:** The project prioritized opportunities with the highest expected return on investment (Viability $\ge$ 4). The primary focus areas were **Engaging User Interaction** (Score 25) and ensuring a highly **Attractive & Functional Website** (Score 20), as these features were crucial (Importance $\ge$ 4) and highly feasible (Viability $\ge$ 5) to implement.
+
+![Strategy](static/images/readme/fivePlanes/strategy.png)
 
 ### 📐 Scope
 The site is designed around two core user actions:
