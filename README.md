@@ -1086,19 +1086,24 @@ This section documents the verification of site functionality across key browser
 ---
 
 ## ✅ Validator Testing
+The site's styling was verified for clean structure and adherence to standards.
 
 ### W3C Markup - HTML
 
 #### Home (Poetry)
+
 ![Home (Poetry)](static/images/readme/tests/w3c-html/home.html.png)
 
 #### My Favorites
+
 ![My Favorites](static/images/readme/tests/w3c-html/favorites.html.png)
 
 #### Blog
+
 ![Blog](static/images/readme/tests/w3c-html/blog.html.png)
 
 #### About
+
 ![About](static/images/readme/tests/w3c-html/about.html.png)
 
 ---
@@ -1132,7 +1137,6 @@ This section documents the verification of site functionality across key browser
 ---
 
 ### 📋 Validator Testing Summary
-
 The entire site was rigorously checked using the W3C and W3C CSS Validators.
 
 | Validator | Target | Result |
@@ -1145,11 +1149,65 @@ The entire site was rigorously checked using the W3C and W3C CSS Validators.
 ---
 
 ## ✅ Accessibility Testing
-(Detail results from Lighthouse/Wave...)
+
+### Lighthouse
+Lighthouse audits were conducted on core public and authenticated pages to ensure compliance with WCAG (Web Content Accessibility Guidelines).
+
+#### Home (Poetry)
+
+![Home (Poetry)](static/images/readme/tests/Lighthouse/lh-home.png)
+
+![Home (Poetry)](static/images/readme/tests/Lighthouse/lh-home1.png)
+
+![Home (Poetry)](static/images/readme/tests/Lighthouse/lh-home2.png)
+
+![Home (Poetry)](static/images/readme/tests/Lighthouse/lh-home3.png)
+
+---
+
+#### My Favorites
+
+![My Favorites](static/images/readme/tests/Lighthouse/lh-myFavorites.png)
+
+![My Favorites](static/images/readme/tests/Lighthouse/lh-myFavorites1.png)
+
+---
+
+#### Blog
+
+![Blog](static/images/readme/tests/Lighthouse/lh-blog.png)
+
+![Blog](static/images/readme/tests/Lighthouse/lh-blog1.png)
+
+---
+
+#### About
+
+![About](static/images/readme/tests/Lighthouse/lh-about.png)
+
+![About](static/images/readme/tests/Lighthouse/lh-about1.png)
+
+![About](static/images/readme/tests/Lighthouse/lh-about2.png)
+
+---
+
+#### Sign Up
+
+![Register-Sign Up](static/images/readme/tests/Lighthouse/lh-signup.png)
+
+---
 
 
 ## ✅ Console in Google Chrome DevTools-"Inspect" Testing
 (Confirm no console errors...)
+
+![home](static/images/readme/tests/consoleDevTools/home.png)
+
+![myFavorites](static/images/readme/tests/consoleDevTools/myfavorites.png)
+
+![blog](static/images/readme/tests/consoleDevTools/blog.png)
+
+![about](static/images/readme/tests/consoleDevTools/about.png)
 
 ---
 
