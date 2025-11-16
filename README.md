@@ -892,8 +892,35 @@ To create a pleasing and understandable view, the design utilizes a **high-contr
 | **`blog`** | **Domain-Specific Features:** Manages Blog Posts, Comment Models, and the comment moderation/threading logic. |
 | **`accounts`** | **Authentication & Profile Management:** Handles user registration, login/logout, and user profiles (via `django-allauth`). |
 | **`about`** | **Static Content & Submission Flow:** Manages the About page content and the collaborator application form submissions. |
+| **`authors`** | **Creator Metadata:** Manages data and profiles for content creators. |
 
-![Project-Apps](static/images/readme/fivePlanes/project.png)
+---
+
+### 🗃️ Data Model (ERD) — Poetry App
+
+| Model | Key | Name | Type | Relationship | App |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Poem** | **ManyToManyField** | **`favorites`** | **User model** | **related_name='favorite_poems'** (Favorites) | `poetry` |
+| **Collection** | PrimaryKey | `id` | Integer | Auto-generated ID | `poetry` |
+| **Author** | PrimaryKey | `id` | Integer | Auto-generated ID | `authors` |
+
+---
+
+### 🗃️ Data Model (ERD) — Blog App
+
+| Model | Key | Name | Type | Relationship | App |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Post** | **ForeignKey** | **`author`** | **User model** | **CASCADE** on delete; related\_name="blog\_posts" | `blog` |
+| **Comment** | **ForeignKey** | **`post`** | **Post model** | **CASCADE** on delete; related\_name="comments" | `blog` |
+
+---
+
+### 🗃️ Data Model (ERD) — About App
+
+| Model | Key | Name | Type | Relationship | App |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **About** | PrimaryKey | `id` | Integer | Static Content | `about` |
+| **CollaborateRequest**| PrimaryKey | `id` | Integer | Form Submissions | `about` |
 
 ---
 
@@ -1053,9 +1080,9 @@ This section should list the URLs used for non-HTML data interaction, which may 
 | `/api/poems/<str:slug>/` | `GET` | Fetches specific poem data by slug (if using AJAX for detail views). | JSON |
 | `/api/collaborate/submit/` | `POST` | Endpoint that receives the form data for a new collaborator request. | JSON (Expected Success/Error) |
 
-### 🔒 Securing Your API Keys and Secrets
+## 🔒 Securing Your API Keys and Secrets
 
-[cite_start]The use of **Social Media Login (OAuth)** requires that you manage sensitive credentials (like Facebook App ID, Google Client Secret, and your main Django `SECRET_KEY`) securely.
+The use of **Social Media Login (OAuth)** requires that you manage sensitive credentials (like Facebook App ID, Google Client Secret, and your main Django `SECRET_KEY`) securely.
 
 [cite_start]The most crucial rule is that **NO secret key or token should ever be committed to your GitHub repository**[cite: 1, 2].
 
@@ -1069,14 +1096,11 @@ You must verify that all sensitive keys are set as **Config Vars** (Environment 
 | **`SOCIAL_AUTH_FACEBOOK_KEY`** | Facebook Client ID | Heroku Config Vars |
 | **`SOCIAL_AUTH_GOOGLE_SECRET`** | Google Client Secret | Heroku Config Vars |
 | **`CLOUDINARY_URL`** | Cloudinary Access | Heroku Config Vars |
-
-| Key | Value | Purpose |
-| :--- | :--- | :--- |
-| **`EMAIL_HOST`** | `smtp.gmail.com` | Specifies the SMTP server used for all outgoing emails (e.g., password resets, verification, collaboration requests). |
+| **`EMAIL_HOST`** | `smtp.gmail.com` | Specifies the SMTP server for outgoing emails. |
 
 You can check your existing Heroku Config Vars by running:
 ```bash
-heroku config -a eterpoetic-62a49da213d8
+heroku config -a eterpoetic
 ```
 
 ---
@@ -1096,14 +1120,30 @@ heroku config -a eterpoetic-62a49da213d8
 
 ### 🧰 Frameworks, Libraries & Programs Used
 
-| Category | Tools | Notes |
+## 🙏 Credits & Acknowledgements
+
+This project was made possible by the following resources and collaborators:
+
+* **Learning Materials**: We gratefully acknowledge the comprehensive **Code Institute learning materials** that provided the foundational knowledge for this project.
+* **Documentation**: Essential reference and guidance were provided by the official **Django & Heroku documentation**.
+* **Support**: The continuous improvement and debugging efforts were guided by **Mentor & Peer feedback**.
+
+---
+
+## 💻 Development Environment Tools
+
+We relied on various software tools and platforms throughout the development and troubleshooting process, with **Google's SMTP** used for secure email delivery instead of Brevo:
+
+| Tool/Platform | Role in Project | Fixes Highlighted |
 | :--- | :--- | :--- |
-| **Backend** | Django, Gunicorn | Django provides the MVT (Model-View-Template) architecture; Gunicorn serves the application in production. |
-| **Database** | PostgreSQL (ElephantSQL) | Scalable relational database for storing all user, poem, and blog content. |
-| **Frontend** | Bootstrap (5.0.1) | Frontend framework used for responsive layout, components, and utility classes. |
-| **Deployment** | Heroku, Cloudinary | Heroku provides the hosting environment; Cloudinary handles persistent storage for static files (CSS, JS) and media (Poem/Post images). |
-| **Design** | Balsamiq, Coolors | Balsamiq used for wireframing/layout; Coolors used for palette generation and contrast checking. |
-| **Version Control** | Git | Used for local development and pushed to GitHub for source control management. |
+| **Python/Django** | Core application framework and programming language. | Resolving `ModuleNotFoundError`, template syntax errors, and URL reversal issues. |
+| **Heroku** | Production deployment and hosting platform. | Fixing the deployment `Server Error (500)` and resolving CLI and migration sync issues. |
+| **VS Code / Gitpod** | Integrated Development Environment (IDE). | Resolving VS Code Server connection failures and rebuilding native modules like `node-pty`. |
+| **Homebrew** | Package manager used to install Heroku CLI in the Linux environment. | Resolving "Heroku CLI command not found" errors. |
+| **Google SMTP** | [cite_start]External service used for secure, production-ready email delivery, requiring an **App Password** for authentication [cite: 594-596]. | [cite_start]Fixing email delivery for password resets and other user notifications by configuring `EMAIL_HOST` to `'smtp.gmail.com'` and providing the 16-digit App Password [cite: 594-596]. |
+| **Bootstrap (5.3.3)** | Frontend framework for responsiveness, styling, and components. | Used for consistent UI patterns and responsive design. |
+| **Hover.css / jQuery** | **Hover.css** added float transitions; **jQuery** provided smooth scroll and DOM manipulation. | Used for interactive elements and visual polish. |
+| **Git / GitHub** | Version control and remote repository storage. | Essential for collaboration and deployment via Heroku. |
 
 ---
 
@@ -1449,6 +1489,24 @@ The entire site was rigorously checked using the W3C and W3C CSS Validators.
 
 ---
 
+### VsCode Terminal - test_forms/test_views
+
+#### Poetry test
+
+![poetry.py](static/images/readme/tests/VsCode/poetry.png)
+
+
+#### Blog test
+
+![blog.py](static/images/readme/tests/VsCode/blog.png)
+
+
+#### About test
+
+![about.py](static/images/readme/tests/VsCode/about.png)
+
+---
+
 ## ✅ Accessibility Testing
 
 ### Lighthouse
@@ -1512,86 +1570,116 @@ Lighthouse audits were conducted on core public and authenticated pages to ensur
 
 ---
 
-## 🐞 Bugs
+## 🐞 Bugs and Known Issues Log
 
-Solved
+### Solved Issues
 
-[Describe bug and solution]
-
-Known Issues
-
-[Describe known issues]
+| Problem | What Caused It | How It Was Fixed |
+|--------|----------------|------------------|
+| **Admin Login Error** | Django expected a “Site” entry in the database, but none existed. | Removed `django.contrib.sites` from `INSTALLED_APPS`. |
+| **Missing `dj_database_url`** | The database-URL helper package wasn’t installed. | Installed it with pip. |
+| **Missing Cloudinary Modules** | Cloudinary packages were required for media storage but not installed. | Installed `cloudinary` + `django-cloudinary-storage`. |
+| **Missing `crispy_forms`** | Project used Crispy Forms, but it wasn’t installed. | Installed `django-crispy-forms` and `crispy-bootstrap5`. |
+| **Missing `django_summernote`** | Summernote editor package wasn’t installed. | Installed `django-summernote`. |
+| **500 Error (caused by NoReverseMatch)** | A template tried to use a URL named `"home"` that didn’t exist. | Turned on DEBUG → added the missing URL name → updated template to `blog:home`. |
+| **POST Request Missing Trailing Slash** | A POST was sent to `/edit_comment/16` instead of `/edit_comment/16/`. | Updated redirect logic to point to the correct URL. |
+| **Heroku 500 Startup Error** | Heroku had an incorrect `CLOUDINARY_URL` value. | Updated the Cloudinary environment variable. |
+| **Migrations Out of Sync** | Heroku’s database was missing a Summernote migration. | Re-ran migrations on Heroku. |
+| **Missing Allauth Join Table** | A needed table for social login wasn’t created. | Created the table manually with SQL. |
+| **Local HTTPS Error** | Browser tried to open the dev server using HTTPS. | Cleared HSTS settings and used `http://127.0.0.1:8000`. |
+| **Heroku CLI Not Found** | Heroku CLI wasn’t installed or not in PATH. | Installed Homebrew → fixed PATH → installed Heroku CLI. |
+| **Local Email Not Working** | Needed different setups for test vs production email. | Local: console backend. Production: Brevo SMTP in env vars. |
+| **VS Code Server Wouldn’t Connect** | VS Code Server couldn’t download properly. | Reinstalled correctly, allowed firewall access, cleared cache, enabled cookies. |
+| **Tests Failing** | Wrong URLs, bad redirects, misplaced variables, missing session messages. | Fixed URL names, added `follow=True`, moved variables, updated views. |
 
 ---
+
+### Known Issues
+
+| Issue | What’s Going On |
+|-------|------------------|
+| **Password mismatch not caught** | Confirm-password field is named `password_again` but allauth expects `password2`. Needs a custom signup form. |
+| **Static files not updating on Heroku** | Browser/CDN caching sometimes keeps old files. Requires hard refresh or dyno restart. |
+| **Heroku argument parsing bug** | Heroku sometimes breaks with flags like `--noinput`. Requires using:  
+`heroku run -- python manage.py collectstatic --noinput` |
+
+
+---
+
 ## 📥 Deployment (Heroku)
 
-web: gunicorn project_name.wsgi
+### ⚙️ Procfile Configuration
 
-________________________________________________
-The app uses DATABASE_URL and CLOUDINARY_URL from Heroku's config vars.
-
----
-
-### 2. Duplicate Section
-
-You have **"🔮 Features Left to Implement"** listed twice in your Table of Contents and twice as a heading in the document.
-
-* **Solution:** Delete the first instance from the Table of Contents (the one after `[🐞 Bugs]`) and delete the second instance of the section (the one after `[📥 Deployment]`).
+| File | Content | Purpose |
+| :--- | :--- | :--- |
+| **`Procfile`** | `web: gunicorn project_name.wsgi` | Defines the primary web process, using **Gunicorn** to serve the application via the standard WSGI entry point. |
 
 ---
 
-### 3. Minor Typos & Fixes
+### 🔑 Critical Environment Variables
 
-* **Extraneous Text:** At the very bottom of your file, you have text that looks like a note *to you*.
-    * **Fix:** Delete this entire block from your README:
-        ```
-        ### ✅ Yes — This is now **correct and production-ready.**
-        ...
-        app3 =
-        ```
+The app uses environment variables (Config Vars) for secure configuration on Heroku:
 
-* **Typo 1:** In `🎨 Design Choices` > `Colour Psychology`
-    * **Fix:** Change `![Colour Psicology]` to `![Colour Psychology]`.
-
-* **Typo 2:** In `🦴 Skeleton` > `Wireframe`
-    * **Fix:** Change `[Balsamic]` to `[Balsamiq]`.
-
-* **Hard-Coded Badges:** In the `🧩 Badges` section, your language badges have percentages (e.g., `HTML5-27.1%`). These are likely from a sample project.
-    * **Suggestion:** I recommend removing the percentages, as they won't be accurate for *your* project.
-    * **Example Fix:**
-        ```markdown
-        ![HTML](https://img.shields.io/badge/HTML5-27.1%25-%23E34F26?style=flat&logo=html5&logoColor=white)
-
-        ![HTML](https://img.shields.io/badge/HTML5-%23E34F26?style=flat&logo=html5&logoColor=white)
-        ```
-
-This is a fantastic, professional template. Once you make these fixes, it will be perfect!
+| Config Var | Purpose | Importance |
+| :--- | :--- | :--- |
+| **`DATABASE_URL`** | Connects the application to the production database. | **Required.** Parsed by `dj-database-url`. |
+| **`CLOUDINARY_URL`** | Stores credentials for Cloudinary file storage. | **Required.** Misconfiguration leads to a **Server Error (500)**. |
 
 ---
+
+### 🐞 Deployment-Related Solved Issues
+
+| Problem | What Caused It | How It Was Fixed |
+|--------|----------------|------------------|
+| **Heroku 500 Error on Startup** | Heroku was using an old or invalid `CLOUDINARY_URL`, so the app crashed while loading. | Updated the Cloudinary environment variable in Heroku to the correct, active one. |
+| **Model Changes Not Applied on Heroku** | Heroku’s database didn’t have the latest changes for `django_summernote`, so the system warned that migrations were missing. | Ran `makemigrations` and `migrate` directly on Heroku to bring the database up to date. |
+| **Heroku CLI “command not found”** | The Heroku command-line tool wasn’t installed, or the system didn’t know where to find it. | Installed Homebrew → fixed PATH → installed the Heroku CLI through Homebrew. |
+| **Heroku Misreading Command Flags** | Heroku thought flags like `--noinput` belonged to Heroku, not Django, which caused errors. | Added `--` before the Django command:  
+`heroku run -- python manage.py collectstatic --noinput` |
+
+---
+
+### ⚠️ Known Deployment Issues
+
+| Known Issue | Status/Impact | Root Cause |
+| :--- | :--- | :--- |
+| **Static File Deployment Cache** | **Intermittent:** Front-end changes occasionally require hard refreshes (`Ctrl/Cmd + Shift + R`) to display on the live Heroku site. | Aggressive caching by the browser or CDN, despite using WhiteNoise for static file serving. |
+
+
+---
+
 ## 🤝 Contribution Guidelines
 
-Use branches: feat/, fix/, docs/
+To ensure code quality and a clear project history, please adhere to the following guidelines when contributing:
 
-PRs must include passing tests and clean linting
+### 🌳 Branch Naming Convention
+
+When you begin new work, create a branch using one of these prefixes to clearly define the nature of your changes:
+
+| Prefix | Use Case | Example |
+| :--- | :--- | :--- |
+| **`feat/`** | New features or adding significant functionality. | `feat/user-onboarding-flow` |
+| **`fix/`** | Bug fixes or corrections to existing incorrect behavior. | `fix/social-account-table` |
+| **`docs/`** | Changes to documentation only (README, Wiki, guides). | `docs/update-readme-bugs` |
+
+### ✅ Pull Request (PR) Requirements
+
+Before a Pull Request can be merged into the `main` branch, it **must** satisfy these two core criteria:
+
+* **Passing Tests** 🧪: All unit and integration tests must execute without failure.
+* **Clean Linting** ✨: The code must pass all configured style and quality checks (linting).
+
 ---
+
 ## 🙏 Credits & Acknowledgements
 
-Code Institute learning materials
+This project was made possible by the following resources and collaborators:
 
-Django & Heroku documentation
-
-Mentor & Peer feedback
+* **Learning Materials**: We gratefully acknowledge the comprehensive **Code Institute learning materials** that provided the foundational knowledge for this project.
+* **Documentation**: Essential reference and guidance were provided by the official **Django & Heroku documentation**.
+* **Support**: The continuous improvement and debugging efforts were guided by **Mentor & Peer feedback**.
+* **Community & Assistance**: Special thanks to the **Slack Community** and **Discord** channels for technical assistance, troubleshooting advice, and peer support.
+* **Resources**: General knowledge acquisition was supported by **Google** and **YouTube**.
+* **Troubleshooting**: The extensive and successful resolution of development, deployment, and configuration issues was enabled by detailed **Troubleshooting** and debugging efforts.
 
 ---
-
-### ✅ Yes — This is now **correct and production-ready.**
-
-Next step:  
-Tell me your **real app names** so I replace `app1`, `app2`, `app3` automatically:
-
-app1 =
-app2 =
-app3 =
-
-
-[def]: #🧰-frameworks-libraries--programs-used
