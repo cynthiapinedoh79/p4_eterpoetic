@@ -44,33 +44,41 @@
     <script>
       document.addEventListener('DOMContentLoaded', function () {
         const form = document.getElementById('signup_form');
-        const pw1  = document.getElementById('id_password1');
+        
+        // Use the ID you verified for the confirmation field (id_password2)
+        // We'll assume the primary password field is 'id_password'.
+        // NOTE: If 'id_password' doesn't work, change it to 'id_password1'.
+        const pw1  = document.getElementById('id_password');
         const pw2  = document.getElementById('id_password2');
 
-        if (!form || !pw1 || !pw2) return;
+        if (!form || !pw1 || !pw2) {
+          // console.log("Password fields or form not found."); 
+          return;
+        }
 
         function validatePasswords() {
-          // Default: no error
-          pw2.setCustomValidity('');
+          // Clear any previous custom error message
+          pw2.setCustomValidity(''); 
 
-          // Only validate if both fields have some value
+          // Only validate if both fields have some value and they don't match
           if (pw1.value && pw2.value && pw1.value !== pw2.value) {
             pw2.setCustomValidity('Passwords do not match.');
           }
         }
 
-        // Validate as the user types
+        // Validate as the user types in either field
         pw1.addEventListener('input', validatePasswords);
         pw2.addEventListener('input', validatePasswords);
 
         // Final check on submit
         form.addEventListener('submit', function (e) {
-          validatePasswords();
+          validatePasswords(); // Run validation before submission check
 
+          // This checks all HTML5 validation constraints, including your custom one
           if (!form.checkValidity()) {
             e.preventDefault();
-            // This will show the appropriate error tooltip (for pw2)
-            pw2.reportValidity();
+            // Show the error tooltip on the field with the error
+            pw2.reportValidity(); 
           }
         });
       });
