@@ -111,37 +111,37 @@ All pages were designed with **Responsive Design** to provide a consistent exper
 ### MyFavorites (Poetry)
 User would be able to see favorites (Featured) poems when login
 
-![Responsive devices -Home](static/images/readme/amIR/amIR-myFavorites.png)
+![Responsive devices -My Favorites](static/images/readme/amIR/amIR-myFavorites.png)
 
 ---
 
 ### Blog (Posts)
 
-![Responsive devices -Home](static/images/readme/amIR/amIR-blog.png)
+![Responsive devices -Blog](static/images/readme/amIR/amIR-blog.png)
 
-![Responsive devices -Home](static/images/readme/amIR/amIR-blog1.png)
+![Responsive devices -Blog](static/images/readme/amIR/amIR-blog1.png)
 
 ---
 
 ### About (Owner and Collaborators, Form)
 
-![Responsive devices -Home](static/images/readme/amIR/amIR-about.png)
+![Responsive devices -About](static/images/readme/amIR/amIR-about.png)
 
-![Responsive devices -Home](static/images/readme/amIR/amIR-about1.png)
+![Responsive devices -About](static/images/readme/amIR/amIR-about1.png)
 
-![Responsive devices -Home](static/images/readme/amIR/amIR-about2.png)
+![Responsive devices -About](static/images/readme/amIR/amIR-about2.png)
 
 ---
 
 ### Register (Sign Up)
 
-![Responsive devices -Home](static/images/readme/amIR/amIR-register.png)
+![Responsive devices -Register](static/images/readme/amIR/amIR-register.png)
 
 ---
 
 ### Login (Sign In)
 
-![Responsive devices -Home](static/images/readme/amIR/amIR-login.png)
+![Responsive devices -Login](static/images/readme/amIR/amIR-login.png)
 
 ---
 
@@ -151,11 +151,11 @@ User would be able to see favorites (Featured) poems when login
 
 ### My Favorites
 
-![Responsive devices -Home](static/images/readme/screenshots/s-myFavorites.png)
+![Responsive devices -My Favorites](static/images/readme/screenshots/s-myFavorites.png)
 
-![Responsive devices -Home](static/images/readme/screenshots/s-myFavorites1.png)
+![Responsive devices -My Favorites](static/images/readme/screenshots/s-myFavorites1.png)
 
-![Responsive devices -Home](static/images/readme/screenshots/s-myFavorites2.png)
+![Responsive devices -My Favorites](static/images/readme/screenshots/s-myFavorites2.png)
 
 ---
 
@@ -163,47 +163,47 @@ User would be able to see favorites (Featured) poems when login
 
 ### with Facebook
 
-![Responsive devices -Home](static/images/readme/screenshots/s-login.png)
+![Responsive devices -Login Fb](static/images/readme/screenshots/s-login.png)
 
-![Responsive devices -Home](static/images/readme/screenshots/s-login1.png)
+![Responsive devices -Login Fb](static/images/readme/screenshots/s-login1.png)
 
-![Responsive devices -Home](static/images/readme/screenshots/s-login1a.png)
+![Responsive devices -Login Fb](static/images/readme/screenshots/s-login1a.png)
 
 ---
 
 ### with Google
 
-![Responsive devices -Home](static/images/readme/screenshots/s-login2.png)
+![Responsive devices -Login Google](static/images/readme/screenshots/s-login2.png)
 
-![Responsive devices -Home](static/images/readme/screenshots/s-login3.png)
+![Responsive devices -Login Google](static/images/readme/screenshots/s-login3.png)
 
-![Responsive devices -Home](static/images/readme/screenshots/s-login4.png)
+![Responsive devices -Login Google](static/images/readme/screenshots/s-login4.png)
 
-![Responsive devices -Home](static/images/readme/screenshots/s-login5.png)
+![Responsive devices -Login Google](static/images/readme/screenshots/s-login5.png)
 
 ---
 
 ### If forget password
 
-![Responsive devices -Home](static/images/readme/screenshots/s-login6.png)
+![Responsive devices -Login Password](static/images/readme/screenshots/s-login6.png)
 
-![Responsive devices -Home](static/images/readme/screenshots/s-login7.png)
+![Responsive devices -Login Password](static/images/readme/screenshots/s-login7.png)
 
-![Responsive devices -Home](static/images/readme/screenshots/s-login8.png)
+![Responsive devices -Login Password](static/images/readme/screenshots/s-login8.png)
 
-![Responsive devices -Home](static/images/readme/screenshots/s-login9.png)
+![Responsive devices -Login Password](static/images/readme/screenshots/s-login9.png)
 
-![Responsive devices -Home](static/images/readme/screenshots/s-login10.png)
+![Responsive devices -Login Password](static/images/readme/screenshots/s-login10.png)
 
 ---
 
 ### Logout
 
-![Responsive devices -Home](static/images/readme/screenshots/s-logout.png)
+![Responsive devices -Logout](static/images/readme/screenshots/s-logout.png)
 
-![Responsive devices -Home](static/images/readme/screenshots/s-logout1.png)
+![Responsive devices -Logout](static/images/readme/screenshots/s-logout1.png)
 
-![Responsive devices -Home](static/images/readme/screenshots/s-logout2.png)
+![Responsive devices -Logout](static/images/readme/screenshots/s-logout2.png)
 
 ---
 
@@ -566,102 +566,141 @@ From the user’s perspective, I’ve built this site with the following priorit
 3.  To **search and filter content** effectively by author, collection, or language.
 
 ---
-
 ## 🎨 Design Choices
-- Mobile-first responsive layout
-- Clear typography hierarchy
-- Consistent spacing and UI patterns
-- Accessible markup and navigation
+* Mobile-first responsive layout
+* Clear typography hierarchy
+* Consistent spacing and UI patterns
+* Accessible markup and navigation
 
-  ### Description        
-  This website is designed for visitors and new customers to explore, learn, win rewards, and enjoy an engaging experience while navigating through different pages.
+### Description        
+This website is designed for **readers and creative writers** to explore diverse content, engage with the community, and enjoy an accessible reading experience while navigating through different pages.
 
-  ### Typography
-  Inter, Roboto family font is the main font used throughout the whole website with Sans Serif as the fallback font in case for any reason the font isn't being imported into the site correctly. Roboto is a clean font used frequently in programming, so it is both attractive and appropriate.
+### Typography
+The main fonts used are **Inter** and **Roboto**, with Sans Serif as the fallback. Roboto is chosen for its clean, professional appearance, ensuring optimal readability for long-form content like poetry and blog posts.
 
-  ### Color Palette 
-    - **Fonts:** Roboto, Inter – clean and modern  
-    - **Colors:**  
-      - Purple: trust and creativity  
-      - Red/Orange: urgency and emphasis  
-      - Muted tones: professionalism  
-    - [Contrast checked with WebAIM](https://webaim.org/resources/contrastchecker/)
+### Color Palette 
+* **Fonts:** Roboto, Inter – clean and modern  
+* **Primary Brand (`--color-primary-brand`):** #E86A33 (Red-Orange) — Used for main calls-to-action (CTAs) and highlights (Energy/Urgency).
+* **Accent & Dark BG (`--bg-dark`):** #4C3A51 (Deep Purple/Gray) — Used for footers and navigation (Trust/Creativity).
+* **Text & Background:** * Dark Text (`--color-text-dark`): #1A2C42 (Deep Navy/Blue) — Ensures high contrast for readability.
+    * Body Background (`--bg-body`): #FBF9F6 (Soft Cream/Off-White) — Provides a comfortable background for long reading sessions.
+* **Link Hover:** `#C08A3E` (Mustard Gold) — Provides distinct, high-contrast feedback on hover.
 
-  ### Colour Psychology
-    ![Colour Psicology](assets/images/readme/PsColor.png)
-    ![Contrast checked with WebAIM](assets/images/readme/PsColor1.png)
+![Color Palette -Design](static/images/readme/colorPalette/colorsP4-1.png)
 
-  ### Imagery  
-    Clear and attractive images support the theme and maintain strong contrast with text for optimal readability.
-  - Financial and office-themed backgrounds  
-  - High contrast text overlays for readability  
+![Color Palette -Design](static/images/readme/colorPalette/colorsP4-2.png)
+
+![Color Palette -Design](static/images/readme/colorPalette/colorsP4-3.png)
+
+![Color Palette -Design](static/images/readme/colorPalette/colorsP4-4.png)
+
+![Color Palette -Design](static/images/readme/colorPalette/colorsP4-5.png)
+
+<!-- * Collor Palette Design: 
+[View colorsP4 (.pdf)](./docs/colorsP4-1.pdf)
+* Collor Palette Design: [Download colorsP4 (.docx)](./docs/colorsP4.docx)
+* [Contrast checked with WebAIM](https://webaim.org/resources/contrastchecker/) -->
+
+
+### Colour Psychology
+
+The palette's mood is designed to support the literary and creative focus of the platform:
+
+* **Soft Linen White:** → Creates a calm, inviting blank page effect, perfect for reading.
+* **Midnight Teal:** → Represents wisdom, depth, and a focused, literary feel.
+* **Vibrant Terracotta / Rosewood Red:** → Provides creative energy and passion bursts (used for highlights and accents).
+* **Muted Gray + Gold Ocher:** → Establishes structure and introduces a touch of warmth and professionalism.
+
+![Colour Psychology](static/images/readme/colorPalette/psColor.png)
+
+![Colour Psychology](static/images/readme/colorPalette/psColor1.png)
+
+
+![Contrast checked with WebAIM](static/images/readme/colorPalette/contrast.png)
+
+### Imagery & Backgrounds
+
+Clear and attractive images support the theme and maintain strong contrast with text for optimal readability.
+
+* **Poetry/Creative Themed Backgrounds:** Imagery focuses on **writing, literature, and abstract ink/paper textures**.
+* High contrast text overlays for readability.
+
+### 1. Home: index.html (Poetry List)
+* **Background:** The page utilizes a **vibrant, abstract hero image ('Art/Artist')** to convey passion, followed by a grid of **emotionally evocative, individual collection thumbnails** (e.g., Eagle, Man in Sorrow) to represent the diverse mood of the content.
+
+### 2. My Favorites: favorites\_list.html
+* **Background:** Imagery focuses on a clean, **white, distraction-free background** to highlight the **curated grid of poem thumbnails**. The emphasis is on the user's personal selection of emotional and intimate photos (Love, Smile, etc.).
+
+### 3. Blog: bloghome.html
+* **Background:** The theme is consistent, using **rich, high-contrast imagery** of classical writing tools (ink, quills, old books, paper) to establish a strong, traditional literary atmosphere for the posts.
+
+### 4. About: about.html (Collaboration Form)
+* **Background:** The page uses a **professional, data-focused image** (AI/Data Architect) to establish technical authority and trust. The collaboration form contrasts with the content, using a light background to encourage simple, focused outreach.
+
 ---
-### 1. Home: index.html
-        
-  - Background: 
-  A blurred photo of financial charts and a blue pen (soft blue, red, beige tones)
+
+### Eterpoetic LOGO & Visual Identity
+
+The logo visually captures the essence of the project:
+![Logo](static/images/readme/colorPalette/logoIngles.png)
+
+#### Description and Meaning
+The design combines an old book with a quill and ink well, representing the **intimate act of writing** and the **poetic tradition** that is inherited and continuously renewed. The quill symbolizes inspiration taking form, while the book evokes the lasting presence of written work. The design transforms the ethereal (the subtle, the delicate) into literary expression.
+
+#### Typography
+The classic serif typeface conveys **elegance and refinement**, evoking literary tradition, calmness, and the measured rhythm of timeless poetry.
+
+#### Colors
+The palette is composed of warm and natural tones:
+* **Deep Brown/Plum Ink:** Symbolizes the antique book, literary depth, and the memory contained within written words.
+* **Vibrant Terracotta / Rosewood Red:** Expresses **creative energy, emotional impulse**, and the spark of inspiration.
+* **Earthy Greens:** Offers a sense of freshness, renewal, and connection to inner life (Used as an accent on the feather).
+
+Together, these colors suggest the movement of thought flowing toward the page, from the spirit into written expression.
 
 ---
 
 ## 📐 Five Planes UXD
 
 ### 📌 Strategy
-Define goals and audience needs.
-
-Our objective is to create a website that is both professional and functional. Our focus is on design that is both intuitive and creative.
+Define goals and audience needs. Our objective is to create a professional platform that focuses on **AAA readability** and **intuitive functionality**. The design prioritizes content consumption and creative community engagement.
 
 ![Strategy](assets/images/readme/fivePlanes/strategy.png)
+
 ### 📐 Scope
-The site is designed for two main user groups:
-1.	Visitors, who can enjoy interactive games, helpful tips, new information, and practical advice.
-2.	Potential new customers, who can explore special offers like a bookkeeping bonus award, contact us easily, or quickly access the Form 1040 submission link.
+The site is designed around two core user actions:
+
+1.  **Content Consumption:** Visitors can easily browse poem collections and blog posts, utilizing search and filtering tools to find content quickly.
+2.  **Community & Contribution:** Registered users can interact with content (favoriting/commenting) and potential collaborators can apply via the dedicated submission form.
 
 ![Scope pg1](assets/images/readme/fivePlanes/scope1.png)
-
 ![Scope pg2](assets/images/readme/fivePlanes/scope2.png)
+
 ### 🏗️ Structure
-The website is designed with HTML5, CSS3 and JS.
+The website is built using a **Django MVT (Model-View-Template) architecture** to separate concerns (HTML5, CSS3, JavaScript).
 
 **Website Pages/Apps:**
-1. **_Home:_** Description of Home, features
-1. **_App1:_** Description of App1, features
-2. **_App2:_** Description of App2, features
-3. **_App3:_** Description of App3, features
+1. **_Home / Poetry:_** The main content hub, displaying poem collections, search filters, and general site features.
+2. **_Blog:_** Manages all blog posts, individual post detail views, and user commenting functionality.
+3. **_About:_** Displays owner/team information and handles collaborator applications.
+4. **_Accounts:_** Provides core user management (Registration, Login, Logout, Session Management).
 
 ![Structure](assets/images/readme/fivePlanes/structure.png)
 
 ### 🦴 Skeleton
 Wireframes and layout structure.
-The website is designed to be clear and simple. And the site has a simple tree structure with hierarchical flows from top to bottom.
+The website is designed to be clear and simple. The navigational hierarchy ensures easy flow from top to bottom and between main app areas.
 
 **Wireframe**
-The wireframe is designed using Balsamiq software 
-[Balsamic](https://balsamiq.cloud/ss26tqg/p4441iq/rD01A)
+The wireframe is designed using **Balsamiq** software: 
+[Balsamiq](https://balsamiq.cloud/ss26tqg/p4441iq/rD01A)
 
 #### Home
 ![Home](assets/images/readme/Bals/Bals-Home.png)
 
 ### 🎨 Surface
 Final aesthetic layers (colors, components, imagery).
-To create a pleasing and understandable view, I opt for natural colors such as earth, green, and a range of tones that complement and contrast each other.
-
----
-
-## ✨ Features
-(Add a brief, high-level intro to your project's features here...)
-
-### 🚀 Existing Features
-* **Feature 1:** Describe what it does.
-* **Feature 2:** Describe what it does.
-
-*(Note: Your ToC also lists "Features Left to Implement," so you'd add that here as well)*
-### 🔮 Features Left to Implement
-* [Feature 3]
-* [Feature 4]
-* Dashboard analytics
-* REST API support
-* Role-based permissions
-* Background jobs / Scheduled tasks
+To create a pleasing and understandable view, the design utilizes a **high-contrast, modern literary palette** (Midnight Teal, Vibrant Terracotta, and Plum Ink) against a soft off-white background to ensure excellent readability.
 
 ---
 
