@@ -95,8 +95,13 @@ EterPoetic is an interactive and content-rich web application for lovers of poet
 
 ---
 
-## 📱 Am I Responsive? - Demo
+## 📱 Am I Responsive? - Demo (Layout Proof)
 All pages were designed with **Responsive Design** to provide a consistent experience across various screen sizes and devices.
+
+| Section | Image Purpose | Example Images |
+| :--- | :--- | :--- |
+| **Core Views** | Show how the main views adapt across screen sizes. | Home (Poetry List) View shown on Mobile, Tablet, and Desktop. |
+| **Key Functionality** | Show the Blog or About page in a mobile layout. | A screenshot demonstrating the mobile hamburger menu or mobile comment form. |
 
 ### Home (Poetry)
 
@@ -147,12 +152,19 @@ User would be able to see favorites (Featured) poems when login
 
 ---
 
-## 🖼️ Screenshots
+## 🖼️ Screenshots (Image Gallery)
 
- Additional screenshots to show
+This section is for high-quality images that showcase the aesthetic design and key features of your live application. These images should demonstrate the "look and feel" and the user's interaction flow.
+
+| Section | Image Purpose | Example Images |
+| :--- | :--- | :--- |
+| **Login/Auth Flow** | Show the secure sign-in process. | Social Login (Facebook/Google screens), Password Reset flow, Logout confirmation. |
+| **My Favorites** | Demonstrate a core personalized feature. | A view of the "My Favorites" list with multiple poems marked. |
+| **Site Navigation** | Show the main page elements. | Final image of the footer, image of the header bar. |
 
 ### My Favorites
 
+#### Sign In (Invitation)
 ![Responsive devices -My Favorites](static/images/readme/screenshots/s-myFavorites.png)
 
 ![Responsive devices -My Favorites](static/images/readme/screenshots/s-myFavorites1.png)
@@ -163,7 +175,7 @@ User would be able to see favorites (Featured) poems when login
 
 ### Login (Sign In)
 
-### with Facebook
+#### with Facebook
 
 ![Responsive devices -Login Fb](static/images/readme/screenshots/s-login.png)
 
@@ -173,7 +185,7 @@ User would be able to see favorites (Featured) poems when login
 
 ---
 
-### with Google
+#### with Google
 
 ![Responsive devices -Login Google](static/images/readme/screenshots/s-login2.png)
 
@@ -206,6 +218,14 @@ User would be able to see favorites (Featured) poems when login
 ![Responsive devices -Logout](static/images/readme/screenshots/s-logout1.png)
 
 ![Responsive devices -Logout](static/images/readme/screenshots/s-logout2.png)
+
+---
+
+### Blog
+
+#### BLog Post List
+
+![Responsive devices -My Favorites](static/images/readme/screenshots/s-myFavorites.png)
 
 ---
 

@@ -12,9 +12,10 @@
       {% blocktrans %}
          
         <div>
-        <p>Welcome! Do you already have an account?</p>
+        <p>Welcome! Do you already have an account?
         <a class="link" href="{{ login_url }}">Sign Up</a>
         instead.
+        </p>
         <hr>
         </div>
       {% endblocktrans %}
@@ -22,6 +23,13 @@
 
     <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
       {% csrf_token %}
+
+      {% if form.non_field_errors %}
+      <div class="alert alert-danger">
+        {{ form.non_field_errors }}
+      </div>
+      {% endif %}
+
       {{ form.as_p }}
 
       {% if redirect_field_value %}
@@ -32,6 +40,43 @@
         {% trans "Sign Up" %} &raquo;
       </button>
     </form>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const form = document.getElementById('signup_form');
+        const pw1  = document.getElementById('id_password1');
+        const pw2  = document.getElementById('id_password2');
+
+        if (!form || !pw1 || !pw2) return;
+
+        function validatePasswords() {
+          // Default: no error
+          pw2.setCustomValidity('');
+
+          // Only validate if both fields have some value
+          if (pw1.value && pw2.value && pw1.value !== pw2.value) {
+            pw2.setCustomValidity('Passwords do not match.');
+          }
+        }
+
+        // Validate as the user types
+        pw1.addEventListener('input', validatePasswords);
+        pw2.addEventListener('input', validatePasswords);
+
+        // Final check on submit
+        form.addEventListener('submit', function (e) {
+          validatePasswords();
+
+          if (!form.checkValidity()) {
+            e.preventDefault();
+            // This will show the appropriate error tooltip (for pw2)
+            pw2.reportValidity();
+          }
+        });
+      });
+    </script>
+
+
   </div>
 </div>
 {% endblock %}
