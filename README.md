@@ -1024,44 +1024,137 @@ project_root/
 
 ## 🔐 Admin & Fixtures
 
-### Create an admin superuser
+This section details the necessary commands for setting up administrative access and loading initial data.
+
+#### Create Admin Superuser
+Use this command during the local setup phase to create the master administrator account:
+
+```bash
 python manage.py createsuperuser
+```
 
 ### Load seed data (optional)
-python manage.py loaddata fixtures/seed.json
 
+```bash
+python manage.py loaddata fixtures/seed.json
+```
 ---
 
 ## ✅ Testing & Validation
 
----
+This section outlines the strategy used to verify project functionality, structure, and accessibility.
 
+### 🧪 Automated Testing
+
+To run the project's test suite:
+
+```bash
 python manage.py test
+```
+---
+
+### 📋 Validator Testing Summary
+The site structure and styling were verified using the following industry-standard validators:
+
+| Area | Tool | Goal |
+| :--- | :--- | :--- |
+| **HTML** | [W3C Validator](https://validator.w3.org/) | No errors |
+| **CSS** | [W3C CSS Validator (Jigsaw)](https://jigsaw.w3.org/css-validator/) | Clean structure |
+| **Accessibility** | Manual + Lighthouse | WCAG compliance |
+| **Responsiveness** | DevTools | Works across devices |
 
 ---
-Area	Tool	Goal
-HTML	W3C Validator	No errors
-CSS	W3C CSS Validator	Clean structure
-Accessibility	Manual + Lighthouse	WCAG compliance
-Responsiveness	DevTools	Works across devices
 
-## ✅ Browser & Device Testing
-(Describe which browsers you tested...)
+### ✅ Browser & Device Testing
+
+This section documents the verification of site functionality across key browsers and device types, confirming a consistent user experience.
+
+| Browser / Device | Key Functionality Tested | Status |
+| :--- | :--- | :--- |
+| **Chrome (Desktop)** | Login, Registration, Favorites Toggle, Comment Submission | Passed |
+| **Firefox (Desktop)** | Blog readability, Search/Filtering, Page Navigation | Passed |
+| **Mobile Devices** | Responsive Layout (Verified on **Pixel 10 Pro** & **Samsung S25 Ultra/Edge**), Favorites Toggle, Logout | Passed |
+
+#### Chrome
+
+![Chrome](static/images/readme/tests/browsers/chrome.png)
+
+#### Safari
+
+![Safari](static/images/readme/tests/browsers/safari.png)
+
+---
 
 ## ✅ Validator Testing
-(Detail results from W3C...)
+
+### W3C Markup - HTML
+
+#### Home (Poetry)
+![Home (Poetry)](static/images/readme/tests/w3c-html/home.html.png)
+
+#### My Favorites
+![My Favorites](static/images/readme/tests/w3c-html/favorites.html.png)
+
+#### Blog
+![Blog](static/images/readme/tests/w3c-html/blog.html.png)
+
+#### About
+![About](static/images/readme/tests/w3c-html/about.html.png)
+
+---
+
+### W3C CSS
+
+#### base.css
+
+![base.css](static/images/readme/tests/w3c-css/base.css.png)
+
+![base.css](static/images/readme/tests/w3c-css/base1.css.png)
+
+#### poetry.css
+
+![poetry.css](static/images/readme/tests/w3c-css/poetry.css.png)
+
+![poetry.css](static/images/readme/tests/w3c-css/poetry1.css.png)
+
+#### blog.css
+
+![blog.css](static/images/readme/tests/w3c-css/blog.css.png)
+
+![blog.css](static/images/readme/tests/w3c-css/blog1.css.png)
+
+#### about.css
+
+![about.css](static/images/readme/tests/w3c-css/about.css.png)
+
+![about.css](static/images/readme/tests/w3c-css/about1.css.png)
+
+---
+
+### 📋 Validator Testing Summary
+
+The entire site was rigorously checked using the W3C and W3C CSS Validators.
+
+| Validator | Target | Result |
+| :--- | :--- | :--- |
+| **W3C Markup (HTML)** | All Core Pages | **Validation Passed** |
+| **W3C CSS** | Global & App Styles | **Validation Passed** |
+
+**Conclusion:** The validation results confirm that the HTML structure of all core public and authenticated pages is **error-free**, and the CSS styling is **clean and valid**, adhering to modern web standards.
+
+---
 
 ## ✅ Accessibility Testing
 (Detail results from Lighthouse/Wave...)
 
+
 ## ✅ Console in Google Chrome DevTools-"Inspect" Testing
 (Confirm no console errors...)
 
-### 🧑‍💻 Testing User Stories – User Experience (UX) Evaluation
-(Go through each user story and confirm it works as expected)
-
 ---
+
 ### 🐞 Bugs
+
 Solved
 
 [Describe bug and solution]
