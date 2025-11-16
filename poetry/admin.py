@@ -6,6 +6,7 @@ from .models import Author, Collection, Poem
 
 @admin.register(Author)
 class AuthorAdmin(admin.ModelAdmin):
+    """Admin interface for Author model"""
 # --- 1. NEW: PREVIEW PHOTO ---
     @admin.display(description="Photo")
     def photo_thumb(self, obj):
@@ -27,6 +28,7 @@ class AuthorAdmin(admin.ModelAdmin):
 
 @admin.register(Collection)
 class CollectionAdmin(admin.ModelAdmin):
+    """Admin interface for Collection model"""
     list_display = ("name_en", "name_es", "slug")
     search_fields = ("name_en", "name_es",)
     prepopulated_fields = {"slug": ("name_en",)}
@@ -34,6 +36,7 @@ class CollectionAdmin(admin.ModelAdmin):
 
 @admin.register(Poem)
 class PoemAdmin(SummernoteModelAdmin):
+    """Admin interface for Poem model"""
     # --- 1. PREVIEW IMAGE ---
     @admin.display(description="Image")
     def thumb(self, obj):

@@ -1,29 +1,20 @@
-/* About app styles (scoped) */
-/* Reorganized by grouping, de-duplicating, and merging rules */
-/* to preserve the final computed styles from the original file. */
-/* v2: Corrected cascade order for .scale and .card-img-top */
-
 /* ================================================
    1. Page Layout & Spacing
 =================================================== */
 
-/* main container spacing */
 .about-page .container {
   margin-top: 4rem;
   margin-bottom: 4rem;
 }
 
-/* ensure image and text columns align nicely */
 .about-page .row {
   align-items: flex-start;
 }
 
-/* spacing tweaks */
 .about-page .mb-4.border-bottom.pb-2 {
   border-color: rgba(0,0,0,.12) !important;
 }
 
-/* ensure collab form card stays separated from footer */
 .about-page .collab-page {
   margin-top: 3rem;
   margin-bottom: 4rem;
@@ -33,7 +24,6 @@
    2. Typography
 =================================================== */
 
-/* about content typography */
 .about-page h2 {
   font-family: var(--font-stack-brand);
   color: var(--color-text-dark);
@@ -49,7 +39,6 @@
   color: var(--color-text-body);
 }
 
-/* updated-on paragraph */
 .about-page .text-end em {
   font-size: 0.9rem;
   color: var(--color-text-muted);
@@ -59,8 +48,6 @@
    3. Utility Classes (Moved Before Components)
 =================================================== */
 
-/* This rule was defined 2x identically in the original file. */
-/* Its 'height: auto' must be overridden by '.card-img-top'. */
 .about-page .scale {
   width: 100%;
   height: auto;
@@ -71,7 +58,6 @@
 =================================================== */
 
 /* hero/profile image on main About page */
-/* This is the final computed rule, merged from 3 separate definitions. */
 .about-page .profile-image {
   width: 75%;
   height: auto;
@@ -84,7 +70,6 @@
 }
 
 /* card image wrapper on profile list cards */
-/* This rule was defined 3x identically in the original file. */
 .about-page .image-wrapper {
   width: 100%;
   height: 60%;
@@ -92,9 +77,6 @@
   overflow: hidden;
 }
 
-/* card images inside list cards */
-/* This rule was defined 3x identically in the original file. */
-/* This 'height: 400px' must come AFTER '.scale' to win. */
 .about-page .card-img-top {
   width: 100%;
   height: 400px;
@@ -102,15 +84,12 @@
   display: block;
 }
 
-/* keep card look consistent on the profile grid */
 .about-page .card.light-bg {
   background-color: var(--bg-light);
   border-radius: 16px;
   border: 1px solid rgba(0,0,0,.05);
 }
 
-/* “Back” link styling */
-/* This rule was defined 3x identically in the original file. */
 .about-page .back-link {
   color: var(--color-link);
   text-decoration: none;
@@ -121,7 +100,6 @@
 }
 
 /* 'View Full Profile’ button */
-/* This is the final computed rule, merged from 2 separate definitions. */
 .about-page .btn.btn-signup {
   font-weight: 700;
   font-size: 0.95rem;
@@ -194,24 +172,20 @@
 
 /* --- Large screens (tablet/small desktop) Masthead Fix --- */
 @media (max-width: 991.98px) {
-  /* Let content define the height; trim extra space below */
   .masthead {
     min-height: auto;
     margin: 16px auto 8px;
   }
 
-  /* Remove the forced height that creates the big gap */
   .masthead .container .row.g-0 {
     min-height: unset; /* or min-height: auto; */
   }
 
-  /* Keep the dark panel looking nice on phones */
   .masthead-text {
     border-radius: 16px;
     padding: 20px;
   }
 
-  /* Make sure the diagonal/wedge is off on mobile */
   .masthead-image:after {
     display: none;
   }

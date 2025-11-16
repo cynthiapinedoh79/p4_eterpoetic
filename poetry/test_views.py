@@ -4,6 +4,7 @@ from .models import Author, Collection, Poem
 
 
 class PoetryViewTests(TestCase):
+    """Test suite for the Poetry app views"""
 
     @classmethod
     def setUpTestData(cls):

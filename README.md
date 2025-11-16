@@ -880,6 +880,7 @@ To create a pleasing and understandable view, the design utilizes a **high-contr
 ---
 
 ## 🏛️ Architecture (Django MVT)
+This section details the structure of your core application models and their relationships, similar to an Entity Relationship Diagram (ERD).
 
 ### 🧱 App Responsibilities
 
@@ -893,42 +894,16 @@ To create a pleasing and understandable view, the design utilizes a **high-contr
 
 ---
 
-### 🗃️ Data Model (ERD) — Poetry App
-
-| Model | Key | Name | Type | Relationship | App |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **Poem** | **ManyToManyField** | **`favorites`** | **User model** | **related_name='favorite_poems'** (Favorites) | `poetry` |
-| **Collection** | PrimaryKey | `id` | Integer | Auto-generated ID | `poetry` |
-| **Author** | PrimaryKey | `id` | Integer | Auto-generated ID | `authors` |
-
----
-
-### 🗃️ Data Model (ERD) — Blog App
-
-| Model | Key | Name | Type | Relationship | App |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **Post** | **ForeignKey** | **`author`** | **User model** | **CASCADE** on delete; related\_name="blog\_posts" | `blog` |
-| **Comment** | **ForeignKey** | **`post`** | **Post model** | **CASCADE** on delete; related\_name="comments" | `blog` |
-
----
-
-### 🗃️ Data Model (ERD) — About App
-
-| Model | Key | Name | Type | Relationship | App |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| **About** | PrimaryKey | `id` | Integer | Static Content | `about` |
-| **CollaborateRequest**| PrimaryKey | `id` | Integer | Form Submissions | `about` |
-
----
-
 ### 🧭 URL Map & Navigation
 
 | Path | View | Public/Private | App |
 |---|---|---|---|
 | `/` | PoetryHomeView | Public | `poetry` |
+| `/poem/<slug:slug>/` | PoemDetailView | Public | `poetry` |
+| `/author/<slug:slug>/` | AuthorDetailView | Public | `poetry` |
 | `/favorites/` | FavoritesListView | **Private** | `poetry` |
 | `/blog/` | BlogHomeView | Public | `blog` |
-| `/blog/<slug:pk>/` | PostDetailView | Public | `blog` |
+| `/blog/<slug:slug>/` | PostDetailView | Public | `blog` |
 | `/about/` | AboutView | Public | `about` |
 | `/accounts/login/` | Allauth Login | Public | `accounts` |
 
@@ -947,8 +922,15 @@ To create a pleasing and understandable view, the design utilizes a **high-contr
 ---
 
 ### 🗃️ Data Model (ERD) — Poetry App
+This section details the structure of your three models in the `poetry` application, which handles dynamic poems, favorites, collections, etc.
 
-This section details the structure of your core application models and their relationships, similar to an Entity Relationship Diagram (ERD).
+| Model | Key | Name | Type | Relationship | App |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Poem** | **ManyToManyField** | **`favorites`** | **User model** | **related_name='favorite_poems'** (Favorites) | `poetry` |
+| **Collection** | PrimaryKey | `id` | Integer | Auto-generated ID | `poetry` |
+| **Author** | PrimaryKey | `id` | Integer | Auto-generated ID | `authors` |
+
+---
 
 #### 1. Poem Model (Core Content & Favorites)
 
@@ -991,8 +973,14 @@ This section details the structure of your core application models and their rel
 ---
 
 ### 🗃️ Data Model (ERD) — Blog App
+This section details the structure of your two models in the `blog` application, which handles dynamic content (posts, comments).
 
-This section details the structure of your blog application models and their relationships, showing the key elements of your content and community features.
+| Model | Key | Name | Type | Relationship | App |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Post** | **ForeignKey** | **`author`** | **User model** | **CASCADE** on delete; related\_name="blog\_posts" | `blog` |
+| **Comment** | **ForeignKey** | **`post`** | **Post model** | **CASCADE** on delete; related\_name="comments" | `blog` |
+
+---
 
 #### 1. Post Model (Content & Structure)
 
@@ -1024,8 +1012,14 @@ This section details the structure of your blog application models and their rel
 ---
 
 ### 🗃️ Data Model (ERD) — About App
-
 This section details the structure of your two models in the `about` application, which handles static content and user submissions.
+
+| Model | Key | Name | Type | Relationship | App |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **About** | PrimaryKey | `id` | Integer | Static Content | `about` |
+| **CollaborateRequest**| PrimaryKey | `id` | Integer | Form Submissions | `about` |
+
+---
 
 #### 1. About Model (Static Content Management)
 
@@ -1066,6 +1060,7 @@ This section describes the primary user-facing and administrator forms used thro
 ### Note on CSRF Protection
 All forms utilize Django's **CSRF (Cross-Site Request Forgery) token** validation to ensure security against malicious external requests.
 
+---
 
 ## 🔌 API Endpoints (Optional)
 
@@ -1090,14 +1085,15 @@ You must verify that all sensitive keys are set as **Config Vars** (Environment 
 | Key | Purpose | Required Location |
 | :--- | :--- | :--- |
 | **`SECRET_KEY`** | Django application security | Heroku Config Vars |
-| **`SOCIAL_AUTH_FACEBOOK_KEY`** | Facebook Client ID | Heroku Config Vars |
-| **`SOCIAL_AUTH_GOOGLE_SECRET`** | Google Client Secret | Heroku Config Vars |
-| **`CLOUDINARY_URL`** | Cloudinary Access | Heroku Config Vars |
-| **`EMAIL_HOST`** | `smtp.gmail.com` | Specifies the SMTP server for outgoing emails. |
+| **`SOCIAL_AUTH_FACEBOOK_KEY & SOCIAL_AUTH_FACEBOOK_SECRET`** | Facebook App ID & Facebook App Secret | Heroku Config Vars |
+| **`GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET`** | Google Client_ID & Client_SECRET | Heroku Config Vars |
+| **`CLOUDINARY_URL`** | `cloudinary://API_KEY:API_SECRET@CLOUD_NAME` | Heroku Config Vars |
+| **`EMAIL_HOST`** | `smtp.gmail.com` | Heroku Config Vars |
 
 You can check your existing Heroku Config Vars by running:
 ```bash
 heroku config -a eterpoetic
+
 ```
 
 ---
@@ -1115,7 +1111,85 @@ heroku config -a eterpoetic
 
 ---
 
-### 🧰 Frameworks, Libraries & Programs Used
+## 🧰 Frameworks, Libraries & Programs Used
+
+### Frontend & Styling
+1. **[Bootstrap 5.3.3](https://getbootstrap.com/docs/5.3/getting-started/introduction/)**  
+   Used for responsive layout, grid system, components, utilities, and base styling.
+
+2. **[Hover.css](https://ianlunn.github.io/Hover/)**  
+   Applied to social media icons in the footer for smooth hover transitions.
+
+3. **[Google Fonts](https://fonts.google.com/)**  
+   Used to import custom typography.
+
+4. **[Font Awesome](https://fontawesome.com/)**  
+   Used for icons across the site.
+
+5. **[jQuery](https://jquery.com/)**  
+   Used for interactive UI behavior and DOM manipulation.
+
+---
+
+### Version Control & Repository
+6. **[Git](https://git-scm.com/)**  
+   Used for version control.
+
+7. **[GitHub](https://github.com/)**  
+   Used as remote repository hosting.
+
+---
+
+### Development Tools
+8. **[Visual Studio Code](https://code.visualstudio.com/)**  
+   Primary local code editor with extensions and AI support.
+
+9. **[Gitpod](https://www.gitpod.io/)**  
+   Cloud-based development environment used to write, run, and debug the project in the browser.
+
+10. **[Photoshop](https://www.adobe.com/ie/products/photoshop.html)**  
+    Used for editing images, optimizing assets, and creating visual elements.
+
+11. **[Balsamiq](https://balsamiq.com/)**  
+    Used for creating wireframes during the design phase.
+
+---
+
+### Testing, Accessibility & Performance Tools
+12. **[Am I Responsive](https://ui.dev/amiresponsive)**  
+    Used to generate responsive screenshots.
+
+13. **[WebAIM Contrast Checker](https://webaim.org/resources/linkcontrastchecker/)**  
+    Used to validate accessible color contrast.
+
+14. **Lighthouse (Chrome DevTools)**  
+    Used for performance, accessibility, best practices, and SEO audits.
+
+15. **[W3C Markup Validator](https://validator.w3.org/)**  
+    Used to validate HTML syntax.
+
+16. **[W3C CSS Validator](https://jigsaw.w3.org/css-validator/)**  
+    Used to validate CSS.
+
+17. **[JSHint](https://jshint.com/)**  
+    Used to analyze JavaScript code and ensure correct syntax and clean coding practices.
+
+18. **CI Python Linter (pep8-ci / pycodestyle)**  
+    Used to validate Python code style against PEP8 standards.
+
+---
+
+### Asset Optimization
+19. **[Squoosh](https://squoosh.app/)**  
+    Used to compress and optimize image files.
+
+---
+
+### Learning Resources / Media
+20. **[YouTube](https://www.youtube.com/)**  
+    Used for tutorials and troubleshooting.
+
+---
 
 ## 🙏 Credits & Acknowledgements
 
@@ -1164,7 +1238,8 @@ python -m venv venv
 source venv/bin/activate
 
 # Install core dependencies (including package to read .env file)
-pip install -r requirements.txt python-dotenv
+pip install -r requirements.txt
+pip install python-dotenv
 
 # Run migrations
 python manage.py migrate
@@ -1178,9 +1253,9 @@ python manage.py runserver
 ```bash
 SECRET_KEY=your_local_insecure_key
 DEBUG=True
-DATABASE_URL=postgres://USER:PASSWORD@HOST:PORT/DBNAME
+DATABASE_URL=postgresql://USER:PASSWORD@HOST:PORT/DBNAME
 CLOUDINARY_URL=cloudinary://API_KEY:API_SECRET@CLOUD_NAME
-ALLOWED_HOSTS=localhost,127.0.0.1
+ALLOWED_HOSTS=["localhost,127.0.0.1"]
 ```
 ---
 
@@ -1188,47 +1263,81 @@ ALLOWED_HOSTS=localhost,127.0.0.1
 
 A detailed overview of the project's directory structure.
 
-project_root/
-│ manage.py
-│ requirements.txt
-│ Procfile
-│ runtime.txt
-│ .env                # Stores secure environment variables (MUST be in .gitignore)
-│ db.sqlite3          # Local development database (MUST be in .gitignore)
-│ .gitignore
-│
-├── core/             # Central location for base project configurations and context processors
-├── docs/             # Documentation, ERDs, and external reports
-├── eterpoetic/       # Main project settings folder
-│   │ settings.py
-│   │ urls.py
-│   │ wsgi.py
-│   └ asgi.py
-│
-├── about/            # App: About page and Collaborator form submissions
-├── authors/          # App: Data and management for content creators
-├── blog/             # App: Blog posts, comments, and moderation logic
-├── poetry/           # App: Core content management (Poems, Collections, Favorites)
-├── static/           # Project-wide static assets (images, CSS, JS)
-├── staticfiles/      # Collected static files (ignored by Git)
-└── templates/        # Project-wide base HTML templates (e.g., base.html)
+A detailed overview of the project's directory structure.
 
+```text
+project_root/
+│   manage.py
+│   requirements.txt
+│   Procfile
+│   runtime.txt
+│   .env                # Local environment variables (MUST be in .gitignore)
+|   env.py
+│   .gitignore
+│
+├── core/               # Shared project utilities (e.g., context processors, helpers)
+├── docs/               # Documentation, ERDs, and external reports
+├── eterpoetic/         # Main project settings package
+│   │   settings.py
+│   │   urls.py
+│   │   wsgi.py
+│   └   asgi.py
+│
+├── about/                      # App: About page and Collaborator form submissions
+│   │   __init__.py
+│   │   admin.py
+│   │   apps.py
+│   │   models.py
+│   │   urls.py
+│   │   views.py
+│   │   forms.py
+│   │   test_views.py
+│   │   test_forms.py
+│   └── templates/
+│       └── about/              # Templates for the About app
+│
+├── blog/                       # App: Blog posts, comments, and moderation logic
+│   │   __init__.py
+│   │   admin.py
+│   │   apps.py
+│   │   models.py
+│   │   urls.py
+│   │   views.py
+│   │   forms.py
+│   │   test_views.py
+│   │   test_forms.py
+│   └── templates/
+│       └── blog/               # Templates for the Blog app
+│
+├── poetry/                     # App: Core content (Poems, Collections, Favorites)
+│   │   __init__.py
+│   │   admin.py
+│   │   apps.py
+│   │   models.py
+│   │   urls.py
+│   │   views.py
+│   │   forms.py
+│   │   test_views.py
+│   │   test_forms.py
+│   └── templates/
+│       └── poetry/             # Templates for the Poetry app
+│
+├── static/                     # Project-wide static assets (images, CSS, JS)
+├── staticfiles/                # Collected static files for deployment (in .gitignore)
+├── media/                      # Media root (uploads; used by Cloudinary/Django if needed)
+└── templates/                  # Project-wide base templates (e.g., base.html, 404.html)
+```
+---
 
 ## 🔐 Admin & Fixtures
 
 This section details the necessary commands for setting up administrative access and loading initial data.
 
-#### Create Admin Superuser
+### Create Admin Superuser
 Use this command during the local setup phase to create the master administrator account:
 
 ```bash
 python manage.py createsuperuser
-```
-
-### Load seed data (optional)
-
-```bash
-python manage.py loaddata fixtures/seed.json
 ```
 ---
 
@@ -1468,7 +1577,7 @@ This section verifies that all python code adheres to specified style guides and
 ---
 
 ### 📋 Validator Testing Summary
-The entire site was rigorously checked using the W3C and W3C CSS Validators.
+The entire site was rigorously checked using the W3C HTML and CSS Validators.
 
 | Validator | Target | Result |
 | :--- | :--- | :--- |
@@ -1479,7 +1588,7 @@ The entire site was rigorously checked using the W3C and W3C CSS Validators.
 | Area | Tool | Goal | Status |
 | :--- | :--- | :--- | :--- |
 | **JavaScript** | **JSHint/ESLint** | Code adheres to style guide (zero warnings/errors) | **Passed** |
-| **Pyhton** | **pep8-ci/CI Python Linter** | Code adheres to style guide (zero warnings/errors) | **Passed** |
+| **Pyhton** | **pep8-ci (CI Python Linter)** | Code adheres to style guide (zero warnings/errors) | **Passed** |
 
 
 **Conclusion:** The validation results confirm that the HTML structure of all core public and authenticated pages is **error-free**, and the CSS styling is **clean and valid**, adhering to modern web standards.
@@ -1609,7 +1718,7 @@ Lighthouse audits were conducted on core public and authenticated pages to ensur
 
 | File | Content | Purpose |
 | :--- | :--- | :--- |
-| **`Procfile`** | `web: gunicorn project_name.wsgi` | Defines the primary web process, using **Gunicorn** to serve the application via the standard WSGI entry point. |
+| **`Procfile`** | `web: gunicorn eterpoetic.wsgi` | Defines the primary web process, using **Gunicorn** to serve the application via the standard WSGI entry point. |
 
 ---
 
@@ -1619,8 +1728,11 @@ The app uses environment variables (Config Vars) for secure configuration on Her
 
 | Config Var | Purpose | Importance |
 | :--- | :--- | :--- |
+| **`SECRET_KEY`** | Django application security. | **Required.** Must be set on Heroku. |
 | **`DATABASE_URL`** | Connects the application to the production database. | **Required.** Parsed by `dj-database-url`. |
-| **`CLOUDINARY_URL`** | Stores credentials for Cloudinary file storage. | **Required.** Misconfiguration leads to a **Server Error (500)**. |
+| **`CLOUDINARY_URL`** | Stores credentials for Cloudinary file storage. | **Required.** Misconfiguration leads to **Server Error (500)**. |
+| **`GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET`** | Enables Google OAuth login. | Required for social login. |
+| **`ALLOWED_HOSTS`** | Heroku app domain. | Required in production. |
 
 ---
 
@@ -1629,10 +1741,9 @@ The app uses environment variables (Config Vars) for secure configuration on Her
 | Problem | What Caused It | How It Was Fixed |
 |--------|----------------|------------------|
 | **Heroku 500 Error on Startup** | Heroku was using an old or invalid `CLOUDINARY_URL`, so the app crashed while loading. | Updated the Cloudinary environment variable in Heroku to the correct, active one. |
-| **Model Changes Not Applied on Heroku** | Heroku’s database didn’t have the latest changes for `django_summernote`, so the system warned that migrations were missing. | Ran `makemigrations` and `migrate` directly on Heroku to bring the database up to date. |
-| **Heroku CLI “command not found”** | The Heroku command-line tool wasn’t installed, or the system didn’t know where to find it. | Installed Homebrew → fixed PATH → installed the Heroku CLI through Homebrew. |
-| **Heroku Misreading Command Flags** | Heroku thought flags like `--noinput` belonged to Heroku, not Django, which caused errors. | Added `--` before the Django command:  
-`heroku run -- python manage.py collectstatic --noinput` |
+| **Model Changes Not Applied on Heroku** | Heroku’s database didn’t have the latest changes for `django_summernote`, causing warnings about missing migrations. | Ran migrations on Heroku after pushing updated migration files. |
+| **Heroku CLI “command not found”** | The Heroku command-line tool wasn’t installed or the system PATH wasn’t configured. | Installed Homebrew → fixed PATH → installed the Heroku CLI via Homebrew. |
+| **Heroku Misreading Command Flags** | Heroku interpreted Django flags (e.g., `--noinput`) as Heroku flags. | Added `--` before the Django command: `heroku run -- python manage.py collectstatic --noinput` |
 
 ---
 
@@ -1640,8 +1751,7 @@ The app uses environment variables (Config Vars) for secure configuration on Her
 
 | Known Issue | Status/Impact | Root Cause |
 | :--- | :--- | :--- |
-| **Static File Deployment Cache** | **Intermittent:** Front-end changes occasionally require hard refreshes (`Ctrl/Cmd + Shift + R`) to display on the live Heroku site. | Aggressive caching by the browser or CDN, despite using WhiteNoise for static file serving. |
-
+| **Static File Deployment Cache** | **Intermittent:** Front-end changes occasionally require hard refreshes (`Ctrl/Cmd + Shift + R`) to display on the live Heroku site. | WhiteNoise + browser caching: static files are aggressively cached unless their hashed filenames change. If a file’s hash doesn’t update, browsers may continue serving the old version. |
 
 ---
 

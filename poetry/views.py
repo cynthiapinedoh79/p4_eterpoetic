@@ -96,6 +96,8 @@ def _build_poem_list_context(request):
 
 
 def poem_detail(request, slug):
+    """Display a single poem's detail page.
+    """
     poem = get_object_or_404(Poem, slug=slug)
 
     # --- NEW: Check if this single poem is a favorite ---
@@ -112,11 +114,13 @@ def poem_detail(request, slug):
 
 
 def poem_list(request):
+    """Display a list of poems or collections based on filters."""
     ctx = _build_poem_list_context(request)
     return render(request, "poetry/poem_list.html", ctx)
 
 
 def poetry_home(request):
+    """Display the poetry home page with hero image and quotes."""
     quotes = [
         {"text": "Feel the paper with the breathings of your heart",
          "author": "William Wordsworth"},
@@ -150,6 +154,7 @@ def poetry_home(request):
 @login_required
 @require_POST  # Ensures this view can only be accessed via POST
 def toggle_favorite(request, poem_id):
+    """Toggle a poem as a favorite for the logged-in user."""
     poem = get_object_or_404(Poem, id=poem_id)
 
     # Check if the poem is currently favorited
@@ -174,6 +179,7 @@ def toggle_favorite(request, poem_id):
 # --- NEW: View for the "My Favorites" page ---
 @login_required
 def favorites_list(request):
+    """Display the logged-in user's favorite poems."""
     # Get all poems this user has favorited
     favorite_poems = request.user.favorite_poems.all().order_by(
         '-is_featured', '-created'

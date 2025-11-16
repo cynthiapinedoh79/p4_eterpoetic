@@ -4,6 +4,7 @@ from .forms import CollaborateForm
 
 # Create your tests here.
 class TestCollaborateForm(TestCase):
+    """ Test for Collaborate Form """
 
     def test_form_is_valid(self):
         """ Test for all fields"""

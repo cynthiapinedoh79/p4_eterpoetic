@@ -1,21 +1,14 @@
-/* ================================================
-   POETRY APP STYLES
-   Reorganized by page, component, and responsive blocks.
-   All overrides and cascade order have been preserved.
-=================================================== */
 
 /* ================================================
    1. PAGE: POETRY HOME
 =================================================== */
 
-/* Hero section */
 .poetry-hero {
   background: linear-gradient(180deg, #fafbfd 0%, #ffffff 100%);
   padding-top: 3rem;
   padding-bottom: 3rem;
 }
 
-/* Cover image */
 .cover-art {
   margin-bottom: 2.5rem;
 }
@@ -25,7 +18,6 @@
   border-radius: 0;
 }
 
-/* Quotes grid */
 .quote-row {
   --q-gap: 1rem;
 }
@@ -139,7 +131,6 @@ section.py-4 {
 
 .poetry-list .card-img-top {
   display: block;
-  /* CRITICAL CHANGE: Reduce width to clear space for the 32px flag */
   width: 100%;
   height: auto;
   aspect-ratio: 4 / 3;
@@ -177,14 +168,6 @@ section.py-4 {
   background: transparent;
   border-top: 1px solid rgba(0,0,0,0.05);
 }
-
-/* NOTE: If your site doesn't use a <main> tag in base.html, 
-you may need to find the ID or class that wraps your content
-and use that instead, like:
-
-#content { flex-grow: 1; }
-.main-wrapper { flex-grow: 1; }
-*/
 
 /* --- 2.3. Featured Card Styles --- */
 
@@ -239,7 +222,6 @@ and use that instead, like:
   box-shadow: 0 12px 28px rgba(0,0,0,.10), 0 0 0 3px rgba(232, 106, 51, 0.1);
 }
 
-/* Featured card aspect ratio (merged from multiple definitions) */
 .poetry-list .card.is-featured .card-img-top {
   width: 100%;
   height: auto;
@@ -261,7 +243,6 @@ and use that instead, like:
   object-fit: cover;
 }
 
-/* Featured card enlargement (MUST come after other .is-featured rules) */
 .poetry-list .card.is-featured {
     transform: scale(1.05);
     transition: transform 0.2s ease-in-out;
@@ -275,42 +256,34 @@ and use that instead, like:
 
 .poetry-list .collection-album-card {
   position: relative;
-/* Use a subtle vertical gradient for a layered effect */
   background: linear-gradient(180deg, var(--bg-light) 0%, #f0f0f0 100%); 
-  /* Add a slightly thicker and softer border */
-  border: 1px solid rgba(0, 0, 0, 0.08); /* A soft grey border */
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 16px;
   transition: transform .25s ease, box-shadow .25s ease, background-color .25s ease;
   height: 100%;
-  
-  /* Add a more distinct, lifted shadow */
   box-shadow: 0 8px 20px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.05);
 }
 
 .poetry-list .collection-album-card:hover {
-/* Keep the background on hover or adjust slightly */
   background: linear-gradient(180deg, #ffffff 0%, #f5f5f5 100%);
-  transform: translateY(-5px); /* Lift more noticeably */
-  /* Enhanced hover shadow with a hint of the brand color */
+  transform: translateY(-5px);
   box-shadow: 0 15px 30px rgba(0,0,0,0.15), 0 5px 12px rgba(0,0,0,0.1), 0 0 0 3px rgba(232, 106, 51, 0.1); 
-  /* Border darkens or uses brand color on hover */
-  border-color: rgba(232, 106, 51, 0.5); /* Brand-colored border on hover */
+  border-color: rgba(232, 106, 51, 0.5);
 }
 
 .poetry-list.collection-album-card .card-img-top {
   display: block;
-  width: calc(100% - 34px); /* IMPORTANT: Reduce visible image width */
-  margin-right: 34px;      /* Pushes the image left */
-  float: left;             /* Ensures image stays on the left */
+  width: calc(100% - 34px);
+  margin-right: 34px;
+  float: left;
   height: auto;
   aspect-ratio: 5 / 4;
   object-fit: cover;
   border-top-left-radius: 14px;
   border-top-right-radius: 0; 
-  border-bottom-right-radius: 0; /* Also clear the bottom, just in case */
+  border-bottom-right-radius: 0;
   transform: scale(1);
   transition: transform .25s ease;
-  /* Add a subtle inner shadow to the image */
   box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
 }
 
@@ -321,9 +294,8 @@ and use that instead, like:
 .poetry-list .collection-album-card .card-title {
   color: var(--color-text-dark);
   font-weight: 700;
-  font-size: 1.15rem; /* Slightly smaller font */
-  margin-bottom: 0.25rem !important; /* Tighten space after title */
-   /* Add a subtle text shadow for elegance */
+  font-size: 1.15rem;
+  margin-bottom: 0.25rem !important;
   text-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
 
@@ -332,12 +304,11 @@ and use that instead, like:
 }
 
 .poetry-list .collection-album-card .card-body {
-  /* Reduce vertical padding */
   padding: 0.75rem 1rem 1rem 1rem;
   padding-right: calc(1rem + 32px) !important;
 
   line-height: 1.4;
-  color: var(--color-text-muted); /* More muted description */
+  color: var(--color-text-muted);
 }
 
 /* Vertical "COLLECTION" Flag on the Right Edge */
@@ -351,11 +322,10 @@ and use that instead, like:
   
   /* Use Flexbox for perfect vertical centering */
   display: flex;
-  justify-content: center; /* Centers horizontally (along the length of the strip) */
-  align-items: center; /* Centers vertically (across the width of the strip) */
+  justify-content: center;
+  align-items: center;
   
-  /* CRITICAL FIX: Use 'vertical-lr' for bottom-to-top reading */
-  writing-mode: vertical-lr; /* Reads bottom-to-top */
+  writing-mode: vertical-lr;
   
   /* Styling */
   background-color: var(--color-text-dark); 
@@ -368,20 +338,16 @@ and use that instead, like:
   /* Shape and Aesthetics */
   border-top-right-radius: 16px; 
   border-bottom-right-radius: 16px;
-  border-top-left-radius: 0; /* Ensures clean line next to the image */
-  border-bottom-left-radius: 0; /* Ensures clean line next to the body */
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
   box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2); 
   z-index: 10;
-  
-  /* No need for padding when using Flexbox */
 }
 
-/* Optional: Slight effect on hover for the flag */
 .poetry-list .collection-album-card:hover::before {
   box-shadow: -4px 0 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Ensure the image is visually separated from the 32px flag area */
 .poetry-list .collection-album-card .card-img-top {
   display: block;
   width: calc(100% - 34px) !important;
@@ -460,7 +426,6 @@ and use that instead, like:
   border-color:var(--color-text-dark);
 }
 
-/* This rule was floating in the original file */
 a.page-link {
   color: #b30000;
 }
@@ -501,12 +466,10 @@ a.page-link {
   color: var(--color-text-dark);
 }
 
-/* --- GAP AFTER AUTHOR NAME --- */
 .poem-detail-author {
   font-family: 'Georgia', 'Times New Roman', Times, serif;
   font-style: italic;
   font-size: 1.1rem;
-  /* This overrides the "mb-4" class in your HTML that makes the gap too big */
   margin-bottom: 0.25rem !important; 
 }
 
@@ -527,22 +490,14 @@ a.text-decoration-none:hover {
 
 /* --- CONTROL THE SPACE BETWEEN STANZAS --- */
 
-/* 1. Paragraphs (The Stanzas) */
 .poem-body p {
     display: block;
-    
-    /* [CONTROL KNOB]: Change this number to adjust the gap between stanzas */
-    /* 0px  = Stanzas touch (use this if you have double-enter lines) */
-    /* 12px = Nice clear separation (standard book look) */
     margin-bottom: 2px !important; 
-
     margin-top: 0 !important;
     line-height: 1.0 !important;
     padding: 0 !important;
 }
 
-/* 2. The "Divs" (The old wrappers from your database) */
-/* We force these to ZERO so they don't add extra unwanted space */
 .poem-body .poem-container {
     margin: 0 !important;
     padding: 0 !important;
@@ -550,7 +505,6 @@ a.text-decoration-none:hover {
     width: 100%;
 }
 
-/* 3. Safety Net: Hides accidental empty lines */
 .poem-body p:empty {
     display: none !important;
 }
@@ -629,7 +583,6 @@ a.text-decoration-none:hover {
   margin-bottom: 0;
 }
 
-/* Ensure the banner layer is below the footer and adds no overlap */
 .quote-banner-fw,
 .quote-banner-wrapper,
 .quote-banner{
@@ -638,9 +591,8 @@ a.text-decoration-none:hover {
   margin-bottom: 0 !important;
 }
 
-  /* Add small padding between banner and footer if needed */
 .quote-banner-fw {
-  margin-bottom: 0.25rem;  /* optional visual breathing space */
+  margin-bottom: 0.25rem;
 }
 
 /* ================================================
@@ -663,7 +615,6 @@ a.text-decoration-none:hover {
 }
 
 .alert-info {
-  /* Using the successful brand colors with !important for cascade priority */
   background-color: rgba(232, 106, 51, 0.1) !important; 
   border-color: rgba(232, 106, 51, 0.3) !important;
   color: var(--color-text-dark) !important;
@@ -790,15 +741,10 @@ a.text-decoration-none:hover {
 /* 7. Collection Detail Flag (Updated Positioning) */
 /* -------------------------------------- */
 
-/* REMOVE OR COMMENT OUT THIS RULE: .collection-detail-row { position: relative; } */
-
-/* NEW/MODIFIED RULE: Set position relative on the inner column wrapper */
 .collection-detail-wrapper {
     position: relative; 
 }
 
-/* This targets the vertical flag on the Collection Detail Card */
-/* Change the selector from .collection-detail-row::before to .collection-detail-wrapper::before */
 .collection-detail-wrapper::before {
     content: "COLLECTION"; 
     position: absolute;
@@ -819,19 +765,10 @@ a.text-decoration-none:hover {
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
-    
-    /* Ensure the borders match the card's right-side radius */
     border-top-right-radius: 16px; 
     border-bottom-right-radius: 16px; 
     box-shadow: -4px 0 10px rgba(0, 0, 0, 0.2); 
     z-index: 10;
-
-    /* CRITICAL: Use translate X to move the flag OUTSIDE the column but flush against the edge */
     transform: translateX(32px); /* Move it right by its own width (32px) */
 }
-
-/* Optional: To make it look like part of the card, you can try: */
-/* .collection-detail-wrapper::before {
-    right: -32px; 
-} */
 

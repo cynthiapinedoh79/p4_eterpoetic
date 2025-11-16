@@ -1,5 +1,4 @@
 /* === GLOBAL BASE (from style.css) === */
-/* Organized by adding headings to existing sections. No rules were moved or changed. */
 
 /* ================================================
    1. Root Variables
@@ -28,12 +27,9 @@ body{
    font-family:var(--font-stack-primary);
    color:var(--color-text-body); 
    margin-bottom: 0;
-   /* ADDED FIX: Compensate for the fixed navbar height (approx. 70px) */
-    padding-top: 70px;
-    /* SET THIS TO 0: Since the footer is now NOT fixed,
-       the content will push it down naturally. */
-    padding-bottom: 0;
-    overflow-x: hidden;  /* keep */
+   padding-top: 70px;
+   padding-bottom: 0;
+   overflow-x: hidden;  /* Prevent horizontal scroll */
 }
 .brand{font-family:var(--font-stack-brand);font-size:1.4rem;font-weight:700;color:var(--color-text-dark);}
 .brand-accent{color:var(--color-primary-brand);}
@@ -42,7 +38,7 @@ pre{white-space:pre-wrap;word-wrap:break-word;font-family:var(--font-stack-prima
 html, body { height: 100%; }
 
 main {
-  flex: 1 0 auto; /* makes main fill the middle space */
+  flex: 1 0 auto;
 }
 
 /* ================================================
@@ -154,8 +150,8 @@ main {
   z-index: 10;
   flex-shrink: 0; /* keep footer at bottom */
 
-  background-color: var(--bg-dark);          /* ensure dark background */
-  color: var(--color-text-light);            /* default text color */
+  background-color: var(--bg-dark);
+  color: var(--color-text-light);
   border-top: 1px solid rgba(255,255,255,.12);
 }
 .footer a{ color: var(--color-text-light); text-decoration: none; }
@@ -168,74 +164,50 @@ main {
 ===================================================
 */
 
-/*
- This forces the <body> (which has your 'd-flex' class
- from base.html) to be 100% of the screen height.
-*/
 body.d-flex {
   min-height: 100vh;
   min-height: 100svh !important; /* !important forces it to override any other rule */
 }
 
-/*
- This forces the <main> (which has your 'flex-grow-1' class
- from base.html) to actually grow and push the footer down.
-*/
 main.flex-grow-1 {
   flex-grow: 1 !important; /* !important forces it to override any other rule */
 }
-
-/* Force Heroku to rebuild */
 
 /* ================================================
    11. Social Networks (Footer)
 =================================================== */
 
-/* Target the container for the icons */
 #social-networks {
-    /* Remove default list styling */
     list-style: none;
-    /* Remove default margin and padding from the UL */
     padding: 0;
     margin: 10px 0 0 0; 
     /* Center the icons container */
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 25px; /* Space between icons */
+    gap: 25px;
 }
 
-/* Target the link container (LI) - mainly used for Bootstrap 'list-inline-item' */
 .list-inline-item {
-    /* Ensures the list items don't add extra vertical space */
     margin: 0;
     padding: 0;
 }
 
-/* Target the actual link/icon */
 #social-networks a {
-    /* Use the light text color for default state */
     color: var(--color-text-light); 
-    /* Remove the default underline */
     text-decoration: none;
-    /* Smooth transition for the hover effect */
     transition: color 0.25s ease;
-    /* Ensures the link is readable, especially if not using fa-2x */
     font-size: 2rem; 
 }
 
 /* Hover/Focus state */
 #social-networks a:hover,
 #social-networks a:focus {
-    /* Change color to your primary brand color on hover */
     color: var(--color-primary-brand); 
-    /* Remove underline on hover (important if you kept it on other footer links) */
     text-decoration: none;
 }
 
-/* You may need this if you are using specific font-awesome size classes like fa-2x */
 #social-networks .fab {
-    /* Ensure the icon respects the font-size of the parent 'a' tag */
     font-size: inherit; 
 }
 
@@ -252,20 +224,17 @@ body {
    13. Allauth Form Styling
 =================================================== */
 
-/* Styles the <p> tags created by form.as_p */
 .allauth-form p {
   display: flex;
   flex-direction: column;
   margin-bottom: 1rem;
 }
 
-/* Styles the labels */
 .allauth-form p label {
   margin-bottom: 0.5rem;
   font-weight: 500;
 }
 
-/* Styles all input fields */
 .allauth-form p input[type="text"],
 .allauth-form p input[type="email"],
 .allauth-form p input[type="password"] {
@@ -291,12 +260,10 @@ body {
   box-shadow: 0 0 0 0.25rem rgba(13,110,253,.25);
 }
 
-/* Hides the help text list */
 .allauth-form .helptext {
   display: none;
 }
 
-/* Styles error messages */
 .allauth-form .errorlist {
   list-style-type: none;
   padding: 0;
@@ -305,5 +272,3 @@ body {
   font-size: .9rem;
 }
 
-
-/* html { outline: 3px dashed rgb(242, 0, 255) !important; } */

@@ -18,7 +18,6 @@ import dj_database_url
 from django.utils.translation import gettext_lazy as _
 from dotenv import load_dotenv  # pip install python-dotenv
 
-
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
@@ -46,7 +45,6 @@ DEBUG = False
 # DEBUG = os.environ.get("DEBUG", "False") == "True"
 
 # ALLOWED_HOSTS for production (when DEBUG is False)
-
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
@@ -57,11 +55,10 @@ ALLOWED_HOSTS = [
     '*.codeinstitute-ide.net',
     '*.githubpreview.dev',
 ]
-# Add hostnames from the environment if present
+
 hostnames = os.environ.get('ALLOWED_HOSTS', '').split(',')
 ALLOWED_HOSTS.extend([h for h in hostnames if h])
 
-# Application definition
 INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
@@ -71,10 +68,10 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     'django.contrib.sites',  # Uncomment if using allauth with sites framework
     'django_summernote',
-    # cloudinary
+
     'cloudinary_storage',
     'cloudinary',
-    # allauth
+
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -82,10 +79,9 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.facebook',
     # 'allauth.socialaccount.providers.instagram',
 
-    # crispy
     'crispy_forms',
     'crispy_bootstrap5',
-    # ----------
+
     # 'sslserver',
     'core',
     'facebook_integration',
@@ -94,9 +90,6 @@ INSTALLED_APPS = [
     'about',
     'poetry',
 ]
-
-# Note: A redundant AUTHENTICATION_BACKENDS definition was removed from here.
-# The active definition is near the end of the file.
 
 SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
@@ -310,7 +303,7 @@ ACCOUNT_LOGIN_METHODS = {"username", "email"}
 # remove "username*" if you don't want usernames at all.
 ACCOUNT_SIGNUP_FIELDS = ["email*", "username*", "password1*", "password2*"]
 
-# Email verification policy still uses the same name:
+# Email verification method (none/optional/mandatory)
 ACCOUNT_EMAIL_VERIFICATION = "none"   # or "optional" / "mandatory"
 
 # Custom social account adapter to enable auto-signup when email is provided
@@ -318,6 +311,7 @@ SOCIALACCOUNT_ADAPTER = "core.adapters.AutoSignupWithEmailAdapter"
 
 # Social helpers
 SOCIALACCOUNT_QUERY_EMAIL = True
+
 # IMPORTANT: automatically log in users after social signup
 SOCIALACCOUNT_LOGIN_ON_GET = True
 
@@ -337,7 +331,7 @@ SOCIALACCOUNT_PROVIDERS = {
             "secret": os.environ.get("FACEBOOK_APP_SECRET"),
             "key": "",
         },
-        # Optional but fine:
+
         "SCOPE": ["public_profile", "email"],  # no review required
         # ensures email is requested
         "FIELDS": [

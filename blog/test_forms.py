@@ -4,6 +4,7 @@ from .forms import CommentForm
 
 # Create your tests here.
 class TestCommentForm(TestCase):
+    """Test Comment Form"""
 
     def test_form_is_valid(self):
         comment_form = CommentForm({'body': 'This is a great post'})

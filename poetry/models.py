@@ -6,6 +6,7 @@ from django.contrib.auth.models import User  # <-- NEW: Import the User model
 
 
 class Author(models.Model):
+    """Model representing an author"""
     name = models.CharField(max_length=120)
     slug = models.SlugField(unique=True)
     bio_en = models.TextField(blank=True)
@@ -18,6 +19,7 @@ class Author(models.Model):
 
 
 class Collection(models.Model):
+    """Model representing a collection of poems"""
     name_en = models.CharField(max_length=120)
     name_es = models.CharField(max_length=120, blank=True)
     slug = models.SlugField(unique=True, blank=True)
@@ -40,6 +42,7 @@ class Collection(models.Model):
 
 
 class Poem(models.Model):
+    """Model representing a poem"""
     title_en = models.CharField(max_length=200)
     title_es = models.CharField(max_length=200, blank=True)
     slug = models.SlugField(unique=True)
