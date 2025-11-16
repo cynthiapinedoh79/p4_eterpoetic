@@ -1136,6 +1136,145 @@ The site's styling was verified for clean structure and adherence to standards.
 
 ---
 
+### JSHint / JavaScript Validation
+This section verifies that all frontend JavaScript code adheres to specified style guides and standards (zero warnings or errors).
+
+| **JavaScript** | **JSHint/ESLint** | Code adheres to style guide (zero warnings/errors) |
+(Insert screenshot of zero warnings/errors from the JSHint output here.)
+
+#### comments.js
+
+![comments.js](static/images/readme/tests/jsHint/comments.js.png)
+
+#### poem_toggle.js
+
+![poem_toggle.js](static/images/readme/tests/jsHint/poem_toggle.js.png)
+
+#### quote_banner.js
+
+![quote_banner.js](static/images/readme/tests/jsHint/quote_banner.js.png)
+
+---
+
+### pep8ci / Pyhton Validation
+This section verifies that all python code adheres to specified style guides and standards (zero warnings or errors).
+
+
+#### eterpoetic/settings.py
+
+![eterpoetic/settings.py](static/images/readme/tests/pep8ci-python/eterpoetic/settings.py.png)
+
+
+#### eterpoetic/urls.py
+
+![eterpoetic/urls.py](static/images/readme/tests/pep8ci-python/eterpoetic/urls.py.png)
+
+
+#### eterpoetic/wsgi.py
+
+![eterpoetic/wsgi.py](static/images/readme/tests/pep8ci-python/eterpoetic/wsgi.py.png)
+
+---
+
+#### poetry/admin.py
+
+![poetry/admin.py](static/images/readme/tests/pep8ci-python/poetry/admin.py.png)
+
+#### poetry/models.py
+
+![poetry/models.py](static/images/readme/tests/pep8ci-python/poetry/models.py.png)
+
+#### poetry/views.py
+
+![poetry/views.py](static/images/readme/tests/pep8ci-python/poetry/views.py.png)
+
+#### poetry/urls.py
+
+![poetry/urls.py](static/images/readme/tests/pep8ci-python/poetry/urls.py.png)
+
+#### poetry/test_views.py
+
+![poetry/test_views.py](static/images/readme/tests/pep8ci-python/poetry/test_views.py.png)
+
+---
+
+#### blog/admin.py
+
+![blog/admin.py](static/images/readme/tests/pep8ci-python/blog/admin.py.png)
+
+
+#### blog/apps.py
+
+![blog/apps.py](static/images/readme/tests/pep8ci-python/blog/apps.py.png)
+
+
+#### blog/models.py
+
+![blog/models.py](static/images/readme/tests/pep8ci-python/blog/models.py.png)
+
+
+#### blog/views.py
+
+![blog/views.py](static/images/readme/tests/pep8ci-python/blog/views.py.png)
+
+
+#### blog/urls.py
+
+![blog/urls.py](static/images/readme/tests/pep8ci-python/blog/urls.py.png)
+
+
+#### blog/test_forms.py
+
+![blog/test_forms.py](static/images/readme/tests/pep8ci-python/blog/test_forms.py.png)
+
+
+#### blog/test_views.py
+
+![blog/test_views.py](static/images/readme/tests/pep8ci-python/blog/test_views.py.png)
+
+---
+
+#### about/admin.py
+
+![about/admin.py](static/images/readme/tests/pep8ci-python/about/admin.py.png)
+
+
+#### about/apps.py
+
+![about/apps.py](static/images/readme/tests/pep8ci-python/about/apps.py.png)
+
+
+#### about/models.py
+
+![about/models.py](static/images/readme/tests/pep8ci-python/about/models.py.png)
+
+
+#### about/forms.py
+
+![about/forms.py](static/images/readme/tests/pep8ci-python/about/forms.py.png)
+
+
+#### about/views.py
+
+![about/views.py](static/images/readme/tests/pep8ci-python/about/views.py.png)
+
+
+#### about/urls.py
+
+![about/urls.py](static/images/readme/tests/pep8ci-python/about/urls.py.png)
+
+
+#### about/test_forms.py
+
+![about/test_forms.py](static/images/readme/tests/pep8ci-python/about/test_forms.py.png)
+
+
+#### about/test_views.py
+
+![about/test_views.py](static/images/readme/tests/pep8ci-python/about/test_views.py.png)
+
+---
+
 ### 📋 Validator Testing Summary
 The entire site was rigorously checked using the W3C and W3C CSS Validators.
 
@@ -1143,6 +1282,13 @@ The entire site was rigorously checked using the W3C and W3C CSS Validators.
 | :--- | :--- | :--- |
 | **W3C Markup (HTML)** | All Core Pages | **Validation Passed** |
 | **W3C CSS** | Global & App Styles | **Validation Passed** |
+
+
+| Area | Tool | Goal | Status |
+| :--- | :--- | :--- | :--- |
+| **JavaScript** | **JSHint/ESLint** | Code adheres to style guide (zero warnings/errors) | **Passed** |
+| **Pyhton** | **pep8-ci/CI Python Linter** | Code adheres to style guide (zero warnings/errors) | **Passed** |
+
 
 **Conclusion:** The validation results confirm that the HTML structure of all core public and authenticated pages is **error-free**, and the CSS styling is **clean and valid**, adhering to modern web standards.
 
@@ -1266,20 +1412,6 @@ You have **"🔮 Features Left to Implement"** listed twice in your Table of Con
 
 This is a fantastic, professional template. Once you make these fixes, it will be perfect!
 
-
----
-
-
-
-## 🔮 Features Left to Implement
-
-Dashboard analytics
-
-REST API support
-
-Role-based permissions
-
-Background jobs / Scheduled tasks
 ---
 ## 🤝 Contribution Guidelines
 
