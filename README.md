@@ -162,14 +162,69 @@ This section is for high-quality images that showcase the aesthetic design and k
 | **My Favorites** | Demonstrate a core personalized feature. | A view of the "My Favorites" list with multiple poems marked. |
 | **Site Navigation** | Show the main page elements. | Final image of the footer, image of the header bar. |
 
+---
+
+### Home Poetry
+
+#### Home- Main Page
+
+![Home](static/images/readme/screenshots/home/home.png)
+
+![Home2](static/images/readme/screenshots/home/home2.png)
+
+#### Collection
+
+![Home-collection](static/images/readme/screenshots/home/home3.png)
+
+#### Poem
+
+![Home-poem](static/images/readme/screenshots/home/home4.png)
+
+#### Author link
+
+![Home-author](static/images/readme/screenshots/home/home5.png)
+
+#### Author (about)
+
+![Home-author-about](static/images/readme/screenshots/home/home6.png)
+
+![Home-author-about2](static/images/readme/screenshots/home/home7.png)
+
+---
+
+### Social Links (Footer)
+
+![Footer-social-links](static/images/readme/screenshots/footer/fb.png)
+
+#### Facebook
+
+![Fb](static/images/readme/screenshots/footer/fb1.png)
+
+#### Instagram
+
+![Instagram](static/images/readme/screenshots/footer/instagram.png)
+
+#### X
+
+![X](static/images/readme/screenshots/footer/x.png)
+
+#### YouTube
+
+![YouTube](static/images/readme/screenshots/footer/youtube.png)
+
+---
+
 ### My Favorites
 
 #### Sign In (Invitation)
-![Responsive devices -My Favorites](static/images/readme/screenshots/s-myFavorites.png)
 
-![Responsive devices -My Favorites](static/images/readme/screenshots/s-myFavorites1.png)
+![Sigin -My Favorites](static/images/readme/screenshots/s-myFavorites.png)
 
-![Responsive devices -My Favorites](static/images/readme/screenshots/s-myFavorites2.png)
+#### My Favorites
+
+![My Favorites](static/images/readme/screenshots/s-myFavorites1.png)
+
+![My Favorites-xxl](static/images/readme/screenshots/s-myFavorites2.png)
 
 ---
 
@@ -225,7 +280,87 @@ This section is for high-quality images that showcase the aesthetic design and k
 
 #### BLog Post List
 
-![Responsive devices -My Favorites](static/images/readme/screenshots/s-myFavorites.png)
+![Blog Post List](static/images/readme/screenshots/blog/blog.png)
+
+
+#### BLog Post Detail
+
+![Blog Post Detail](static/images/readme/screenshots/blog/blog1.png)
+
+
+#### BLog Post- Comment Approval
+
+![Blog Post Comment](static/images/readme/screenshots/blog/blog2.png)
+
+
+#### BLog Post- Edit Comment
+
+![Blog Post Edit Comment](static/images/readme/screenshots/blog/blog3.png)
+
+
+#### BLog Post- Edit Comment Updated
+
+![Blog Post Edit Comment Updated](static/images/readme/screenshots/blog/blog4.png)
+
+
+#### BLog Post- Delete Comment
+
+![Blog Post Delete Comment](static/images/readme/screenshots/blog/blog5.png)
+
+
+#### BLog Post- Comment Deleted!
+
+![Blog Post Comment Deleted!](static/images/readme/screenshots/blog/blog6.png)
+
+
+---
+
+### About
+
+#### About Me
+
+![About-home](static/images/readme/screenshots/about/about.png)
+
+
+#### About- Collaborate Form
+
+![About- Collaborate Form](static/images/readme/screenshots/about/about1.png)
+
+
+#### About- Submite Form
+
+![About- Collaborate Form](static/images/readme/screenshots/about/about2.png)
+
+![About- Collaborate Form](static/images/readme/screenshots/about/about3.png)
+
+
+#### About- Profiles
+
+![About- Profiles](static/images/readme/screenshots/about/about4.png)
+
+
+#### About- Detail Profile
+
+![About- Detail Profile](static/images/readme/screenshots/about/about5.png)
+
+
+---
+
+### Sign Up
+
+#### Sign Up Form
+
+![Sign Up- Form](static/images/readme/screenshots/signup/signup.png)
+
+
+#### Sign Up Form
+
+![Sign Up- Form](static/images/readme/screenshots/signup/signup1.png)
+
+![Sign Up- Form](static/images/readme/screenshots/signup/signup2.png)
+
+![Sign Up- Form](static/images/readme/screenshots/signup/signup3.png)
+
 
 ---
 
@@ -1377,7 +1512,7 @@ Lighthouse audits were conducted on core public and authenticated pages to ensur
 
 ---
 
-### 🐞 Bugs
+## 🐞 Bugs
 
 Solved
 
