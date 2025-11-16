@@ -89,7 +89,9 @@ EterPoetic is an interactive and content-rich web application for lovers of poet
 ---
 
 ## 🔗 Live Demo
+
 **Live Site:** https://eterpoetic-62a49da213d8.herokuapp.com/ 
+
 **Admin Panel:** https://eterpoetic-62a49da213d8.herokuapp.com/admin
 
 ---
@@ -98,6 +100,7 @@ EterPoetic is an interactive and content-rich web application for lovers of poet
 All pages were designed with **Responsive Design** to provide a consistent experience across various screen sizes and devices.
 
 ### Home (Poetry)
+
 ![Responsive devices -Home](static/images/readme/amIR/amIR-home.png)
 
 ![Responsive devices -Home](static/images/readme/amIR/amIR-home1.png)
@@ -566,6 +569,7 @@ From the user’s perspective, I’ve built this site with the following priorit
 3.  To **search and filter content** effectively by author, collection, or language.
 
 ---
+
 ## 🎨 Design Choices
 * Mobile-first responsive layout
 * Clear typography hierarchy
@@ -642,6 +646,7 @@ Clear and attractive images support the theme and maintain strong contrast with 
 ### Eterpoetic LOGO & Visual Identity
 
 The logo visually captures the essence of the project:
+
 ![Logo](static/images/readme/colorPalette/logoIngles.png)
 
 #### Description and Meaning
@@ -679,6 +684,8 @@ The following table scores project opportunities based on their **Importance** (
 
 **Conclusion:** The project prioritized opportunities with the highest expected return on investment (Viability $\ge$ 4). The primary focus areas were **Engaging User Interaction** (Score 25) and ensuring a highly **Attractive & Functional Website** (Score 20), as these features were crucial (Importance $\ge$ 4) and highly feasible (Viability $\ge$ 5) to implement.
 
+![Strategy](static/images/readme/fivePlanes/strategy1.png)
+
 ![Strategy](static/images/readme/fivePlanes/strategy.png)
 
 ### 📐 Scope
@@ -687,8 +694,7 @@ The site is designed around two core user actions:
 1.  **Content Consumption:** Visitors can easily browse poem collections and blog posts, utilizing search and filtering tools to find content quickly.
 2.  **Community & Contribution:** Registered users can interact with content (favoriting/commenting) and potential collaborators can apply via the dedicated submission form.
 
-![Scope pg1](assets/images/readme/fivePlanes/scope1.png)
-![Scope pg2](assets/images/readme/fivePlanes/scope2.png)
+![Scope pg1](static/images/readme/fivePlanes/scope.png)
 
 ### 🏗️ Structure
 The website is built using a **Django MVT (Model-View-Template) architecture** to separate concerns (HTML5, CSS3, JavaScript).
@@ -699,18 +705,20 @@ The website is built using a **Django MVT (Model-View-Template) architecture** t
 3. **_About:_** Displays owner/team information and handles collaborator applications.
 4. **_Accounts:_** Provides core user management (Registration, Login, Logout, Session Management).
 
-![Structure](assets/images/readme/fivePlanes/structure.png)
+![Structure](static/images/readme/fivePlanes/structure.png)
 
 ### 🦴 Skeleton
 Wireframes and layout structure.
 The website is designed to be clear and simple. The navigational hierarchy ensures easy flow from top to bottom and between main app areas.
 
 **Wireframe**
-The wireframe is designed using **Balsamiq** software: 
-[Balsamiq](https://balsamiq.cloud/ss26tqg/p4441iq/rD01A)
+<!-- The wireframe is designed using **Balsamiq** software: 
+[Balsamiq](https://balsamiq.cloud/ss26tqg/p4441iq/rD01A) -->
 
-#### Home
-![Home](assets/images/readme/Bals/Bals-Home.png)
+#### Project & Apps
+
+![eterpoetic](static/images/readme/fivePlanes/skeleton.png)
+
 
 ### 🎨 Surface
 Final aesthetic layers (colors, components, imagery).
@@ -720,36 +728,199 @@ To create a pleasing and understandable view, the design utilizes a **high-contr
 
 ## 🏛️ Architecture (Django MVT)
 
-### 🧱 App Responsibilities (app1, app2, app3)
+### 🧱 App Responsibilities
 
 | App | Purpose |
 |---|---|
-| `app1` | Core business logic + main models |
-| `app2` | Authentication + Profile Management |
-| `app3` | Additional / domain-specific features |
+| **`poetry`** | **Core Content & Business Logic:** Manages the Poem and Collection models, search/filtering, and the main favoriting logic. |
+| **`blog`** | **Domain-Specific Features:** Manages Blog Posts, Comment Models, and the comment moderation/threading logic. |
+| **`accounts`** | **Authentication & Profile Management:** Handles user registration, login/logout, and user profiles (via `django-allauth`). |
+| **`about`** | **Static Content & Submission Flow:** Manages the About page content and the collaborator application form submissions. |
+
+![Project-Apps](static/images/readme/fivePlanes/project.png)
+
+---
 
 ### 🧭 URL Map & Navigation
 
-| Path | View | Public/Private |
-|---|---|---|
-| `/` | HomeView | Public |
-| `/app1/` | List/Detail Views | Public |
-| `/dashboard/` | DashboardView | Private |
+| Path | View | Public/Private | App |
+|---|---|---|---|
+| `/` | PoetryHomeView | Public | `poetry` |
+| `/favorites/` | FavoritesListView | **Private** | `poetry` |
+| `/blog/` | BlogHomeView | Public | `blog` |
+| `/blog/<slug:pk>/` | PostDetailView | Public | `blog` |
+| `/about/` | AboutView | Public | `about` |
+| `/accounts/login/` | Allauth Login | Public | `accounts` |
+
+---
 
 ### 🧩 CRUD Map
 
-| Model | Create | Read | Update | Delete |
-|---|---|---|---|---|
-| ExampleModel | ✅ | ✅ | ✅ | ✅ |
+| Model | Create | Read | Update | Delete | App |
+|---|---|---|---|---|---|
+| **Poem/Collection** | ✅ Admin | ✅ Public | ✅ Admin | ✅ Admin | `poetry` |
+| **Blog Post** | ✅ Admin | ✅ Public | ✅ Admin | ✅ Admin | `blog` |
+| **User Comment** | ✅ User | ✅ Public | ✅ Author | ✅ Author/Admin | `blog` |
+| **Favorites** | ✅ User | ✅ User | ❌ N/A | ✅ User | `poetry` |
+| **Collaborator Req.**| ✅ Public | ✅ Admin | ❌ N/A | ✅ Admin | `about` |
 
-### 🗃️ Data Model (ERD)
-(Insert your ERD image or description here)
+---
+
+### 🗃️ Data Model (ERD) — Poetry App
+
+This section details the structure of your core application models and their relationships, similar to an Entity Relationship Diagram (ERD).
+
+#### 1. Poem Model (Core Content & Favorites)
+
+| Key | Name | Type | Extra Info / Relationship |
+| :--- | :--- | :--- | :--- |
+| **PrimaryKey** | `id` | Integer | Auto-generated ID |
+| slug | SlugField | Unique | Used for clean URLs |
+| **ForeignKey** | **`author`** | **Author model** | **CASCADE** on delete |
+| **ForeignKey** | **`collection`** | **Collection model** | **SET_NULL** on delete (allows collection removal without losing poem) |
+| **ManyToManyField** | **`favorites`** | **User model** | **related_name='favorite_poems'** (Favorites feature) |
+| title\_en / title\_es | CharField | Multilingual fields | |
+| body\_en / body\_es | TextField | Multilingual content | |
+| featured\_image | CloudinaryField | Default placeholder | |
+| created / updated | DateTimeField | Timestamps | |
+
+---
+
+#### 2. Collection Model (Grouping Entity)
+
+| Key | Name | Type | Extra Info / Relationship |
+| :--- | :--- | :--- | :--- |
+| **PrimaryKey** | `id` | Integer | Auto-generated ID |
+| slug | SlugField | Unique | Auto-generated on save |
+| name\_en / name\_es | CharField | Multilingual names | |
+| description\_en / description\_es | TextField | Multilingual descriptions | |
+| collection\_image | CloudinaryField | Default placeholder | |
+
+---
+
+#### 3. Author Model (Creator Metadata)
+
+| Key | Name | Type | Extra Info / Relationship |
+| :--- | :--- | :--- | :--- |
+| **PrimaryKey** | `id` | Integer | Auto-generated ID |
+| name | CharField | | |
+| slug | SlugField | Unique | |
+| bio\_en / bio\_es | TextField | Multilingual bio | |
+| photo | CloudinaryField | Default placeholder | |
+
+---
+
+### 🗃️ Data Model (ERD) — Blog App
+
+This section details the structure of your blog application models and their relationships, showing the key elements of your content and community features.
+
+#### 1. Post Model (Content & Structure)
+
+| Key | Name | Type | Extra Info / Relationship |
+| :--- | :--- | :--- | :--- |
+| **PrimaryKey** | `id` | Integer | Auto-generated ID |
+| title | CharField | Max length 200 | Unique |
+| slug | SlugField | Max length 200 | Unique (Used for clean URLs) |
+| **ForeignKey** | **`author`** | **User model** | **CASCADE** on delete; related\_name="blog\_posts" |
+| featured\_image | CloudinaryField | Default placeholder | |
+| content | TextField | | |
+| created\_on | DateTimeField | auto\_now\_add=True | |
+| status | IntegerField | Choices (Draft/Published) | Default 0 (Draft) |
+| updated\_on | DateTimeField | auto\_now=True | |
+
+---
+
+#### 2. Comment Model (Community Interaction)
+
+| Key | Name | Type | Extra Info / Relationship |
+| :--- | :--- | :--- | :--- |
+| **PrimaryKey** | `id` | Integer | Auto-generated ID |
+| **ForeignKey** | **`post`** | **Post model** | **CASCADE** on delete; related\_name="comments" |
+| **ForeignKey** | **`author`** | **User model** | **CASCADE** on delete; related\_name="commenter" |
+| body | TextField | | |
+| created\_on | DateTimeField | auto\_now\_add=True | |
+| approved | BooleanField | Default False | Used for moderation |
+
+---
+
+### 🗃️ Data Model (ERD) — About App
+
+This section details the structure of your two models in the `about` application, which handles static content and user submissions.
+
+#### 1. About Model (Static Content Management)
+
+| Key | Name | Type | Extra Info / Relationship |
+| :--- | :--- | :--- | :--- |
+| **PrimaryKey** | `id` | Integer | Auto-generated ID |
+| title | CharField | Max length 200 | |
+| profile\_image | CloudinaryField | Default 'placeholder' | Used for owner/team photo |
+| updated\_on | DateTimeField | auto\_now=True | Tracks last modification |
+| content | TextField | | Main text of the About page |
+
+---
+
+#### 2. CollaborateRequest Model (Form Submissions)
+
+| Key | Name | Type | Extra Info / Relationship |
+| :--- | :--- | :--- | :--- |
+| **PrimaryKey** | `id` | Integer | Auto-generated ID |
+| name | CharField | Max length 200 | Collaborator's name |
+| email | EmailField | | Collaborator's contact email |
+| message | TextField | | Collaborator's proposal/message |
+| read | BooleanField | Default False | Used by Admin to track review status |
+
+---
 
 ### 🧪 Forms & Validation
-(Describe your main Django forms, e.g., RegistrationForm, PostForm)
 
-### 🔌 API Endpoints (Optional)
-(List any API endpoints you created, e.g., `/api/posts/`)
+This section describes the primary user-facing and administrator forms used throughout the ÉterPoético application and their core validation requirements.
+
+| Form Class | Purpose | Model Used | Key Validation |
+| :--- | :--- | :--- | :--- |
+| **`RegistrationForm`** | Manages new user sign-up. | (Handled by `allauth`) | Requires unique email, secure password length/complexity, and email confirmation. |
+| **`CommentForm`** | Allows authenticated users to submit feedback on blog posts. | `Comment` | Ensures the `body` field is not empty and links the submission to the correct authenticated `User` and `Post` object. |
+| **`BlogCreationForm`** | Used by administrators/staff to create and edit new blog posts. | `Post` | Ensures fields like `title`, `slug`, and `content` are present, and the `status` (Draft/Published) is correctly set before saving. |
+| **`CollaborateForm`** | Submits user requests for collaboration. | `CollaborateRequest` | Ensures the required fields (`name`, `email`, `message`) are submitted and validates the `email` format. |
+
+
+### Note on CSRF Protection
+All forms utilize Django's **CSRF (Cross-Site Request Forgery) token** validation to ensure security against malicious external requests.
+
+
+## 🔌 API Endpoints (Optional)
+
+This section should list the URLs used for non-HTML data interaction, which may include features necessary for frontend interactivity.
+
+| URL Path | HTTP Method | Description | Data Format |
+| :--- | :--- | :--- | :--- |
+| **`/api/poems/toggle-favorite/<int:poem_id>/`** | `POST` | Toggles the user's favorite status on a poem (Used for seamless frontend updates). | JSON (Expected Success/Failure) |
+| `/api/poems/<str:slug>/` | `GET` | Fetches specific poem data by slug (if using AJAX for detail views). | JSON |
+| `/api/collaborate/submit/` | `POST` | Endpoint that receives the form data for a new collaborator request. | JSON (Expected Success/Error) |
+
+### 🔒 Securing Your API Keys and Secrets
+
+[cite_start]The use of **Social Media Login (OAuth)** requires that you manage sensitive credentials (like Facebook App ID, Google Client Secret, and your main Django `SECRET_KEY`) securely.
+
+[cite_start]The most crucial rule is that **NO secret key or token should ever be committed to your GitHub repository**[cite: 1, 2].
+
+#### 1. Verification of Heroku Config Vars
+
+You must verify that all sensitive keys are set as **Config Vars** (Environment Variables) on Heroku.
+
+| Key | Purpose | Required Location |
+| :--- | :--- | :--- |
+| **`SECRET_KEY`** | Django application security | Heroku Config Vars |
+| **`SOCIAL_AUTH_FACEBOOK_KEY`** | Facebook Client ID | Heroku Config Vars |
+| **`SOCIAL_AUTH_GOOGLE_SECRET`** | Google Client Secret | Heroku Config Vars |
+| **`CLOUDINARY_URL`** | Cloudinary Access | Heroku Config Vars |
+
+| Key | Value | Purpose |
+| :--- | :--- | :--- |
+| **`EMAIL_HOST`** | `smtp.gmail.com` | Specifies the SMTP server used for all outgoing emails (e.g., password resets, verification, collaboration requests). |
+
+You can check your existing Heroku Config Vars by running:
+```bash
+heroku config -a eterpoetic-62a49da213d8
 
 ---
 
