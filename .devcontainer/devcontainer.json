@@ -1,0 +1,32 @@
+// The Dev Container format allows you to configure your environment. At the heart of it
+// is a Docker image or Dockerfile which controls the tools available in your environment.
+//
+// See https://aka.ms/devcontainer.json for more information.
+{
+	"name": "Ona",
+	"build": {
+		"context": ".",
+		"dockerfile": "Dockerfile"
+	},
+	"features": {
+		// --- ADD THIS BLOCK ---
+		"ghcr.io/devcontainers/features/python:1": {
+			"version": "3.11"
+		},
+		// --- END OF BLOCK TO ADD ---
+		"ghcr.io/devcontainers/features/github-cli:1": {},
+		"ghcr.io/devcontainers/features/node:1": {}
+	},
+	// RUTA CORREGIDA: Asume que el archivo se llama 'setup.sh' y está en la raíz
+	"postCreateCommand": "bash ./setup.sh", 
+
+	// --- MAKE SURE THIS BLOCK IS ADDED ----
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"python.defaultInterpreterPath": ".venv/bin/python",
+				"python.terminal.activateEnvironment": true
+			}
+		}
+	}
+}

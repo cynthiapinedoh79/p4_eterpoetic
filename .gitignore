@@ -1,42 +1,48 @@
-# ==== STATIC FILES ====
-/staticfiles/             # Ignore collected static output
-/staticfiles/**
+# ==== SECURITY & SENSITIVE DATA ====
+.env
+*.env
+env.py
+total_backup.json
+cloudinary_python.txt
 
-# ==== STATIC SOURCE (keep tracked!) ====
-# /static/   ← DO NOT ignore this folder — it's your actual code source
+# ==== PYTHON / DJANGO ====
+*.pyc
+*.pyo
+__pycache__/
+*.py[cod]
+*$py.class
+db.sqlite3
+db.sqlite3-journal
+/staticfiles/
+/staticfiles/**
 
 # ==== VIRTUAL ENVIRONMENT ====
 .venv/
-
-# ==== ENVIRONMENT & SECRETS ====
-env.py
-.env
-*.env
-
-# ==== PYTHON CACHE ====
-__pycache__/
-*.pyc
-*.pyo
-*.py[cod]
-
-# ==== NODE MODULES (if using npm/yarn) ====
-node_modules/
-
-# ==== EDITOR / IDE ====
-.vscode/
-.idea/
-.github/
+venv/
+ENV/
 
 # ==== CRASH & TEMPORARY FILES ====
+core.*
 core.Microsoft*
 core.mongo*
 core.python*
-core.*
-*.json
-db.sqlite3
 get-pip.py*
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+# Note: Specific sensitive JSONs are blocked in the Security section
+
+# ==== DATA & BACKUPS ====
+# We target specific sensitive files instead of all .json files
+total_backup.json
 cloudinary_python.txt
 
+# ==== SYSTEM & IDE ====
+.vscode/
+.idea/
+Thumbs.db
+# Note: .github/ is NOT ignored to allow for GitHub Actions/Templates
 
-# ==== PROJECT-SPECIFIC ====
-cloudinary_python.txt
+# ==== NODE / STATIC ====
+node_modules/
