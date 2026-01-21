@@ -8,11 +8,6 @@
 # ==== VIRTUAL ENVIRONMENT ====
 .venv/
 
-# Core dump files from crashes
-core.Microsoft*
-core.mongo*
-core.python*
-
 # ==== ENVIRONMENT & SECRETS ====
 env.py
 .env
@@ -32,10 +27,16 @@ node_modules/
 .idea/
 .github/
 
-# ==== CRASH FILES ====
+# ==== CRASH & TEMPORARY FILES ====
 core.Microsoft*
 core.mongo*
 core.python*
+core.*
+*.json
+db.sqlite3
+get-pip.py*
+cloudinary_python.txt
+
 
 # ==== PROJECT-SPECIFIC ====
 cloudinary_python.txt
