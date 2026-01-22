@@ -1714,27 +1714,110 @@ Lighthouse audits were conducted on core public and authenticated pages to ensur
 
 ## 📥 Deployment (Heroku)
 
+The EterPoetic application is deployed using **Heroku** and configured via environment variables to ensure security and portability. The steps below outline both production deployment and local setup so that another developer can successfully run and deploy the project independently.
+
+---
+
 ### ⚙️ Procfile Configuration
 
 | File | Content | Purpose |
 | :--- | :--- | :--- |
-| **`Procfile`** | `web: gunicorn eterpoetic.wsgi` | Defines the primary web process, using **Gunicorn** to serve the application via the standard WSGI entry point. |
+| **`Procfile`** | `web: gunicorn eterpoetic.wsgi` | Defines the primary web process, using **Gunicorn** to serve the application via the WSGI entry point. |
 
 ---
 
 ### 🔑 Critical Environment Variables
 
-The app uses environment variables (Config Vars) for secure configuration on Heroku:
+The application uses environment variables (Heroku Config Vars) for secure configuration. Sensitive values are not committed to the repository.
 
 | Config Var | Purpose | Importance |
 | :--- | :--- | :--- |
-| **`SECRET_KEY`** | Django application security. | **Required.** Must be set on Heroku. |
-| **`DATABASE_URL`** | Connects the application to the production database. | **Required.** Parsed by `dj-database-url`. |
-| **`CLOUDINARY_URL`** | Stores credentials for Cloudinary file storage. | **Required.** Misconfiguration leads to **Server Error (500)**. |
-| **`GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET`** | Enables Google OAuth login. | Required for social login. |
-| **`ALLOWED_HOSTS`** | Heroku app domain. | Required in production. |
+| **`SECRET_KEY`** | Django application security key. | **Required.** Must be set on Heroku. |
+| **`DATABASE_URL`** | Production database connection string. | **Required.** Parsed using `dj-database-url`. |
+| **`CLOUDINARY_URL`** | Cloudinary credentials for media storage. | **Required.** Misconfiguration may cause server errors. |
+| **`GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET`** | Enables Google OAuth authentication. | Required if social login is enabled. |
+| **`FACEBOOK_APP_ID / FACEBOOK_APP_SECRET`** | Enables Facebook OAuth authentication. | Required if social login is enabled. |
+| **`ALLOWED_HOSTS`** | Specifies allowed domains for the application. | Required in production. |
 
 ---
+
+### 🚀 Heroku Deployment Steps
+
+1. Create a new Heroku application.
+2. In **Settings → Config Vars**, add all required environment variables listed above.
+3. In **Deploy**, connect the Heroku app to the GitHub repository.
+4. Deploy the `main` branch.
+5. Apply database migrations:
+   ```bash
+   heroku run python manage.py migrate -a <app-name>
+   ```
+6. Create a superuser for administrative access:
+   ```bash
+   heroku run python manage.py createsuperuser -a <app-name>
+   ```
+7. Open the deployed application:
+   ```bash
+   heroku open -a <app-name>
+   ```
+8. Optional: Loading Initial Data: If you have a data fixture (JSON), you can load it to the production database
+   ```bash
+   heroku run python manage.py loaddata your_fixture.json -a <app-name>
+   ```
+   
+---
+
+### 🖥️ Local Deployment (Development)
+
+The project can be run locally by following the steps below. This allows another developer to clone, configure, and run the application in a development environment.
+
+**Security Note:**
+Local environment variables must be stored in a local **.env (or env.py) file**, and this file must be included **in .gitignore to ensure sensitive data is not committed to the repository**.
+
+1. Clone the repository:
+   ```bash
+   git clone <repository-url>
+   cd p4_eterpoetic
+    ```
+2. Create and activate a virtual environment:
+    ```bash
+   python3 -m venv .venv
+   source .venv/bin/activate
+    ```
+3. Install project dependencies:
+   ```bash
+   pip install -r requirements.txt
+    ```
+
+4. Configure local environment variables (do not commit secrets or data with compromised information):
+
+| Config Var | Purpose | Importance |
+| :--- | :--- | :--- |
+| **`SECRET_KEY`** | Django application security key. | **Required.** Required locally in .env |
+| **`DEBUG`** | Enables debug mode | True locally, False in production |
+| **`DATABASE_URL`** | Production database connection string. | **Required.** Required. Can be a local PostgreSQL URL or a SQLite file path (e.g., sqlite:///db.sqlite3). |
+| **`CLOUDINARY_URL`** | Cloudinary media storage credentials. | **Required.** Required. Misconfiguration may cause server errors. |
+| **`GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET`** | Enables Google OAuth authentication. | Required if social login is enabled. Optional|
+| **`FACEBOOK_APP_ID / FACEBOOK_APP_SECRET`** | Enables Facebook OAuth authentication. | Required if social login is enabled. Optional|
+| **`EMAIL_HOST`** | SMTP server host | Optional |
+| **`EMAIL_HOST_USER`** | SMTP username | Optional |
+| **`EMAIL_HOST_PASSWORD= # Your 16-digit pass`** | SMTP app password | Optional|
+| **`DEFAULT_FROM_EMAIL`** | Default sender email address | Optional |
+| **`ALLOWED_HOSTS`** | Allowed hostnames | Required in production and if using custom domains. |
+5. Apply database migrations:
+    ```bash
+   python manage.py migrate
+    ```
+6. Create a superuser:
+   ```bash
+   python manage.py createsuperuser
+    ```
+7. Run the development server:
+    ```bash
+   python manage.py runserver
+    ```
+8. Open the application in a browser:
+http://127.0.0.1:8000/
+
 
 ### 🐞 Deployment-Related Solved Issues
 
