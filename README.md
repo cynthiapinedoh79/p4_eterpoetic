@@ -1732,12 +1732,17 @@ The application uses environment variables (Heroku Config Vars) for secure confi
 
 | Config Var | Purpose | Importance |
 | :--- | :--- | :--- |
-| **`SECRET_KEY`** | Django security key. | **Required.** Must be set on Heroku. |
+| **`SECRET_KEY`** | Django security key | **Required.** Must be set on Heroku |
+| **`DEBUG`** | Enables/disables Django debug mode | **Required.** Set to `False` in production |
 | **`DATABASE_URL`** | Postgres connection string | **Required.** |
-| **`CLOUDINARY_URL`** | API key for media storage. | **Required.** Misconfiguration causes server errors. |
-| **`GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET`** | Google OAuth authentication. | Optional. |
-| **`FACEBOOK_APP_ID / FACEBOOK_APP_SECRET`** | Facebook OAuth authentication. | Optional. |
-| **`ALLOWED_HOSTS`** | Allowed production domains. | **Required.** |
+| **`CLOUDINARY_URL`** | Cloudinary credentials for media storage | **Required.** Misconfiguration may cause server errors |
+| **`GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET`** | Google OAuth authentication | Optional (only if Google login is enabled) |
+| **`FACEBOOK_APP_ID / FACEBOOK_APP_SECRET`** | Facebook OAuth authentication | Optional (only if Facebook login is enabled) |
+| **`ALLOWED_HOSTS`** | Allowed production domains/hostnames | **Required.** |
+| **`EMAIL_HOST`** | SMTP server host | Optional |
+| **`EMAIL_HOST_USER`** | SMTP username | Optional |
+| **`EMAIL_HOST_PASSWORD`** | SMTP app password (e.g., 16-digit app password) | Optional |
+| **`DEFAULT_FROM_EMAIL`** | Default sender email address | Optional |
 
 ---
 
@@ -1800,7 +1805,7 @@ Local environment variables must be stored in a local **.env (or env.py) file**,
 | **`FACEBOOK_APP_ID / FACEBOOK_APP_SECRET`** | Facebook OAuth authentication. | Optional|
 | **`EMAIL_HOST`** | SMTP server host | Optional |
 | **`EMAIL_HOST_USER`** | SMTP username | Optional |
-| **`EMAIL_HOST_PASSWORD= # Your 16-digit pass`** | SMTP app password | Optional|
+| **`EMAIL_HOST_PASSWORD`** | SMTP app password | Optional|
 | **`DEFAULT_FROM_EMAIL`** | Default sender email address | Optional |
 | **`ALLOWED_HOSTS`** | Allowed hostnames | Required in production |
 
