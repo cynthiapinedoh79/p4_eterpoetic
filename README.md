@@ -1732,12 +1732,12 @@ The application uses environment variables (Heroku Config Vars) for secure confi
 
 | Config Var | Purpose | Importance |
 | :--- | :--- | :--- |
-| **`SECRET_KEY`** | Django application security key. | **Required.** Must be set on Heroku. |
-| **`DATABASE_URL`** | Production database connection string. | **Required.** Parsed using `dj-database-url`. |
-| **`CLOUDINARY_URL`** | Cloudinary credentials for media storage. | **Required.** Misconfiguration may cause server errors. |
-| **`GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET`** | Enables Google OAuth authentication. | Required if social login is enabled. |
-| **`FACEBOOK_APP_ID / FACEBOOK_APP_SECRET`** | Enables Facebook OAuth authentication. | Required if social login is enabled. |
-| **`ALLOWED_HOSTS`** | Specifies allowed domains for the application. | Required in production. |
+| **`SECRET_KEY`** | Django security key. | **Required.** Must be set on Heroku. |
+| **`DATABASE_URL`** | Postgres connection string | **Required.** |
+| **`CLOUDINARY_URL`** | API key for media storage. | **Required.** Misconfiguration causes server errors. |
+| **`GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET`** | Google OAuth authentication. | Optional. |
+| **`FACEBOOK_APP_ID / FACEBOOK_APP_SECRET`** | Facebook OAuth authentication. | Optional. |
+| **`ALLOWED_HOSTS`** | Allowed production domains. | **Required.** |
 
 ---
 
@@ -1792,17 +1792,18 @@ Local environment variables must be stored in a local **.env (or env.py) file**,
 
 | Config Var | Purpose | Importance |
 | :--- | :--- | :--- |
-| **`SECRET_KEY`** | Django application security key. | **Required.** Required locally in .env |
-| **`DEBUG`** | Enables debug mode | True locally, False in production |
-| **`DATABASE_URL`** | Production database connection string. | **Required.** Required. Can be a local PostgreSQL URL or a SQLite file path (e.g., sqlite:///db.sqlite3). |
-| **`CLOUDINARY_URL`** | Cloudinary media storage credentials. | **Required.** Required. Misconfiguration may cause server errors. |
-| **`GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET`** | Enables Google OAuth authentication. | Required if social login is enabled. Optional|
-| **`FACEBOOK_APP_ID / FACEBOOK_APP_SECRET`** | Enables Facebook OAuth authentication. | Required if social login is enabled. Optional|
+| **`SECRET_KEY`** | Django Local security key. | **Required.** locally in .env |
+| **`DEBUG`** | Development mode | True locally, False in production |
+| **`DATABASE_URL`** | Local DB connection. | **Required.** PostgreSQL URL or a SQLite. |
+| **`CLOUDINARY_URL`** | Media storage API. | **Required.** for images. |
+| **`GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET`** | Google OAuth authentication. | Optional|
+| **`FACEBOOK_APP_ID / FACEBOOK_APP_SECRET`** | Facebook OAuth authentication. | Optional|
 | **`EMAIL_HOST`** | SMTP server host | Optional |
 | **`EMAIL_HOST_USER`** | SMTP username | Optional |
 | **`EMAIL_HOST_PASSWORD= # Your 16-digit pass`** | SMTP app password | Optional|
 | **`DEFAULT_FROM_EMAIL`** | Default sender email address | Optional |
-| **`ALLOWED_HOSTS`** | Allowed hostnames | Required in production and if using custom domains. |
+| **`ALLOWED_HOSTS`** | Allowed hostnames | Required in production |
+
 5. Apply database migrations:
     ```bash
    python manage.py migrate
