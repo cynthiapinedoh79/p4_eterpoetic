@@ -2,7 +2,6 @@
 .env
 *.env
 env.py
-total_backup.json
 cloudinary_python.txt
 
 # ==== PYTHON / DJANGO ====
@@ -36,6 +35,7 @@ Thumbs.db
 # ==== DATA & BACKUPS ====
 # We target specific sensitive files instead of all .json files
 total_backup.json
+db.sqlite3
 cloudinary_python.txt
 
 # ==== SYSTEM & IDE ====
