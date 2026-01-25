@@ -102,6 +102,8 @@ All pages were designed with **Responsive Design** to provide a consistent exper
 
 ### Home (Poetry)
 
+<details>
+
 ![Responsive devices -Home](static/images/readme/amIR/amIR-home.png)
 
 ![Responsive devices -Home](static/images/readme/amIR/amIR-home1.png)
@@ -110,24 +112,37 @@ All pages were designed with **Responsive Design** to provide a consistent exper
 
 ![Responsive devices -Home](static/images/readme/amIR/amIR-home3.png)
 
+</details>
+
 ---
 
 ### MyFavorites (Poetry)
+
+<details>
+
 User would be able to see favorites (Featured) poems when login
 
 ![Responsive devices -My Favorites](static/images/readme/amIR/amIR-myFavorites.png)
+
+</details>
 
 ---
 
 ### Blog (Posts)
 
+<details>
+
 ![Responsive devices -Blog](static/images/readme/amIR/amIR-blog.png)
 
 ![Responsive devices -Blog](static/images/readme/amIR/amIR-blog1.png)
 
+</details>
+
 ---
 
 ### About (Owner and Collaborators, Form)
+
+<details>
 
 ![Responsive devices -About](static/images/readme/amIR/amIR-about.png)
 
@@ -135,17 +150,27 @@ User would be able to see favorites (Featured) poems when login
 
 ![Responsive devices -About](static/images/readme/amIR/amIR-about2.png)
 
+</details>
+
 ---
 
 ### Register (Sign Up)
 
+<details>
+
 ![Responsive devices -Register](static/images/readme/amIR/amIR-register.png)
+
+</details>
 
 ---
 
 ### Login (Sign In)
 
+<details>
+
 ![Responsive devices -Login](static/images/readme/amIR/amIR-login.png)
+
+</details>
 
 ---
 
@@ -162,6 +187,8 @@ This section is for high-quality images that showcase the aesthetic design and k
 ---
 
 ### Home Poetry
+
+<details>
 
 #### Home- Main Page
 
@@ -187,9 +214,13 @@ This section is for high-quality images that showcase the aesthetic design and k
 
 ![Home-author-about2](static/images/readme/screenshots/home/home7.png)
 
+</details>
+
 ---
 
 ### Social Links (Footer)
+
+<details>
 
 ![Footer-social-links](static/images/readme/screenshots/footer/fb.png)
 
@@ -209,9 +240,13 @@ This section is for high-quality images that showcase the aesthetic design and k
 
 ![YouTube](static/images/readme/screenshots/footer/youtube.png)
 
+</details>
+
 ---
 
 ### My Favorites
+
+<details>
 
 #### Sign In (Invitation)
 
@@ -223,11 +258,15 @@ This section is for high-quality images that showcase the aesthetic design and k
 
 ![My Favorites-xxl](static/images/readme/screenshots/s-myFavorites2.png)
 
+</details>
+
 ---
 
 ### Login (Sign In)
 
 #### with Facebook
+
+<details>
 
 ![Responsive devices -Login Fb](static/images/readme/screenshots/s-login.png)
 
@@ -235,9 +274,13 @@ This section is for high-quality images that showcase the aesthetic design and k
 
 ![Responsive devices -Login Fb](static/images/readme/screenshots/s-login1a.png)
 
+</details>
+
 ---
 
 #### with Google
+
+<details>
 
 ![Responsive devices -Login Google](static/images/readme/screenshots/s-login2.png)
 
@@ -247,9 +290,13 @@ This section is for high-quality images that showcase the aesthetic design and k
 
 ![Responsive devices -Login Google](static/images/readme/screenshots/s-login5.png)
 
+</details>
+
 ---
 
 ### If forget password
+
+<details>
 
 ![Responsive devices -Login Password](static/images/readme/screenshots/s-login6.png)
 
@@ -261,9 +308,13 @@ This section is for high-quality images that showcase the aesthetic design and k
 
 ![Responsive devices -Login Password](static/images/readme/screenshots/s-login10.png)
 
+</details>
+
 ---
 
 ### Logout
+
+<details>
 
 ![Responsive devices -Logout](static/images/readme/screenshots/s-logout.png)
 
@@ -271,9 +322,13 @@ This section is for high-quality images that showcase the aesthetic design and k
 
 ![Responsive devices -Logout](static/images/readme/screenshots/s-logout2.png)
 
+</details>
+
 ---
 
 ### Blog
+
+<details>
 
 #### Blog Post List
 
@@ -309,10 +364,13 @@ This section is for high-quality images that showcase the aesthetic design and k
 
 ![Blog Post Comment Deleted!](static/images/readme/screenshots/blog/blog6.png)
 
+</details>
 
 ---
 
 ### About
+
+<details>
 
 #### About Me
 
@@ -340,10 +398,13 @@ This section is for high-quality images that showcase the aesthetic design and k
 
 ![About- Detail Profile](static/images/readme/screenshots/about/about5.png)
 
+</details>
 
 ---
 
 ### Sign Up
+
+<details>
 
 #### Sign Up Form
 
@@ -358,6 +419,7 @@ This section is for high-quality images that showcase the aesthetic design and k
 
 ![Sign Up- Form](static/images/readme/screenshots/signup/signup3.png)
 
+</details>
 
 ---
 
@@ -741,6 +803,8 @@ The main fonts used are **Inter** and **Roboto**, with Sans Serif as the fallbac
     * Body Background (`--bg-body`): #FBF9F6 (Soft Cream/Off-White) — Provides a comfortable background for long reading sessions.
 * **Link Hover:** `#C08A3E` (Mustard Gold) — Provides distinct, high-contrast feedback on hover.
 
+<details>
+
 ![Color Palette -Design](static/images/readme/colorPalette/colorsP4-1.png)
 
 ![Color Palette -Design](static/images/readme/colorPalette/colorsP4-2.png)
@@ -756,6 +820,7 @@ The main fonts used are **Inter** and **Roboto**, with Sans Serif as the fallbac
 * Collor Palette Design: [Download colorsP4 (.docx)](./docs/colorsP4.docx)
 * [Contrast checked with WebAIM](https://webaim.org/resources/contrastchecker/) -->
 
+</details>
 
 ### Colour Psychology
 
@@ -766,12 +831,16 @@ The palette's mood is designed to support the literary and creative focus of the
 * **Vibrant Terracotta / Rosewood Red:** → Provides creative energy and passion bursts (used for highlights and accents).
 * **Muted Gray + Gold Ocher:** → Establishes structure and introduces a touch of warmth and professionalism.
 
+<details>
+
 ![Colour Psychology](static/images/readme/colorPalette/psColor.png)
 
 ![Colour Psychology](static/images/readme/colorPalette/psColor1.png)
 
 
 ![Contrast checked with WebAIM](static/images/readme/colorPalette/contrast.png)
+
+</details>
 
 ### Imagery & Backgrounds
 
@@ -835,9 +904,13 @@ The following table scores project opportunities based on their **Importance** (
 
 **Conclusion:** The project prioritized opportunities with the highest expected return on investment (Viability $\ge$ 4). The primary focus areas were **Engaging User Interaction** (Score 25) and ensuring a highly **Attractive & Functional Website** (Score 20), as these features were crucial (Importance $\ge$ 4) and highly feasible (Viability $\ge$ 5) to implement.
 
+<details>
+
 ![Strategy](static/images/readme/fivePlanes/strategy1.png)
 
 ![Strategy](static/images/readme/fivePlanes/strategy.png)
+
+</details>
 
 ### 📐 Scope
 The site is designed around two core user actions:
@@ -845,7 +918,11 @@ The site is designed around two core user actions:
 1.  **Content Consumption:** Visitors can easily browse poem collections and blog posts, utilizing search and filtering tools to find content quickly.
 2.  **Community & Contribution:** Registered users can interact with content (favoriting/commenting) and potential collaborators can apply via the dedicated submission form.
 
+<details>
+
 ![Scope pg1](static/images/readme/fivePlanes/scope.png)
+
+</details>
 
 ### 🏗️ Structure
 The website is built using a **Django MVT (Model-View-Template) architecture** to separate concerns (HTML5, CSS3, JavaScript).
@@ -856,11 +933,17 @@ The website is built using a **Django MVT (Model-View-Template) architecture** t
 3. **_About:_** Displays owner/team information and handles collaborator applications.
 4. **_Accounts:_** Provides core user management (Registration, Login, Logout, Session Management).
 
+<details>
+
 ![Structure](static/images/readme/fivePlanes/structure.png)
+
+</details>
 
 ### 🦴 Skeleton
 Wireframes and layout structure.
 The website is designed to be clear and simple. The navigational hierarchy ensures easy flow from top to bottom and between main app areas.
+
+<details>
 
 **Wireframe**
 <!-- The wireframe is designed using **Balsamiq** software: 
@@ -870,12 +953,17 @@ The website is designed to be clear and simple. The navigational hierarchy ensur
 
 ![eterpoetic](static/images/readme/fivePlanes/skeleton.png)
 
+</details>
 
 ### 🎨 Surface
 Final aesthetic layers (colors, components, imagery).
 To create a pleasing and understandable view, the design utilizes a **high-contrast, modern literary palette** (Midnight Teal, Vibrant Terracotta, and Plum Ink) against a soft off-white background to ensure excellent readability.
 
+<details>
+
 ![eterpoetic](static/images/readme/fivePlanes/surface.png)
+
+</details>
 
 ---
 
@@ -1093,7 +1181,6 @@ You must verify that all sensitive keys are set as **Config Vars** (Environment 
 You can check your existing Heroku Config Vars by running:
 ```bash
 heroku config -a eterpoetic
-
 ```
 
 ---
@@ -1114,6 +1201,9 @@ heroku config -a eterpoetic
 ## 🧰 Frameworks, Libraries & Programs Used
 
 ### Frontend & Styling
+
+<details>
+
 1. **[Bootstrap 5.3.3](https://getbootstrap.com/docs/5.3/getting-started/introduction/)**  
    Used for responsive layout, grid system, components, utilities, and base styling.
 
@@ -1132,6 +1222,7 @@ heroku config -a eterpoetic
 ---
 
 ### Version Control & Repository
+
 6. **[Git](https://git-scm.com/)**  
    Used for version control.
 
@@ -1141,6 +1232,7 @@ heroku config -a eterpoetic
 ---
 
 ### Development Tools
+
 8. **[Visual Studio Code](https://code.visualstudio.com/)**  
    Primary local code editor with extensions and AI support.
 
@@ -1156,6 +1248,7 @@ heroku config -a eterpoetic
 ---
 
 ### Testing, Accessibility & Performance Tools
+
 12. **[Am I Responsive](https://ui.dev/amiresponsive)**  
     Used to generate responsive screenshots.
 
@@ -1180,14 +1273,18 @@ heroku config -a eterpoetic
 ---
 
 ### Asset Optimization
+
 19. **[Squoosh](https://squoosh.app/)**  
     Used to compress and optimize image files.
 
 ---
 
 ### Learning Resources / Media
+
 20. **[YouTube](https://www.youtube.com/)**  
     Used for tutorials and troubleshooting.
+
+</details>
 
 ---
 
@@ -1250,20 +1347,51 @@ python manage.py runserver
 ---
 
 ## .env file content
+
+<details>
+<summary>View example .env file (local development only)</summary>
+
 ```bash
+### Django core
 SECRET_KEY=your_local_insecure_key
 DEBUG=True
+
+### Database (local only – Heroku provides DATABASE_URL automatically)
 DATABASE_URL=postgresql://USER:PASSWORD@HOST:PORT/DBNAME
+
+### Cloudinary (media storage)
 CLOUDINARY_URL=cloudinary://API_KEY:API_SECRET@CLOUD_NAME
-ALLOWED_HOSTS=["localhost,127.0.0.1"]
+
+### Hosts
+ALLOWED_HOSTS=localhost,127.0.0.1,dev.local
+
+### Email (SMTP)
+EMAIL_HOST=smtp.gmail.com
+EMAIL_HOST_USER=your_email@example.com
+EMAIL_HOST_PASSWORD=your_email_app_password
+DEFAULT_FROM_EMAIL=your_email@example.com
+
+### CSRF
+CSRF_TRUSTED_ORIGINS=http://127.0.0.1:8000,http://localhost:8000,http://dev.local:8000
+
+### Google OAuth
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+
+### Facebook OAuth
+FACEBOOK_APP_ID=your_facebook_app_id
+FACEBOOK_APP_SECRET=your_facebook_app_secret
 ```
+
+</details>
+
 ---
 
 ## 🗂️ Project Structure
 
 A detailed overview of the project's directory structure.
 
-A detailed overview of the project's directory structure.
+<details>
 
 ```text
 project_root/
@@ -1327,6 +1455,9 @@ project_root/
 ├── media/                      # Media root (uploads; used by Cloudinary/Django if needed)
 └── templates/                  # Project-wide base templates (e.g., base.html, 404.html)
 ```
+
+</details>
+
 ---
 
 ## 🔐 Admin & Fixtures
@@ -1376,6 +1507,8 @@ This section documents the verification of site functionality across key browser
 | **Firefox (Desktop)** | Blog readability, Search/Filtering, Page Navigation | Passed |
 | **Mobile Devices** | Responsive Layout (Verified on **Pixel 10 Pro** & **Samsung S25 Ultra/Edge**), Favorites Toggle, Logout | Passed |
 
+<details>
+
 #### Chrome
 
 ![Chrome](static/images/readme/tests/browsers/chrome.png)
@@ -1384,12 +1517,16 @@ This section documents the verification of site functionality across key browser
 
 ![Safari](static/images/readme/tests/browsers/safari.png)
 
+</details>
+
 ---
 
 ## ✅ Validator Testing
 The site's styling was verified for clean structure and adherence to standards.
 
 ### W3C Markup - HTML
+
+<details>
 
 #### Home (Poetry)
 
@@ -1407,9 +1544,13 @@ The site's styling was verified for clean structure and adherence to standards.
 
 ![About](static/images/readme/tests/w3c-html/about.html.png)
 
+</details>
+
 ---
 
 ### W3C CSS
+
+<details>
 
 #### base.css
 
@@ -1435,6 +1576,8 @@ The site's styling was verified for clean structure and adherence to standards.
 
 ![about.css](static/images/readme/tests/w3c-css/about1.css.png)
 
+</details>
+
 ---
 
 ### JSHint / JavaScript Validation
@@ -1442,6 +1585,8 @@ This section verifies that all frontend JavaScript code adheres to specified sty
 
 | **JavaScript** | **JSHint/ESLint** | Code adheres to style guide (zero warnings/errors) |
 (Insert screenshot of zero warnings/errors from the JSHint output here.)
+
+<details>
 
 #### comments.js
 
@@ -1455,11 +1600,16 @@ This section verifies that all frontend JavaScript code adheres to specified sty
 
 ![quote_banner.js](static/images/readme/tests/jsHint/quote_banner.js.png)
 
+</details>
+
 ---
 
 ### pep8ci / Pyhton Validation
 This section verifies that all python code adheres to specified style guides and standards (zero warnings or errors).
 
+#### eterpoetic
+
+<details>
 
 #### eterpoetic/settings.py
 
@@ -1475,7 +1625,13 @@ This section verifies that all python code adheres to specified style guides and
 
 ![eterpoetic/wsgi.py](static/images/readme/tests/pep8ci-python/eterpoetic/wsgi.py.png)
 
+</details>
+
 ---
+
+#### poetry
+
+<details>
 
 #### poetry/admin.py
 
@@ -1497,7 +1653,13 @@ This section verifies that all python code adheres to specified style guides and
 
 ![poetry/test_views.py](static/images/readme/tests/pep8ci-python/poetry/test_views.py.png)
 
+</details>
+
 ---
+
+#### blog
+
+<details>
 
 #### blog/admin.py
 
@@ -1533,7 +1695,13 @@ This section verifies that all python code adheres to specified style guides and
 
 ![blog/test_views.py](static/images/readme/tests/pep8ci-python/blog/test_views.py.png)
 
+</details>
+
 ---
+
+#### about
+
+<details>
 
 #### about/admin.py
 
@@ -1574,6 +1742,8 @@ This section verifies that all python code adheres to specified style guides and
 
 ![about/test_views.py](static/images/readme/tests/pep8ci-python/about/test_views.py.png)
 
+</details>
+
 ---
 
 ### 📋 Validator Testing Summary
@@ -1597,6 +1767,8 @@ The entire site was rigorously checked using the W3C HTML and CSS Validators.
 
 ### VsCode Terminal - test_forms/test_views
 
+<details>
+
 #### Poetry test
 
 ![poetry.py](static/images/readme/tests/VsCode/poetry.png)
@@ -1611,6 +1783,8 @@ The entire site was rigorously checked using the W3C HTML and CSS Validators.
 
 ![about.py](static/images/readme/tests/VsCode/about.png)
 
+</details>
+
 ---
 
 ## ✅ Accessibility Testing
@@ -1620,6 +1794,8 @@ Lighthouse audits were conducted on core public and authenticated pages to ensur
 
 #### Home (Poetry)
 
+<details>
+
 ![Home (Poetry)](static/images/readme/tests/Lighthouse/lh-home.png)
 
 ![Home (Poetry)](static/images/readme/tests/Lighthouse/lh-home1.png)
@@ -1628,25 +1804,37 @@ Lighthouse audits were conducted on core public and authenticated pages to ensur
 
 ![Home (Poetry)](static/images/readme/tests/Lighthouse/lh-home3.png)
 
+</details>
+
 ---
 
 #### My Favorites
+
+<details>
 
 ![My Favorites](static/images/readme/tests/Lighthouse/lh-myFavorites.png)
 
 ![My Favorites](static/images/readme/tests/Lighthouse/lh-myFavorites1.png)
 
+</details>
+
 ---
 
 #### Blog
+
+<details>
 
 ![Blog](static/images/readme/tests/Lighthouse/lh-blog.png)
 
 ![Blog](static/images/readme/tests/Lighthouse/lh-blog1.png)
 
+</details>
+
 ---
 
 #### About
+
+<details>
 
 ![About](static/images/readme/tests/Lighthouse/lh-about.png)
 
@@ -1654,17 +1842,25 @@ Lighthouse audits were conducted on core public and authenticated pages to ensur
 
 ![About](static/images/readme/tests/Lighthouse/lh-about2.png)
 
+</details>
+
 ---
 
 #### Sign Up
 
+<details>
+
 ![Register-Sign Up](static/images/readme/tests/Lighthouse/lh-signup.png)
+
+</details>
 
 ---
 
 
 ## ✅ Console in Google Chrome DevTools-"Inspect" Testing
 (Confirm no console errors...)
+
+<details>
 
 ![home](static/images/readme/tests/consoleDevTools/home.png)
 
@@ -1673,6 +1869,8 @@ Lighthouse audits were conducted on core public and authenticated pages to ensur
 ![blog](static/images/readme/tests/consoleDevTools/blog.png)
 
 ![about](static/images/readme/tests/consoleDevTools/about.png)
+
+</details>
 
 ---
 
@@ -1746,29 +1944,154 @@ The application uses environment variables (Heroku Config Vars) for secure confi
 
 ---
 
-### 🚀 Heroku Deployment Steps
+### Heroku Deployment
 
-1. Create a new Heroku application.
-2. In **Settings → Config Vars**, add all required environment variables listed above.
-3. In **Deploy**, connect the Heroku app to the GitHub repository.
-4. Deploy the `main` branch.
-5. Apply database migrations:
+[Official Heroku Deployment Guide](https://devcenter.heroku.com/articles/git) (Ctrl + click)
+
+This application has been deployed from GitHub using Heroku. Here's how:
+
+1. Create an account at heroku.com
+
+    [Heroku Official Page](https://www.heroku.com/) (Ctrl + click)
+    
+    <details>
+
+    <img src="static/images/readme/screenshots/herokudeploy/CreateNAppHeroku.png">
+    
+    </details>
+
+2. Create an app, give it a name for a Project, and select a region
+
+    <details>
+
+    <img src="static/images/readme/screenshots/herokudeploy/signupHeroku.png">
+
+    <img src="static/images/readme/screenshots/herokudeploy/loginHeroku.png">
+
+    <img src="static/images/readme/screenshots/herokudeploy/verifyIHeroku.png">
+
+    <img src="static/images/readme/screenshots/herokudeploy/OverviewHeroku1.png">
+
+    </details>
+
+3. Under resources search for postgres, and add a Postgres database to the app
+
+    <details>
+
+    <img src="static/images/readme/screenshots/herokudeploy/ResourcesHeroku1.png">
+
+    </details>
+
+    #### Heroku Postgres Setup
+
+    1. Heroku automatically provides DATABASE_URL via Config Vars.
+        This variable is not stored locally and not committed to version control (env.py/.env)
+
+    2. Install the plugins dj-database-url and psycopg2-binary.
+        ```bash
+            pip3 install dj-database-url psycopg2-binary gunicorn
+        ```
+        - Create a Procfile with the text: web: gunicorn eterpoetic.wsgi
+
+            <details>
+
+            <img src="static/images/readme/screenshots/herokudeploy/procfile.png">
+
+            </details>
+
+    3. Run pip3 freeze > requirements.txt so both are added to the requirements.txt file
+
+        <details>
+
+        <img src="static/images/readme/screenshots/herokudeploy/requirements.png">
+
+        </details>
+
+4. In the settings.py ensure the connection is to the Heroku postgres database, no indentation if you are not using a separate test database env.py/.env
+    Remove or comment out DATABASE_URL in .env locally for 
+    Local → SQLite (db.sqlite3). 
+    Heroku → Postgres (via Config Vars). 
+    Clean separation
+
+    <details>
+
+    <img src="static/images/readme/screenshots/herokudeploy/settDB.png">
+
+    <img src="static/images/readme/screenshots/herokudeploy/envDb.png">
+
+    </details>
+
+5. DEBUG is controlled via environment variables (DEBUG=True locally, DEBUG=False in Heroku Config Vars)
+
+    <details>
+
+    <img src="static/images/readme/screenshots/herokudeploy/debbugSettFalse.png">
+
+    <img src="static/images/readme/screenshots/herokudeploy/envDebbugTrue.png">
+
+    <img src="static/images/readme/screenshots/herokudeploy/debbFHerokuConfV.png">
+
+    </details>
+
+6. Add localhost, and eterpoetic-62a49da213d8.herokuapp.com to the ALLOWED_HOSTS variable in settings.py
+    - localhost
+    - 127.0.0.1
+    - eterpoetic-62a49da213d8.herokuapp.com
+
+7. Run "python3 manage.py showmigrations" to check the status of the migrations
+
+8. Run "python3 manage.py migrate" to migrate the database
+   Apply database migrations:
    ```bash
    heroku run python manage.py migrate -a <app-name>
    ```
-6. Create a superuser for administrative access:
+
+9. Run "python3 manage.py createsuperuser" to create a super/admin user
+    Create a superuser for administrative access:
    ```bash
    heroku run python manage.py createsuperuser -a <app-name>
    ```
-7. Open the deployed application:
-   ```bash
-   heroku open -a <app-name>
-   ```
-8. Optional: Loading Initial Data: If you have a data fixture (JSON), you can load it to the production database
-   ```bash
-   heroku run python manage.py loaddata your_fixture.json -a <app-name>
-   ```
-   
+
+10. Run "python3 manage.py loaddata *.json" on the corresponding file /fixtures to create it
+    Optional: Loading Initial Data: If you have a data fixture (JSON), you can load it to the production database
+    ```bash
+    heroku run python manage.py loaddata your_fixture.json -a <app-name>
+    ```
+
+11. DISABLE_COLLECTSTATIC=1 may be used temporarily for troubleshooting and should be removed once static files are working correctly.
+
+12. Ensure the following environment variables are set in Heroku
+
+    <details>
+
+    <img src="static/images/readme/screenshots/herokudeploy/confVarsHeroku.png">
+
+    </details>
+
+13. Connect the app to GitHub, and enable automatic deploys from main if you wish
+
+    <details>
+
+    <img src="static/images/readme/screenshots/herokudeploy/githubHeroku.png">
+
+    </details>
+
+14. Click deploy to deploy your application to Heroku for the first time
+    In **Deploy**, connect the Heroku app to the GitHub repository
+    Deploy the `main` branch.
+
+15. Click on the link provided to access the application or
+    Open the deployed application:
+    ```bash
+    heroku open -a <app-name>
+    ```
+
+16. Troubleshooting
+    If deployment issues occur, review the Heroku build logs:
+    ```bash
+    heroku logs --tail -a <app-name>
+    ```
+
 ---
 
 ### 🖥️ Local Deployment (Development)
@@ -1795,19 +2118,19 @@ Local environment variables must be stored in a local **.env (or env.py) file**,
 
 4. Configure local environment variables (do not commit secrets or data with compromised information):
 
-| Config Var | Purpose | Importance |
-| :--- | :--- | :--- |
-| **`SECRET_KEY`** | Django Local security key. | **Required.** locally in .env |
-| **`DEBUG`** | Development mode | True locally, False in production |
-| **`DATABASE_URL`** | Local DB connection. | **Required.** PostgreSQL URL or a SQLite. |
-| **`CLOUDINARY_URL`** | Media storage API. | **Required.** for images. |
-| **`GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET`** | Google OAuth authentication. | Optional|
-| **`FACEBOOK_APP_ID / FACEBOOK_APP_SECRET`** | Facebook OAuth authentication. | Optional|
-| **`EMAIL_HOST`** | SMTP server host | Optional |
-| **`EMAIL_HOST_USER`** | SMTP username | Optional |
-| **`EMAIL_HOST_PASSWORD`** | SMTP app password | Optional|
-| **`DEFAULT_FROM_EMAIL`** | Default sender email address | Optional |
-| **`ALLOWED_HOSTS`** | Allowed hostnames | Required in production |
+    | Config Var | Purpose | Importance |
+    | :--- | :--- | :--- |
+    | **`SECRET_KEY`** | Django Local security key. | **Required.** locally in .env |
+    | **`DEBUG`** | Development mode | True locally, False in production |
+    | **`DATABASE_URL`** | Local DB connection. | **Required.** PostgreSQL URL or a SQLite. |
+    | **`CLOUDINARY_URL`** | Media storage API. | **Required.** for images. |
+    | **`GOOGLE_CLIENT_ID / GOOGLE_CLIENT_SECRET`** | Google OAuth authentication. | Optional|
+    | **`FACEBOOK_APP_ID / FACEBOOK_APP_SECRET`** | Facebook OAuth authentication. | Optional|
+    | **`EMAIL_HOST`** | SMTP server host | Optional |
+    | **`EMAIL_HOST_USER`** | SMTP username | Optional |
+    | **`EMAIL_HOST_PASSWORD`** | SMTP app password | Optional|
+    | **`DEFAULT_FROM_EMAIL`** | Default sender email address | Optional |
+    | **`ALLOWED_HOSTS`** | Allowed hostnames | Required in production |
 
 5. Apply database migrations:
     ```bash

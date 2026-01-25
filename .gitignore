@@ -45,4 +45,4 @@ Thumbs.db
 # Note: .github/ is NOT ignored to allow for GitHub Actions/Templates
 
 # ==== NODE / STATIC ====
-node_modules/
+node_modules/.env
