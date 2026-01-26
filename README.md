@@ -1386,7 +1386,7 @@ SECRET_KEY=your_local_insecure_key
 DEBUG=True
 
 ### Database (local only – Heroku provides DATABASE_URL automatically)
-DATABASE_URL=postgresql://USER:PASSWORD@HOST:PORT/DBNAME
+DATABASE_URL=your_postgres_url_here
 
 ### Cloudinary (media storage)
 CLOUDINARY_URL=cloudinary://API_KEY:API_SECRET@CLOUD_NAME
@@ -1435,8 +1435,8 @@ Django reads the value at runtime.
 
 ```bash
 DEBUG=False
-SECRET_KEY=real-production-secret
-DATABASE_URL=provided-by-heroku
+SECRET_KEY=your_secret_key_here
+DATABASE_URL=your_postgres_url_here
 etc
 ```
 
