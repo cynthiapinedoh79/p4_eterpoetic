@@ -42,9 +42,7 @@ def env_required(name: str) -> str:
 SECRET_KEY = env_required("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-#DEBUG = False
 DEBUG = os.environ.get("DEBUG", "False").lower() in ("true", "1", "yes")
-#print(">>> DEBUG IS:", DEBUG)
 
 # ALLOWED_HOSTS for production (when DEBUG is False)
 ALLOWED_HOSTS = [

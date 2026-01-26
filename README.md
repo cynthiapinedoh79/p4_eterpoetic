@@ -1,8 +1,9 @@
-# ✅ HOW TO USE THIS TEMPLATE
+# 📚 *EterPoetic* — Django Web Application
+
+**Live Site:** https://eterpoetic-62a49da213d8.herokuapp.com/
 
 This README is structured for a **Django project with multiple apps**
 
-# 📚 *EterPoetic* — Django Web Application
 EterPoetic is an interactive and content-rich web application for lovers of poetry and creative writing. Designed for readers and writers, it provides a platform to explore curated poem collections and insightful blog posts. It combines a personal reading experience with community engagement, allowing registered users to favorite poems, comment on articles, and connect with the team.
 
 Key Features:
@@ -27,45 +28,55 @@ Key Features:
 ---
 
 # 📋 Table of Contents
-- [🧾 Project Overview](#🧾-project-overview)
-- [🔗 Live Demo](#🔗-live-demo)
-- [📱 Am I Responsive? - Demo](#📱-am-i-responsive---demo)
-- [🖼️ Screenshots](#🖼️-screenshots)
-- [🎯 UX](#🎯-ux)
-- [🧑‍💼 User Stories](#🧑‍💼-user-stories)
-  - [Core User Stories](#core-user-stories)
-  - [🚀 Existing Features](#🚀-existing-features)
-  - [🧑‍💻 Testing User Stories – User Experience (UX) Evaluation](#🧑‍💻-testing-user-stories--user-experience-ux-evaluation)
-- [🎨 Design Choices](#🎨-design-choices)
-- [📐 Five Planes UXD](#📐-five-planes-uxd)
-  - [📌 Strategy](#📌-strategy)
-  - [📐 Scope](#📐-scope)
-  - [🏗️ Structure](#🏗️-structure)
-  - [🦴 Skeleton](#🦴-skeleton)
-  - [🎨 Surface](#🎨-surface)
-- [🏛️ Architecture (Django MVT)](#🏛️-architecture-django-mvt)
-  - [🗃️ Data Model (ERD)](#🗃️-data-model-erd)
-  - [🧱 App Responsibilities](#🧱-app-responsibilities-app1-app2-app3)
-  - [🧭 URL Map & Navigation](#🧭-url-map--navigation)
-  - [🧩 CRUD Map](#🧩-crud-map)
-  - [🧪 Forms & Validation](#🧪-forms--validation)
-  - [🔌 API Endpoints (Optional)](#🔌-api-endpoints-optional)
-- [🛠️ Technologies & Tools](#🛠️-technologies--tools)
-  - [🧑‍💻 Languages Used](#🧑‍💻-languages-used)
-  - [🧰 Frameworks, Libraries & Programs Used](#🧰-frameworks-libraries--programs-used)
-- [📦 Project Setup](#📦-project-setup)
-- [⚙️ Environment Variables](#⚙️-environment-variables)
-- [🗂️ Project Structure](#🗂️-project-structure)
-- [🔐 Admin & Fixtures](#🔐-admin--fixtures)
-- [✅ Testing & Validation](#✅-testing--validation)
-  - [✅ Browser & Device Testing](#✅-browser--device-testing)
-  - [✅ Validator Testing](#✅-validator-testing)
-  - [✅ Accessibility Testing](#✅-accessibility-testing)
-  - [✅ Console in Google Chrome DevTools-"Inspect" Testing](#✅-console-in-google-chrome-devtools-inspect-testing)
-- [🐞 Bugs](#🐞-bugs)
-- [📥 Deployment](#📥-deployment)
-- [🤝 Contribution Guidelines](#🤝-contribution-guidelines)
-- [🙏 Credits & Acknowledgements](#🙏-credits--acknowledgements)
+- [🧾 Project Overview](#-project-overview)
+- [🔗 Live Demo](#-live-demo)
+- [📱 Am I Responsive? – Demo (Layout Proof)](#-am-i-responsive---demo-layout-proof)
+- [🖼️ Screenshots (Image Gallery)](#️-screenshots-image-gallery)
+- [🎯 UX](#-ux)
+- [🧑‍💼 User Stories](#-user-stories)
+    - [Core User Stories](#core-user-stories)
+    - [🚀 Existing Features (Source: GitHub "Done" Column)](#-existing-features-source-github-done-column)
+    - [🧑‍💻 Testing User Stories – User Experience (UX) Evaluation](#-testing-user-stories--user-experience-ux-evaluation)
+
+- [🎨 Design Choices](#-design-choices)
+- [📐 Five Planes UXD](#-five-planes-uxd)
+    - [📌 Strategy](#-strategy)
+    - [📐 Scope](#-scope)
+    - [🏗️ Structure](#️-structure)
+    - [🦴 Skeleton](#-skeleton)
+    - [🎨 Surface](#-surface)
+
+- [🏛️ Architecture (Django MVT)](#️-architecture-django-mvt)
+    - [🧱 App Responsibilities](#-app-responsibilities)
+    - [🧭 URL Map & Navigation](#-url-map--navigation)
+    - [🧩 CRUD Map](#-crud-map)
+    - [🗃️ Data Model (ERD)](#️-data-model-erd)
+    - [🧪 Forms & Validation](#-forms--validation)
+    - [🔌 API Endpoints (Optional)](#-api-endpoints-optional)
+
+- [🛠️ Technologies & Tools](#️-technologies--tools)
+    - [🧑‍💻 Languages Used](#-languages-used)
+    - [🧰 Frameworks, Libraries & Programs Used](#-frameworks-libraries--programs-used)
+
+- [📦 Project Setup](#-project-setup)
+- [⚙️ Environment Variables](#️-environment-variables)
+- [🗂️ Project Structure](#️-project-structure)
+- [🔐 Admin & Fixtures](#-admin--fixtures)
+- [✅ Automated Testing & Validators](#-automated-testing--validators)
+    - [✅ Browser & Device Testing](#-browser--device-testing)
+    - [✅ Validators](#-validators)
+    - [✅ Accessibility Testing (Lighthouse)](#-accessibility-testing-lighthouse)
+    - [✅ Console in Google Chrome DevTools-"Inspect" Testing](#-console-in-google-chrome-devtools-inspect-testing)
+
+- [🐞 Bugs and Issues Log](#-bugs-and-issues-log)
+- [📥 Deployment](#-deployment)
+    - [⚙️ Procfile Configuration](#️-procfile-configuration)
+    - [🔑 Critical Environment Variables](#-critical-environment-variables)
+    - [Heroku Deployment](#heroku-deployment)
+    - [🖥️ Local Deployment](#️-local-deployment)
+
+- [🤝 Contribution Guidelines](#-contribution-guidelines)
+- [🙏 Credits & Acknowledgements](#-credits--acknowledgements)
 
 ---
 
@@ -82,6 +93,8 @@ EterPoetic is an interactive and content-rich web application for lovers of poet
 6.  **Cloudinary:** Handles static and media file storage for efficiency.
 7.  **Balsamiq:** Design tool used for wireframing and planning the site layout.
 
+##### Back to [top](#-table-of-contents)
+
 ---
 
 ## 🔗 Live Demo
@@ -89,6 +102,8 @@ EterPoetic is an interactive and content-rich web application for lovers of poet
 **Live Site:** https://eterpoetic-62a49da213d8.herokuapp.com/ 
 
 **Admin Panel:** https://eterpoetic-62a49da213d8.herokuapp.com/admin
+
+##### Back to [top](#-table-of-contents)
 
 ---
 
@@ -172,10 +187,11 @@ User would be able to see favorites (Featured) poems when login
 
 </details>
 
+##### Back to [top](#-table-of-contents)
+
 ---
 
 ## 🖼️ Screenshots (Image Gallery)
-
 This section is for high-quality images that showcase the aesthetic design and key features of your live application. These images should demonstrate the "look and feel" and the user's interaction flow.
 
 | Section | Image Purpose | Example Images |
@@ -421,9 +437,12 @@ This section is for high-quality images that showcase the aesthetic design and k
 
 </details>
 
+##### Back to [top](#-table-of-contents)
+
 ---
 
 ## 🎯 UX
+
 ### Target Audience:
 **Readers, emerging writers, and poetry enthusiasts** seeking curated content, insightful blog posts, and an engaging community centered around creative writing.
 
@@ -444,6 +463,8 @@ This section is for high-quality images that showcase the aesthetic design and k
 -   Promote community engagement by providing a clean commenting system for blog posts.
 -   (Coming Soon) Enhance search and filtering capabilities (e.g., filtering by language, mood, or length).
 -   (Coming Soon) Implement a user dashboard for managing their profile and contributions.
+
+##### Back to [top](#-table-of-contents)
 
 ---
 
@@ -498,7 +519,7 @@ This section is for high-quality images that showcase the aesthetic design and k
 
 All core user stories were tested using the defined **Acceptance Criteria (ACs)** set in the corresponding GitHub Issues.
 
-### Poetry Library Access (Ref: [p4_eterpoetic#1](https://github.com/cynthiapinedoh79/p4_eterpoetic/issues/1))
+#### Poetry Library Access (Ref: [p4_eterpoetic#1](https://github.com/cynthiapinedoh79/p4_eterpoetic/issues/1))
 
 The **'Access the poetry library'** feature passed the following criteria:
 
@@ -508,7 +529,7 @@ The **'Access the poetry library'** feature passed the following criteria:
 
 ---
 
-### Mark Favorites Items-Easily mark and manage poems as my favorites (Ref: [p4_eterpoetic#7](https://github.com/cynthiapinedoh79/p4_eterpoetic/issues/7))
+#### Mark Favorites Items-Easily mark and manage poems as my favorites (Ref: [p4_eterpoetic#7](https://github.com/cynthiapinedoh79/p4_eterpoetic/issues/7))
 
 The **'Mark my favorites items'** feature passed the following criteria, ensuring reliable item marking and list management:
 
@@ -535,18 +556,18 @@ The **'Mark my favorites items'** feature passed the following criteria, ensurin
 
 ---
 
-### Register, login in and log out-securely register an account and manage my login session (Ref: [p4_eterpoetic#5](https://github.com/cynthiapinedoh79/p4_eterpoetic/issues/5))
+#### Register, login in and log out-securely register an account and manage my login session (Ref: [p4_eterpoetic#5](https://github.com/cynthiapinedoh79/p4_eterpoetic/issues/5))
 
 The **'Register, Log In, and Log Out'** feature passed the following criteria, ensuring a complete and secure user authentication flow:
 
-#### 1. Registration & Security (AC1)
+##### 1. Registration & Security (AC1)
 
 * **AC1** New Account Creation
     * The user must be able to register a new account by providing a valid email address and a secure password.
     * Passwords must meet minimum security requirements (e.g., length, mixture of characters) and the system must store them securely (hashed).
     * The user must receive an **email verification link** and must click it to finalize account activation.
 
-#### 2. Login & Session Management (AC2-AC4)
+##### 2. Login & Session Management (AC2-AC4)
 
 * **AC2** Standard Email/Password Login
     * The user must be able to log in using their registered email and password.
@@ -561,7 +582,7 @@ The **'Register, Log In, and Log Out'** feature passed the following criteria, e
     * Upon successful login, the system must maintain a secure user session (e.g., token-based) for a defined period.
     * The user must have a "**Keep me logged in**" option to persist the session across browser closures.
 
-#### 3. Logout (AC5)
+##### 3. Logout (AC5)
 
 * **AC5** Secure Logout
     * A clearly visible "**Log Out**" button must be available to authenticated users.
@@ -569,16 +590,16 @@ The **'Register, Log In, and Log Out'** feature passed the following criteria, e
 
 ---
 
-### Receive, review and store collaboration request in the database (Ref: [django-blog#13](https://github.com/cynthiapinedoh79/django-blog/issues/13))
+#### Receive, review and store collaboration request in the database (Ref: [django-blog#13](https://github.com/cynthiapinedoh79/django-blog/issues/13))
 
 The **'Collaborator Submission Flow'** feature passed the following criteria, ensuring effective notification and administration:
 
-### 1. System Notification (AC1)
+##### 1. System Notification (AC1)
 
 * **AC1** Email Notification
     * When a Potential Collaborator submits a proposal, an email notification is immediately sent to the registered admin email address.
 
-### 2. Admin Dashboard Management (AC2-AC4)
+##### 2. Admin Dashboard Management (AC2-AC4)
 
 * **AC2** Dashboard View
     * All submitted proposals are listed in a dedicated "Proposals" section of the admin dashboard, displaying the collaborator's name, email, and submission date.
@@ -592,7 +613,7 @@ The **'Collaborator Submission Flow'** feature passed the following criteria, en
 
 ---
 
-### Create or update the About page content (Ref: [django-blog#11](https://github.com/cynthiapinedoh79/django-blog/issues/11))
+#### Create or update the About page content (Ref: [django-blog#11](https://github.com/cynthiapinedoh79/django-blog/issues/11))
 
 The **'Create or update the About page content'** feature passed the following criteria:
 
@@ -602,7 +623,7 @@ The **'Create or update the About page content'** feature passed the following c
 
 ---
 
-### Click the About link (Ref: [django-blog#10](https://github.com/cynthiapinedoh79/django-blog/issues/10))
+#### Click the About link (Ref: [django-blog#10](https://github.com/cynthiapinedoh79/django-blog/issues/10))
 
 The **'Click the About link'** feature passed the following criteria:
 
@@ -610,18 +631,18 @@ The **'Click the About link'** feature passed the following criteria:
 
 ---
 
-### Create, read, update and delete posts (Ref: [django-blog#7](https://github.com/cynthiapinedoh79/django-blog/issues/7))
+#### Create, read, update and delete posts (Ref: [django-blog#7](https://github.com/cynthiapinedoh79/django-blog/issues/7))
 
 The **'Blog Post Management (CRUD)'** feature passed the following criteria, ensuring authenticated users can control their content:
 
-#### 1. Content Creation & Reading (AC1-AC2)
+##### 1. Content Creation & Reading (AC1-AC2)
 
 * **AC1** Create Blog Post
     * Given a logged-in user with appropriate permissions (e.g., staff status or specific role), they can access a dedicated form to create and submit a new blog post.
 * **AC2** Read Blog Post
     * Given a logged-in user, they can access and view the full content of any published blog post.
 
-#### 2. Content Editing (AC3-AC4)
+##### 2. Content Editing (AC3-AC4)
 
 * **AC3** Update Blog Post
     * Given a logged-in user who is the **author of the post** (or an administrator), they can access an edit form to modify the post's content and save the changes.
@@ -630,7 +651,7 @@ The **'Blog Post Management (CRUD)'** feature passed the following criteria, ens
 
 ---
 
-### Click on a post (Ref: [django-blog#4](https://github.com/cynthiapinedoh79/django-blog/issues/4))
+#### Click on a post (Ref: [django-blog#4](https://github.com/cynthiapinedoh79/django-blog/issues/4))
 
 The **'Click on a post'** feature passed the following criteria:
 
@@ -639,54 +660,54 @@ The **'Click on a post'** feature passed the following criteria:
 
 ---
 
-### Leave comments on a post (Ref: [django-blog#5](https://github.com/cynthiapinedoh79/django-blog/issues/5))
+#### Leave comments on a post (Ref: [django-blog#5](https://github.com/cynthiapinedoh79/django-blog/issues/5))
 
 The **'Blog Commenting and Threading'** feature passed the following criteria, ensuring community engagement and organized discussion:
 
-#### 1. Enabling Replies (AC1)
+##### 1. Enabling Replies (AC1)
 
 * **AC1** Comment Approval
     * When a new user comment is submitted, it is held for review until an administrator manually approves it. Once approved, the comment becomes publicly visible and available for replies.
 
-#### 2. Reply Functionality (AC2)
+##### 2. Reply Functionality (AC2)
 
 * **AC2** User Reply Capability
     * Given a visible (approved) comment, any authenticated user can successfully submit a reply that is nested visually underneath the parent comment.
     * The system must verify that the user is logged in before allowing them to post a reply.
 
-#### 3. Thread Organization (AC3)
+##### 3. Thread Organization (AC3)
 
 * **AC3** Conversation Threading
     * Given more than one reply exists for a single parent comment, the replies are displayed sequentially, forming a clear, chronological conversation thread that is visually distinct from the main list of comments.
 
 ---
 
-### Create draft post (Ref: [django-blog#8](https://github.com/cynthiapinedoh79/django-blog/issues/8))
+#### Create draft post (Ref: [django-blog#8](https://github.com/cynthiapinedoh79/django-blog/issues/8))
 
-#### Draft Blog Post Management (Ref: [django-blog#xx])
+##### Draft Blog Post Management (Ref: [django-blog#xx])
 
 The **'Draft Blog Post Management'** feature passed the following criteria, ensuring content creators can work asynchronously:
 
-#### 1. Saving Drafts (AC1)
+###### 1. Saving Drafts (AC1)
 
 * **AC1** Save and Hide
     * Given a logged-in user, they can click a designated "**Save Draft**" button which successfully saves the post's content to the database.
     * The saved draft must **not** be publicly visible on any public-facing blog list or URL.
 
-#### 2. Retrieval and Editing (AC2)
+###### 2. Retrieval and Editing (AC2)
 
 * **AC2** Access and Resume
     * The author can access a dedicated section (e.g., "My Drafts" dashboard) to view a list of *only their own* saved draft posts.
     * The author can click on a draft title to load the full content back into the editor to continue working later.
 
-#### 3. Publishing (AC3 - Added for completeness)
+###### 3. Publishing (AC3 - Added for completeness)
 
 * **AC3** Status Update
     * From the editor page of a draft, there must be a visible "**Publish**" button (distinct from "Save Draft") that updates the post's status, making it publicly visible on the main blog list.
 
 ---
 
-### View comments on an individual post (Ref: [django-blog#3](https://github.com/cynthiapinedoh79/django-blog/issues/3))
+#### View comments on an individual post (Ref: [django-blog#3](https://github.com/cynthiapinedoh79/django-blog/issues/3))
 
 The **'View comments on an individual post'** feature passed the following criteria, ensuring transparency and easy moderation:
 
@@ -696,7 +717,7 @@ The **'View comments on an individual post'** feature passed the following crite
 
 ---
 
-### Approve or disapprove comments (Ref: [django-blog#9](https://github.com/cynthiapinedoh79/django-blog/issues/9))
+#### Approve or disapprove comments (Ref: [django-blog#9](https://github.com/cynthiapinedoh79/django-blog/issues/9))
 
 The **'Approve or disapprove comments'** feature passed the following criteria, ensuring effective content moderation:
 
@@ -708,17 +729,17 @@ The **'Approve or disapprove comments'** feature passed the following criteria, 
 
 ---
 
-### Modify or delete my comment on a post (Ref: [django-blog#6](https://github.com/cynthiapinedoh79/django-blog/issues/6))
+#### Modify or delete my comment on a post (Ref: [django-blog#6](https://github.com/cynthiapinedoh79/django-blog/issues/6))
 
 The **'Modify or delete my comment on a post'** feature passed the following criteria, ensuring users can manage their own contributions:
 
-#### 1. Comment Modification (AC1)
+##### 1. Comment Modification (AC1)
 
 * **AC1** Modify Own Comment
     * Given a logged-in user, they can access an edit function (e.g., a button) on **only their own submitted comment** to modify the text.
     * The system must verify the user is the original author before allowing the edit to be saved.
 
-#### 2. Comment Deletion (AC2)
+##### 2. Comment Deletion (AC2)
 
 * **AC2** Delete Own Comment
     * Given a logged-in user, they can access a delete function (e.g., a trash can icon) on **only their own submitted comment**.
@@ -726,7 +747,7 @@ The **'Modify or delete my comment on a post'** feature passed the following cri
 
 ---
 
-### View a paginated list of post (Ref: [django-blog#1](https://github.com/cynthiapinedoh79/django-blog/issues/1))
+#### View a paginated list of post (Ref: [django-blog#1](https://github.com/cynthiapinedoh79/django-blog/issues/1))
 
 The **'View a paginated list of post'** feature passed the following criteria, ensuring users can manage their own contributions:
 
@@ -736,7 +757,7 @@ The **'View a paginated list of post'** feature passed the following criteria, e
 
 ---
 
-### 🔮 Features Left to Implement (Source: GitHub "Backlog" / "Ready" Columns)
+#### 🔮 Features Left to Implement (Source: GitHub "Backlog" / "Ready" Columns)
 | User Story | GitHub Issue | Priority | Status |
 |---|---|---|---|
 | As a website visitor, I can **easily switch the entire website interface and content between English and Spanish** so that I can comfortably read and interact with the platform in my preferred language. | **[p4_eterpoetic#6](https://github.com/cynthiapinedoh79/p4_eterpoetic/issues/6)** | Won't-Have | In Review |
@@ -780,6 +801,8 @@ From the user’s perspective, I’ve built this site with the following priorit
 1.  To conveniently access and **manage my personal list of favorited poems**.
 2.  To view the **latest comments and responses** on blog posts I have engaged with.
 3.  To **search and filter content** effectively by author, collection, or language.
+
+##### Back to [top](#-table-of-contents)
 
 ---
 
@@ -849,16 +872,16 @@ Clear and attractive images support the theme and maintain strong contrast with 
 * **Poetry/Creative Themed Backgrounds:** Imagery focuses on **writing, literature, and abstract ink/paper textures**.
 * High contrast text overlays for readability.
 
-### 1. Home: index.html (Poetry List)
+#### 1. Home: index.html (Poetry List)
 * **Background:** The page utilizes a **vibrant, abstract hero image ('Art/Artist')** to convey passion, followed by a grid of **emotionally evocative, individual collection thumbnails** (e.g., Eagle, Man in Sorrow) to represent the diverse mood of the content.
 
-### 2. My Favorites: favorites\_list.html
+#### 2. My Favorites: favorites\_list.html
 * **Background:** Imagery focuses on a clean, **white, distraction-free background** to highlight the **curated grid of poem thumbnails**. The emphasis is on the user's personal selection of emotional and intimate photos (Love, Smile, etc.).
 
-### 3. Blog: bloghome.html
+#### 3. Blog: bloghome.html
 * **Background:** The theme is consistent, using **rich, high-contrast imagery** of classical writing tools (ink, quills, old books, paper) to establish a strong, traditional literary atmosphere for the posts.
 
-### 4. About: about.html (Collaboration Form)
+#### 4. About: about.html (Collaboration Form)
 * **Background:** The page uses a **professional, data-focused image** (AI/Data Architect) to establish technical authority and trust. The collaboration form contrasts with the content, using a light background to encourage simple, focused outreach.
 
 ---
@@ -882,6 +905,8 @@ The palette is composed of warm and natural tones:
 * **Earthy Greens:** Offers a sense of freshness, renewal, and connection to inner life (Used as an accent on the feather).
 
 Together, these colors suggest the movement of thought flowing toward the page, from the spirit into written expression.
+
+##### Back to [top](#-table-of-contents)
 
 ---
 
@@ -965,6 +990,8 @@ To create a pleasing and understandable view, the design utilizes a **high-contr
 
 </details>
 
+##### Back to [top](#-table-of-contents)
+
 ---
 
 ## 🏛️ Architecture (Django MVT)
@@ -1009,7 +1036,9 @@ This section details the structure of your core application models and their rel
 
 ---
 
-### 🗃️ Data Model (ERD) — Poetry App
+### 🗃️ Data Model (ERD)
+
+#### DM-ERD — Poetry App
 This section details the structure of your three models in the `poetry` application, which handles dynamic poems, favorites, collections, etc.
 
 | Model | Key | Name | Type | Relationship | App |
@@ -1020,7 +1049,7 @@ This section details the structure of your three models in the `poetry` applicat
 
 ---
 
-#### 1. Poem Model (Core Content & Favorites)
+##### 1. Poem Model (Core Content & Favorites)
 
 | Key | Name | Type | Extra Info / Relationship |
 | :--- | :--- | :--- | :--- |
@@ -1036,7 +1065,7 @@ This section details the structure of your three models in the `poetry` applicat
 
 ---
 
-#### 2. Collection Model (Grouping Entity)
+##### 2. Collection Model (Grouping Entity)
 
 | Key | Name | Type | Extra Info / Relationship |
 | :--- | :--- | :--- | :--- |
@@ -1048,7 +1077,7 @@ This section details the structure of your three models in the `poetry` applicat
 
 ---
 
-#### 3. Author Model (Creator Metadata)
+##### 3. Author Model (Creator Metadata)
 
 | Key | Name | Type | Extra Info / Relationship |
 | :--- | :--- | :--- | :--- |
@@ -1060,7 +1089,7 @@ This section details the structure of your three models in the `poetry` applicat
 
 ---
 
-### 🗃️ Data Model (ERD) — Blog App
+#### DM-ERD — Blog App
 This section details the structure of your two models in the `blog` application, which handles dynamic content (posts, comments).
 
 | Model | Key | Name | Type | Relationship | App |
@@ -1070,7 +1099,7 @@ This section details the structure of your two models in the `blog` application,
 
 ---
 
-#### 1. Post Model (Content & Structure)
+##### 1. Post Model (Content & Structure)
 
 | Key | Name | Type | Extra Info / Relationship |
 | :--- | :--- | :--- | :--- |
@@ -1086,7 +1115,7 @@ This section details the structure of your two models in the `blog` application,
 
 ---
 
-#### 2. Comment Model (Community Interaction)
+##### 2. Comment Model (Community Interaction)
 
 | Key | Name | Type | Extra Info / Relationship |
 | :--- | :--- | :--- | :--- |
@@ -1099,7 +1128,7 @@ This section details the structure of your two models in the `blog` application,
 
 ---
 
-### 🗃️ Data Model (ERD) — About App
+#### DM-ERD — About App
 This section details the structure of your two models in the `about` application, which handles static content and user submissions.
 
 | Model | Key | Name | Type | Relationship | App |
@@ -1109,7 +1138,7 @@ This section details the structure of your two models in the `about` application
 
 ---
 
-#### 1. About Model (Static Content Management)
+##### 1. About Model (Static Content Management)
 
 | Key | Name | Type | Extra Info / Relationship |
 | :--- | :--- | :--- | :--- |
@@ -1121,7 +1150,7 @@ This section details the structure of your two models in the `about` application
 
 ---
 
-#### 2. CollaborateRequest Model (Form Submissions)
+##### 2. CollaborateRequest Model (Form Submissions)
 
 | Key | Name | Type | Extra Info / Relationship |
 | :--- | :--- | :--- | :--- |
@@ -1145,12 +1174,12 @@ This section describes the primary user-facing and administrator forms used thro
 | **`CollaborateForm`** | Submits user requests for collaboration. | `CollaborateRequest` | Ensures the required fields (`name`, `email`, `message`) are submitted and validates the `email` format. |
 
 
-### Note on CSRF Protection
+#### Note on CSRF Protection
 All forms utilize Django's **CSRF (Cross-Site Request Forgery) token** validation to ensure security against malicious external requests.
 
 ---
 
-## 🔌 API Endpoints (Optional)
+### 🔌 API Endpoints (Optional)
 
 This section should list the URLs used for non-HTML data interaction, which may include features necessary for frontend interactivity.
 
@@ -1160,13 +1189,13 @@ This section should list the URLs used for non-HTML data interaction, which may 
 | `/api/poems/<str:slug>/` | `GET` | Fetches specific poem data by slug (if using AJAX for detail views). | JSON |
 | `/api/collaborate/submit/` | `POST` | Endpoint that receives the form data for a new collaborator request. | JSON (Expected Success/Error) |
 
-## 🔒 Securing Your API Keys and Secrets
+#### 🔒 Securing Your API Keys and Secrets
 
 The use of **Social Media Login (OAuth)** requires that you manage sensitive credentials (like Facebook App ID, Google Client Secret, and your main Django `SECRET_KEY`) securely.
 
 [cite_start]The most crucial rule is that **NO secret key or token should ever be committed to your GitHub repository**[cite: 1, 2].
 
-#### 1. Verification of Heroku Config Vars
+##### 1. Verification of Heroku Config Vars
 
 You must verify that all sensitive keys are set as **Config Vars** (Environment Variables) on Heroku.
 
@@ -1183,6 +1212,8 @@ You can check your existing Heroku Config Vars by running:
 heroku config -a eterpoetic
 ```
 
+##### Back to [top](#-table-of-contents)
+
 ---
 
 ## 🛠️ Technologies & Tools
@@ -1198,9 +1229,9 @@ heroku config -a eterpoetic
 
 ---
 
-## 🧰 Frameworks, Libraries & Programs Used
+### 🧰 Frameworks, Libraries & Programs Used
 
-### Frontend & Styling
+#### Frontend & Styling
 
 <details>
 
@@ -1221,7 +1252,7 @@ heroku config -a eterpoetic
 
 ---
 
-### Version Control & Repository
+#### Version Control & Repository
 
 6. **[Git](https://git-scm.com/)**  
    Used for version control.
@@ -1231,7 +1262,7 @@ heroku config -a eterpoetic
 
 ---
 
-### Development Tools
+#### Development Tools
 
 8. **[Visual Studio Code](https://code.visualstudio.com/)**  
    Primary local code editor with extensions and AI support.
@@ -1247,7 +1278,7 @@ heroku config -a eterpoetic
 
 ---
 
-### Testing, Accessibility & Performance Tools
+#### Testing, Accessibility & Performance Tools
 
 12. **[Am I Responsive](https://ui.dev/amiresponsive)**  
     Used to generate responsive screenshots.
@@ -1272,14 +1303,14 @@ heroku config -a eterpoetic
 
 ---
 
-### Asset Optimization
+#### Asset Optimization
 
 19. **[Squoosh](https://squoosh.app/)**  
     Used to compress and optimize image files.
 
 ---
 
-### Learning Resources / Media
+#### Learning Resources / Media
 
 20. **[YouTube](https://www.youtube.com/)**  
     Used for tutorials and troubleshooting.
@@ -1288,17 +1319,7 @@ heroku config -a eterpoetic
 
 ---
 
-## 🙏 Credits & Acknowledgements
-
-This project was made possible by the following resources and collaborators:
-
-* **Learning Materials**: We gratefully acknowledge the comprehensive **Code Institute learning materials** that provided the foundational knowledge for this project.
-* **Documentation**: Essential reference and guidance were provided by the official **Django & Heroku documentation**.
-* **Support**: The continuous improvement and debugging efforts were guided by **Mentor & Peer feedback**.
-
----
-
-## 💻 Development Environment Tools
+#### 💻 Development Environment Tools
 
 We relied on various software tools and platforms throughout the development and troubleshooting process, with **Google's SMTP** used for secure email delivery instead of Brevo:
 
@@ -1313,10 +1334,11 @@ We relied on various software tools and platforms throughout the development and
 | **Hover.css / jQuery** | **Hover.css** added float transitions; **jQuery** provided smooth scroll and DOM manipulation. | Used for interactive elements and visual polish. |
 | **Git / GitHub** | Version control and remote repository storage. | Essential for collaboration and deployment via Heroku. |
 
+##### Back to [top](#-table-of-contents)
+
 ---
 
 ## 📦 Project Setup
-
 To get a local copy up and running, follow these simple steps.
 
 ```bash
@@ -1344,9 +1366,16 @@ python manage.py migrate
 # Run the server
 python manage.py runserver
 ```
+
+##### Back to [top](#-table-of-contents)
+
 ---
 
-## .env file content
+## ⚙️ Environment Variables
+Local development	DEBUG=True, SQLite
+Production (Heroku)	DEBUG=False, PostgreSQL
+
+### .env file (local only, never committed)
 
 <details>
 <summary>View example .env file (local development only)</summary>
@@ -1385,10 +1414,43 @@ FACEBOOK_APP_SECRET=your_facebook_app_secret
 
 </details>
 
+### Settings.py file
+
+<details>
+
+<summary>View example .env file (local development only)</summary>
+
+```bash
+DEBUG = os.environ.get("DEBUG", "False").lower() in ("true", "1", "yes")
+```
+Django reads the value at runtime.
+
+</details>
+
+### On Heroku
+
+<details>
+
+<summary>Heroku stores environment variables in Config Vars:</summary>
+
+```bash
+DEBUG=False
+SECRET_KEY=real-production-secret
+DATABASE_URL=provided-by-heroku
+etc
+```
+
+Are not visible in code
+Are not committed
+Are injected at runtime
+
+</details>
+
+##### Back to [top](#-table-of-contents)
+
 ---
 
 ## 🗂️ Project Structure
-
 A detailed overview of the project's directory structure.
 
 <details>
@@ -1458,6 +1520,8 @@ project_root/
 
 </details>
 
+##### Back to [top](#-table-of-contents)
+
 ---
 
 ## 🔐 Admin & Fixtures
@@ -1470,31 +1534,17 @@ Use this command during the local setup phase to create the master administrator
 ```bash
 python manage.py createsuperuser
 ```
+
 ---
 
-## ✅ Testing & Validation
-
+## ✅ Automated Testing & Validators
 This section outlines the strategy used to verify project functionality, structure, and accessibility.
-
-### 🧪 Automated Testing
 
 To run the project's test suite:
 
 ```bash
 python manage.py test
 ```
----
-
-### 📋 Validator Testing Summary
-The site structure and styling were verified using the following industry-standard validators:
-
-| Area | Tool | Goal |
-| :--- | :--- | :--- |
-| **HTML** | [W3C Validator](https://validator.w3.org/) | No errors |
-| **CSS** | [W3C CSS Validator (Jigsaw)](https://jigsaw.w3.org/css-validator/) | Clean structure |
-| **Accessibility** | Manual + Lighthouse | WCAG compliance |
-| **Responsiveness** | DevTools | Works across devices |
-
 ---
 
 ### ✅ Browser & Device Testing
@@ -1519,28 +1569,30 @@ This section documents the verification of site functionality across key browser
 
 </details>
 
+##### Back to [top](#-table-of-contents)
+
 ---
 
-## ✅ Validator Testing
+### ✅ Validators
 The site's styling was verified for clean structure and adherence to standards.
 
-### W3C Markup - HTML
+#### W3C Markup - HTML
 
 <details>
 
-#### Home (Poetry)
+##### Home (Poetry)
 
 ![Home (Poetry)](static/images/readme/tests/w3c-html/home.html.png)
 
-#### My Favorites
+##### My Favorites
 
 ![My Favorites](static/images/readme/tests/w3c-html/favorites.html.png)
 
-#### Blog
+##### Blog
 
 ![Blog](static/images/readme/tests/w3c-html/blog.html.png)
 
-#### About
+##### About
 
 ![About](static/images/readme/tests/w3c-html/about.html.png)
 
@@ -1548,29 +1600,29 @@ The site's styling was verified for clean structure and adherence to standards.
 
 ---
 
-### W3C CSS
+#### W3C CSS
 
 <details>
 
-#### base.css
+##### base.css
 
 ![base.css](static/images/readme/tests/w3c-css/base.css.png)
 
 ![base.css](static/images/readme/tests/w3c-css/base1.css.png)
 
-#### poetry.css
+##### poetry.css
 
 ![poetry.css](static/images/readme/tests/w3c-css/poetry.css.png)
 
 ![poetry.css](static/images/readme/tests/w3c-css/poetry1.css.png)
 
-#### blog.css
+##### blog.css
 
 ![blog.css](static/images/readme/tests/w3c-css/blog.css.png)
 
 ![blog.css](static/images/readme/tests/w3c-css/blog1.css.png)
 
-#### about.css
+##### about.css
 
 ![about.css](static/images/readme/tests/w3c-css/about.css.png)
 
@@ -1580,7 +1632,7 @@ The site's styling was verified for clean structure and adherence to standards.
 
 ---
 
-### JSHint / JavaScript Validation
+#### JSHint / JavaScript Validation
 This section verifies that all frontend JavaScript code adheres to specified style guides and standards (zero warnings or errors).
 
 | **JavaScript** | **JSHint/ESLint** | Code adheres to style guide (zero warnings/errors) |
@@ -1588,15 +1640,15 @@ This section verifies that all frontend JavaScript code adheres to specified sty
 
 <details>
 
-#### comments.js
+##### comments.js
 
 ![comments.js](static/images/readme/tests/jsHint/comments.js.png)
 
-#### poem_toggle.js
+##### poem_toggle.js
 
 ![poem_toggle.js](static/images/readme/tests/jsHint/poem_toggle.js.png)
 
-#### quote_banner.js
+##### quote_banner.js
 
 ![quote_banner.js](static/images/readme/tests/jsHint/quote_banner.js.png)
 
@@ -1604,24 +1656,24 @@ This section verifies that all frontend JavaScript code adheres to specified sty
 
 ---
 
-### pep8ci / Pyhton Validation
+#### pep8ci / Python Validation
 This section verifies that all python code adheres to specified style guides and standards (zero warnings or errors).
 
-#### eterpoetic
+##### eterpoetic
 
 <details>
 
-#### eterpoetic/settings.py
+###### eterpoetic/settings.py
 
 ![eterpoetic/settings.py](static/images/readme/tests/pep8ci-python/eterpoetic/settings.py.png)
 
 
-#### eterpoetic/urls.py
+###### eterpoetic/urls.py
 
 ![eterpoetic/urls.py](static/images/readme/tests/pep8ci-python/eterpoetic/urls.py.png)
 
 
-#### eterpoetic/wsgi.py
+###### eterpoetic/wsgi.py
 
 ![eterpoetic/wsgi.py](static/images/readme/tests/pep8ci-python/eterpoetic/wsgi.py.png)
 
@@ -1629,27 +1681,27 @@ This section verifies that all python code adheres to specified style guides and
 
 ---
 
-#### poetry
+##### poetry
 
 <details>
 
-#### poetry/admin.py
+###### poetry/admin.py
 
 ![poetry/admin.py](static/images/readme/tests/pep8ci-python/poetry/admin.py.png)
 
-#### poetry/models.py
+###### poetry/models.py
 
 ![poetry/models.py](static/images/readme/tests/pep8ci-python/poetry/models.py.png)
 
-#### poetry/views.py
+###### poetry/views.py
 
 ![poetry/views.py](static/images/readme/tests/pep8ci-python/poetry/views.py.png)
 
-#### poetry/urls.py
+###### poetry/urls.py
 
 ![poetry/urls.py](static/images/readme/tests/pep8ci-python/poetry/urls.py.png)
 
-#### poetry/test_views.py
+###### poetry/test_views.py
 
 ![poetry/test_views.py](static/images/readme/tests/pep8ci-python/poetry/test_views.py.png)
 
@@ -1657,41 +1709,41 @@ This section verifies that all python code adheres to specified style guides and
 
 ---
 
-#### blog
+##### blog
 
 <details>
 
-#### blog/admin.py
+###### blog/admin.py
 
 ![blog/admin.py](static/images/readme/tests/pep8ci-python/blog/admin.py.png)
 
 
-#### blog/apps.py
+###### blog/apps.py
 
 ![blog/apps.py](static/images/readme/tests/pep8ci-python/blog/apps.py.png)
 
 
-#### blog/models.py
+###### blog/models.py
 
 ![blog/models.py](static/images/readme/tests/pep8ci-python/blog/models.py.png)
 
 
-#### blog/views.py
+###### blog/views.py
 
 ![blog/views.py](static/images/readme/tests/pep8ci-python/blog/views.py.png)
 
 
-#### blog/urls.py
+###### blog/urls.py
 
 ![blog/urls.py](static/images/readme/tests/pep8ci-python/blog/urls.py.png)
 
 
-#### blog/test_forms.py
+###### blog/test_forms.py
 
 ![blog/test_forms.py](static/images/readme/tests/pep8ci-python/blog/test_forms.py.png)
 
 
-#### blog/test_views.py
+###### blog/test_views.py
 
 ![blog/test_views.py](static/images/readme/tests/pep8ci-python/blog/test_views.py.png)
 
@@ -1699,46 +1751,46 @@ This section verifies that all python code adheres to specified style guides and
 
 ---
 
-#### about
+##### about
 
 <details>
 
-#### about/admin.py
+###### about/admin.py
 
 ![about/admin.py](static/images/readme/tests/pep8ci-python/about/admin.py.png)
 
 
-#### about/apps.py
+###### about/apps.py
 
 ![about/apps.py](static/images/readme/tests/pep8ci-python/about/apps.py.png)
 
 
-#### about/models.py
+###### about/models.py
 
 ![about/models.py](static/images/readme/tests/pep8ci-python/about/models.py.png)
 
 
-#### about/forms.py
+###### about/forms.py
 
 ![about/forms.py](static/images/readme/tests/pep8ci-python/about/forms.py.png)
 
 
-#### about/views.py
+###### about/views.py
 
 ![about/views.py](static/images/readme/tests/pep8ci-python/about/views.py.png)
 
 
-#### about/urls.py
+###### about/urls.py
 
 ![about/urls.py](static/images/readme/tests/pep8ci-python/about/urls.py.png)
 
 
-#### about/test_forms.py
+###### about/test_forms.py
 
 ![about/test_forms.py](static/images/readme/tests/pep8ci-python/about/test_forms.py.png)
 
 
-#### about/test_views.py
+###### about/test_views.py
 
 ![about/test_views.py](static/images/readme/tests/pep8ci-python/about/test_views.py.png)
 
@@ -1746,7 +1798,7 @@ This section verifies that all python code adheres to specified style guides and
 
 ---
 
-### 📋 Validator Testing Summary
+#### 📋 Validator Testing Summary
 The entire site was rigorously checked using the W3C HTML and CSS Validators.
 
 | Validator | Target | Result |
@@ -1757,6 +1809,8 @@ The entire site was rigorously checked using the W3C HTML and CSS Validators.
 
 | Area | Tool | Goal | Status |
 | :--- | :--- | :--- | :--- |
+| **Accessibility** | Manual + Lighthouse | WCAG compliance |
+| **Responsiveness** | DevTools | Works across devices |
 | **JavaScript** | **JSHint/ESLint** | Code adheres to style guide (zero warnings/errors) | **Passed** |
 | **Pyhton** | **pep8-ci (CI Python Linter)** | Code adheres to style guide (zero warnings/errors) | **Passed** |
 
@@ -1765,21 +1819,21 @@ The entire site was rigorously checked using the W3C HTML and CSS Validators.
 
 ---
 
-### VsCode Terminal - test_forms/test_views
+#### VsCode Terminal - test_forms/test_views
 
 <details>
 
-#### Poetry test
+##### Poetry test
 
 ![poetry.py](static/images/readme/tests/VsCode/poetry.png)
 
 
-#### Blog test
+##### Blog test
 
 ![blog.py](static/images/readme/tests/VsCode/blog.png)
 
 
-#### About test
+##### About test
 
 ![about.py](static/images/readme/tests/VsCode/about.png)
 
@@ -1787,12 +1841,12 @@ The entire site was rigorously checked using the W3C HTML and CSS Validators.
 
 ---
 
-## ✅ Accessibility Testing
+### ✅ Accessibility Testing (Lighthouse)
 
-### Lighthouse
+#### Lighthouse
 Lighthouse audits were conducted on core public and authenticated pages to ensure compliance with WCAG (Web Content Accessibility Guidelines).
 
-#### Home (Poetry)
+##### Home (Poetry)
 
 <details>
 
@@ -1808,7 +1862,7 @@ Lighthouse audits were conducted on core public and authenticated pages to ensur
 
 ---
 
-#### My Favorites
+##### My Favorites
 
 <details>
 
@@ -1820,7 +1874,7 @@ Lighthouse audits were conducted on core public and authenticated pages to ensur
 
 ---
 
-#### Blog
+##### Blog
 
 <details>
 
@@ -1832,7 +1886,7 @@ Lighthouse audits were conducted on core public and authenticated pages to ensur
 
 ---
 
-#### About
+##### About
 
 <details>
 
@@ -1846,7 +1900,7 @@ Lighthouse audits were conducted on core public and authenticated pages to ensur
 
 ---
 
-#### Sign Up
+##### Sign Up
 
 <details>
 
@@ -1856,8 +1910,9 @@ Lighthouse audits were conducted on core public and authenticated pages to ensur
 
 ---
 
+##### Back to [top](#-table-of-contents)
 
-## ✅ Console in Google Chrome DevTools-"Inspect" Testing
+### ✅ Console in Google Chrome DevTools-"Inspect" Testing
 (Confirm no console errors...)
 
 <details>
@@ -1872,9 +1927,11 @@ Lighthouse audits were conducted on core public and authenticated pages to ensur
 
 </details>
 
+##### Back to [top](#-table-of-contents)
+
 ---
 
-## 🐞 Bugs and Known Issues Log
+## 🐞 Bugs and Issues Log
 
 ### Solved Issues
 
@@ -1885,11 +1942,11 @@ Lighthouse audits were conducted on core public and authenticated pages to ensur
 | **Missing Cloudinary Modules** | Cloudinary packages were required for media storage but not installed. | Installed `cloudinary` + `django-cloudinary-storage`. |
 | **Missing `crispy_forms`** | Project used Crispy Forms, but it wasn’t installed. | Installed `django-crispy-forms` and `crispy-bootstrap5`. |
 | **Missing `django_summernote`** | Summernote editor package wasn’t installed. | Installed `django-summernote`. |
-| **500 Error (caused by NoReverseMatch)** | A template tried to use a URL named `"home"` that didn’t exist. | Turned on DEBUG → added the missing URL name → updated template to `blog:home`. |
+| **500 Error (caused by NoReverseMatch)** | A template tried to use a URL named `"home"` that didn’t exist. | Turned on DEBUG locally to identify the issue → added the missing URL name → updated template. |
 | **POST Request Missing Trailing Slash** | A POST was sent to `/edit_comment/16` instead of `/edit_comment/16/`. | Updated redirect logic to point to the correct URL. |
 | **Heroku 500 Startup Error** | Heroku had an incorrect `CLOUDINARY_URL` value. | Updated the Cloudinary environment variable. |
 | **Migrations Out of Sync** | Heroku’s database was missing a Summernote migration. | Re-ran migrations on Heroku. |
-| **Missing Allauth Join Table** | A needed table for social login wasn’t created. | Created the table manually with SQL. |
+| **Missing Allauth Join Table** | A required table for social login wasn’t created due to incomplete migrations. | Re-applied migrations to create the missing table correctly. |
 | **Local HTTPS Error** | Browser tried to open the dev server using HTTPS. | Cleared HSTS settings and used `http://127.0.0.1:8000`. |
 | **Heroku CLI Not Found** | Heroku CLI wasn’t installed or not in PATH. | Installed Homebrew → fixed PATH → installed Heroku CLI. |
 | **Local Email Not Working** | Needed different setups for test vs production email. | Local: console backend. Production: Brevo SMTP in env vars. |
@@ -1907,14 +1964,12 @@ Lighthouse audits were conducted on core public and authenticated pages to ensur
 | **Heroku argument parsing bug** | Heroku sometimes breaks with flags like `--noinput`. Requires using:  
 `heroku run -- python manage.py collectstatic --noinput` |
 
+##### Back to [top](#-table-of-contents)
 
 ---
 
-## 📥 Deployment (Heroku)
-
+## 📥 Deployment
 The EterPoetic application is deployed using **Heroku** and configured via environment variables to ensure security and portability. The steps below outline both production deployment and local setup so that another developer can successfully run and deploy the project independently.
-
----
 
 ### ⚙️ Procfile Configuration
 
@@ -1989,7 +2044,7 @@ This application has been deployed from GitHub using Heroku. Here's how:
 
     2. Install the plugins dj-database-url and psycopg2-binary.
         ```bash
-            pip3 install dj-database-url psycopg2-binary gunicorn
+        pip3 install dj-database-url psycopg2-binary gunicorn
         ```
         - Create a Procfile with the text: web: gunicorn eterpoetic.wsgi
 
@@ -2094,7 +2149,7 @@ This application has been deployed from GitHub using Heroku. Here's how:
 
 ---
 
-### 🖥️ Local Deployment (Development)
+### 🖥️ Local Deployment
 
 The project can be run locally by following the steps below. This allows another developer to clone, configure, and run the application in a development environment.
 
@@ -2147,13 +2202,14 @@ Local environment variables must be stored in a local **.env (or env.py) file**,
 8. Open the application in a browser:
 http://127.0.0.1:8000/
 
+---
 
 ### 🐞 Deployment-Related Solved Issues
 
 | Problem | What Caused It | How It Was Fixed |
 |--------|----------------|------------------|
-| **Heroku 500 Error on Startup** | Heroku was using an old or invalid `CLOUDINARY_URL`, so the app crashed while loading. | Updated the Cloudinary environment variable in Heroku to the correct, active one. |
-| **Model Changes Not Applied on Heroku** | Heroku’s database didn’t have the latest changes for `django_summernote`, causing warnings about missing migrations. | Ran migrations on Heroku after pushing updated migration files. |
+| **Heroku 500 Error on Startup** | Heroku was using an outdated or invalid `CLOUDINARY_URL`, causing the application to fail during startup. | Updated the Cloudinary environment variable in Heroku to the correct, active one. |
+| **Model Changes Not Applied on Heroku** | Heroku’s database did not include the latest `django_summernote` migrations, resulting in warnings about unapplied migrations. | Ran migrations on Heroku after pushing updated migration files. |
 | **Heroku CLI “command not found”** | The Heroku command-line tool wasn’t installed or the system PATH wasn’t configured. | Installed Homebrew → fixed PATH → installed the Heroku CLI via Homebrew. |
 | **Heroku Misreading Command Flags** | Heroku interpreted Django flags (e.g., `--noinput`) as Heroku flags. | Added `--` before the Django command: `heroku run -- python manage.py collectstatic --noinput` |
 
@@ -2164,6 +2220,8 @@ http://127.0.0.1:8000/
 | Known Issue | Status/Impact | Root Cause |
 | :--- | :--- | :--- |
 | **Static File Deployment Cache** | **Intermittent:** Front-end changes occasionally require hard refreshes (`Ctrl/Cmd + Shift + R`) to display on the live Heroku site. | WhiteNoise + browser caching: static files are aggressively cached unless their hashed filenames change. If a file’s hash doesn’t update, browsers may continue serving the old version. |
+
+##### Back to [top](#-table-of-contents)
 
 ---
 
@@ -2188,6 +2246,8 @@ Before a Pull Request can be merged into the `main` branch, it **must** satisfy 
 * **Passing Tests** 🧪: All unit and integration tests must execute without failure.
 * **Clean Linting** ✨: The code must pass all configured style and quality checks (linting).
 
+##### Back to [top](#-table-of-contents)
+
 ---
 
 ## 🙏 Credits & Acknowledgements
@@ -2201,4 +2261,9 @@ This project was made possible by the following resources and collaborators:
 * **Resources**: General knowledge acquisition was supported by **Google** and **YouTube**.
 * **Troubleshooting**: The extensive and successful resolution of development, deployment, and configuration issues was enabled by detailed **Troubleshooting** and debugging efforts.
 
+##### Back to [top](#-table-of-contents)
+
 ---
+
+[structureLink]: #-structure
+[def]: #-procfile-configuration
